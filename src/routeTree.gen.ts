@@ -10,33 +10,141 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AsociarmeRouteImport } from './routes/asociarme'
+import { Route as CafeRouteImport } from './routes/cafe'
+import { Route as CooperativaRouteImport } from './routes/cooperativa'
+import { Route as EcosistemaRouteImport } from './routes/ecosistema'
+import { Route as HistoriaRouteImport } from './routes/historia'
+import { Route as NoticiasRouteImport } from './routes/noticias'
+import { Route as ServiciosRouteImport } from './routes/servicios'
+import { Route as SostenibilidadRouteImport } from './routes/sostenibilidad'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AsociarmeRoute = AsociarmeRouteImport.update({
+  id: '/asociarme',
+  path: '/asociarme',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CafeRoute = CafeRouteImport.update({
+  id: '/cafe',
+  path: '/cafe',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CooperativaRoute = CooperativaRouteImport.update({
+  id: '/cooperativa',
+  path: '/cooperativa',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EcosistemaRoute = EcosistemaRouteImport.update({
+  id: '/ecosistema',
+  path: '/ecosistema',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HistoriaRoute = HistoriaRouteImport.update({
+  id: '/historia',
+  path: '/historia',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NoticiasRoute = NoticiasRouteImport.update({
+  id: '/noticias',
+  path: '/noticias',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServiciosRoute = ServiciosRouteImport.update({
+  id: '/servicios',
+  path: '/servicios',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SostenibilidadRoute = SostenibilidadRouteImport.update({
+  id: '/sostenibilidad',
+  path: '/sostenibilidad',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/asociarme': typeof AsociarmeRoute
+  '/cafe': typeof CafeRoute
+  '/cooperativa': typeof CooperativaRoute
+  '/ecosistema': typeof EcosistemaRoute
+  '/historia': typeof HistoriaRoute
+  '/noticias': typeof NoticiasRoute
+  '/servicios': typeof ServiciosRoute
+  '/sostenibilidad': typeof SostenibilidadRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/asociarme': typeof AsociarmeRoute
+  '/cafe': typeof CafeRoute
+  '/cooperativa': typeof CooperativaRoute
+  '/ecosistema': typeof EcosistemaRoute
+  '/historia': typeof HistoriaRoute
+  '/noticias': typeof NoticiasRoute
+  '/servicios': typeof ServiciosRoute
+  '/sostenibilidad': typeof SostenibilidadRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/asociarme': typeof AsociarmeRoute
+  '/cafe': typeof CafeRoute
+  '/cooperativa': typeof CooperativaRoute
+  '/ecosistema': typeof EcosistemaRoute
+  '/historia': typeof HistoriaRoute
+  '/noticias': typeof NoticiasRoute
+  '/servicios': typeof ServiciosRoute
+  '/sostenibilidad': typeof SostenibilidadRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/asociarme'
+    | '/cafe'
+    | '/cooperativa'
+    | '/ecosistema'
+    | '/historia'
+    | '/noticias'
+    | '/servicios'
+    | '/sostenibilidad'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/asociarme'
+    | '/cafe'
+    | '/cooperativa'
+    | '/ecosistema'
+    | '/historia'
+    | '/noticias'
+    | '/servicios'
+    | '/sostenibilidad'
+  id:
+    | '__root__'
+    | '/'
+    | '/asociarme'
+    | '/cafe'
+    | '/cooperativa'
+    | '/ecosistema'
+    | '/historia'
+    | '/noticias'
+    | '/servicios'
+    | '/sostenibilidad'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AsociarmeRoute: typeof AsociarmeRoute
+  CafeRoute: typeof CafeRoute
+  CooperativaRoute: typeof CooperativaRoute
+  EcosistemaRoute: typeof EcosistemaRoute
+  HistoriaRoute: typeof HistoriaRoute
+  NoticiasRoute: typeof NoticiasRoute
+  ServiciosRoute: typeof ServiciosRoute
+  SostenibilidadRoute: typeof SostenibilidadRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +156,75 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/asociarme': {
+      id: '/asociarme'
+      path: '/asociarme'
+      fullPath: '/asociarme'
+      preLoaderRoute: typeof AsociarmeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cafe': {
+      id: '/cafe'
+      path: '/cafe'
+      fullPath: '/cafe'
+      preLoaderRoute: typeof CafeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cooperativa': {
+      id: '/cooperativa'
+      path: '/cooperativa'
+      fullPath: '/cooperativa'
+      preLoaderRoute: typeof CooperativaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ecosistema': {
+      id: '/ecosistema'
+      path: '/ecosistema'
+      fullPath: '/ecosistema'
+      preLoaderRoute: typeof EcosistemaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/historia': {
+      id: '/historia'
+      path: '/historia'
+      fullPath: '/historia'
+      preLoaderRoute: typeof HistoriaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/noticias': {
+      id: '/noticias'
+      path: '/noticias'
+      fullPath: '/noticias'
+      preLoaderRoute: typeof NoticiasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/servicios': {
+      id: '/servicios'
+      path: '/servicios'
+      fullPath: '/servicios'
+      preLoaderRoute: typeof ServiciosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sostenibilidad': {
+      id: '/sostenibilidad'
+      path: '/sostenibilidad'
+      fullPath: '/sostenibilidad'
+      preLoaderRoute: typeof SostenibilidadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AsociarmeRoute: AsociarmeRoute,
+  CafeRoute: CafeRoute,
+  CooperativaRoute: CooperativaRoute,
+  EcosistemaRoute: EcosistemaRoute,
+  HistoriaRoute: HistoriaRoute,
+  NoticiasRoute: NoticiasRoute,
+  ServiciosRoute: ServiciosRoute,
+  SostenibilidadRoute: SostenibilidadRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
