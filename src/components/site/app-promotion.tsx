@@ -71,8 +71,7 @@ export function AppPromotion() {
             </a>
           </div>
         </div>
-
-        <div className="relative grid min-h-[27rem] grid-cols-1 items-center justify-items-center gap-6 overflow-hidden bg-paper/5 px-5 py-10 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] sm:gap-4 sm:px-8">
+        <div className="relative grid min-h-108 grid-cols-1 items-center justify-items-center gap-6 overflow-hidden bg-paper/5 px-5 py-10 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] sm:gap-4 sm:px-8">
           <div
             aria-hidden="true"
             className="absolute -right-24 -top-24 size-72 rounded-full border border-lime/10"

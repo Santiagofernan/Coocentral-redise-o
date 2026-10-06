@@ -251,9 +251,28 @@ export function ServicesPage() {
                 <h2 className="mt-2 font-display text-3xl font-medium leading-tight sm:text-4xl">{service.title}</h2>
                 <p className="mt-4 max-w-xl text-sm leading-7 text-ink/70 sm:text-base">{service.summary}</p>
                 {service.href && (
-                  service.id === "coworking" ? (
+                  [
+                    "coworking",
+                    "pic",
+                    "almacenes-coocentral",
+                    "area-de-cafe",
+                    "tiendas-kahve",
+                    "coonectate",
+                  ].includes(service.id) ? (
                     <Link
-                      to="/coworking"
+                      to={
+                        service.id === "coonectate"
+                          ? "/coonectate"
+                          : service.id === "pic"
+                          ? "/pic"
+                          : service.id === "almacenes-coocentral"
+                            ? "/almacenes"
+                            : service.id === "area-de-cafe"
+                              ? "/area-de-cafe"
+                              : service.id === "tiendas-kahve"
+                                ? "/tiendas-kahve"
+                              : "/coworking"
+                      }
                       className="mt-6 inline-flex min-h-11 items-center gap-2 rounded-md bg-brand px-4 text-sm font-bold text-paper transition-all hover:-translate-y-0.5 hover:bg-forest hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
                     >
                       Consultar servicio
@@ -273,7 +292,21 @@ export function ServicesPage() {
                 )}
               </div>
               <figure className={`lg:col-span-7 ${index % 2 === 1 ? "lg:order-1" : ""}`}>
-                <img src={service.image} alt={service.imageAlt} loading="lazy" decoding="async" width="1200" height="900" className="aspect-4/3 w-full object-cover" />
+                <img
+                  src={service.image}
+                  alt={service.imageAlt}
+                  loading="lazy"
+                  decoding="async"
+                  width="1200"
+                  height="900"
+                  className={`aspect-4/3 w-full ${
+                    service.id === "ferticoolombia"
+                      ? "bg-forest-deep object-contain p-10 sm:p-16"
+                      : service.id === "cafe-coocentral"
+                        ? "bg-white object-contain p-8 sm:p-12"
+                      : "object-cover"
+                  }`}
+                />
               </figure>
             </div>
           </article>
@@ -305,7 +338,7 @@ export function ServicesPage() {
       <section className="mx-auto max-w-7xl px-5 py-14 lg:px-10 lg:py-20">
         <SectionTitle eyebrow="Herramientas digitales" title="Servicios que también conectan" />
         <ul className="grid gap-x-10 sm:grid-cols-2 lg:grid-cols-3">
-          {digitalTools.map(({ icon: Icon, name, text }) => <li key={name} className="flex gap-4 border-t border-border py-5"><Icon className="mt-1 size-5 shrink-0 text-brand" /><div><h3 className="font-semibold">{name}</h3><p className="mt-1 text-sm leading-6 text-ink/65">{text}</p></div></li>)}
+          {digitalTools.map(({ icon: Icon, name, text, href }) => <li key={name} className="flex gap-4 border-t border-border py-5"><Icon className="mt-1 size-5 shrink-0 text-brand" /><div><h3 className="font-semibold">{href ? <Link to={href} className="hover:text-brand hover:underline">{name}</Link> : name}</h3><p className="mt-1 text-sm leading-6 text-ink/65">{text}</p></div></li>)}
         </ul>
       </section>
     </main>
@@ -324,7 +357,15 @@ export function EcosystemPage() {
               <Icon className="size-6 text-brand" />
               <h3 className="mt-4 font-display text-xl">{name}</h3>
               <p className="mt-2 text-sm leading-6 text-ink/65">{text}</p>
-              {internal && <Link to="/almacenes" className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-brand hover:underline">Conocer más<ArrowUpRight className="size-3.5" /></Link>}
+              {internal && (
+                <Link
+                  to={name === "Tiendas Kahvé" ? "/tiendas-kahve" : "/almacenes"}
+                  className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-brand hover:underline"
+                >
+                  Conocer más
+                  <ArrowUpRight className="size-3.5" />
+                </Link>
+              )}
               {href && !internal && <a href={href} target="_blank" rel="noreferrer" className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-brand hover:underline">Conocer más<ArrowUpRight className="size-3.5" /></a>}
             </li>
           ))}

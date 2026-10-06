@@ -79,14 +79,19 @@ export function CoworkingPage() {
         />
         <div className="mx-auto grid max-w-7xl gap-10 px-5 py-10 sm:py-14 lg:grid-cols-12 lg:items-center lg:gap-8 lg:px-10 lg:py-16">
           <div className="lg:col-span-6">
-            <Link
-              to="/servicios"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-paper/75 transition-colors hover:text-lime"
-            >
-              <ArrowLeft aria-hidden="true" className="size-4" />
-              Volver a servicios
-            </Link>
-            <p className="mt-10 inline-flex items-center gap-2 rounded-full border border-lime/30 bg-lime/10 px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.18em] text-lime">
+            <div className="mb-8">
+              <Link
+                to="/servicios"
+                className="group inline-flex min-h-10 items-center gap-2 rounded-full border border-paper/20 bg-paper/5 px-4 text-sm font-semibold text-paper/80 shadow-sm transition-all duration-200 hover:-translate-x-0.5 hover:border-lime/60 hover:bg-lime hover:text-forest-deep hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime focus-visible:ring-offset-2 focus-visible:ring-offset-forest-deep"
+              >
+                <ArrowLeft
+                  aria-hidden="true"
+                  className="size-4 transition-transform duration-200 group-hover:-translate-x-1"
+                />
+                Volver a servicios
+              </Link>
+            </div>
+            <p className="inline-flex items-center gap-2 rounded-full border border-lime/30 bg-lime/10 px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.18em] text-lime">
               <span className="size-1.5 rounded-full bg-lime" />
               Coworking · Garzón, Huila
             </p>

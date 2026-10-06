@@ -11,15 +11,19 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AlmacenesRouteImport } from './routes/almacenes'
+import { Route as AreaDeCafeRouteImport } from './routes/area-de-cafe'
 import { Route as AsociarmeRouteImport } from './routes/asociarme'
 import { Route as CafeRouteImport } from './routes/cafe'
+import { Route as CoonectateRouteImport } from './routes/coonectate'
 import { Route as CooperativaRouteImport } from './routes/cooperativa'
 import { Route as CoworkingRouteImport } from './routes/coworking'
 import { Route as EcosistemaRouteImport } from './routes/ecosistema'
 import { Route as HistoriaRouteImport } from './routes/historia'
 import { Route as NoticiasRouteImport } from './routes/noticias'
+import { Route as PicRouteImport } from './routes/pic'
 import { Route as ServiciosRouteImport } from './routes/servicios'
 import { Route as SostenibilidadRouteImport } from './routes/sostenibilidad'
+import { Route as TiendasKahveRouteImport } from './routes/tiendas-kahve'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -31,6 +35,11 @@ const AlmacenesRoute = AlmacenesRouteImport.update({
   path: '/almacenes',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AreaDeCafeRoute = AreaDeCafeRouteImport.update({
+  id: '/area-de-cafe',
+  path: '/area-de-cafe',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AsociarmeRoute = AsociarmeRouteImport.update({
   id: '/asociarme',
   path: '/asociarme',
@@ -39,6 +48,11 @@ const AsociarmeRoute = AsociarmeRouteImport.update({
 const CafeRoute = CafeRouteImport.update({
   id: '/cafe',
   path: '/cafe',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CoonectateRoute = CoonectateRouteImport.update({
+  id: '/coonectate',
+  path: '/coonectate',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CooperativaRoute = CooperativaRouteImport.update({
@@ -66,6 +80,11 @@ const NoticiasRoute = NoticiasRouteImport.update({
   path: '/noticias',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PicRoute = PicRouteImport.update({
+  id: '/pic',
+  path: '/pic',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServiciosRoute = ServiciosRouteImport.update({
   id: '/servicios',
   path: '/servicios',
@@ -76,101 +95,134 @@ const SostenibilidadRoute = SostenibilidadRouteImport.update({
   path: '/sostenibilidad',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TiendasKahveRoute = TiendasKahveRouteImport.update({
+  id: '/tiendas-kahve',
+  path: '/tiendas-kahve',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/almacenes': typeof AlmacenesRoute
+  '/area-de-cafe': typeof AreaDeCafeRoute
   '/asociarme': typeof AsociarmeRoute
   '/cafe': typeof CafeRoute
+  '/coonectate': typeof CoonectateRoute
   '/cooperativa': typeof CooperativaRoute
   '/coworking': typeof CoworkingRoute
   '/ecosistema': typeof EcosistemaRoute
   '/historia': typeof HistoriaRoute
   '/noticias': typeof NoticiasRoute
+  '/pic': typeof PicRoute
   '/servicios': typeof ServiciosRoute
   '/sostenibilidad': typeof SostenibilidadRoute
+  '/tiendas-kahve': typeof TiendasKahveRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/almacenes': typeof AlmacenesRoute
+  '/area-de-cafe': typeof AreaDeCafeRoute
   '/asociarme': typeof AsociarmeRoute
   '/cafe': typeof CafeRoute
+  '/coonectate': typeof CoonectateRoute
   '/cooperativa': typeof CooperativaRoute
   '/coworking': typeof CoworkingRoute
   '/ecosistema': typeof EcosistemaRoute
   '/historia': typeof HistoriaRoute
   '/noticias': typeof NoticiasRoute
+  '/pic': typeof PicRoute
   '/servicios': typeof ServiciosRoute
   '/sostenibilidad': typeof SostenibilidadRoute
+  '/tiendas-kahve': typeof TiendasKahveRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/almacenes': typeof AlmacenesRoute
+  '/area-de-cafe': typeof AreaDeCafeRoute
   '/asociarme': typeof AsociarmeRoute
   '/cafe': typeof CafeRoute
+  '/coonectate': typeof CoonectateRoute
   '/cooperativa': typeof CooperativaRoute
   '/coworking': typeof CoworkingRoute
   '/ecosistema': typeof EcosistemaRoute
   '/historia': typeof HistoriaRoute
   '/noticias': typeof NoticiasRoute
+  '/pic': typeof PicRoute
   '/servicios': typeof ServiciosRoute
   '/sostenibilidad': typeof SostenibilidadRoute
+  '/tiendas-kahve': typeof TiendasKahveRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/almacenes'
+    | '/area-de-cafe'
     | '/asociarme'
     | '/cafe'
+    | '/coonectate'
     | '/cooperativa'
     | '/coworking'
     | '/ecosistema'
     | '/historia'
     | '/noticias'
+    | '/pic'
     | '/servicios'
     | '/sostenibilidad'
+    | '/tiendas-kahve'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/almacenes'
+    | '/area-de-cafe'
     | '/asociarme'
     | '/cafe'
+    | '/coonectate'
     | '/cooperativa'
     | '/coworking'
     | '/ecosistema'
     | '/historia'
     | '/noticias'
+    | '/pic'
     | '/servicios'
     | '/sostenibilidad'
+    | '/tiendas-kahve'
   id:
     | '__root__'
     | '/'
     | '/almacenes'
+    | '/area-de-cafe'
     | '/asociarme'
     | '/cafe'
+    | '/coonectate'
     | '/cooperativa'
     | '/coworking'
     | '/ecosistema'
     | '/historia'
     | '/noticias'
+    | '/pic'
     | '/servicios'
     | '/sostenibilidad'
+    | '/tiendas-kahve'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AlmacenesRoute: typeof AlmacenesRoute
+  AreaDeCafeRoute: typeof AreaDeCafeRoute
   AsociarmeRoute: typeof AsociarmeRoute
   CafeRoute: typeof CafeRoute
+  CoonectateRoute: typeof CoonectateRoute
   CooperativaRoute: typeof CooperativaRoute
   CoworkingRoute: typeof CoworkingRoute
   EcosistemaRoute: typeof EcosistemaRoute
   HistoriaRoute: typeof HistoriaRoute
   NoticiasRoute: typeof NoticiasRoute
+  PicRoute: typeof PicRoute
   ServiciosRoute: typeof ServiciosRoute
   SostenibilidadRoute: typeof SostenibilidadRoute
+  TiendasKahveRoute: typeof TiendasKahveRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -189,6 +241,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AlmacenesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/area-de-cafe': {
+      id: '/area-de-cafe'
+      path: '/area-de-cafe'
+      fullPath: '/area-de-cafe'
+      preLoaderRoute: typeof AreaDeCafeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/asociarme': {
       id: '/asociarme'
       path: '/asociarme'
@@ -201,6 +260,13 @@ declare module '@tanstack/react-router' {
       path: '/cafe'
       fullPath: '/cafe'
       preLoaderRoute: typeof CafeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/coonectate': {
+      id: '/coonectate'
+      path: '/coonectate'
+      fullPath: '/coonectate'
+      preLoaderRoute: typeof CoonectateRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cooperativa': {
@@ -238,6 +304,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NoticiasRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/pic': {
+      id: '/pic'
+      path: '/pic'
+      fullPath: '/pic'
+      preLoaderRoute: typeof PicRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/servicios': {
       id: '/servicios'
       path: '/servicios'
@@ -252,21 +325,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SostenibilidadRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tiendas-kahve': {
+      id: '/tiendas-kahve'
+      path: '/tiendas-kahve'
+      fullPath: '/tiendas-kahve'
+      preLoaderRoute: typeof TiendasKahveRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AlmacenesRoute: AlmacenesRoute,
+  AreaDeCafeRoute: AreaDeCafeRoute,
   AsociarmeRoute: AsociarmeRoute,
   CafeRoute: CafeRoute,
+  CoonectateRoute: CoonectateRoute,
   CooperativaRoute: CooperativaRoute,
   CoworkingRoute: CoworkingRoute,
   EcosistemaRoute: EcosistemaRoute,
   HistoriaRoute: HistoriaRoute,
   NoticiasRoute: NoticiasRoute,
+  PicRoute: PicRoute,
   ServiciosRoute: ServiciosRoute,
   SostenibilidadRoute: SostenibilidadRoute,
+  TiendasKahveRoute: TiendasKahveRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

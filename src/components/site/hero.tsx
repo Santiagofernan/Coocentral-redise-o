@@ -1,7 +1,7 @@
 import { ArrowDown, ArrowRight } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 
-import heroImage from "@/assets/coocentral-caficultor-hero.jpg";
+import heroImage from "@/assets/Inicio/50 años de Coocentral en verde y oro.png";
 import { heroBadges } from "@/content/coocentral";
 
 export function Hero() {
@@ -12,11 +12,12 @@ export function Hero() {
     >
       <img
         src={heroImage}
-        alt="Caficultor del Huila sosteniendo granos de café recién cosechados"
-        width="1088"
-        height="1360"
+        alt=""
+        aria-hidden="true"
+        width="2048"
+        height="768"
         fetchPriority="high"
-        className="hero-zoom absolute inset-0 -z-20 size-full object-cover object-[70%_30%]"
+        className="hero-zoom absolute inset-0 -z-20 size-full object-cover object-left"
       />
       <div className="absolute inset-0 -z-10 bg-linear-to-r from-forest-deep via-forest-deep/80 to-forest-deep/10" />
       <div className="absolute inset-0 -z-10 bg-linear-to-t from-forest-deep via-transparent to-forest-deep/50" />

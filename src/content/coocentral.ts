@@ -30,6 +30,10 @@ import {
   Wifi,
   type LucideIcon,
 } from "lucide-react";
+import ferticoolombiaLogo from "@/assets/Servicios/Ferticoolombia/Logo Ferticoolombia TRAZO BLANCO.png";
+import hotelKahveImage from "@/assets/Servicios/Hotel_Kahve/Planta.webp";
+import coworkingShowcaseImage from "@/assets/Servicios/Coworking/YDRAY-IMG_9436-1-scaled.webp";
+import coocentralCoffeeImage from "@/assets/Servicios/Cafes_coocentral/Cafe.webp";
 import farmerImage from "@/assets/coocentral-caficultor-hero.jpg";
 import historyImage from "@/assets/coocentral-historia.jpg";
 import qualityImage from "@/assets/coocentral-calidad.jpg";
@@ -411,7 +415,7 @@ export const businessUnits: BusinessUnit[] = [
     icon: Leaf,
     name: "FUNDECAFÉ",
     text: "Brazo social y técnico: extensión agropecuaria y formación en finca.",
-    href: "http://fundecafe.com/",
+    href: "https://www.fundecafe.com/",
   },
   {
     icon: Sprout,
@@ -429,13 +433,14 @@ export const businessUnits: BusinessUnit[] = [
     icon: Store,
     name: "Tiendas Kahvé",
     text: "Cultura cafetera y degustación en múltiples métodos de extracción.",
-    href: "https://coocentral.com/tiendas-khave/",
+    href: "/tiendas-kahve",
+    internal: true,
   },
   {
     icon: Hotel,
     name: "Hotel Kahvé",
     text: "Hotel temático del café en Garzón para rutas turísticas y clientes.",
-    href: "http://www.hotelkahve.co/",
+    href: "https://hotelkahve.com/",
   },
   {
     icon: Warehouse,
@@ -483,13 +488,13 @@ export const warehouseLocations = [
   { municipality: "Tarqui", name: "Centro poblado Maito", address: "", hours: ["Lunes a viernes · 7:00 a. m.–12:00 m. y 2:00–4:00 p. m.", "Sábado · 7:00 a. m.–1:00 p. m."] },
 ] as const;
 
-type DigitalTool = { icon: LucideIcon; name: string; text: string };
+type DigitalTool = { icon: LucideIcon; name: string; text: string; href?: "/coonectate" };
 
 export const digitalTools: DigitalTool[] = [
   { icon: Smartphone, name: "Coocentral App", text: "Trámites, saldos y aportes desde el celular." },
   { icon: ClipboardCheck, name: "A-Catar", text: "Trazabilidad y calificación SCA de muestras." },
   { icon: Laptop, name: "Finapp", text: "Gestión centralizada del expediente crediticio." },
-  { icon: Wifi, name: "Coonéctate", text: "Conectividad a internet en veredas aisladas." },
+  { icon: Wifi, name: "Coonéctate", text: "Conectividad a internet en veredas aisladas.", href: "/coonectate" },
   { icon: Tv, name: "Coocentral TV", text: "Precios y noticias en las pantallas de los fielatos." },
 ];
 
@@ -504,16 +509,16 @@ type ServiceShowcase = {
 };
 
 export const serviceShowcase: ServiceShowcase[] = [
-  { id: "coworking", title: "Coworking", summary: "Espacio de trabajo colaborativo en el Centro Comercial El Molino para reuniones, capacitación, creación de ideas y emprendimiento.", image: "https://coocentral.com/wp-content/uploads/2022/08/YDRAY-IMG_9424-1536x1086.jpg", imageAlt: "Entrada del espacio Coworking de Coocentral en Garzón", href: "/coworking" },
-  { id: "pic", title: "PIC · Parque Industrial del Café", summary: "Infraestructura que integra secado, trilla, tostión, almacenamiento y control de calidad para agregar valor al café del Huila.", image: "https://coocentral.com/wp-content/uploads/2026/05/jp_pic-1536x634.jpg", imageAlt: "Instalaciones del Parque Industrial del Café de Coocentral", href: "https://coocentral.com/pic/" },
-  { id: "almacenes-coocentral", title: "Almacenes Coocentral", summary: "Red de 17 tiendas en el centro del Huila con líneas agropecuaria, hogar, ferretería y maquinaria para las familias de la región.", image: historyImage, imageAlt: "Memoria de la caficultura del Huila, territorio atendido por la red de almacenes", href: "https://coocentral.com/almacenes-coocentral/" },
-  { id: "ferticoolombia", title: "Ferticoolombia", summary: "Marca de fertilizantes de Coocentral con soluciones nutricionales, formulación propia y acompañamiento técnico para los cultivos.", image: "https://ferticoolombia.com/assets/katiuska-360-BlJszH-B.avif", imageAlt: "Presentación de fertilizante Katiuska de Ferticoolombia", href: "https://ferticoolombia.com/" },
-  { id: "area-de-cafe", title: "Área de Café", summary: "Puntos de compra y venta de café verde y seco que acercan a los productores a la comercialización y al control de calidad.", image: qualityImage, imageAlt: "Selección y control de calidad de café verde", href: "https://coocentral.com/area-de-cafe/" },
-  { id: "cafe-coocentral", title: "Cafés Coocentral", summary: "Café tostado de origen Huila, desde opciones clásicas hasta cafés especiales y ediciones de origen para distintos momentos y preparaciones.", image: "https://www.cafescoocentral.com.co/app_data_archivos/coocentral.soomi.co/productos/producto_94a6f652d9cc2a0bd60c56416cdf6e8adf5bb70d1763137611.png", imageAlt: "Empaque de Café Clásico Coocentral de origen Huila", href: "https://www.cafescoocentral.com.co/", action: "Visitar tienda de café" },
-  { id: "hoteles-kahve", title: "Hoteles Kahvé", summary: "Hotel temático del café en Garzón que recibe a visitantes, compradores y viajeros interesados en conocer el territorio cafetero.", image: "https://coocentral.com/wp-content/uploads/2022/06/Hotel_2013.jpg", imageAlt: "Interior del Hotel Kahvé, registro institucional de 2013" },
-  { id: "tiendas-kahve", title: "Tiendas Kahvé", summary: "Espacios para disfrutar la cultura cafetera y degustar café en Garzón y Neiva, con distintas preparaciones y métodos.", image: qualityImage, imageAlt: "Preparación y evaluación de café para la experiencia de las tiendas Kahvé", href: "https://coocentral.com/tiendas-khave/" },
-  { id: "fundecafe", title: "Fundecafé", summary: "Fundación de apoyo social y técnico que acompaña a las familias con extensión agropecuaria, formación y fortalecimiento de la vida en la finca.", image: territoryImage, imageAlt: "Familia caficultora en una finca del Huila, comunidad acompañada por Fundecafé", href: "https://www.fundecafe.com/index.php/la-fundacion/" },
-  { id: "coonectate", title: "Coonéctate", summary: "Iniciativa de conectividad que acerca internet y herramientas digitales a las veredas y comunidades rurales del territorio.", image: farmerImage, imageAlt: "Caficultor del Huila en una vereda, comunidad a la que llega Coonéctate", href: "mailto:info@coocentral.co?subject=Informaci%C3%B3n%20sobre%20Coon%C3%A9ctate", action: "Solicitar información" },
+  { id: "coworking", title: "Coworking", summary: "Espacio de trabajo colaborativo en el Centro Comercial El Molino para reuniones, capacitación, creación de ideas y emprendimiento.", image: coworkingShowcaseImage, imageAlt: "Sala de reuniones del Coworking Coocentral en Garzón", href: "/coworking" },
+  { id: "pic", title: "PIC · Parque Industrial del Café", summary: "Infraestructura que integra secado, trilla, tostión, almacenamiento y control de calidad para agregar valor al café del Huila.", image: "https://coocentral.com/wp-content/uploads/2026/05/jp_pic-1536x634.jpg", imageAlt: "Instalaciones del Parque Industrial del Café de Coocentral", href: "/pic" },
+  { id: "almacenes-coocentral", title: "Almacenes Coocentral", summary: "Red de 17 tiendas en el centro del Huila con líneas agropecuaria, hogar, ferretería y maquinaria para las familias de la región.", image: historyImage, imageAlt: "Memoria de la caficultura del Huila, territorio atendido por la red de almacenes", href: "/almacenes" },
+  { id: "ferticoolombia", title: "Ferticoolombia", summary: "Marca de fertilizantes de Coocentral con soluciones nutricionales, formulación propia y acompañamiento técnico para los cultivos.", image: ferticoolombiaLogo, imageAlt: "Logo de Ferticoolombia", href: "https://ferticoolombia.com/" },
+  { id: "area-de-cafe", title: "Área de Café", summary: "Puntos de compra y venta de café verde y seco que acercan a los productores a la comercialización y al control de calidad.", image: qualityImage, imageAlt: "Selección y control de calidad de café verde", href: "/area-de-cafe" },
+  { id: "cafe-coocentral", title: "Cafés Coocentral", summary: "Café tostado de origen Huila, desde opciones clásicas hasta cafés especiales y ediciones de origen para distintos momentos y preparaciones.", image: coocentralCoffeeImage, imageAlt: "Variedades de café tostado Coocentral", href: "https://www.cafescoocentral.com.co/", action: "Visitar tienda de café" },
+  { id: "hoteles-kahve", title: "Hoteles Kahvé", summary: "Hotel temático del café en Garzón que recibe a visitantes, compradores y viajeros interesados en conocer el territorio cafetero.", image: hotelKahveImage, imageAlt: "Recepción del Hotel Kahvé en Garzón", href: "https://hotelkahve.com/" },
+  { id: "tiendas-kahve", title: "Tiendas Kahvé", summary: "Espacios para disfrutar la cultura cafetera y degustar café en Garzón y Neiva, con distintas preparaciones y métodos.", image: qualityImage, imageAlt: "Selección de café verde, cultura cafetera que inspira Tiendas Kahvé", href: "/tiendas-kahve" },
+  { id: "fundecafe", title: "Fundecafé", summary: "Fundación de apoyo social y técnico que acompaña a las familias con extensión agropecuaria, formación y fortalecimiento de la vida en la finca.", image: territoryImage, imageAlt: "Familia caficultora en una finca del Huila, comunidad acompañada por Fundecafé", href: "https://www.fundecafe.com/" },
+  { id: "coonectate", title: "Coonéctate", summary: "Proyecto social que brinda internet confiable a familias rurales de la vereda Las Delicias, en Tarqui, para apoyar la educación, la comunicación, la productividad y el bienestar.", image: farmerImage, imageAlt: "Caficultor del Huila, imagen de contexto del proyecto de conectividad rural", href: "/coonectate" },
 ];
 
 export const industrialProjects = [

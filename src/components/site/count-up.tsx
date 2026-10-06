@@ -48,8 +48,7 @@ export function CountUp({ value, prefix = "", suffix = "", duration = 1600 }: Co
   };
 
   return (
-    <span ref={ref}>
-      <span className="sr-only">{format(value)}</span>
+    <span ref={ref} role="text" aria-label={format(value)}>
       <span aria-hidden="true">{format(current)}</span>
     </span>
   );
