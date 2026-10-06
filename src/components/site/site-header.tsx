@@ -13,14 +13,15 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 border-b border-brand/15 bg-paper/95 shadow-sm backdrop-blur-md">
       <div className="mx-auto flex h-18 max-w-7xl items-center justify-between gap-6 px-5 lg:h-20 lg:px-10">
-        <Link to="/" aria-label="Coocentral, ir al inicio" className="shrink-0">
-          <img
-            src={logo}
-            alt="Coocentral"
-            width="180"
-            height="40"
-            className="h-9 w-auto lg:h-10"
-          />
+        <Link
+          to="/"
+          aria-label="Coocentral, ir al inicio"
+          className="shrink-0"
+          onClick={() => {
+            if (pathname === "/") window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
+        >
+          <img src={logo} alt="Coocentral" width="180" height="40" className="h-9 w-auto lg:h-10" />
         </Link>
 
         <nav aria-label="Navegación principal" className="hidden xl:block">
@@ -46,7 +47,8 @@ export function SiteHeader() {
                     moreIsActive && "bg-brand/10 text-brand",
                   )}
                 >
-                  Explorar <ChevronDown className="size-4 transition-transform duration-200 group-open:rotate-180" />
+                  Explorar{" "}
+                  <ChevronDown className="size-4 transition-transform duration-200 group-open:rotate-180" />
                 </summary>
                 <ul className="absolute right-0 top-full z-50 mt-2 w-64 space-y-1 border border-brand/15 bg-paper p-2 shadow-xl transition-[opacity,transform] group-open:animate-in group-open:fade-in-0 group-open:slide-in-from-top-1">
                   {moreNavigation.map((item) => (
@@ -96,16 +98,26 @@ export function SiteHeader() {
             </SheetTrigger>
             <SheetContent
               side="right"
-                className="flex w-full flex-col overflow-y-auto border-l-0 bg-forest-deep p-6 text-paper sm:max-w-md sm:p-8 [&>button]:rounded-md [&>button]:text-paper"
+              className="flex w-full flex-col overflow-y-auto border-l-0 bg-forest-deep p-6 text-paper sm:max-w-md sm:p-8 [&>button]:rounded-md [&>button]:text-paper"
             >
               <SheetTitle className="sr-only">Menú de navegación</SheetTitle>
-              <img
-                src={logo}
-                alt="Coocentral"
-                width="160"
-                height="36"
-                className="h-9 w-fit brightness-0 invert"
-              />
+              <SheetClose asChild>
+                <Link
+                  to="/"
+                  aria-label="Coocentral, ir al inicio"
+                  onClick={() => {
+                    if (pathname === "/") window.scrollTo({ top: 0, behavior: "smooth" });
+                  }}
+                >
+                  <img
+                    src={logo}
+                    alt="Coocentral"
+                    width="160"
+                    height="36"
+                    className="h-9 w-fit brightness-0 invert"
+                  />
+                </Link>
+              </SheetClose>
               <nav aria-label="Navegación móvil" className="mt-8">
                 <ul className="divide-y divide-paper/15 border-y border-paper/15">
                   {[...navigation, ...moreNavigation].map((item) => (
@@ -118,7 +130,8 @@ export function SiteHeader() {
                             pathname === item.href && "text-lime",
                           )}
                         >
-                          {item.label}<ArrowRight className="size-4 text-lime/70" />
+                          {item.label}
+                          <ArrowRight className="size-4 text-lime/70" />
                         </Link>
                       </SheetClose>
                     </li>

@@ -30,6 +30,10 @@ import {
   Wifi,
   type LucideIcon,
 } from "lucide-react";
+import farmerImage from "@/assets/coocentral-caficultor-hero.jpg";
+import historyImage from "@/assets/coocentral-historia.jpg";
+import qualityImage from "@/assets/coocentral-calidad.jpg";
+import territoryImage from "@/assets/coocentral-territorio.jpg";
 
 // Todo el contenido proviene del informe institucional (docs/informe-coocentral.pdf),
 // salvo teléfonos, redes y enlaces legales, tomados de www.coocentral.com.
@@ -37,6 +41,7 @@ import {
 export const links = {
   store: "https://www.cafescoocentral.com.co/",
   app: "https://play.google.com/store/apps/details?id=com.coocentral.app&hl=es_CO",
+  appStore: "https://apps.apple.com/co/app/nueva-app-red-coopcentral/id6742431196",
   requirements: "https://coocentral.com/requisitos/",
   contact: "https://coocentral.com/contacto-2/",
   news: "https://coocentral.com/noticias/",
@@ -67,23 +72,69 @@ export const navigation = [
 export const cooperativeResources = [
   { label: "¿Quiénes somos?", href: "/cooperativa", external: false },
   { label: "Reseña Histórica", href: "/historia", external: false },
-  { label: "Estatutos y reglamentos", href: "https://coocentral.com/estatutos-y-reglamentos/", external: true },
-  { label: "Administración y control", href: "https://coocentral.com/administracion-y-control/", external: true },
-  { label: "Acta de compromiso Fundecafé", href: "https://coocentral.com/wp-content/uploads/2023/05/Acta-de-Compromiso-y-proteccion-datos.pdf", external: true },
-  { label: "Política de privacidad", href: "https://coocentral.com/politica-de-privacidad/", external: true },
-  { label: "Política de abastecimiento responsable y cero deforestación", href: "https://coocentral.com/img/Politica_de_abastecimiento_responsable_y_cero_deforestacion.pdf", external: true },
-  { label: "Política Anticorrupción y Antisoborno", href: "https://coocentral.com/img/Politica_Anticorrupcion_y_Antisoborno.pdf", external: true },
-  { label: "Prevención de lavado de activos", href: "https://coocentral.com/prevencion-de-lavado-de-activos/", external: true },
-  { label: "Oficinas y Horarios", href: "/cooperativa#oficinas-y-horarios", external: false },
-  { label: "Artículo 364-5 del estatuto tributario", href: "https://coocentral.com/articulo-364-5/", external: true },
-  { label: "Reglamento interno de trabajo", href: "mailto:info@coocentral.co?subject=Solicitud%20del%20reglamento%20interno%20de%20trabajo", external: false },
+  {
+    label: "Estatutos y reglamentos",
+    href: "https://coocentral.com/estatutos-y-reglamentos/",
+    external: true,
+  },
+  {
+    label: "Administración y control",
+    href: "https://coocentral.com/administracion-y-control/",
+    external: true,
+  },
+  {
+    label: "Acta de compromiso Fundecafé",
+    href: "https://coocentral.com/wp-content/uploads/2023/05/Acta-de-Compromiso-y-proteccion-datos.pdf",
+    external: true,
+  },
+  {
+    label: "Política de privacidad",
+    href: "/documentos/cooperativa/politica-de-privacidad.pdf",
+    external: true,
+  },
+  {
+    label: "Política de abastecimiento responsable y cero deforestación",
+    href: "/documentos/cooperativa/Politica_de_abastecimiento_responsable_y_cero_deforestacion.pdf",
+    external: true,
+  },
+  {
+    label: "Política Anticorrupción y Antisoborno",
+    href: "/documentos/cooperativa/Politica_Anticorrupcion_y_Antisoborno.pdf",
+    external: true,
+  },
+  {
+    label: "Prevención de lavado de activos",
+    href: "/documentos/cooperativa/Prevencion_Lavado_Activos_COOCENTRAL.pdf",
+    external: true,
+  },
+  { label: "Oficinas y Horarios", href: "/#oficinas-y-horarios", external: false },
+  {
+    label: "Artículo 364-5 del estatuto tributario",
+    href: "/documentos/cooperativa/Articulo_364-5_Estatuto_Tributario_COOCENTRAL.pdf",
+    external: true,
+  },
+  {
+    label: "Reglamento interno de trabajo",
+    href: "/documentos/cooperativa/REGLAMENTO_IT_COOCENTRAL.pdf",
+    external: true,
+  },
 ] as const;
 
 export const publicOffice = {
-  address: "Carrera 12 # 2-55 · Barrio Rodrigo Lara, Garzón, Huila",
+  address: "Carrera 12 sur # 2-55, Garzón, Huila",
   hours: [
-    { days: "Lunes a viernes", time: "7:00 a. m. – 12:00 m. y 2:00 – 5:00 p. m." },
-    { days: "Sábado", time: "7:00 – 11:00 a. m." },
+    {
+      days: "Lunes a viernes",
+      weekdays: [1, 2, 3, 4, 5],
+      periods: ["7:30 a. m. – 12:00 m.", "2:00 – 5:00 p. m."],
+      intervals: [[450, 720], [840, 1020]],
+    },
+    {
+      days: "Sábado",
+      weekdays: [6],
+      periods: ["7:30 a. m. – 12:00 m."],
+      intervals: [[450, 720]],
+    },
   ],
 };
 
@@ -353,7 +404,7 @@ export const agroServices: Service[] = [
   },
 ];
 
-type BusinessUnit = { icon: LucideIcon; name: string; text: string; href?: string };
+type BusinessUnit = { icon: LucideIcon; name: string; text: string; href?: string; internal?: boolean };
 
 export const businessUnits: BusinessUnit[] = [
   {
@@ -390,7 +441,8 @@ export const businessUnits: BusinessUnit[] = [
     icon: Warehouse,
     name: "Almacenes Coocentral",
     text: "Red regional de insumos, hogar, ferretería y maquinaria.",
-    href: "https://coocentral.com/almacenes-coocentral/",
+    href: "/almacenes",
+    internal: true,
   },
   {
     icon: Presentation,
@@ -405,6 +457,32 @@ export const businessUnits: BusinessUnit[] = [
   },
 ];
 
+export const warehouseProductLines = [
+  { name: "Línea agro", products: "Fertilizantes y agro-insumos." },
+  { name: "Línea hogar", products: "Electrodomésticos, electro-hogar, muebles, artículos Rimax y calzado especializado." },
+  { name: "Línea ferretería", products: "Plásticos para secaderos y demás artículos de ferretería." },
+  { name: "Línea maquinaria", products: "Guadañas, despulpadores, desmucilaginadores, motosierras y demás maquinaria." },
+] as const;
+
+export const warehouseLocations = [
+  { municipality: "Garzón", name: "Centro Comercial El Molino", address: "Calle 3 #11-31", hours: ["Lunes a viernes · 7:00 a. m.–12:30 p. m. y 2:00–4:30 p. m.", "Sábado · 7:00 a. m.–1:00 p. m."] },
+  { municipality: "Garzón", name: "C.C. Café", address: "Calle 2 #10A-58", hours: ["Lunes a viernes · 7:00 a. m.–12:30 p. m. y 2:00–4:30 p. m.", "Sábado · 7:00 a. m.–1:00 p. m."] },
+  { municipality: "Garzón", name: "Ferretería · Nueva sede", address: "Carrera 12 #2-55", hours: ["Lunes a viernes · 7:00 a. m.–12:00 m. y 2:00–5:00 p. m.", "Sábado · 7:00 a. m.–1:00 p. m."] },
+  { municipality: "Garzón", name: "Ferretería La 14", address: "Calle 9 #14-35", hours: ["Lunes a viernes · 7:00 a. m.–12:00 m. y 2:00–5:00 p. m.", "Sábado · 7:00 a. m.–1:00 p. m."] },
+  { municipality: "Garzón", name: "Centro poblado Zuluaga", address: "Carrera 5 #2-45", hours: ["Martes a viernes · 7:00 a. m.–12:30 p. m. y 2:00–4:00 p. m.", "Sábado y domingo · 7:00 a. m.–1:00 p. m."] },
+  { municipality: "Garzón", name: "Corregimiento de San Antonio del Pescado", address: "", hours: ["Martes a viernes · 7:00 a. m.–12:30 p. m. y 2:00–4:00 p. m.", "Sábado · 7:00 a. m.–12:30 p. m. y 2:00–4:00 p. m.", "Domingo · 7:00 a. m.–1:00 p. m."] },
+  { municipality: "Gigante", name: "Sede principal", address: "Carrera 4 #3-92", hours: ["Lunes a viernes · 8:00 a. m.–12:30 p. m. y 2:00–5:00 p. m.", "Sábado · 7:00 a. m.–1:00 p. m."] },
+  { municipality: "Gigante", name: "Inspección de Potrerillos", address: "", hours: ["Martes a viernes · 7:00 a. m.–12:30 p. m. y 2:00–4:30 p. m.", "Sábado · 7:00 a. m.–1:00 p. m."] },
+  { municipality: "Guadalupe", name: "Sede principal", address: "Calle 4 #5-52, local 2", hours: ["Martes a viernes · 7:00 a. m.–12:30 p. m. y 2:00–4:30 p. m.", "Sábado y domingo · 7:00 a. m.–1:00 p. m."] },
+  { municipality: "Agrado", name: "Sede principal", address: "Carrera 5 #4-35", hours: ["Martes a viernes · 7:00 a. m.–12:30 p. m. y 2:00–4:00 p. m.", "Sábado y domingo · 7:00 a. m.–1:00 p. m."] },
+  { municipality: "Pital", name: "Sede principal", address: "Carrera 10 #8-68", hours: ["Martes a viernes · 7:00 a. m.–1:00 p. m. y 2:00–4:00 p. m.", "Sábado y domingo · 7:00 a. m.–1:00 p. m."] },
+  { municipality: "Pital", name: "Inspección El Socorro", address: "", hours: ["Martes a viernes · 7:00 a. m.–12:30 p. m. y 2:00–4:00 p. m.", "Sábado · 7:00 a. m.–3:00 p. m.", "Domingo · 7:00 a. m.–1:00 p. m."] },
+  { municipality: "Suaza", name: "Sede principal", address: "Calle 6 #4-33/45", hours: ["Lunes a viernes · 7:00 a. m.–12:30 p. m. y 2:00–4:30 p. m.", "Sábado · 7:00 a. m.–1:00 p. m."] },
+  { municipality: "Tarqui", name: "Sede principal", address: "Carrera 6 #1-66", hours: ["Lunes a viernes · 7:00 a. m.–12:30 p. m. y 2:00–4:00 p. m.", "Sábado · 7:00 a. m.–1:00 p. m."] },
+  { municipality: "Tarqui", name: "Centro poblado Quituro", address: "", hours: ["Lunes a viernes · 7:00 a. m.–12:00 m. y 2:00–4:30 p. m.", "Sábado · 7:00 a. m.–1:00 p. m."] },
+  { municipality: "Tarqui", name: "Centro poblado Maito", address: "", hours: ["Lunes a viernes · 7:00 a. m.–12:00 m. y 2:00–4:00 p. m.", "Sábado · 7:00 a. m.–1:00 p. m."] },
+] as const;
+
 type DigitalTool = { icon: LucideIcon; name: string; text: string };
 
 export const digitalTools: DigitalTool[] = [
@@ -413,6 +491,29 @@ export const digitalTools: DigitalTool[] = [
   { icon: Laptop, name: "Finapp", text: "Gestión centralizada del expediente crediticio." },
   { icon: Wifi, name: "Coonéctate", text: "Conectividad a internet en veredas aisladas." },
   { icon: Tv, name: "Coocentral TV", text: "Precios y noticias en las pantallas de los fielatos." },
+];
+
+type ServiceShowcase = {
+  id: string;
+  title: string;
+  summary: string;
+  image: string;
+  imageAlt: string;
+  href?: string;
+  action?: string;
+};
+
+export const serviceShowcase: ServiceShowcase[] = [
+  { id: "coworking", title: "Coworking", summary: "Espacio de trabajo colaborativo en el Centro Comercial El Molino para reuniones, capacitación, creación de ideas y emprendimiento.", image: "https://coocentral.com/wp-content/uploads/2022/08/YDRAY-IMG_9424-1536x1086.jpg", imageAlt: "Entrada del espacio Coworking de Coocentral en Garzón", href: "/coworking" },
+  { id: "pic", title: "PIC · Parque Industrial del Café", summary: "Infraestructura que integra secado, trilla, tostión, almacenamiento y control de calidad para agregar valor al café del Huila.", image: "https://coocentral.com/wp-content/uploads/2026/05/jp_pic-1536x634.jpg", imageAlt: "Instalaciones del Parque Industrial del Café de Coocentral", href: "https://coocentral.com/pic/" },
+  { id: "almacenes-coocentral", title: "Almacenes Coocentral", summary: "Red de 17 tiendas en el centro del Huila con líneas agropecuaria, hogar, ferretería y maquinaria para las familias de la región.", image: historyImage, imageAlt: "Memoria de la caficultura del Huila, territorio atendido por la red de almacenes", href: "https://coocentral.com/almacenes-coocentral/" },
+  { id: "ferticoolombia", title: "Ferticoolombia", summary: "Marca de fertilizantes de Coocentral con soluciones nutricionales, formulación propia y acompañamiento técnico para los cultivos.", image: "https://ferticoolombia.com/assets/katiuska-360-BlJszH-B.avif", imageAlt: "Presentación de fertilizante Katiuska de Ferticoolombia", href: "https://ferticoolombia.com/" },
+  { id: "area-de-cafe", title: "Área de Café", summary: "Puntos de compra y venta de café verde y seco que acercan a los productores a la comercialización y al control de calidad.", image: qualityImage, imageAlt: "Selección y control de calidad de café verde", href: "https://coocentral.com/area-de-cafe/" },
+  { id: "cafe-coocentral", title: "Cafés Coocentral", summary: "Café tostado de origen Huila, desde opciones clásicas hasta cafés especiales y ediciones de origen para distintos momentos y preparaciones.", image: "https://www.cafescoocentral.com.co/app_data_archivos/coocentral.soomi.co/productos/producto_94a6f652d9cc2a0bd60c56416cdf6e8adf5bb70d1763137611.png", imageAlt: "Empaque de Café Clásico Coocentral de origen Huila", href: "https://www.cafescoocentral.com.co/", action: "Visitar tienda de café" },
+  { id: "hoteles-kahve", title: "Hoteles Kahvé", summary: "Hotel temático del café en Garzón que recibe a visitantes, compradores y viajeros interesados en conocer el territorio cafetero.", image: "https://coocentral.com/wp-content/uploads/2022/06/Hotel_2013.jpg", imageAlt: "Interior del Hotel Kahvé, registro institucional de 2013" },
+  { id: "tiendas-kahve", title: "Tiendas Kahvé", summary: "Espacios para disfrutar la cultura cafetera y degustar café en Garzón y Neiva, con distintas preparaciones y métodos.", image: qualityImage, imageAlt: "Preparación y evaluación de café para la experiencia de las tiendas Kahvé", href: "https://coocentral.com/tiendas-khave/" },
+  { id: "fundecafe", title: "Fundecafé", summary: "Fundación de apoyo social y técnico que acompaña a las familias con extensión agropecuaria, formación y fortalecimiento de la vida en la finca.", image: territoryImage, imageAlt: "Familia caficultora en una finca del Huila, comunidad acompañada por Fundecafé", href: "https://www.fundecafe.com/index.php/la-fundacion/" },
+  { id: "coonectate", title: "Coonéctate", summary: "Iniciativa de conectividad que acerca internet y herramientas digitales a las veredas y comunidades rurales del territorio.", image: farmerImage, imageAlt: "Caficultor del Huila en una vereda, comunidad a la que llega Coonéctate", href: "mailto:info@coocentral.co?subject=Informaci%C3%B3n%20sobre%20Coon%C3%A9ctate", action: "Solicitar información" },
 ];
 
 export const industrialProjects = [
@@ -531,20 +632,20 @@ export const footerColumns = [
   {
     title: "Transparencia",
     links: [
-      { label: "Política de privacidad", href: "https://coocentral.com/politica-de-privacidad/" },
+      { label: "Política de privacidad", href: "/documentos/cooperativa/politica-de-privacidad.pdf" },
       {
         label: "Abastecimiento responsable y cero deforestación",
-        href: "https://coocentral.com/img/Politica_de_abastecimiento_responsable_y_cero_deforestacion.pdf",
+        href: "/documentos/cooperativa/Politica_de_abastecimiento_responsable_y_cero_deforestacion.pdf",
       },
       {
         label: "Política anticorrupción y antisoborno",
-        href: "https://coocentral.com/img/Politica_Anticorrupcion_y_Antisoborno.pdf",
+        href: "/documentos/cooperativa/Politica_Anticorrupcion_y_Antisoborno.pdf",
       },
       {
         label: "Prevención de lavado de activos",
-        href: "https://coocentral.com/prevencion-de-lavado-de-activos/",
+        href: "/documentos/cooperativa/Prevencion_Lavado_Activos_COOCENTRAL.pdf",
       },
-      { label: "Artículo 364-5 E.T.", href: "https://coocentral.com/articulo-364-5/" },
+      { label: "Artículo 364-5 E.T.", href: "/documentos/cooperativa/Articulo_364-5_Estatuto_Tributario_COOCENTRAL.pdf" },
     ],
   },
 ];

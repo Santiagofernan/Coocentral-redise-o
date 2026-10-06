@@ -1,4 +1,4 @@
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Mail } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 
 import qualityImage from "@/assets/coocentral-calidad.jpg";
@@ -18,8 +18,8 @@ import {
   industrialProjects,
   membershipRequirements,
   mission,
-  publicOffice,
   principles,
+  serviceShowcase,
   specialtyCoffees,
   sustainabilityPillars,
   valueChain,
@@ -58,7 +58,47 @@ function ExternalLink({ href, children }: { href: string; children: string }) {
 export function CooperativePage() {
   return (
     <main>
-      <PageIntro eyebrow="La cooperativa" title="Una organización de caficultores, construida en el Huila" description="Conoce nuestra misión, principios cooperativos, estructura de gobierno y documentos institucionales." />
+      <section className="border-b border-border bg-sand">
+        <div className="mx-auto max-w-7xl px-5 py-3 sm:py-6 lg:px-10 lg:py-8">
+          <p className="text-xs font-bold uppercase tracking-[0.18em] text-brand">La cooperativa</p>
+          <div className="mt-2 flex flex-col gap-2 xl:flex-row xl:items-end xl:justify-between xl:gap-8">
+            <h1 className="max-w-3xl font-display text-2xl font-medium leading-tight sm:text-3xl xl:text-4xl">Información, documentos y atención</h1>
+            <p className="hidden max-w-md text-sm leading-6 text-ink/65 xl:block">Accede a documentos institucionales, políticas y canales de atención de Coocentral.</p>
+          </div>
+        </div>
+      </section>
+      <section className="border-y border-border bg-paper">
+        <div className="mx-auto max-w-7xl px-5 py-6 lg:px-10 lg:py-10">
+          <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-ink/55">Selecciona un recurso para continuar</p>
+          <ul className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+            {cooperativeResources.map((item, index) => {
+              const ResourceIcon = item.href.startsWith("mailto:") ? Mail : item.external ? ArrowUpRight : ArrowRight;
+
+              return (
+                <li key={item.label}>
+                  <a
+                    href={item.href}
+                    target={item.external ? "_blank" : undefined}
+                    rel={item.external ? "noreferrer" : undefined}
+                    className="group flex min-h-20 items-center gap-3 border border-border bg-background p-4 transition-all duration-200 hover:-translate-y-0.5 hover:border-brand/50 hover:bg-sand/60 hover:shadow-md active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+                  >
+                    <span className="grid size-10 shrink-0 place-items-center bg-sand font-display text-sm font-semibold text-brand transition-colors group-hover:bg-brand group-hover:text-paper">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <span className="min-w-0 flex-1">
+                      <span className="block text-sm font-semibold leading-5 text-ink transition-colors group-hover:text-brand">{item.label}</span>
+                      {item.href.startsWith("mailto:") && <span className="mt-1 block text-xs text-ink/55">Solicítalo al correo institucional.</span>}
+                    </span>
+                    <ResourceIcon className="size-4 shrink-0 text-brand/65 transition-transform group-hover:translate-x-0.5" />
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+
+        </div>
+      </section>
+
       <section className="mx-auto max-w-7xl px-5 py-14 lg:px-10 lg:py-20">
         <div className="grid gap-10 border-b border-border pb-12 lg:grid-cols-2 lg:gap-16">
           <article>
@@ -94,39 +134,6 @@ export function CooperativePage() {
             </ol>
             <p className="mt-8 text-sm leading-6 text-ink/60">Nuestra sede principal está en Garzón y trabajamos con familias caficultoras de siete municipios núcleo del centro del Huila.</p>
             <p className="mt-3 font-semibold text-brand">{coreMunicipalities.join(" · ")}</p>
-          </section>
-        </div>
-      </section>
-
-      <section className="border-y border-border bg-paper">
-        <div className="mx-auto max-w-7xl px-5 py-14 lg:px-10 lg:py-20">
-          <SectionTitle eyebrow="La cooperativa" title="Información, documentos y atención" />
-          <ul className="divide-y divide-border border-y border-border">
-            {cooperativeResources.map((item, index) => (
-              <li key={item.label} className="grid gap-2 py-1.5 sm:grid-cols-[3rem_1fr_auto] sm:items-center">
-                <span className="font-display text-xl text-brand">{String(index + 1).padStart(2, "0")}</span>
-                <a href={item.href} target={item.external ? "_blank" : undefined} rel={item.external ? "noreferrer" : undefined} className="group flex min-h-12 items-center justify-between gap-4 rounded-md px-3 text-sm font-semibold text-ink transition-colors hover:bg-sand hover:text-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2">
-                  <span>{item.label}</span>
-                  {item.external ? <ArrowUpRight className="size-4 shrink-0 text-brand/60 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" /> : <ArrowRight className="size-4 shrink-0 text-brand/60 transition-transform group-hover:translate-x-1" />}
-                </a>
-                {item.label === "Reglamento interno de trabajo" && <span className="text-xs text-ink/55 sm:col-start-2">Solicítalo al correo institucional.</span>}
-              </li>
-            ))}
-          </ul>
-
-          <section id="oficinas-y-horarios" className="mt-12 grid gap-8 border-t border-border pt-8 sm:grid-cols-2">
-            <div>
-              <p className="text-xs font-bold uppercase tracking-[0.16em] text-brand">Nuestras oficinas</p>
-              <h3 className="mt-2 font-display text-2xl">Atención en Garzón</h3>
-              <address className="mt-3 text-sm leading-6 text-ink/65 not-italic">{publicOffice.address}</address>
-            </div>
-            <dl className="divide-y divide-border">
-              {publicOffice.hours.map((schedule) => (
-                <div key={schedule.days} className="flex flex-wrap justify-between gap-2 py-3 text-sm">
-                  <dt className="font-semibold">{schedule.days}</dt><dd className="text-ink/65">{schedule.time}</dd>
-                </div>
-              ))}
-            </dl>
           </section>
         </div>
       </section>
@@ -210,6 +217,69 @@ export function ServicesPage() {
   return (
     <main>
       <PageIntro eyebrow="Servicios" title="Herramientas para una finca más fuerte" description="Acompañamiento técnico, crédito, insumos y servicios agroindustriales para fortalecer la producción y el bienestar de los asociados." />
+      <section className="border-y border-border bg-sand">
+        <div className="mx-auto max-w-7xl px-5 py-10 lg:px-10 lg:py-14">
+          <div className="mb-6 flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.16em] text-brand">Explora nuestros servicios</p>
+              <h2 className="mt-2 font-display text-2xl font-medium sm:text-3xl">Elige un servicio para conocerlo</h2>
+            </div>
+            <p className="max-w-md text-sm leading-6 text-ink/65">Cada acceso te lleva a su resumen e imagen dentro de esta misma página.</p>
+          </div>
+          <nav aria-label="Servicios de Coocentral">
+            <ul className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-5">
+              {serviceShowcase.map((service, index) => (
+                <li key={service.id}>
+                  <a href={`#${service.id}`} className="group flex min-h-14 items-center gap-2 border border-border bg-paper px-3 py-2 text-sm font-semibold text-ink transition-all hover:-translate-y-0.5 hover:border-brand/50 hover:text-brand hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2">
+                    <span className="font-display text-xs text-brand/70">{String(index + 1).padStart(2, "0")}</span>
+                    <span className="flex-1 leading-4">{service.title}</span>
+                    <ArrowRight className="size-4 shrink-0 text-brand/60 transition-transform group-hover:translate-x-0.5" />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
+      </section>
+
+      <section aria-label="Descripción de servicios">
+        {serviceShowcase.map((service, index) => (
+          <article key={service.id} id={service.id} className="scroll-mt-24 border-b border-border py-10 sm:py-14 lg:py-16">
+            <div className="mx-auto grid max-w-7xl items-center gap-7 px-5 lg:grid-cols-12 lg:gap-12 lg:px-10">
+              <div className={`lg:col-span-5 ${index % 2 === 1 ? "lg:order-2" : ""}`}>
+                <p className="text-xs font-bold uppercase tracking-[0.16em] text-brand">Servicio {String(index + 1).padStart(2, "0")}</p>
+                <h2 className="mt-2 font-display text-3xl font-medium leading-tight sm:text-4xl">{service.title}</h2>
+                <p className="mt-4 max-w-xl text-sm leading-7 text-ink/70 sm:text-base">{service.summary}</p>
+                {service.href && (
+                  service.id === "coworking" ? (
+                    <Link
+                      to="/coworking"
+                      className="mt-6 inline-flex min-h-11 items-center gap-2 rounded-md bg-brand px-4 text-sm font-bold text-paper transition-all hover:-translate-y-0.5 hover:bg-forest hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+                    >
+                      Consultar servicio
+                      <ArrowUpRight className="size-4" />
+                    </Link>
+                  ) : (
+                    <a
+                      href={service.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="mt-6 inline-flex min-h-11 items-center gap-2 rounded-md bg-brand px-4 text-sm font-bold text-paper transition-all hover:-translate-y-0.5 hover:bg-forest hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+                    >
+                      {service.action ?? "Consultar servicio"}
+                      <ArrowUpRight className="size-4" />
+                    </a>
+                  )
+                )}
+              </div>
+              <figure className={`lg:col-span-7 ${index % 2 === 1 ? "lg:order-1" : ""}`}>
+                <img src={service.image} alt={service.imageAlt} loading="lazy" decoding="async" width="1200" height="900" className="aspect-4/3 w-full object-cover" />
+              </figure>
+            </div>
+          </article>
+        ))}
+      </section>
+
       <section className="mx-auto max-w-7xl px-5 py-14 lg:px-10 lg:py-20">
         <SectionTitle eyebrow="Servicios agropecuarios" title="Atención a lo largo del ciclo productivo" />
         <ul className="grid gap-x-10 sm:grid-cols-2">
@@ -249,12 +319,13 @@ export function EcosystemPage() {
       <section className="mx-auto max-w-7xl px-5 py-14 lg:px-10 lg:py-20">
         <SectionTitle eyebrow="Unidades de negocio y aliados" title="Un ecosistema con raíces locales" />
         <ul className="grid gap-x-10 sm:grid-cols-2 lg:grid-cols-4">
-          {businessUnits.map(({ icon: Icon, name, text, href }) => (
+          {businessUnits.map(({ icon: Icon, name, text, href, internal }) => (
             <li key={name} className="border-t border-border py-5">
               <Icon className="size-6 text-brand" />
               <h3 className="mt-4 font-display text-xl">{name}</h3>
               <p className="mt-2 text-sm leading-6 text-ink/65">{text}</p>
-              {href && <a href={href} target="_blank" rel="noreferrer" className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-brand hover:underline">Conocer más<ArrowUpRight className="size-3.5" /></a>}
+              {internal && <Link to="/almacenes" className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-brand hover:underline">Conocer más<ArrowUpRight className="size-3.5" /></Link>}
+              {href && !internal && <a href={href} target="_blank" rel="noreferrer" className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-brand hover:underline">Conocer más<ArrowUpRight className="size-3.5" /></a>}
             </li>
           ))}
         </ul>

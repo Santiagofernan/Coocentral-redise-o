@@ -10,9 +10,11 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AlmacenesRouteImport } from './routes/almacenes'
 import { Route as AsociarmeRouteImport } from './routes/asociarme'
 import { Route as CafeRouteImport } from './routes/cafe'
 import { Route as CooperativaRouteImport } from './routes/cooperativa'
+import { Route as CoworkingRouteImport } from './routes/coworking'
 import { Route as EcosistemaRouteImport } from './routes/ecosistema'
 import { Route as HistoriaRouteImport } from './routes/historia'
 import { Route as NoticiasRouteImport } from './routes/noticias'
@@ -22,6 +24,11 @@ import { Route as SostenibilidadRouteImport } from './routes/sostenibilidad'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AlmacenesRoute = AlmacenesRouteImport.update({
+  id: '/almacenes',
+  path: '/almacenes',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AsociarmeRoute = AsociarmeRouteImport.update({
@@ -37,6 +44,11 @@ const CafeRoute = CafeRouteImport.update({
 const CooperativaRoute = CooperativaRouteImport.update({
   id: '/cooperativa',
   path: '/cooperativa',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CoworkingRoute = CoworkingRouteImport.update({
+  id: '/coworking',
+  path: '/coworking',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EcosistemaRoute = EcosistemaRouteImport.update({
@@ -67,9 +79,11 @@ const SostenibilidadRoute = SostenibilidadRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/almacenes': typeof AlmacenesRoute
   '/asociarme': typeof AsociarmeRoute
   '/cafe': typeof CafeRoute
   '/cooperativa': typeof CooperativaRoute
+  '/coworking': typeof CoworkingRoute
   '/ecosistema': typeof EcosistemaRoute
   '/historia': typeof HistoriaRoute
   '/noticias': typeof NoticiasRoute
@@ -78,9 +92,11 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/almacenes': typeof AlmacenesRoute
   '/asociarme': typeof AsociarmeRoute
   '/cafe': typeof CafeRoute
   '/cooperativa': typeof CooperativaRoute
+  '/coworking': typeof CoworkingRoute
   '/ecosistema': typeof EcosistemaRoute
   '/historia': typeof HistoriaRoute
   '/noticias': typeof NoticiasRoute
@@ -90,9 +106,11 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/almacenes': typeof AlmacenesRoute
   '/asociarme': typeof AsociarmeRoute
   '/cafe': typeof CafeRoute
   '/cooperativa': typeof CooperativaRoute
+  '/coworking': typeof CoworkingRoute
   '/ecosistema': typeof EcosistemaRoute
   '/historia': typeof HistoriaRoute
   '/noticias': typeof NoticiasRoute
@@ -103,9 +121,11 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/almacenes'
     | '/asociarme'
     | '/cafe'
     | '/cooperativa'
+    | '/coworking'
     | '/ecosistema'
     | '/historia'
     | '/noticias'
@@ -114,9 +134,11 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/almacenes'
     | '/asociarme'
     | '/cafe'
     | '/cooperativa'
+    | '/coworking'
     | '/ecosistema'
     | '/historia'
     | '/noticias'
@@ -125,9 +147,11 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/almacenes'
     | '/asociarme'
     | '/cafe'
     | '/cooperativa'
+    | '/coworking'
     | '/ecosistema'
     | '/historia'
     | '/noticias'
@@ -137,9 +161,11 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AlmacenesRoute: typeof AlmacenesRoute
   AsociarmeRoute: typeof AsociarmeRoute
   CafeRoute: typeof CafeRoute
   CooperativaRoute: typeof CooperativaRoute
+  CoworkingRoute: typeof CoworkingRoute
   EcosistemaRoute: typeof EcosistemaRoute
   HistoriaRoute: typeof HistoriaRoute
   NoticiasRoute: typeof NoticiasRoute
@@ -154,6 +180,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/almacenes': {
+      id: '/almacenes'
+      path: '/almacenes'
+      fullPath: '/almacenes'
+      preLoaderRoute: typeof AlmacenesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/asociarme': {
@@ -175,6 +208,13 @@ declare module '@tanstack/react-router' {
       path: '/cooperativa'
       fullPath: '/cooperativa'
       preLoaderRoute: typeof CooperativaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/coworking': {
+      id: '/coworking'
+      path: '/coworking'
+      fullPath: '/coworking'
+      preLoaderRoute: typeof CoworkingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/ecosistema': {
@@ -217,9 +257,11 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AlmacenesRoute: AlmacenesRoute,
   AsociarmeRoute: AsociarmeRoute,
   CafeRoute: CafeRoute,
   CooperativaRoute: CooperativaRoute,
+  CoworkingRoute: CoworkingRoute,
   EcosistemaRoute: EcosistemaRoute,
   HistoriaRoute: HistoriaRoute,
   NoticiasRoute: NoticiasRoute,

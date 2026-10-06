@@ -3,6 +3,8 @@ import { ArrowRight } from "lucide-react";
 
 import { Hero } from "@/components/site/hero";
 import { ImpactStats } from "@/components/site/impact-stats";
+import { OfficeLocation } from "@/components/site/office-location";
+import { AppPromotion } from "@/components/site/app-promotion";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -54,6 +56,16 @@ function HomePage() {
             </li>
           ))}
         </ul>
+      </section>
+      <section className="border-y border-border bg-sand">
+        <div className="mx-auto max-w-7xl px-5 py-14 lg:px-10 lg:py-20">
+          <AppPromotion />
+        </div>
+      </section>
+      <section className="border-y border-border bg-sand">
+        <div className="mx-auto max-w-7xl px-5 py-14 lg:px-10 lg:py-20">
+          <OfficeLocation />
+        </div>
       </section>
       <section className="bg-forest-deep text-paper">
         <div className="mx-auto flex max-w-7xl flex-col gap-7 px-5 py-12 sm:flex-row sm:items-center sm:justify-between lg:px-10 lg:py-16">
