@@ -208,6 +208,93 @@
   }
 }
 
+@keyframes coffee-plant-grow {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes coffee-plant-unfold {
+  from {
+    opacity: 0;
+    transform: scale(0.12) rotate(-18deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+}
+
+@keyframes coffee-seed-fade {
+  to {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+}
+
+.coffee-plant-stem {
+  stroke-dasharray: 180;
+  stroke-dashoffset: 180;
+  animation: coffee-plant-grow 1.7s 0.65s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.coffee-plant-branch {
+  stroke-dasharray: 40;
+  stroke-dashoffset: 40;
+  animation: coffee-plant-grow 0.45s 1.9s ease-out forwards;
+}
+
+.coffee-plant-branch--two {
+  animation-delay: 2.2s;
+}
+
+.coffee-plant-branch--three {
+  animation-delay: 2.45s;
+}
+
+.coffee-plant-branch--four {
+  animation-delay: 2.7s;
+}
+
+.coffee-plant-root {
+  stroke-dasharray: 55;
+  stroke-dashoffset: 55;
+  animation: coffee-plant-grow 0.6s 0.45s ease-out forwards;
+}
+
+.coffee-plant-seed {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: coffee-seed-fade 0.5s 1.4s ease-in forwards;
+}
+
+.coffee-plant-leaf {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: coffee-plant-unfold 0.7s ease-out forwards;
+}
+
+.coffee-plant-leaf--one {
+  animation-delay: 1.75s;
+}
+
+.coffee-plant-leaf--two {
+  animation-delay: 2.05s;
+}
+
+.coffee-plant-leaf--three {
+  animation-delay: 2.35s;
+}
+
+.coffee-plant-leaf--four {
+  animation-delay: 2.65s;
+}
+
+.coffee-plant-leaf--top {
+  animation-delay: 2.95s;
+}
+
 @utility editorial-reveal {
   animation: rise 800ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }
@@ -244,5 +331,47 @@
   .marquee-track,
   .reveal {
     animation: none;
+  }
+
+  .coffee-plant-stem,
+  .coffee-plant-branch,
+  .coffee-plant-root,
+  .coffee-plant-seed,
+  .coffee-plant-leaf {
+    animation: none;
+  }
+
+  .coffee-plant-stem,
+  .coffee-plant-branch,
+  .coffee-plant-root {
+    stroke-dashoffset: 0;
+  }
+
+  .coffee-plant-seed {
+    opacity: 0;
+  }
+
+  .coffee-plant-leaf {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  body {
+    cursor: url("./assets/coffee-bean-cursor.svg") 16 16, auto !important;
+  }
+
+  a,
+  button,
+  [role="button"],
+  summary {
+    cursor: url("./assets/coffee-bean-cursor.svg") 16 16, pointer !important;
+  }
+
+  input,
+  textarea,
+  [contenteditable="true"] {
+    cursor: text !important;
   }
 }

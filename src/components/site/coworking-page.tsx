@@ -14,6 +14,7 @@ import coworkingEntrance from "@/assets/Servicios/Coworking/YDRAY-IMG_9424-scale
 import coworkingMeetingRoom from "@/assets/Servicios/Coworking/YDRAY-IMG_9436-1-scaled.webp";
 import coworkingWorkstations from "@/assets/Servicios/Coworking/YDRAY-IMG_9476-scaled.webp";
 import coworkingLounge from "@/assets/Servicios/Coworking/YDRAY-IMG_9495-scaled.webp";
+import { EmailContactDialog } from "@/components/site/email-contact-dialog";
 
 const coworkingImages = [
   {
@@ -103,13 +104,15 @@ export function CoworkingPage() {
               para reuniones, capacitación, ideas innovadoras y emprendimiento.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-3">
-              <a
-                href="mailto:aulavirtual@coocentral.com"
+              <EmailContactDialog
+                email="aulavirtual@coocentral.com"
+                title="Consulta el espacio Coworking"
+                description="Copia el correo del equipo de Coworking para consultar disponibilidad y servicios."
                 className="inline-flex min-h-12 items-center gap-2 rounded-md bg-lime px-5 text-sm font-bold text-forest-deep transition-colors hover:bg-paper focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime focus-visible:ring-offset-2 focus-visible:ring-offset-forest-deep"
               >
                 Consulta el espacio
                 <ArrowUpRight aria-hidden="true" className="size-4" />
-              </a>
+              </EmailContactDialog>
               <span className="inline-flex items-center gap-2 px-2 text-sm text-paper/60">
                 <MapPin aria-hidden="true" className="size-4 text-lime" />
                 Centro Comercial El Molino
@@ -264,13 +267,15 @@ export function CoworkingPage() {
               Para consultar disponibilidad o solicitar información, contacta directamente al equipo
               de Coocentral.
             </p>
-            <a
-              href="mailto:aulavirtual@coocentral.com"
+            <EmailContactDialog
+              email="aulavirtual@coocentral.com"
+              title="Escríbenos sobre Coworking"
+              description="Copia el correo del equipo de Coocentral para solicitar información sobre el espacio."
               className="mt-7 inline-flex min-h-11 items-center gap-2 rounded-md bg-lime px-4 text-sm font-bold text-forest-deep transition-colors hover:bg-paper focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime focus-visible:ring-offset-2 focus-visible:ring-offset-forest-deep"
             >
               Escríbenos
               <ArrowUpRight aria-hidden="true" className="size-4" />
-            </a>
+            </EmailContactDialog>
           </div>
 
           <address className="grid gap-0 bg-paper p-2 text-ink not-italic sm:grid-cols-2 lg:col-span-7 lg:p-3">
@@ -315,12 +320,14 @@ export function CoworkingPage() {
               </span>
               <div>
                 <p className="text-xs font-bold uppercase tracking-wide text-ink/45">Correo</p>
-                <a
-                  href="mailto:aulavirtual@coocentral.com"
+                <EmailContactDialog
+                  email="aulavirtual@coocentral.com"
+                  title="Contactar al equipo Coworking"
+                  description="Copia la dirección para consultar disponibilidad o solicitar más información."
                   className="mt-1 inline-block break-all text-sm font-semibold text-brand hover:underline"
                 >
                   aulavirtual@coocentral.com
-                </a>
+                </EmailContactDialog>
               </div>
             </div>
           </address>

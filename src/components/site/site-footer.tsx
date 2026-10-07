@@ -15,8 +15,8 @@ export function SiteFooter() {
 
   return (
     <footer className="bg-forest-deep text-paper">
-      <div className="mx-auto grid max-w-7xl gap-12 px-5 py-14 lg:grid-cols-12 lg:px-10 lg:py-16">
-        <div className="lg:col-span-4">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-x-8 gap-y-10 px-5 py-12 sm:grid-cols-2 sm:gap-y-12 lg:grid-cols-12 lg:px-10 lg:py-16">
+        <div className="sm:col-span-2 lg:col-span-3">
           <Link
             to="/"
             aria-label="Coocentral, inicio"
@@ -33,35 +33,44 @@ export function SiteFooter() {
             />
           </Link>
           <p className="mt-5 max-w-sm text-sm leading-6 text-paper/65">
-            Cooperativa Central de Caficultores del Huila. Un ecosistema alrededor del caficultor.
+            Más que una cooperativa: Una familia al servicio del caficultor
           </p>
           <address className="mt-6 space-y-1 text-sm not-italic text-paper/65">
             <p>{contact.address}</p>
             <p>{contact.city}</p>
-            <a href={`mailto:${contact.email}`} className="text-lime hover:underline">
+            <Link to="/contacto" className="text-lime hover:underline">
               {contact.email}
-            </a>
+            </Link>
             <p>{contact.phones.join(" · ")}</p>
           </address>
         </div>
 
         {footerColumns.map((column) => (
-          <nav key={column.title} aria-label={column.title} className="lg:col-span-2">
+          <nav key={column.title} aria-label={column.title} className="min-w-0 lg:col-span-3">
             <h2 className="text-xs font-bold uppercase tracking-[0.16em] text-lime">
               {column.title}
             </h2>
             <ul className="mt-4 space-y-3">
               {column.links.map((item) => (
                 <li key={item.href}>
-                  <a
-                    href={item.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-start gap-1 text-sm leading-5 text-paper/70 transition-colors hover:text-paper"
-                  >
-                    {item.label}
-                    <ArrowUpRight className="mt-0.5 size-3.5 shrink-0" />
-                  </a>
+                  {item.href.startsWith("/") ? (
+                    <Link
+                      to={item.href}
+                      className="inline-flex items-start text-sm leading-5 text-paper/70 transition-colors hover:text-paper"
+                    >
+                      {item.label}
+                    </Link>
+                  ) : (
+                    <a
+                      href={item.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-start gap-1 text-sm leading-5 text-paper/70 transition-colors hover:text-paper"
+                    >
+                      {item.label}
+                      <ArrowUpRight className="mt-0.5 size-3.5 shrink-0" />
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>
@@ -70,10 +79,10 @@ export function SiteFooter() {
       </div>
       <div className="border-t border-paper/15">
         <div className="mx-auto flex max-w-7xl flex-col gap-6 px-5 py-6 sm:flex-row sm:items-center sm:justify-between lg:px-10">
-          <span className="text-xs text-paper/55">
+          <span className="text-xs leading-5 text-paper/55">
             © 2026 Cooperativa Central de Caficultores del Huila
           </span>
-          <nav aria-label="Redes sociales" className="flex flex-col gap-3">
+          <nav aria-label="Redes sociales" className="flex min-w-0 flex-col gap-3">
             <p className="text-xs font-bold uppercase tracking-[0.16em] text-paper/55">
               Síguenos en redes
             </p>

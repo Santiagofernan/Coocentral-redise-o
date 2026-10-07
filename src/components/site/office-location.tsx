@@ -17,9 +17,14 @@ function getOfficeClock(date: Date) {
   const weekdayNumber = weekday ? ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].indexOf(weekday) : -1;
   const minutesToday = hour * 60 + minute;
   const today = publicOffice.hours.find((schedule) => schedule.weekdays.includes(weekdayNumber));
-  const isOpen = today?.intervals.some(([opens, closes]) => minutesToday >= opens && minutesToday < closes) ?? false;
+  const intervals = today?.intervals ?? [];
+  const isOpen = intervals.some(([opens, closes]) => minutesToday >= opens && minutesToday < closes);
+  const isOnBreak = intervals.some(([, closes], index) => {
+    const nextInterval = intervals[index + 1];
+    return nextInterval !== undefined && minutesToday >= closes && minutesToday < nextInterval[0];
+  });
 
-  return { weekdayNumber, isOpen };
+  return { weekdayNumber, status: isOpen ? "open" : isOnBreak ? "break" : "closed" };
 }
 
 export function OfficeLocation() {
@@ -34,6 +39,8 @@ export function OfficeLocation() {
   }, []);
 
   const officeClock = now ? getOfficeClock(now) : null;
+  const isOpen = officeClock?.status === "open";
+  const isOnBreak = officeClock?.status === "break";
   const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(publicOffice.address)}`;
   const mapsEmbedUrl = `https://maps.google.com/maps?q=${encodeURIComponent(publicOffice.address)}&z=16&output=embed`;
 
@@ -48,11 +55,31 @@ export function OfficeLocation() {
         <div
           aria-live="polite"
           className={`inline-flex w-fit shrink-0 items-center gap-2 rounded-full px-3 py-2 text-xs font-bold ${
-            !officeClock ? "bg-background/10 text-paper/80" : officeClock.isOpen ? "bg-lime text-forest-deep" : "bg-paper/10 text-paper/80"
+            !officeClock
+              ? "bg-background/10 text-paper/80"
+              : isOpen
+                ? "bg-lime text-forest-deep"
+                : isOnBreak
+                  ? "bg-amber-300 text-forest-deep"
+                  : "bg-paper/10 text-paper/80"
           }`}
         >
-          <span className={`size-2 rounded-full ${officeClock?.isOpen ? "bg-forest motion-safe:animate-pulse" : "bg-paper/50"}`} />
-          {!officeClock ? "Consultando horario" : officeClock.isOpen ? "Abierto ahora" : "Cerrado ahora"}
+          <span
+            className={`size-2 rounded-full ${
+              isOpen
+                ? "bg-forest motion-safe:animate-pulse"
+                : isOnBreak
+                  ? "bg-amber-800"
+                  : "bg-paper/50"
+            }`}
+          />
+          {!officeClock
+            ? "Consultando horario"
+            : isOpen
+              ? "Abierto ahora"
+              : isOnBreak
+                ? "En descanso"
+                : "Cerrado ahora"}
         </div>
       </header>
 

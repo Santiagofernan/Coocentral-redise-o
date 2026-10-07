@@ -14,6 +14,7 @@ import { Route as AlmacenesRouteImport } from './routes/almacenes'
 import { Route as AreaDeCafeRouteImport } from './routes/area-de-cafe'
 import { Route as AsociarmeRouteImport } from './routes/asociarme'
 import { Route as CafeRouteImport } from './routes/cafe'
+import { Route as ContactoRouteImport } from './routes/contacto'
 import { Route as CoonectateRouteImport } from './routes/coonectate'
 import { Route as CooperativaRouteImport } from './routes/cooperativa'
 import { Route as CoworkingRouteImport } from './routes/coworking'
@@ -24,6 +25,7 @@ import { Route as PicRouteImport } from './routes/pic'
 import { Route as ServiciosRouteImport } from './routes/servicios'
 import { Route as SostenibilidadRouteImport } from './routes/sostenibilidad'
 import { Route as TiendasKahveRouteImport } from './routes/tiendas-kahve'
+import { Route as NoticiaSlugRouteImport } from './routes/noticia.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -48,6 +50,11 @@ const AsociarmeRoute = AsociarmeRouteImport.update({
 const CafeRoute = CafeRouteImport.update({
   id: '/cafe',
   path: '/cafe',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactoRoute = ContactoRouteImport.update({
+  id: '/contacto',
+  path: '/contacto',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CoonectateRoute = CoonectateRouteImport.update({
@@ -100,6 +107,11 @@ const TiendasKahveRoute = TiendasKahveRouteImport.update({
   path: '/tiendas-kahve',
   getParentRoute: () => rootRouteImport,
 } as any)
+const NoticiaSlugRoute = NoticiaSlugRouteImport.update({
+  id: '/noticia/$slug',
+  path: '/noticia/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -107,6 +119,7 @@ export interface FileRoutesByFullPath {
   '/area-de-cafe': typeof AreaDeCafeRoute
   '/asociarme': typeof AsociarmeRoute
   '/cafe': typeof CafeRoute
+  '/contacto': typeof ContactoRoute
   '/coonectate': typeof CoonectateRoute
   '/cooperativa': typeof CooperativaRoute
   '/coworking': typeof CoworkingRoute
@@ -117,6 +130,7 @@ export interface FileRoutesByFullPath {
   '/servicios': typeof ServiciosRoute
   '/sostenibilidad': typeof SostenibilidadRoute
   '/tiendas-kahve': typeof TiendasKahveRoute
+  '/noticia/$slug': typeof NoticiaSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -124,6 +138,7 @@ export interface FileRoutesByTo {
   '/area-de-cafe': typeof AreaDeCafeRoute
   '/asociarme': typeof AsociarmeRoute
   '/cafe': typeof CafeRoute
+  '/contacto': typeof ContactoRoute
   '/coonectate': typeof CoonectateRoute
   '/cooperativa': typeof CooperativaRoute
   '/coworking': typeof CoworkingRoute
@@ -134,6 +149,7 @@ export interface FileRoutesByTo {
   '/servicios': typeof ServiciosRoute
   '/sostenibilidad': typeof SostenibilidadRoute
   '/tiendas-kahve': typeof TiendasKahveRoute
+  '/noticia/$slug': typeof NoticiaSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -142,6 +158,7 @@ export interface FileRoutesById {
   '/area-de-cafe': typeof AreaDeCafeRoute
   '/asociarme': typeof AsociarmeRoute
   '/cafe': typeof CafeRoute
+  '/contacto': typeof ContactoRoute
   '/coonectate': typeof CoonectateRoute
   '/cooperativa': typeof CooperativaRoute
   '/coworking': typeof CoworkingRoute
@@ -152,6 +169,7 @@ export interface FileRoutesById {
   '/servicios': typeof ServiciosRoute
   '/sostenibilidad': typeof SostenibilidadRoute
   '/tiendas-kahve': typeof TiendasKahveRoute
+  '/noticia/$slug': typeof NoticiaSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -161,6 +179,7 @@ export interface FileRouteTypes {
     | '/area-de-cafe'
     | '/asociarme'
     | '/cafe'
+    | '/contacto'
     | '/coonectate'
     | '/cooperativa'
     | '/coworking'
@@ -171,6 +190,7 @@ export interface FileRouteTypes {
     | '/servicios'
     | '/sostenibilidad'
     | '/tiendas-kahve'
+    | '/noticia/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -178,6 +198,7 @@ export interface FileRouteTypes {
     | '/area-de-cafe'
     | '/asociarme'
     | '/cafe'
+    | '/contacto'
     | '/coonectate'
     | '/cooperativa'
     | '/coworking'
@@ -188,6 +209,7 @@ export interface FileRouteTypes {
     | '/servicios'
     | '/sostenibilidad'
     | '/tiendas-kahve'
+    | '/noticia/$slug'
   id:
     | '__root__'
     | '/'
@@ -195,6 +217,7 @@ export interface FileRouteTypes {
     | '/area-de-cafe'
     | '/asociarme'
     | '/cafe'
+    | '/contacto'
     | '/coonectate'
     | '/cooperativa'
     | '/coworking'
@@ -205,6 +228,7 @@ export interface FileRouteTypes {
     | '/servicios'
     | '/sostenibilidad'
     | '/tiendas-kahve'
+    | '/noticia/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -213,6 +237,7 @@ export interface RootRouteChildren {
   AreaDeCafeRoute: typeof AreaDeCafeRoute
   AsociarmeRoute: typeof AsociarmeRoute
   CafeRoute: typeof CafeRoute
+  ContactoRoute: typeof ContactoRoute
   CoonectateRoute: typeof CoonectateRoute
   CooperativaRoute: typeof CooperativaRoute
   CoworkingRoute: typeof CoworkingRoute
@@ -223,6 +248,7 @@ export interface RootRouteChildren {
   ServiciosRoute: typeof ServiciosRoute
   SostenibilidadRoute: typeof SostenibilidadRoute
   TiendasKahveRoute: typeof TiendasKahveRoute
+  NoticiaSlugRoute: typeof NoticiaSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -260,6 +286,13 @@ declare module '@tanstack/react-router' {
       path: '/cafe'
       fullPath: '/cafe'
       preLoaderRoute: typeof CafeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contacto': {
+      id: '/contacto'
+      path: '/contacto'
+      fullPath: '/contacto'
+      preLoaderRoute: typeof ContactoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/coonectate': {
@@ -332,6 +365,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TiendasKahveRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/noticia/$slug': {
+      id: '/noticia/$slug'
+      path: '/noticia/$slug'
+      fullPath: '/noticia/$slug'
+      preLoaderRoute: typeof NoticiaSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -341,6 +381,7 @@ const rootRouteChildren: RootRouteChildren = {
   AreaDeCafeRoute: AreaDeCafeRoute,
   AsociarmeRoute: AsociarmeRoute,
   CafeRoute: CafeRoute,
+  ContactoRoute: ContactoRoute,
   CoonectateRoute: CoonectateRoute,
   CooperativaRoute: CooperativaRoute,
   CoworkingRoute: CoworkingRoute,
@@ -351,6 +392,7 @@ const rootRouteChildren: RootRouteChildren = {
   ServiciosRoute: ServiciosRoute,
   SostenibilidadRoute: SostenibilidadRoute,
   TiendasKahveRoute: TiendasKahveRoute,
+  NoticiaSlugRoute: NoticiaSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

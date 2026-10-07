@@ -31,7 +31,7 @@ export function AppPromotion() {
             id="app-promotion-title"
             className="mt-5 max-w-xl font-display text-3xl font-medium leading-tight sm:text-4xl lg:text-5xl"
           >
-            Tu cooperativa, más cerca.
+            Descarga la app Coocentral.
           </h2>
           <p className="mt-4 max-w-lg text-sm leading-6 text-paper/70 sm:text-base">
             Lleva Coocentral contigo. Consulta información de tus saldos y aportes, y accede a

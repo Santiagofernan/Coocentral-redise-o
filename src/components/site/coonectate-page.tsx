@@ -1,7 +1,17 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowLeft, ArrowRight, ArrowUpRight, Gauge, Mail, MapPin, ShieldCheck, Wifi } from "lucide-react";
+import {
+  ArrowLeft,
+  ArrowRight,
+  ArrowUpRight,
+  Gauge,
+  Mail,
+  MapPin,
+  ShieldCheck,
+  Wifi,
+} from "lucide-react";
 
 import territoryImage from "@/assets/coocentral-territorio.jpg";
+import { EmailContactDialog } from "@/components/site/email-contact-dialog";
 
 const usagePolicies = [
   {
@@ -43,7 +53,10 @@ export function CoonectatePage() {
             to="/ecosistema"
             className="group inline-flex min-h-10 items-center gap-2 rounded-full border border-paper/20 bg-paper/5 px-4 text-sm font-semibold text-paper/80 shadow-sm transition-all duration-200 hover:-translate-x-0.5 hover:border-lime/60 hover:bg-lime hover:text-forest-deep hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime focus-visible:ring-offset-2 focus-visible:ring-offset-forest-deep"
           >
-            <ArrowLeft aria-hidden="true" className="size-4 transition-transform group-hover:-translate-x-1" />
+            <ArrowLeft
+              aria-hidden="true"
+              className="size-4 transition-transform group-hover:-translate-x-1"
+            />
             Volver al ecosistema
           </Link>
 
@@ -93,7 +106,9 @@ export function CoonectatePage() {
 
       <section className="mx-auto grid max-w-7xl gap-8 px-5 py-14 lg:grid-cols-12 lg:px-10 lg:py-20">
         <div className="lg:col-span-5">
-          <p className="text-xs font-bold uppercase tracking-[0.17em] text-brand">Cobertura actual</p>
+          <p className="text-xs font-bold uppercase tracking-[0.17em] text-brand">
+            Cobertura actual
+          </p>
           <h2 className="mt-3 font-display text-3xl font-medium leading-tight sm:text-4xl">
             Conectividad para Las Delicias, Tarqui
           </h2>
@@ -136,8 +151,8 @@ export function CoonectatePage() {
                 Políticas del servicio de internet
               </h2>
               <p className="mt-3 text-sm leading-6 text-ink/65">
-                El servicio se rige por lineamientos de uso responsable y la normatividad
-                colombiana aplicable.
+                El servicio se rige por lineamientos de uso responsable y la normatividad colombiana
+                aplicable.
               </p>
             </div>
           </div>
@@ -173,13 +188,15 @@ export function CoonectatePage() {
               Envía tu PQR al canal institucional del servicio.
             </p>
           </div>
-          <a
-            href="mailto:pqr.coonectate@coocentral.com"
+          <EmailContactDialog
+            email="pqr.coonectate@coocentral.com"
+            title="Escribir a PQR de Coonéctate"
+            description="Copia el correo del canal institucional para enviar tu petición, queja o reclamo."
             className="inline-flex min-h-11 items-center justify-center gap-2 self-start rounded-md bg-forest-deep px-4 text-sm font-bold text-paper transition-all hover:-translate-y-0.5 hover:bg-brand hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 sm:self-center"
           >
             Escribir a PQR
             <ArrowRight aria-hidden="true" className="size-4" />
-          </a>
+          </EmailContactDialog>
         </div>
       </section>
 
