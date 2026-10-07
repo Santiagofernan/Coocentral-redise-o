@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import {
   ArrowUpRight,
   Apple,
@@ -7,7 +8,26 @@ import {
   Smartphone,
 } from "lucide-react";
 
+import appScreen1 from "@/assets/App_coocentral/1_Imagen.jpeg";
+import appScreen2 from "@/assets/App_coocentral/2_imagen.jpeg";
+import appScreen3 from "@/assets/App_coocentral/3_imagen.jpeg";
+import appScreen4 from "@/assets/App_coocentral/4_imagen.jpeg";
+import appScreen5 from "@/assets/App_coocentral/5_imagen.jpeg";
+import appScreen6 from "@/assets/App_coocentral/6_imagen.jpeg";
+import appScreen7 from "@/assets/App_coocentral/7_imagen.jpeg";
+import appScreen8 from "@/assets/App_coocentral/8_imagen.jpeg";
 import { links } from "@/content/coocentral";
+
+const appScreens = [
+  appScreen1,
+  appScreen2,
+  appScreen3,
+  appScreen4,
+  appScreen5,
+  appScreen6,
+  appScreen7,
+  appScreen8,
+];
 
 const appFeatures = [
   { icon: CircleDollarSign, label: "Consulta tus saldos" },
@@ -16,6 +36,16 @@ const appFeatures = [
 ];
 
 export function AppPromotion() {
+  const [activeScreen, setActiveScreen] = useState(0);
+
+  useEffect(() => {
+    const intervalId = window.setInterval(() => {
+      setActiveScreen((currentScreen) => (currentScreen + 1) % appScreens.length);
+    }, 6500);
+
+    return () => window.clearInterval(intervalId);
+  }, []);
+
   return (
     <section
       aria-labelledby="app-promotion-title"
@@ -35,7 +65,7 @@ export function AppPromotion() {
           </h2>
           <p className="mt-4 max-w-lg text-sm leading-6 text-paper/70 sm:text-base">
             Lleva Coocentral contigo. Consulta información de tus saldos y aportes, y accede a
-            trámites desde tu celular.
+            trámites desde tu celular, ahora disponible en la app store.
           </p>
 
           <ul className="mt-7 space-y-3">
@@ -81,49 +111,21 @@ export function AppPromotion() {
             className="absolute -bottom-32 -left-20 size-80 rounded-full border border-paper/10"
           />
 
-          <div className="relative w-full max-w-60 justify-self-center rounded-[2.25rem] border-[5px] border-ink/80 bg-ink p-1.5 shadow-2xl">
-            <div className="overflow-hidden rounded-[1.65rem] bg-background text-ink">
-              <div className="flex items-center justify-between bg-forest-deep px-4 pb-5 pt-6 text-paper">
-                <span className="text-[10px] font-bold uppercase tracking-[0.12em] text-lime">
-                  Coocentral
-                </span>
-                <span className="size-2 rounded-full bg-lime" />
-              </div>
-              <div className="px-3 pb-4 pt-4">
-                <p className="text-[9px] font-semibold uppercase tracking-[0.12em] text-brand">
-                  Tu cooperativa
-                </p>
-                <p className="mt-1 font-display text-sm font-semibold leading-tight">
-                  Todo más cerca
-                </p>
-                <div className="mt-3 rounded-xl bg-sand p-3">
-                  <p className="text-[9px] font-medium text-ink/55">Accede a tu información</p>
-                  <div className="mt-2.5 space-y-2">
-                    {appFeatures.map(({ icon: Icon, label }) => (
-                      <div
-                        key={label}
-                        className="flex items-center gap-2 rounded-lg bg-background px-2 py-2"
-                      >
-                        <span className="grid size-6 shrink-0 place-items-center rounded-md bg-brand/10 text-brand">
-                          <Icon aria-hidden="true" className="size-3" />
-                        </span>
-                        <span className="text-[9px] font-semibold leading-tight">{label}</span>
-                        <ArrowUpRight
-                          aria-hidden="true"
-                          className="ml-auto size-3 shrink-0 text-brand"
-                        />
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                <div className="mt-3 flex justify-around border-t border-border pt-3 text-[8px] font-medium text-ink/50">
-                  <span className="text-brand">Inicio</span>
-                  <span>Servicios</span>
-                  <span>Perfil</span>
-                </div>
-              </div>
+          <div className="app-phone-frame relative w-full max-w-60 justify-self-center rounded-[2.55rem] p-[6px]">
+            <span aria-hidden="true" className="app-phone-button app-phone-button--left-top" />
+            <span aria-hidden="true" className="app-phone-button app-phone-button--left-bottom" />
+            <span aria-hidden="true" className="app-phone-button app-phone-button--right" />
+            <div className="app-phone-screen relative overflow-hidden rounded-[2.05rem] bg-background">
+              <img
+                key={activeScreen}
+                src={appScreens[activeScreen]}
+                alt={`Captura ${activeScreen + 1} de ${appScreens.length} de la aplicación Coocentral`}
+                className="app-screen-transition block aspect-[9/19.5] w-full object-cover"
+                decoding="async"
+              />
             </div>
-            <span className="absolute left-1/2 top-2 h-1 w-10 -translate-x-1/2 rounded-full bg-ink/70" />
+            <span aria-hidden="true" className="app-phone-speaker" />
+            <span aria-hidden="true" className="app-phone-camera" />
           </div>
 
           <div className="relative grid w-full max-w-sm grid-cols-2 gap-3 justify-self-center text-center text-ink sm:grid-cols-1 sm:gap-4">

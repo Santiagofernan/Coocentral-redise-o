@@ -208,6 +208,15 @@
   }
 }
 
+@keyframes app-screen-slide {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
 @keyframes coffee-plant-grow {
   to {
     stroke-dashoffset: 0;
@@ -295,6 +304,109 @@
   animation-delay: 2.95s;
 }
 
+.app-screen-transition {
+  animation: app-screen-slide 500ms cubic-bezier(0.22, 0.68, 0, 1) both;
+}
+
+.app-phone-frame {
+  isolation: isolate;
+  border: 1px solid rgb(255 255 255 / 35%);
+  background: linear-gradient(
+    145deg,
+    #d7dce1 0%,
+    #555b60 12%,
+    #181b1e 28%,
+    #080a0b 68%,
+    #92999f 90%,
+    #17191c 100%
+  );
+  box-shadow:
+    0 28px 48px -20px rgb(0 0 0 / 85%),
+    inset 1px 1px 1px rgb(255 255 255 / 60%),
+    inset -2px -2px 4px rgb(0 0 0 / 90%);
+}
+
+.app-phone-screen {
+  z-index: 1;
+  border: 1px solid rgb(0 0 0 / 85%);
+  box-shadow:
+    inset 0 0 0 1px rgb(255 255 255 / 22%),
+    0 0 0 1px rgb(255 255 255 / 12%);
+}
+
+.app-phone-screen::after {
+  position: absolute;
+  z-index: 2;
+  pointer-events: none;
+  content: "";
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    rgb(255 255 255 / 14%) 0%,
+    transparent 18%,
+    transparent 62%,
+    rgb(255 255 255 / 5%) 76%,
+    transparent 100%
+  );
+}
+
+.app-phone-speaker {
+  position: absolute;
+  z-index: 3;
+  top: 10px;
+  left: 50%;
+  width: 2rem;
+  height: 0.35rem;
+  transform: translateX(-50%);
+  border: 1px solid rgb(255 255 255 / 12%);
+  border-radius: 999px;
+  background: linear-gradient(180deg, #020303, #25282a);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 70%);
+}
+
+.app-phone-camera {
+  position: absolute;
+  z-index: 3;
+  top: 8px;
+  left: calc(50% + 1.35rem);
+  width: 0.35rem;
+  aspect-ratio: 1;
+  border: 1px solid rgb(255 255 255 / 25%);
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #52736f, #080d11 65%);
+  box-shadow: 0 0 2px rgb(0 0 0 / 80%);
+}
+
+.app-phone-button {
+  position: absolute;
+  z-index: 0;
+  width: 3px;
+  border: 1px solid rgb(255 255 255 / 28%);
+  background: linear-gradient(90deg, #090b0d, #8b9297 55%, #25292c);
+  box-shadow: 1px 1px 2px rgb(0 0 0 / 55%);
+}
+
+.app-phone-button--left-top {
+  top: 5.5rem;
+  left: -3px;
+  height: 2.25rem;
+  border-radius: 3px 0 0 3px;
+}
+
+.app-phone-button--left-bottom {
+  top: 8.25rem;
+  left: -3px;
+  height: 2.25rem;
+  border-radius: 3px 0 0 3px;
+}
+
+.app-phone-button--right {
+  top: 6.5rem;
+  right: -3px;
+  height: 3.5rem;
+  border-radius: 0 3px 3px 0;
+}
+
 @utility editorial-reveal {
   animation: rise 800ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }
@@ -329,6 +441,7 @@
   .editorial-reveal,
   .hero-zoom,
   .marquee-track,
+  .app-screen-transition,
   .reveal {
     animation: none;
   }
@@ -359,14 +472,18 @@
 
 @media (hover: hover) and (pointer: fine) {
   body {
-    cursor: url("./assets/coffee-bean-cursor.svg") 16 16, auto !important;
+    cursor:
+      url("./assets/coffee-bean-cursor.svg") 16 16,
+      auto !important;
   }
 
   a,
   button,
   [role="button"],
   summary {
-    cursor: url("./assets/coffee-bean-cursor.svg") 16 16, pointer !important;
+    cursor:
+      url("./assets/coffee-bean-cursor.svg") 16 16,
+      pointer !important;
   }
 
   input,
