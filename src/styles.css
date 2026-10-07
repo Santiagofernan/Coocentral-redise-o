@@ -308,8 +308,14 @@
   animation: app-screen-slide 500ms cubic-bezier(0.22, 0.68, 0, 1) both;
 }
 
+.app-phone-image {
+  aspect-ratio: 6 / 13;
+}
+
 .app-phone-frame {
   isolation: isolate;
+  padding: 6px;
+  border-radius: 2.55rem;
   border: 1px solid rgb(255 255 255 / 35%);
   background: linear-gradient(
     145deg,

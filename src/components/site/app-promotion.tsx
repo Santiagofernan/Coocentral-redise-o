@@ -111,7 +111,7 @@ export function AppPromotion() {
             className="absolute -bottom-32 -left-20 size-80 rounded-full border border-paper/10"
           />
 
-          <div className="app-phone-frame relative w-full max-w-60 justify-self-center rounded-[2.55rem] p-[6px]">
+          <div className="app-phone-frame relative w-full max-w-60 justify-self-center">
             <span aria-hidden="true" className="app-phone-button app-phone-button--left-top" />
             <span aria-hidden="true" className="app-phone-button app-phone-button--left-bottom" />
             <span aria-hidden="true" className="app-phone-button app-phone-button--right" />
@@ -120,7 +120,7 @@ export function AppPromotion() {
                 key={activeScreen}
                 src={appScreens[activeScreen]}
                 alt={`Captura ${activeScreen + 1} de ${appScreens.length} de la aplicación Coocentral`}
-                className="app-screen-transition block aspect-[9/19.5] w-full object-cover"
+                className="app-screen-transition app-phone-image block w-full object-cover"
                 decoding="async"
               />
             </div>
