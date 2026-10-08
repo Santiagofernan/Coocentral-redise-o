@@ -17,17 +17,17 @@ export function ImpactStats() {
             Coocentral en cifras
           </h2>
         </div>
-        <dl className="grid grid-cols-2 gap-3 md:grid-cols-6 lg:grid-cols-5">
+        <dl className="grid gap-3 sm:grid-cols-2 md:grid-cols-6 lg:grid-cols-5">
           {impactStats.map((stat, index) => (
             <div
               key={stat.label}
               className={cn(
-                "reveal flex min-h-36 flex-col justify-between gap-5 border border-border border-t-2 border-t-brand/70 bg-sand/35 p-5 transition-colors hover:bg-sand/70 sm:min-h-40 sm:p-6 lg:col-span-1",
-                index === impactStats.length - 1 && "col-span-2 md:col-span-3 lg:col-span-1",
+                "reveal flex min-h-36 flex-col justify-between gap-5 border border-border border-t-2 border-t-brand/70 bg-sand/35 p-4 transition-colors hover:bg-sand/70 sm:min-h-40 sm:p-6 lg:col-span-1",
+                index === impactStats.length - 1 && "sm:col-span-2 md:col-span-3 lg:col-span-1",
                 index < 3 ? "md:col-span-2" : "md:col-span-3",
               )}
             >
-              <dd className="order-1 whitespace-nowrap font-display text-3xl font-medium tabular-nums tracking-tight text-brand sm:text-4xl">
+              <dd className="order-1 whitespace-nowrap font-display text-2xl font-medium tabular-nums tracking-tight text-brand sm:text-4xl">
                 <CountUp value={stat.value} prefix={stat.prefix} suffix={stat.suffix} />
               </dd>
               <dt className="order-2 max-w-[22ch] text-sm font-medium leading-5 text-ink/65">

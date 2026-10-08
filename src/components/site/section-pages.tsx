@@ -1,10 +1,9 @@
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 
 import {
   agroServices,
   allies,
-  businessUnits,
   certifications,
   contact,
   cooperationProjects,
@@ -15,15 +14,15 @@ import {
   detailedCreditLines,
   generalCreditRequirements,
   cooperativeResources,
+  creditCostsGuarantees,
+  creditProductDetails,
   creditImpact,
   creditLines,
   digitalTools,
   governance,
-  industrialProjects,
   membershipEligibility,
   membershipRequirements,
   mission,
-  newsArchive,
   principles,
   serviceShowcase,
   specialtyCoffees,
@@ -190,6 +189,304 @@ export function CooperativePage() {
   );
 }
 
+export function CreditAndCarteraPage() {
+  return (
+    <main>
+      <PageIntro
+        eyebrow="Crédito y cartera"
+        title="Crédito y cartera"
+        description="Financiamos las necesidades de nuestros asociados y no asociados con soluciones diseñadas para acompañar la producción, el comercio y la operación del negocio familiar."
+      />
+
+      <section className="border-b border-border bg-paper">
+        <div className="mx-auto max-w-7xl px-5 py-4 lg:px-10">
+          <Link
+            to="/cooperativa"
+            className="inline-flex items-center gap-2 rounded-md border border-border bg-background px-4 py-2 text-sm font-semibold text-ink transition-colors hover:border-brand/50 hover:text-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+          >
+            <ArrowLeft className="size-4" />
+            Volver a la cooperativa
+          </Link>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-5 py-14 lg:px-10 lg:py-20">
+        <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
+          <article className="rounded-3xl border border-border bg-paper p-6 shadow-sm sm:p-8">
+            <h2 className="font-display text-2xl font-medium text-ink">CRÉDITO</h2>
+            <p className="mt-4 text-base leading-8 text-ink/70">
+              «Financiamos las necesidades de nuestros asociados y no asociados». El asociado a
+              Coocentral adquiere beneficios y compromisos desde el momento en que se afilia, y sus
+              aportes quedan garantizando las obligaciones que adquiere con la cooperativa.
+            </p>
+            <p className="mt-4 text-base leading-8 text-ink/70">
+              El crédito puede orientarse a compra de insumos, herramientas agrícolas y
+              tecnológicas, electrodomésticos, calzado, SOAT, material de ferretería y demás
+              necesidades productivas del asociado.
+            </p>
+            <p className="mt-4 text-base leading-8 text-ink/70">
+              Para cupos superiores, puede requerirse deudor solidario. La primera solicitud debe
+              gestionarse en la oficina principal de la cooperativa, donde se formalizan los
+              formatos y la garantía mediante pagarés.
+            </p>
+          </article>
+
+          <aside className="rounded-3xl border border-brand/20 bg-brand/5 p-6 sm:p-8">
+            <h3 className="font-display text-2xl font-medium text-ink">
+              ¿Cómo acceder a uno de nuestros créditos?
+            </h3>
+            <p className="mt-4 text-base leading-8 text-ink/70">
+              Para obtener información detallada sobre el crédito en la cooperativa, acérquese a
+              cualquiera de nuestros almacenes, contacte al técnico de su zona o diríjase a la
+              oficina de cartera ubicada en la sede principal del Centro Comercial El Molino en
+              Garzón.
+            </p>
+            <p className="mt-4 text-base font-semibold text-brand">
+              Contáctenos al celular: 317 433 4039
+            </p>
+          </aside>
+        </div>
+
+        <div className="mt-10 grid gap-10 lg:grid-cols-2">
+          <div className="rounded-3xl border border-border bg-paper p-6 shadow-sm sm:p-8">
+            <h3 className="font-display text-2xl font-medium text-ink">
+              Requisitos básicos para acceder al crédito
+            </h3>
+            <ul className="mt-5 space-y-3 text-base leading-7 text-ink/75">
+              <li className="flex gap-3">
+                <span aria-hidden="true" className="mt-2 size-2 rounded-full bg-brand" />
+                Tener como mínimo 3 meses de afiliación a la cooperativa.
+              </li>
+              <li className="flex gap-3">
+                <span aria-hidden="true" className="mt-2 size-2 rounded-full bg-brand" />
+                Tener como mínimo $250.000 en aportes.
+              </li>
+              <li className="flex gap-3">
+                <span aria-hidden="true" className="mt-2 size-2 rounded-full bg-brand" />
+                Demostrar capacidad de pago y solvencia económica.
+              </li>
+              <li className="flex gap-3">
+                <span aria-hidden="true" className="mt-2 size-2 rounded-full bg-brand" />
+                Demostrar buen hábito de pago.
+              </li>
+            </ul>
+          </div>
+
+          <div className="rounded-3xl border border-border bg-paper p-6 shadow-sm sm:p-8">
+            <h3 className="font-display text-2xl font-medium text-ink">
+              Beneficios del servicio de crédito
+            </h3>
+            <ul className="mt-5 space-y-3 text-base leading-7 text-ink/75">
+              {[
+                "A mayor fidelidad del asociado, menor es la tasa de interés.",
+                "Crédito sin interés para repuestos de despulpadoras y productos Husqvarna.",
+                "Crédito sin interés para algunos productos de la casa comercial Centrogral.",
+                "Crédito en efectivo, sin interés, para el pago de la recolección.",
+                "Convenios con entidades financieras y del sector cooperativo para acceder a créditos de sostenimiento e inversión.",
+                "Respaldo del Fondo Cooperativo de Garantías.",
+                "Condonación de intereses con recursos de la Prima FLO, cuando aplique.",
+                "Incremento de aportes pagando oportunamente.",
+              ].map((benefit) => (
+                <li key={benefit} className="flex gap-3">
+                  <span aria-hidden="true" className="mt-2 size-2 rounded-full bg-lime" />
+                  {benefit}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <div className="mt-10 rounded-3xl border border-border bg-paper p-6 sm:p-8">
+          <h3 className="font-display text-2xl font-medium text-ink">Nuestros tipos de crédito</h3>
+          <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+            {creditProductDetails.map((product) => (
+              <Link
+                key={product.slug}
+                to="/linea-credito/$slug"
+                params={{ slug: product.slug }}
+                className="group rounded-2xl border border-border bg-background p-5 transition-all hover:-translate-y-0.5 hover:border-brand/50 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+              >
+                <img
+                  src={product.image}
+                  alt={product.imageAlt}
+                  loading="lazy"
+                  className="mb-4 aspect-[3/2] w-full rounded-xl bg-paper object-contain p-3"
+                />
+                <span className="flex items-center justify-between gap-3">
+                  <span className="text-xs font-bold uppercase tracking-[0.14em] text-brand">
+                    Línea de crédito
+                  </span>
+                  <ArrowRight
+                    aria-hidden="true"
+                    className="size-4 text-brand transition-transform group-hover:translate-x-1"
+                  />
+                </span>
+                <span className="mt-2 block font-display text-xl font-medium text-ink">
+                  {product.name}
+                </span>
+                <span className="mt-2 block text-sm leading-6 text-ink/65">{product.summary}</span>
+                <span className="mt-4 block text-xs font-semibold text-brand">
+                  Ver información y requisitos
+                </span>
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-10 grid gap-8 lg:grid-cols-2">
+          <div className="rounded-3xl border border-border bg-paper p-6 shadow-sm sm:p-8">
+            <h3 className="font-display text-2xl font-medium text-ink">Costos y garantías</h3>
+            <p className="mt-4 text-base leading-8 text-ink/70">
+              La información de tasas, garantías, requisitos y condiciones debe confirmarse con la
+              oficina de cartera y con la línea de crédito vigente. Este resumen institucional
+              orienta a los asociados sobre el tipo de apoyo disponible y la forma de gestionar la
+              solicitud.
+            </p>
+            <a
+              href={creditCostsGuarantees.image}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-5 block rounded-2xl border border-border bg-background p-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+            >
+              <img
+                src={creditCostsGuarantees.image}
+                alt={creditCostsGuarantees.imageAlt}
+                loading="lazy"
+                className="mx-auto max-h-64 w-full object-contain"
+              />
+              <span className="mt-2 block text-center text-xs font-semibold text-brand">
+                Abrir tabla de costos y garantías
+              </span>
+            </a>
+          </div>
+
+          <div className="rounded-3xl border border-border bg-paper p-6 shadow-sm sm:p-8">
+            <h3 className="font-display text-2xl font-medium text-ink">Formas de pago</h3>
+            <ul className="mt-5 space-y-3 text-base leading-7 text-ink/75">
+              <li className="flex gap-3">
+                <span aria-hidden="true" className="mt-2 size-2 rounded-full bg-brand" />
+                Efectivo.
+              </li>
+              <li className="flex gap-3">
+                <span aria-hidden="true" className="mt-2 size-2 rounded-full bg-brand" />
+                Con cualquier tarjeta débito o crédito, salvo para Futurito.
+              </li>
+              <li className="flex gap-3">
+                <span aria-hidden="true" className="mt-2 size-2 rounded-full bg-brand" />A través de
+                la venta del café.
+              </li>
+              <li className="flex gap-3">
+                <span aria-hidden="true" className="mt-2 size-2 rounded-full bg-brand" />
+                Mediante consignación o transferencia electrónica.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+}
+
+export function CreditProductPage({ slug }: { slug: string }) {
+  const product = creditProductDetails.find((item) => item.slug === slug);
+
+  if (!product) {
+    return (
+      <main>
+        <PageIntro
+          eyebrow="Crédito y cartera"
+          title="No encontramos esta línea de crédito"
+          description="Puede que el enlace no exista o que la información haya cambiado."
+        />
+        <section className="mx-auto max-w-7xl px-5 py-10 lg:px-10">
+          <Link
+            to="/credito-y-cartera"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-brand hover:underline"
+          >
+            <ArrowLeft aria-hidden="true" className="size-4" />
+            Volver a Crédito y cartera
+          </Link>
+        </section>
+      </main>
+    );
+  }
+
+  return (
+    <main>
+      <PageIntro eyebrow="Crédito y cartera" title={product.name} description={product.summary} />
+      <section className="border-b border-border bg-paper">
+        <div className="mx-auto max-w-7xl px-5 py-4 lg:px-10">
+          <Link
+            to="/credito-y-cartera"
+            className="inline-flex items-center gap-2 rounded-md border border-border bg-background px-4 py-2 text-sm font-semibold text-ink transition-colors hover:border-brand/50 hover:text-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+          >
+            <ArrowLeft aria-hidden="true" className="size-4" />
+            Volver a Crédito y cartera
+          </Link>
+        </div>
+      </section>
+      <section className="mx-auto grid max-w-7xl gap-8 px-5 py-12 lg:grid-cols-12 lg:px-10 lg:py-16">
+        <article className="space-y-8 lg:col-span-8">
+          <div className="rounded-3xl border border-border bg-paper p-6 shadow-sm sm:p-8">
+            <img
+              src={product.image}
+              alt={product.imageAlt}
+              className="mb-6 aspect-[3/2] w-full rounded-2xl bg-sand object-contain p-4 sm:max-h-80"
+            />
+            <p className="text-xs font-bold uppercase tracking-[0.16em] text-brand">
+              Información del crédito
+            </p>
+            <p className="mt-4 text-base leading-8 text-ink/70">{product.description}</p>
+            <div className="mt-6 border-t border-border pt-5">
+              <p className="text-xs font-bold uppercase tracking-[0.14em] text-ink/55">Plazo</p>
+              <p className="mt-1 font-display text-2xl font-medium text-brand">{product.term}</p>
+            </div>
+          </div>
+          <div className="rounded-3xl border border-border bg-paper p-6 shadow-sm sm:p-8">
+            <h2 className="font-display text-2xl font-medium text-ink">Requisitos publicados</h2>
+            {product.requirements.length > 0 ? (
+              <ul className="mt-5 space-y-3 text-sm leading-7 text-ink/75 sm:text-base">
+                {product.requirements.map((requirement) => (
+                  <li key={requirement} className="flex gap-3">
+                    <span
+                      aria-hidden="true"
+                      className="mt-2 size-2 shrink-0 rounded-full bg-brand"
+                    />
+                    {requirement}
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className="mt-4 text-sm leading-7 text-ink/70">
+                La ficha oficial consultada no publica requisitos específicos para esta línea.
+                Confirma la documentación necesaria con la oficina de cartera.
+              </p>
+            )}
+          </div>
+        </article>
+        <aside className="h-fit rounded-3xl bg-forest-deep p-6 text-paper sm:p-8 lg:col-span-4">
+          <p className="text-xs font-bold uppercase tracking-[0.16em] text-lime">
+            Asesoría personalizada
+          </p>
+          <h2 className="mt-3 font-display text-2xl font-medium">
+            ¿Tienes preguntas sobre esta línea?
+          </h2>
+          <p className="mt-3 text-sm leading-6 text-paper/70">
+            Las tasas, requisitos y condiciones pueden cambiar. Confirma la información vigente con
+            la oficina de cartera antes de presentar tu solicitud.
+          </p>
+          <p className="mt-5 text-sm font-semibold text-lime">Oficina de cartera · Garzón</p>
+          <PhoneContactDialog
+            phone="317 433 4039"
+            variant="dark"
+            className="mt-4 inline-flex min-h-11 items-center gap-2 border border-paper/20 px-4 py-2 text-sm font-semibold text-paper transition-colors hover:border-lime/50 hover:bg-paper/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime focus-visible:ring-offset-2 focus-visible:ring-offset-forest-deep"
+          />
+        </aside>
+      </section>
+    </main>
+  );
+}
+
 export function MembershipPage() {
   return (
     <main>
@@ -349,7 +646,7 @@ export function ServicesPage() {
             </p>
           </div>
           <nav aria-label="Servicios de Coocentral">
-            <ul className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-5">
+            <ul className="grid gap-2 sm:grid-cols-2 lg:grid-cols-5">
               {serviceShowcase.map((service, index) => (
                 <li key={service.id}>
                   <a
@@ -394,21 +691,18 @@ export function ServicesPage() {
                     "almacenes-coocentral",
                     "area-de-cafe",
                     "tiendas-kahve",
-                    "coonectate",
                   ].includes(service.id) ? (
                     <Link
                       to={
-                        service.id === "coonectate"
-                          ? "/coonectate"
-                          : service.id === "pic"
-                            ? "/pic"
-                            : service.id === "almacenes-coocentral"
-                              ? "/almacenes"
-                              : service.id === "area-de-cafe"
-                                ? "/area-de-cafe"
-                                : service.id === "tiendas-kahve"
-                                  ? "/tiendas-kahve"
-                                  : "/coworking"
+                        service.id === "pic"
+                          ? "/pic"
+                          : service.id === "almacenes-coocentral"
+                            ? "/almacenes"
+                            : service.id === "area-de-cafe"
+                              ? "/area-de-cafe"
+                              : service.id === "tiendas-kahve"
+                                ? "/tiendas-kahve"
+                                : "/coworking"
                       }
                       className="mt-6 inline-flex min-h-11 items-center gap-2 rounded-md bg-brand px-4 text-sm font-bold text-paper transition-all hover:-translate-y-0.5 hover:bg-forest hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
                     >
@@ -435,12 +729,14 @@ export function ServicesPage() {
                   decoding="async"
                   width="1200"
                   height="900"
-                  className={`aspect-4/3 w-full ${
-                    service.id === "ferticoolombia"
-                      ? "bg-forest-deep object-contain p-10 sm:p-16"
-                      : service.id === "cafe-coocentral"
-                        ? "bg-white object-contain p-8 sm:p-12"
-                        : "object-cover"
+                  className={`w-full ${
+                    service.id === "fundecafe"
+                      ? "aspect-[2.64/1] rounded-2xl bg-white object-contain p-4 sm:p-8"
+                      : `aspect-4/3 ${
+                          service.id === "ferticoolombia"
+                            ? "bg-forest-deep object-contain p-10 sm:p-16"
+                            : "object-cover"
+                        }`
                   }`}
                 />
               </figure>
@@ -599,7 +895,7 @@ export function ServicesPage() {
                 className="inline-flex min-h-11 items-center gap-2 border border-paper/20 px-4 py-2 text-sm font-semibold text-paper transition-colors hover:border-lime/50 hover:bg-paper/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime focus-visible:ring-offset-2 focus-visible:ring-offset-forest-deep"
               />
               <a
-                href="https://coocentral.com/wp-content/uploads/2022/07/costo-y-garantias.png"
+                href={creditCostsGuarantees.image}
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-lime underline-offset-4 transition-colors hover:text-paper hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime focus-visible:ring-offset-2 focus-visible:ring-offset-forest-deep"
@@ -636,76 +932,6 @@ export function ServicesPage() {
             </li>
           ))}
         </ul>
-      </section>
-    </main>
-  );
-}
-
-export function EcosystemPage() {
-  return (
-    <main>
-      <PageIntro
-        eyebrow="Ecosistema Coocentral"
-        title="Capacidades que se conectan alrededor del caficultor"
-        description="Un modelo que integra asistencia, industria, comercio, formación y herramientas digitales en el territorio."
-      />
-      <section className="mx-auto max-w-7xl px-5 py-14 lg:px-10 lg:py-20">
-        <SectionTitle
-          eyebrow="Unidades de negocio y aliados"
-          title="Un ecosistema con raíces locales"
-        />
-        <ul className="grid gap-x-10 sm:grid-cols-2 lg:grid-cols-4">
-          {businessUnits.map(({ icon: Icon, name, text, href, internal }) => (
-            <li key={name} className="border-t border-border py-5">
-              <Icon className="size-6 text-brand" />
-              <h3 className="mt-4 font-display text-xl">{name}</h3>
-              <p className="mt-2 text-sm leading-6 text-ink/65">{text}</p>
-              {internal && (
-                <Link
-                  to={name === "Tiendas Kahvé" ? "/tiendas-kahve" : "/almacenes"}
-                  className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-brand hover:underline"
-                >
-                  Conocer más
-                  <ArrowUpRight className="size-3.5" />
-                </Link>
-              )}
-              {href && !internal && (
-                <a
-                  href={href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-brand hover:underline"
-                >
-                  Conocer más
-                  <ArrowUpRight className="size-3.5" />
-                </a>
-              )}
-            </li>
-          ))}
-        </ul>
-      </section>
-      <section className="border-y border-border bg-sand">
-        <div className="mx-auto max-w-7xl px-5 py-14 lg:px-10 lg:py-20">
-          <SectionTitle
-            eyebrow="Desarrollo agroindustrial"
-            title="Infraestructura para agregar valor"
-          />
-          <ul className="divide-y divide-border border-y border-border">
-            {industrialProjects.map((project) => (
-              <li
-                key={project.name}
-                className="grid gap-3 py-5 sm:grid-cols-[1fr_auto] sm:items-start"
-              >
-                <div>
-                  <h3 className="font-display text-xl">{project.name}</h3>
-                  <p className="mt-2 text-sm leading-6 text-ink/65">{project.impact}</p>
-                  <p className="mt-2 text-xs text-ink/50">Aliados: {project.allies}</p>
-                </div>
-                <p className="font-display text-2xl text-brand">{project.investment}</p>
-              </li>
-            ))}
-          </ul>
-        </div>
       </section>
     </main>
   );
@@ -782,65 +1008,6 @@ export function SustainabilityPage() {
           Programas para asociados
           <ArrowRight className="size-4" />
         </Link>
-      </section>
-    </main>
-  );
-}
-
-export function NewsPage() {
-  return (
-    <main>
-      <PageIntro
-        eyebrow="Noticias"
-        title="Historias y novedades de Coocentral"
-        description="Consulta publicaciones institucionales sobre caficultura, comunidad, ferias y proyectos de Coocentral."
-      />
-      <section className="mx-auto max-w-7xl px-5 py-14 lg:px-10 lg:py-20">
-        <div className="flex flex-wrap items-end justify-between gap-5 border-b border-border pb-6">
-          <div>
-            <p className="text-xs font-bold uppercase tracking-[0.16em] text-brand">
-              Archivo histórico · 2022–2024
-            </p>
-            <h2 className="mt-2 font-display text-3xl">Noticias de nuestra comunidad</h2>
-          </div>
-        </div>
-        <ol className="grid gap-4 py-7 md:grid-cols-2">
-          {newsArchive.map((item) => (
-            <li
-              key={item.slug}
-              className="flex h-full flex-col border border-border bg-paper p-5 transition-all hover:-translate-y-0.5 hover:border-brand/35 hover:shadow-lg sm:p-6"
-            >
-              <img
-                src={item.image}
-                alt={item.imageAlt}
-                loading="lazy"
-                className="mb-5 aspect-[16/10] w-full bg-sand object-cover"
-              />
-              <div className="flex flex-wrap items-center justify-between gap-3">
-                <span className="inline-flex items-center border border-brand/15 bg-sand px-3 py-1 text-[11px] font-bold uppercase tracking-[0.1em] text-brand">
-                  {item.category}
-                </span>
-                <time dateTime={item.date} className="text-xs font-medium text-ink/55">
-                  {item.dateLabel}
-                </time>
-              </div>
-              <h3 className="mt-5 font-display text-2xl leading-snug">{item.title}</h3>
-              <p className="mt-3 flex-1 text-sm leading-6 text-ink/65">{item.summary}</p>
-              <Link
-                to="/noticia/$slug"
-                params={{ slug: item.slug }}
-                className="mt-6 inline-flex min-h-11 w-fit items-center gap-2 border-b border-brand/30 pb-1 text-sm font-semibold text-brand transition-colors hover:border-brand hover:text-forest focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
-              >
-                Leer noticia completa
-                <ArrowRight aria-hidden="true" className="size-4" />
-              </Link>
-            </li>
-          ))}
-        </ol>
-        <p className="mt-5 text-xs leading-5 text-ink/50">
-          Este archivo reúne publicaciones históricas verificadas entre 2022 y 2024. No incluye
-          convocatorias vencidas ni presenta estas notas como noticias recientes.
-        </p>
       </section>
     </main>
   );

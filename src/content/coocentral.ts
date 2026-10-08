@@ -27,25 +27,22 @@ import {
   Tv,
   Users,
   Warehouse,
-  Wifi,
   type LucideIcon,
 } from "lucide-react";
 import ferticoolombiaLogo from "@/assets/Servicios/Ferticoolombia/Logo Ferticoolombia TRAZO BLANCO.png";
+import almacenesCoocentralImage from "@/assets/Servicios/Almacenes/Almacenes Coocentral.png";
+import fundecafeImage from "@/assets/Servicios/Fundecafe/Fundecafe.jpg";
 import hotelKahveImage from "@/assets/Servicios/Hotel_Kahve/Planta.webp";
 import coworkingShowcaseImage from "@/assets/Servicios/Coworking/YDRAY-IMG_9436-1-scaled.webp";
 import coocentralCoffeeImage from "@/assets/Servicios/Cafes_coocentral/Cafe.webp";
-import farmerImage from "@/assets/coocentral-caficultor-hero.jpg";
-import historyImage from "@/assets/coocentral-historia.jpg";
-import qualityImage from "@/assets/coocentral-calidad.jpg";
-import territoryImage from "@/assets/coocentral-territorio.jpg";
-import expoCafesImage from "@/assets/noticias/expo-cafes-acron.jpg";
-import specialtyFairImage from "@/assets/noticias/feria-especialidad-cafe.png";
-import ficcaImage from "@/assets/noticias/ficca-2022.jpg";
-import exportProgramImage from "@/assets/noticias/exporta-con-nosotros.png";
-import founderStoryImage from "@/assets/noticias/historia-don-maximo.jpg";
-import baristaImage from "@/assets/noticias/orgullo-barismo-sca.jpg";
-import coworkingNewsImage from "@/assets/noticias/coworking-garzon.jpg";
-import incasProjectImage from "@/assets/noticias/incas-global-plus.jpg";
+import tiendasKahveImage from "@/assets/Servicios/Nueva carpeta/Plaza Rosario y Café Kahvé.png";
+import creditFondoRotatorioImage from "@/assets/creditos/fondo-rotatorio.png";
+import creditFuturitoImage from "@/assets/creditos/futurito.png";
+import creditAnticipoSecadoImage from "@/assets/creditos/anticipo-secado.png";
+import creditCupoGeneralImage from "@/assets/creditos/cupo-general.png";
+import creditCheque30DiasImage from "@/assets/creditos/cheque-30-dias.png";
+import creditParticularesImage from "@/assets/creditos/credito-particulares.png";
+import creditCostsGuaranteesImage from "@/assets/creditos/costos-y-garantias.png";
 
 // Todo el contenido proviene del informe institucional (docs/informe-coocentral.pdf),
 // salvo teléfonos, redes y enlaces legales, tomados de www.coocentral.com.
@@ -55,7 +52,6 @@ export const links = {
   app: "https://play.google.com/store/apps/details?id=com.coocentral.app&hl=es_CO",
   appStore: "https://apps.apple.com/co/app/nueva-app-red-coopcentral/id6742431196",
   requirements: "https://coocentral.com/requisitos/",
-  news: "/noticias",
   complaints: "https://coocentral.com/wp-content/uploads/2026/08/IMG-20260806-WA0469.jpg",
 };
 
@@ -69,19 +65,21 @@ export const contact = {
 export const socials = [
   { label: "Facebook", href: "https://www.facebook.com/coocentral" },
   { label: "Instagram", href: "https://instagram.com/coocentral" },
-  { label: "YouTube", href: "https://www.youtube.com/channel/UCNxnVcKrQ7FqL0elTPCJQuQ" },
+  { label: "YouTube", href: "https://www.youtube.com/@CoocentralSistemas" },
+  { label: "TikTok", href: "https://www.tiktok.com/@coocentral" },
 ] as const;
 
 export const navigation = [
+  { label: "Inicio", href: "/" },
   { label: "Cooperativa", href: "/cooperativa" },
   { label: "Asociarme", href: "/asociarme" },
   { label: "Café", href: "/cafe" },
   { label: "Servicios", href: "/servicios" },
-  { label: "Noticias", href: "/noticias" },
 ] as const;
 
 export const cooperativeResources = [
   { label: "¿Quiénes somos?", href: "/cooperativa#quienes-somos", external: false },
+  { label: "Crédito y cartera", href: "/credito-y-cartera", external: false },
   { label: "Reseña Histórica", href: "/historia", external: false },
   {
     label: "Acta de compromiso Fundecafé",
@@ -143,9 +141,16 @@ export const publicOffice = {
 };
 
 export const moreNavigation = [
-  { label: "Historia", href: "/historia" },
-  { label: "Ecosistema", href: "/ecosistema" },
-  { label: "Sostenibilidad", href: "/sostenibilidad" },
+  {
+    label: "Historia",
+    description: "Recorre el camino de Coocentral desde 1975.",
+    href: "/historia",
+  },
+  {
+    label: "Sostenibilidad",
+    description: "Conoce nuestro compromiso con las familias y el territorio.",
+    href: "/sostenibilidad",
+  },
 ] as const;
 
 export const impactStats = [
@@ -236,7 +241,7 @@ export const timeline = [
   { year: "2022", text: "Plataformas A-Catar (trazabilidad SCA) y Finapp (crédito)." },
   {
     year: "2023–2024",
-    text: "Central de Acopio, Planta Mezcladora de Fertilizantes y conectividad Coonéctate.",
+    text: "Central de Acopio y Planta Mezcladora de Fertilizantes.",
   },
   {
     year: "2025",
@@ -526,137 +531,117 @@ export const creditServiceBenefits = [
   "El pago oportuno puede contribuir al incremento de los aportes sociales, de acuerdo con la información institucional.",
 ];
 
-export const newsArchive = [
+export const creditProductDetails = [
   {
-    slug: "acron-colombia-expo-cafes-2024",
-    image: expoCafesImage,
-    imageAlt: "Afiche de Expo Cafés de Colombia 2024 con Ferticoolombia y Acron",
-    date: "2024-09-25",
-    dateLabel: "25 de septiembre de 2024",
-    category: "Café y mercados",
-    title: "Acron Colombia y Coocentral en Expo Cafés de Colombia 2024",
+    slug: "fondo-rotatorio",
+    name: "Fondo Rotatorio",
+    image: creditFondoRotatorioImage,
+    imageAlt: "Ilustración oficial de la línea Fondo Rotatorio de Coocentral",
     summary:
-      "La publicación destaca una década de trabajo conjunto y la promoción de Ferticoolombia en el sector cafetero.",
-    content: [
-      "La publicación presenta Expo Cafés de Colombia 2024 como un espacio para mostrar los resultados de una década de trabajo entre Acron Colombia y Coocentral, y promover Ferticoolombia entre caficultores.",
-      "El artículo destaca la cooperación para acercar soluciones de fertilización al sector cafetero y el trabajo conjunto alrededor de una agricultura sostenible.",
-      "También relata una reunión del 27 de agosto en la que representantes de ambas organizaciones reafirmaron su intención de fortalecer la alianza iniciada diez años atrás.",
-      "En esa publicación, Acron informó que no continuaría la cooperación logística con Calpine Colombia SAS tras la suspensión unilateral de despachos mencionada en el artículo.",
+      "Crédito inmediato para comprar productos disponibles en los almacenes de la Cooperativa.",
+    description:
+      "La ficha oficial indica que puede prestarse hasta el 90% del valor de los aportes sociales. No requiere deudor solidario; los aportes son la garantía del crédito.",
+    term: "6 meses",
+    requirements: [
+      "Fotocopia de la cédula.",
+      "Diligenciar la solicitud de crédito.",
+      "Firmar el pagaré.",
+      "Firmar el formato de cruce de aportes.",
+      "Firmar el formato de declaración de asegurabilidad.",
+      "Firmar el formato de protección de datos del asociado.",
     ],
   },
   {
-    slug: "feria-especialidad-cafe-tercera-edicion",
-    image: specialtyFairImage,
-    imageAlt: "Afiche de la tercera Feria de Especialidad con Café de Coocentral",
-    date: "2023-02-06",
-    dateLabel: "6 de febrero de 2023",
-    category: "Ferias y cafés especiales",
-    title: "Feria de Especialidad con Café: tercera edición",
-    summary:
-      "Anuncio de la tercera edición de la feria de Coocentral dedicada a los cafés especiales.",
-    content: [
-      "Coocentral anunció que la tercera edición de la Feria de Especialidad con Café se realizaría del 29 al 31 de marzo de 2023 en diferentes instalaciones de la Cooperativa.",
-      "La actividad buscaba capacitar a asociados e hijos de asociados en procesos de poscosecha. La publicación esperaba reunir a 30 participantes durante tres días.",
-      "El programa anunciado incluía análisis físico, tostación, catación y barismo, con charlas de expertos y la colaboración del cliente noruego TROPIQ.",
-      "La convocatoria y las fechas corresponden a 2023; esta nota se conserva como parte del archivo histórico.",
+    slug: "futurito",
+    name: "Futurito",
+    image: creditFuturitoImage,
+    imageAlt: "Ilustración oficial de la línea Futurito de Coocentral",
+    summary: "Crédito en efectivo para apoyar el pago de la recolección de café.",
+    description:
+      "Exclusivo para asociados que venden el 100% de su producción a Coocentral. El plazo es de 30 días, mientras se seca y entrega el café comprometido. El valor se descuenta de la venta del café y se paga solo capital, siempre que se cancele oportunamente y se cumpla la entrega de los kilos comprometidos. Requiere deudor solidario.",
+    term: "30 días",
+    requirements: [
+      "Fotocopia de la cédula del asociado y del deudor solidario.",
+      "Diligenciar la solicitud de crédito.",
+      "Firmar el pagaré con el deudor solidario.",
+      "El asociado firma el formato de cruce de aportes y el formato de declaración de asegurabilidad.",
+      "Firmar los formatos de protección de datos del asociado y del deudor solidario.",
+      "Cancelar la consulta a centrales de riesgo del asociado y del deudor solidario; vigencia publicada: un año.",
+      "Presentar certificación del técnico de la Cooperativa (récord) que confirme que cuenta con café para secar y cumplir el compromiso de entrega y pago oportuno.",
+      "Tener la visita técnica actualizada; vigencia publicada: un año.",
     ],
   },
   {
-    slug: "ficca-2022",
-    image: ficcaImage,
-    imageAlt: "Afiche de la segunda Feria Internacional del Café, Cacao y Agroturismo 2022",
-    date: "2022-10-04",
-    dateLabel: "4 de octubre de 2022",
-    category: "Ferias y territorio",
-    title: "Coocentral en la Feria Internacional del Café, Cacao y Agroturismo",
-    summary:
-      "Registro de la participación de la Cooperativa en la segunda edición de FICCA, realizada en 2022.",
-    content: [
-      "Coocentral participó en la segunda Feria Internacional del Café, Cacao y Agroturismo (FICCA 2022).",
-      "La publicación institucional registra la realización del encuentro entre el 30 de septiembre y el 2 de octubre de 2022.",
-      "Esta nota forma parte del archivo histórico de actividades de la Cooperativa.",
+    slug: "anticipo-secado",
+    name: "Anticipo secado",
+    image: creditAnticipoSecadoImage,
+    imageAlt: "Ilustración oficial de la línea Anticipo secado de Coocentral",
+    summary: "Anticipo sobre el café verde entregado en la planta para el servicio de secado.",
+    description:
+      "La ficha oficial describe un anticipo del 50% del café verde entregado en la planta de la Cooperativa. El valor se descuenta de la venta del café y, si se cancela oportunamente, se paga solo capital, sin costo financiero.",
+    term: "15 días",
+    requirements: [
+      "Presentar el recibo entregado en la planta de secado para liquidar el anticipo.",
     ],
   },
   {
-    slug: "exporta-con-nosotros",
-    image: exportProgramImage,
-    imageAlt: "Emblema del programa Exporta con Nosotros de Coocentral",
-    date: "2022-09-12",
-    dateLabel: "12 de septiembre de 2022",
-    category: "Café y mercados",
-    title: "Exporta con Nosotros",
-    summary:
-      "Presentación del programa de exportación de Coocentral para promover cafés huilenses en nuevos mercados.",
-    content: [
-      "Coocentral presentó Exporta con Nosotros como un programa para fomentar la calidad del café 100% Huila y conectarlo con nuevos mercados.",
-      "La publicación relaciona la iniciativa con el crecimiento de la cultura exportadora en el mercado cafetero colombiano.",
-      "El programa hace parte de los esfuerzos institucionales por dar visibilidad y abrir oportunidades para el café producido por las familias caficultoras del Huila.",
+    slug: "cupo-general",
+    name: "Cupo General",
+    image: creditCupoGeneralImage,
+    imageAlt: "Ilustración oficial de la línea Cupo General de Coocentral",
+    summary: "Financiación para compras en almacenes, SOAT y bono Merca 100.",
+    description:
+      "Permite financiar insumos, herramientas agrícolas y tecnológicas, electrodomésticos, calzado, SOAT, material de ferretería y bono Merca 100. Asociados del programa 100% pueden acceder cada mes al bono de $200.000 para comprar su remesa. Para SOAT y celulares se cobra la tasa que corresponda según la calificación; la compra de celulares aplica para asociados y no asociados.",
+    term: "6 meses; tasa según calificación",
+    requirements: [
+      "Fotocopia de la cédula del asociado y del deudor solidario, cuando aplique.",
+      "Diligenciar la solicitud de crédito.",
+      "Firmar pagaré con deudor solidario, si aplica.",
+      "El asociado firma los formatos de cruce de aportes y declaración de asegurabilidad.",
+      "Firmar los formatos de protección de datos del asociado y del deudor solidario.",
+      "Cancelar la consulta a centrales de riesgo del asociado y del deudor solidario; vigencia publicada: un año.",
+      "Para compras de fertilizantes o insumos, presentar la recomendación del técnico de la Cooperativa (récord).",
+      "Tener la visita técnica actualizada; vigencia publicada: un año.",
     ],
   },
   {
-    slug: "que-hay-detras-de-nuestra-marca",
-    image: founderStoryImage,
-    imageAlt: "Don Máximo Vela, socio fundador de Coocentral, sosteniendo una taza de café",
-    date: "2022-09-07",
-    dateLabel: "7 de septiembre de 2022",
-    category: "Nuestra historia",
-    title: "¿Qué hay detrás de nuestra marca?",
-    summary: "Una historia sobre Don Máximo Vela, socio fundador e imagen de Cafés Coocentral.",
-    content: [
-      "La publicación cuenta la historia de Don Máximo Vela, socio fundador de la Cooperativa e imagen de Cafés Coocentral.",
-      "Coocentral recuerda que desde 1970 se producía café de calidad en la zona centro del Huila y que, en 1975, Don Máximo Vela y otros 53 caficultores se unieron para crear la Cooperativa Central de Caficultores del Huila.",
-      "El artículo destaca la innovación y el desarrollo de programas y productos como parte de la continuidad del compromiso de sus fundadores.",
-    ],
+    slug: "cheque-30-dias",
+    name: "Cheque a 30 días",
+    image: creditCheque30DiasImage,
+    imageAlt: "Ilustración oficial de la línea Cheque a 30 días de Coocentral",
+    summary: "Crédito para comprar fertilizantes, insumos y productos de los puntos de venta.",
+    description:
+      "Aplica para asociados y no asociados. Para asociados, no genera intereses corrientes si se cancela oportunamente. Para no asociados, la ficha oficial publicada indica un interés corriente del 1% mensual.",
+    term: "30 días",
+    requirements: [],
   },
   {
-    slug: "orgullo-coocentral-barismo-sca",
-    image: baristaImage,
-    imageAlt: "Grupo de baristas en su ceremonia de certificación en Tecnicafé",
-    date: "2022-09-05",
-    dateLabel: "5 de septiembre de 2022",
-    category: "Talento cafetero",
-    title: "Orgullo Coocentral: certificación de barismo SCA",
-    summary:
-      "La publicación reconoce la certificación de barismo intermedio de Stephanie Rivera Quimbaya, hija de un asociado.",
-    content: [
-      "Coocentral reconoció a Stephanie Rivera Quimbaya, hija de un caficultor asociado, por obtener la certificación de barista intermedia de la Specialty Coffee Association (SCA).",
-      "La publicación relata que Stephanie inició su trayectoria en 2016 y que su formación se desarrolló en dos etapas, en las que destacó por sus habilidades técnicas y personales.",
-      "El reconocimiento fue recibido en el Parque Tecnológico de Innovación del Café (Tecnicafé), en el Cauca.",
+    slug: "credito-a-particulares",
+    name: "Crédito a particulares",
+    image: creditParticularesImage,
+    imageAlt: "Ilustración oficial de la línea Crédito a particulares de Coocentral",
+    summary: "Consulta los documentos y condiciones de solicitud para clientes particulares.",
+    description:
+      "La ficha oficial publica requisitos para clientes particulares, pero no especifica monto, tasa ni plazo. El cliente y el deudor solidario deben tener buena calificación en centrales de riesgo. El deudor solidario debe ser propietario de un inmueble libre de gravámenes.",
+    term: "Consultar condiciones",
+    requirements: [
+      "Fotocopia de la cédula del cliente particular y del deudor solidario.",
+      "Diligenciar la solicitud de crédito y firmar el pagaré con el deudor solidario.",
+      "El cliente firma el formato de declaración de asegurabilidad.",
+      "Firmar los formatos de protección de datos del cliente particular y del deudor solidario.",
+      "Cancelar la consulta a centrales de riesgo del cliente y del deudor solidario; ambos deben tener buena calificación.",
+      "Certificar los ingresos.",
+      "Asalariados: presentar los tres últimos desprendibles de nómina y certificado laboral con cargo, tiempo de vinculación, tipo de contrato y salario mensual.",
+      "Independientes: presentar estados financieros del año anterior y al corte más reciente, declaración de renta de los dos últimos años cuando aplique, certificado de ingresos de contador público, certificado de Cámara de Comercio expedido en los últimos 30 días y fotocopia del RUT.",
+      "El deudor solidario debe presentar certificado de libertad y tradición de un inmueble libre de gravámenes, expedido en los últimos 30 días.",
     ],
   },
-  {
-    slug: "nueva-era-trabajo-colaborativo",
-    image: coworkingNewsImage,
-    imageAlt: "Equipo reunido en el espacio Coworking de Coocentral en Garzón",
-    date: "2022-08-10",
-    dateLabel: "10 de agosto de 2022",
-    category: "Comunidad",
-    title: "Una nueva era del trabajo colaborativo en Garzón",
-    summary:
-      "Presentación del Coworking Martha Stella Velásquez Bravo como espacio de trabajo colaborativo en Garzón.",
-    content: [
-      "La Cooperativa presentó el Coworking Martha Stella Velásquez Bravo como un espacio de trabajo colaborativo y tecnológico para la comunidad de Garzón y el Huila.",
-      "El artículo describe el proyecto como una iniciativa que amplía la presencia de Coocentral más allá del sector cafetero y que fue desarrollada junto con The Laughing Man Coffee Company.",
-      "La publicación invitó a asociados y habitantes de Garzón a participar en las actividades del espacio.",
-    ],
-  },
-  {
-    slug: "proyecto-incas-global-caficultores",
-    image: incasProjectImage,
-    imageAlt: "Equipo técnico acompaña a productores en el seguimiento del proyecto INCAS GLOBAL+",
-    date: "2022-08-05",
-    dateLabel: "5 de agosto de 2022",
-    category: "Sostenibilidad",
-    title: "Avances del proyecto INCAS GLOBAL+ en el centro del Huila",
-    summary:
-      "Seguimiento al trabajo realizado con productores de la región y aliados del proyecto.",
-    content: [
-      "El 3 de agosto de 2022, Coocentral recibió a representantes de GIZ para realizar el primer monitoreo del proyecto INCAS GLOBAL+ con productores del centro del Huila.",
-      "Durante la jornada, los participantes realizaron actividades para revisar el estado de sus fincas y compartir avances del proyecto.",
-      "Uno de los caficultores participantes relató mejoras en la infraestructura de beneficio de su finca. La nota indicaba que el proyecto continuaría su desarrollo y esperaba cubrir a 650 caficultores.",
-    ],
-  },
-] as const;
+];
+
+export const creditCostsGuarantees = {
+  image: creditCostsGuaranteesImage,
+  imageAlt: "Tabla oficial de costos y garantías de los créditos Coocentral",
+};
 
 type Service = { icon: LucideIcon; title: string; text: string };
 
@@ -680,66 +665,6 @@ export const agroServices: Service[] = [
     icon: FlaskConical,
     title: "Laboratorio de suelos y agua",
     text: "Análisis estándar, mejorado, premium, foliar y de agua con tarifa preferencial.",
-  },
-];
-
-type BusinessUnit = {
-  icon: LucideIcon;
-  name: string;
-  text: string;
-  href?: string;
-  internal?: boolean;
-};
-
-export const businessUnits: BusinessUnit[] = [
-  {
-    icon: Leaf,
-    name: "FUNDECAFÉ",
-    text: "Brazo social y técnico: extensión agropecuaria y formación en finca.",
-    href: "https://www.fundecafe.com/",
-  },
-  {
-    icon: Sprout,
-    name: "Ferticoolombia",
-    text: "Marca propia de fertilizantes e insumos, con planta mezcladora.",
-    href: "https://ferticoolombia.com/",
-  },
-  {
-    icon: Coffee,
-    name: "Café Coocentral",
-    text: "Cafés de alta calidad inspirados en el legado de Don Máximo.",
-    href: "https://www.cafescoocentral.com.co/",
-  },
-  {
-    icon: Store,
-    name: "Tiendas Kahvé",
-    text: "Cultura cafetera y degustación en múltiples métodos de extracción.",
-    href: "/tiendas-kahve",
-    internal: true,
-  },
-  {
-    icon: Hotel,
-    name: "Hotel Kahvé",
-    text: "Hotel temático del café en Garzón para rutas turísticas y clientes.",
-    href: "https://hotelkahve.com/",
-  },
-  {
-    icon: Warehouse,
-    name: "Almacenes Coocentral",
-    text: "Red regional de insumos, hogar, ferretería y maquinaria.",
-    href: "/almacenes",
-    internal: true,
-  },
-  {
-    icon: Presentation,
-    name: "Cooworking",
-    text: "Espacios para reuniones, capacitación, cocreación e innovación.",
-    href: "https://coocentral.com/coworking/",
-  },
-  {
-    icon: Building2,
-    name: "Taller Aprendamos de Café",
-    text: "Experiencia sensorial con catadores y baristas, del cultivo a la taza.",
   },
 ];
 
@@ -908,7 +833,7 @@ export const warehouseLocations = [
   },
 ] as const;
 
-type DigitalTool = { icon: LucideIcon; name: string; text: string; href?: "/coonectate" };
+type DigitalTool = { icon: LucideIcon; name: string; text: string };
 
 export const digitalTools: DigitalTool[] = [
   {
@@ -918,12 +843,6 @@ export const digitalTools: DigitalTool[] = [
   },
   { icon: ClipboardCheck, name: "A-Catar", text: "Trazabilidad y calificación SCA de muestras." },
   { icon: Laptop, name: "Finapp", text: "Gestión centralizada del expediente crediticio." },
-  {
-    icon: Wifi,
-    name: "Coonéctate",
-    text: "Conectividad a internet en veredas aisladas.",
-    href: "/coonectate",
-  },
   { icon: Tv, name: "Coocentral TV", text: "Precios y noticias en las pantallas de los fielatos." },
 ];
 
@@ -961,8 +880,8 @@ export const serviceShowcase: ServiceShowcase[] = [
     title: "Almacenes Coocentral",
     summary:
       "Red de 17 tiendas en el centro del Huila con líneas agropecuaria, hogar, ferretería y maquinaria para las familias de la región.",
-    image: historyImage,
-    imageAlt: "Memoria de la caficultura del Huila, territorio atendido por la red de almacenes",
+    image: almacenesCoocentralImage,
+    imageAlt: "Almacén Coocentral con productos e insumos para las familias de la región",
     href: "/almacenes",
   },
   {
@@ -979,8 +898,8 @@ export const serviceShowcase: ServiceShowcase[] = [
     title: "Área de Café",
     summary:
       "Puntos de compra y venta de café verde y seco que acercan a los productores a la comercialización y al control de calidad.",
-    image: qualityImage,
-    imageAlt: "Selección y control de calidad de café verde",
+    image: coocentralCoffeeImage,
+    imageAlt: "Presentación de cafés tostados Coocentral",
     href: "/area-de-cafe",
   },
   {
@@ -1007,8 +926,8 @@ export const serviceShowcase: ServiceShowcase[] = [
     title: "Tiendas Kahvé",
     summary:
       "Espacios para disfrutar la cultura cafetera y degustar café en Garzón y Neiva, con distintas preparaciones y métodos.",
-    image: qualityImage,
-    imageAlt: "Selección de café verde, cultura cafetera que inspira Tiendas Kahvé",
+    image: tiendasKahveImage,
+    imageAlt: "Sede de Tiendas Kahvé en el centro comercial Plaza Rosario",
     href: "/tiendas-kahve",
   },
   {
@@ -1016,18 +935,9 @@ export const serviceShowcase: ServiceShowcase[] = [
     title: "Fundecafé",
     summary:
       "Fundación de apoyo social y técnico que acompaña a las familias con extensión agropecuaria, formación y fortalecimiento de la vida en la finca.",
-    image: territoryImage,
-    imageAlt: "Familia caficultora en una finca del Huila, comunidad acompañada por Fundecafé",
+    image: fundecafeImage,
+    imageAlt: "Logo de Fundecafé, construimos desarrollo rural sostenible",
     href: "https://www.fundecafe.com/",
-  },
-  {
-    id: "coonectate",
-    title: "Coonéctate",
-    summary:
-      "Proyecto social que brinda internet confiable a familias rurales de la vereda Las Delicias, en Tarqui, para apoyar la educación, la comunicación, la productividad y el bienestar.",
-    image: farmerImage,
-    imageAlt: "Caficultor del Huila, imagen de contexto del proyecto de conectividad rural",
-    href: "/coonectate",
   },
 ];
 
@@ -1134,7 +1044,6 @@ export const footerColumns = [
         label: "Administración y control",
         href: "https://coocentral.com/administracion-y-control/",
       },
-      { label: "Noticias", href: "/noticias" },
     ],
   },
   {

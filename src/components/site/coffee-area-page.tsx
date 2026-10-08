@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight, ArrowUpRight, Coffee, MapPin, Sprout } from "lucide-react";
 
-import qualityImage from "@/assets/coocentral-calidad.jpg";
+import qualityImage from "@/assets/Servicios/Cafes_coocentral/Cafe.webp";
 
 const coffeePointsMap =
   "https://www.google.com/maps/d/embed?mid=1v6ZsY68oRmgOkt0PkXxdkf74QP4-jDc&ehbc=2E312F";
@@ -55,7 +55,7 @@ export function CoffeeAreaPage() {
               <div className="relative overflow-hidden rounded-[1.75rem] border border-white/15 bg-paper/10 p-2 shadow-2xl">
                 <img
                   src={qualityImage}
-                  alt="Productores seleccionando café verde para revisar su calidad"
+                  alt="Presentación de cafés tostados Coocentral"
                   width="1024"
                   height="768"
                   fetchPriority="high"

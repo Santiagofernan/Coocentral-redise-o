@@ -32,8 +32,8 @@ export function Hero() {
             className="editorial-reveal mt-8 text-4xl font-medium leading-[1.04] tracking-normal sm:text-6xl lg:text-7xl"
             style={{ animationDelay: "120ms" }}
           >
-            Más que una cooperativa: Una <em className="font-normal text-lime">familia</em>{" "}
-            al servicio del caficultor
+            Más que una cooperativa: Una <em className="font-normal text-lime">familia</em> al
+            servicio del caficultor
           </h1>
           <p
             className="editorial-reveal mt-8 max-w-[56ch] text-lg leading-8 text-paper/80 lg:text-xl"
@@ -47,15 +47,15 @@ export function Hero() {
             style={{ animationDelay: "360ms" }}
           >
             <Link
-              to="/ecosistema"
-              className="group inline-flex items-center gap-2 rounded-full bg-lime px-7 py-4 text-sm font-bold text-forest-deep transition-transform hover:-translate-y-0.5"
+              to="/servicios"
+              className="group inline-flex min-h-12 items-center gap-2 rounded-full bg-lime px-7 py-4 text-sm font-bold text-forest-deep shadow-[0_12px_28px_-14px_oklch(0.766_0.166_130/0.8)] transition-all duration-200 hover:-translate-y-1 hover:bg-paper hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime focus-visible:ring-offset-2 focus-visible:ring-offset-forest-deep active:translate-y-0"
             >
-              Conocer el ecosistema
+              Explorar servicios
               <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
             </Link>
             <Link
               to="/asociarme"
-              className="inline-flex items-center rounded-full border border-paper/35 px-7 py-4 text-sm font-bold transition-colors hover:bg-paper hover:text-forest-deep"
+              className="inline-flex min-h-12 items-center rounded-full border border-paper/35 bg-paper/5 px-7 py-4 text-sm font-bold backdrop-blur-sm transition-all duration-200 hover:-translate-y-1 hover:border-paper hover:bg-paper hover:text-forest-deep hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-paper focus-visible:ring-offset-2 focus-visible:ring-offset-forest-deep active:translate-y-0"
             >
               Quiero asociarme
             </Link>

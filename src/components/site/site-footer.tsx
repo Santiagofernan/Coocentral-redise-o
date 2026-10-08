@@ -1,4 +1,4 @@
-import { ArrowUpRight, Facebook, Instagram, Youtube } from "lucide-react";
+import { ArrowUpRight, Facebook, Instagram, Music2, Youtube } from "lucide-react";
 import { Link, useRouterState } from "@tanstack/react-router";
 
 import logo from "@/assets/coocentral-logo.svg";
@@ -8,6 +8,7 @@ const socialIcons = {
   Facebook,
   Instagram,
   YouTube: Youtube,
+  TikTok: Music2,
 } as const;
 
 export function SiteFooter() {

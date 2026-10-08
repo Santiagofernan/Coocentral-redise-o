@@ -15,17 +15,15 @@ import { Route as AreaDeCafeRouteImport } from './routes/area-de-cafe'
 import { Route as AsociarmeRouteImport } from './routes/asociarme'
 import { Route as CafeRouteImport } from './routes/cafe'
 import { Route as ContactoRouteImport } from './routes/contacto'
-import { Route as CoonectateRouteImport } from './routes/coonectate'
 import { Route as CooperativaRouteImport } from './routes/cooperativa'
 import { Route as CoworkingRouteImport } from './routes/coworking'
-import { Route as EcosistemaRouteImport } from './routes/ecosistema'
+import { Route as CreditoYCarteraRouteImport } from './routes/credito-y-cartera'
 import { Route as HistoriaRouteImport } from './routes/historia'
-import { Route as NoticiasRouteImport } from './routes/noticias'
 import { Route as PicRouteImport } from './routes/pic'
 import { Route as ServiciosRouteImport } from './routes/servicios'
 import { Route as SostenibilidadRouteImport } from './routes/sostenibilidad'
 import { Route as TiendasKahveRouteImport } from './routes/tiendas-kahve'
-import { Route as NoticiaSlugRouteImport } from './routes/noticia.$slug'
+import { Route as LineaCreditoSlugRouteImport } from './routes/linea-credito.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -57,11 +55,6 @@ const ContactoRoute = ContactoRouteImport.update({
   path: '/contacto',
   getParentRoute: () => rootRouteImport,
 } as any)
-const CoonectateRoute = CoonectateRouteImport.update({
-  id: '/coonectate',
-  path: '/coonectate',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const CooperativaRoute = CooperativaRouteImport.update({
   id: '/cooperativa',
   path: '/cooperativa',
@@ -72,19 +65,14 @@ const CoworkingRoute = CoworkingRouteImport.update({
   path: '/coworking',
   getParentRoute: () => rootRouteImport,
 } as any)
-const EcosistemaRoute = EcosistemaRouteImport.update({
-  id: '/ecosistema',
-  path: '/ecosistema',
+const CreditoYCarteraRoute = CreditoYCarteraRouteImport.update({
+  id: '/credito-y-cartera',
+  path: '/credito-y-cartera',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HistoriaRoute = HistoriaRouteImport.update({
   id: '/historia',
   path: '/historia',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const NoticiasRoute = NoticiasRouteImport.update({
-  id: '/noticias',
-  path: '/noticias',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PicRoute = PicRouteImport.update({
@@ -107,9 +95,9 @@ const TiendasKahveRoute = TiendasKahveRouteImport.update({
   path: '/tiendas-kahve',
   getParentRoute: () => rootRouteImport,
 } as any)
-const NoticiaSlugRoute = NoticiaSlugRouteImport.update({
-  id: '/noticia/$slug',
-  path: '/noticia/$slug',
+const LineaCreditoSlugRoute = LineaCreditoSlugRouteImport.update({
+  id: '/linea-credito/$slug',
+  path: '/linea-credito/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -120,17 +108,15 @@ export interface FileRoutesByFullPath {
   '/asociarme': typeof AsociarmeRoute
   '/cafe': typeof CafeRoute
   '/contacto': typeof ContactoRoute
-  '/coonectate': typeof CoonectateRoute
   '/cooperativa': typeof CooperativaRoute
   '/coworking': typeof CoworkingRoute
-  '/ecosistema': typeof EcosistemaRoute
+  '/credito-y-cartera': typeof CreditoYCarteraRoute
   '/historia': typeof HistoriaRoute
-  '/noticias': typeof NoticiasRoute
   '/pic': typeof PicRoute
   '/servicios': typeof ServiciosRoute
   '/sostenibilidad': typeof SostenibilidadRoute
   '/tiendas-kahve': typeof TiendasKahveRoute
-  '/noticia/$slug': typeof NoticiaSlugRoute
+  '/linea-credito/$slug': typeof LineaCreditoSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -139,17 +125,15 @@ export interface FileRoutesByTo {
   '/asociarme': typeof AsociarmeRoute
   '/cafe': typeof CafeRoute
   '/contacto': typeof ContactoRoute
-  '/coonectate': typeof CoonectateRoute
   '/cooperativa': typeof CooperativaRoute
   '/coworking': typeof CoworkingRoute
-  '/ecosistema': typeof EcosistemaRoute
+  '/credito-y-cartera': typeof CreditoYCarteraRoute
   '/historia': typeof HistoriaRoute
-  '/noticias': typeof NoticiasRoute
   '/pic': typeof PicRoute
   '/servicios': typeof ServiciosRoute
   '/sostenibilidad': typeof SostenibilidadRoute
   '/tiendas-kahve': typeof TiendasKahveRoute
-  '/noticia/$slug': typeof NoticiaSlugRoute
+  '/linea-credito/$slug': typeof LineaCreditoSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -159,17 +143,15 @@ export interface FileRoutesById {
   '/asociarme': typeof AsociarmeRoute
   '/cafe': typeof CafeRoute
   '/contacto': typeof ContactoRoute
-  '/coonectate': typeof CoonectateRoute
   '/cooperativa': typeof CooperativaRoute
   '/coworking': typeof CoworkingRoute
-  '/ecosistema': typeof EcosistemaRoute
+  '/credito-y-cartera': typeof CreditoYCarteraRoute
   '/historia': typeof HistoriaRoute
-  '/noticias': typeof NoticiasRoute
   '/pic': typeof PicRoute
   '/servicios': typeof ServiciosRoute
   '/sostenibilidad': typeof SostenibilidadRoute
   '/tiendas-kahve': typeof TiendasKahveRoute
-  '/noticia/$slug': typeof NoticiaSlugRoute
+  '/linea-credito/$slug': typeof LineaCreditoSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -180,17 +162,15 @@ export interface FileRouteTypes {
     | '/asociarme'
     | '/cafe'
     | '/contacto'
-    | '/coonectate'
     | '/cooperativa'
     | '/coworking'
-    | '/ecosistema'
+    | '/credito-y-cartera'
     | '/historia'
-    | '/noticias'
     | '/pic'
     | '/servicios'
     | '/sostenibilidad'
     | '/tiendas-kahve'
-    | '/noticia/$slug'
+    | '/linea-credito/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -199,17 +179,15 @@ export interface FileRouteTypes {
     | '/asociarme'
     | '/cafe'
     | '/contacto'
-    | '/coonectate'
     | '/cooperativa'
     | '/coworking'
-    | '/ecosistema'
+    | '/credito-y-cartera'
     | '/historia'
-    | '/noticias'
     | '/pic'
     | '/servicios'
     | '/sostenibilidad'
     | '/tiendas-kahve'
-    | '/noticia/$slug'
+    | '/linea-credito/$slug'
   id:
     | '__root__'
     | '/'
@@ -218,17 +196,15 @@ export interface FileRouteTypes {
     | '/asociarme'
     | '/cafe'
     | '/contacto'
-    | '/coonectate'
     | '/cooperativa'
     | '/coworking'
-    | '/ecosistema'
+    | '/credito-y-cartera'
     | '/historia'
-    | '/noticias'
     | '/pic'
     | '/servicios'
     | '/sostenibilidad'
     | '/tiendas-kahve'
-    | '/noticia/$slug'
+    | '/linea-credito/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -238,17 +214,15 @@ export interface RootRouteChildren {
   AsociarmeRoute: typeof AsociarmeRoute
   CafeRoute: typeof CafeRoute
   ContactoRoute: typeof ContactoRoute
-  CoonectateRoute: typeof CoonectateRoute
   CooperativaRoute: typeof CooperativaRoute
   CoworkingRoute: typeof CoworkingRoute
-  EcosistemaRoute: typeof EcosistemaRoute
+  CreditoYCarteraRoute: typeof CreditoYCarteraRoute
   HistoriaRoute: typeof HistoriaRoute
-  NoticiasRoute: typeof NoticiasRoute
   PicRoute: typeof PicRoute
   ServiciosRoute: typeof ServiciosRoute
   SostenibilidadRoute: typeof SostenibilidadRoute
   TiendasKahveRoute: typeof TiendasKahveRoute
-  NoticiaSlugRoute: typeof NoticiaSlugRoute
+  LineaCreditoSlugRoute: typeof LineaCreditoSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -295,13 +269,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactoRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/coonectate': {
-      id: '/coonectate'
-      path: '/coonectate'
-      fullPath: '/coonectate'
-      preLoaderRoute: typeof CoonectateRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/cooperativa': {
       id: '/cooperativa'
       path: '/cooperativa'
@@ -316,11 +283,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CoworkingRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/ecosistema': {
-      id: '/ecosistema'
-      path: '/ecosistema'
-      fullPath: '/ecosistema'
-      preLoaderRoute: typeof EcosistemaRouteImport
+    '/credito-y-cartera': {
+      id: '/credito-y-cartera'
+      path: '/credito-y-cartera'
+      fullPath: '/credito-y-cartera'
+      preLoaderRoute: typeof CreditoYCarteraRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/historia': {
@@ -328,13 +295,6 @@ declare module '@tanstack/react-router' {
       path: '/historia'
       fullPath: '/historia'
       preLoaderRoute: typeof HistoriaRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/noticias': {
-      id: '/noticias'
-      path: '/noticias'
-      fullPath: '/noticias'
-      preLoaderRoute: typeof NoticiasRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/pic': {
@@ -365,11 +325,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TiendasKahveRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/noticia/$slug': {
-      id: '/noticia/$slug'
-      path: '/noticia/$slug'
-      fullPath: '/noticia/$slug'
-      preLoaderRoute: typeof NoticiaSlugRouteImport
+    '/linea-credito/$slug': {
+      id: '/linea-credito/$slug'
+      path: '/linea-credito/$slug'
+      fullPath: '/linea-credito/$slug'
+      preLoaderRoute: typeof LineaCreditoSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -382,17 +342,15 @@ const rootRouteChildren: RootRouteChildren = {
   AsociarmeRoute: AsociarmeRoute,
   CafeRoute: CafeRoute,
   ContactoRoute: ContactoRoute,
-  CoonectateRoute: CoonectateRoute,
   CooperativaRoute: CooperativaRoute,
   CoworkingRoute: CoworkingRoute,
-  EcosistemaRoute: EcosistemaRoute,
+  CreditoYCarteraRoute: CreditoYCarteraRoute,
   HistoriaRoute: HistoriaRoute,
-  NoticiasRoute: NoticiasRoute,
   PicRoute: PicRoute,
   ServiciosRoute: ServiciosRoute,
   SostenibilidadRoute: SostenibilidadRoute,
   TiendasKahveRoute: TiendasKahveRoute,
-  NoticiaSlugRoute: NoticiaSlugRoute,
+  LineaCreditoSlugRoute: LineaCreditoSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

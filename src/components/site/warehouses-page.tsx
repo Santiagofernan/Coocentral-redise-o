@@ -1,7 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import {
   ArrowLeft,
-  ArrowRight,
   ArrowUpRight,
   Clock3,
   Cog,
@@ -40,13 +39,6 @@ export function WarehousesPage() {
                 className="size-4 transition-transform duration-200 group-hover:-translate-x-1"
               />
               Volver a servicios
-            </Link>
-            <Link
-              to="/ecosistema"
-              className="inline-flex min-h-10 items-center gap-1.5 rounded-full px-3 text-sm font-semibold text-paper/65 transition-colors hover:text-lime"
-            >
-              Ver ecosistema
-              <ArrowRight aria-hidden="true" className="size-4" />
             </Link>
           </div>
           <div className="mt-10 grid gap-8 lg:grid-cols-12 lg:items-end lg:gap-10">

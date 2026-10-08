@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
-import qualityImage from "@/assets/coocentral-calidad.jpg";
+import qualityImage from "@/assets/Servicios/Cafes_coocentral/Cafe.webp";
 import { valueChain } from "@/content/coocentral";
 
 const processDetails = [

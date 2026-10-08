@@ -1,6 +1,5 @@
 import { Quote } from "lucide-react";
 
-import territoryImage from "@/assets/coocentral-territorio.jpg";
 import { benefits, productivityPrograms, quotes, socialInvestment } from "@/content/coocentral";
 
 import { SectionHeading } from "./section-heading";
@@ -23,27 +22,24 @@ export function FarmerCenter() {
         />
 
         <div className="mt-14 grid gap-5 lg:grid-cols-12">
-          <figure className="reveal relative isolate overflow-hidden rounded-3xl lg:col-span-7">
-            <img
-              src={territoryImage}
-              alt="Familia caficultora recorriendo una finca del Huila"
-              loading="lazy"
-              width="1536"
-              height="864"
-              className="aspect-[4/3] size-full object-cover lg:aspect-auto"
+          <blockquote className="reveal relative flex min-h-80 flex-col justify-end overflow-hidden rounded-3xl bg-forest-deep p-7 text-paper lg:col-span-7 lg:p-10">
+            <span
+              aria-hidden="true"
+              className="absolute -right-14 -top-20 size-72 rounded-full border border-lime/15"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-forest-deep/90 via-forest-deep/20 to-transparent" />
-            <figcaption className="absolute inset-x-0 bottom-0 p-6 text-paper lg:p-10">
-              <Quote className="size-7 text-lime" />
-              <blockquote className="mt-3 max-w-xl font-display text-xl italic leading-snug lg:text-2xl">
-                “{quotes.farmer.text}”
-              </blockquote>
-              <p className="mt-4 text-sm">
-                <span className="font-bold text-lime">{quotes.farmer.author}</span>
-                <span className="text-paper/70"> · {quotes.farmer.role}</span>
-              </p>
-            </figcaption>
-          </figure>
+            <span
+              aria-hidden="true"
+              className="absolute -right-2 -top-8 size-48 rounded-full border border-paper/10"
+            />
+            <Quote aria-hidden="true" className="relative size-7 text-lime" />
+            <p className="relative mt-5 max-w-xl font-display text-xl italic leading-snug lg:text-2xl">
+              “{quotes.farmer.text}”
+            </p>
+            <footer className="relative mt-5 text-sm">
+              <span className="font-bold text-lime">{quotes.farmer.author}</span>
+              <span className="text-paper/70"> · {quotes.farmer.role}</span>
+            </footer>
+          </blockquote>
 
           <article className="reveal flex flex-col rounded-3xl bg-forest p-8 text-paper lg:col-span-5 lg:p-10">
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-lime">
@@ -82,7 +78,9 @@ export function FarmerCenter() {
           </article>
         </div>
 
-        <h3 className="reveal mt-24 text-3xl font-medium lg:text-4xl">Bienestar para el asociado</h3>
+        <h3 className="reveal mt-24 text-3xl font-medium lg:text-4xl">
+          Bienestar para el asociado
+        </h3>
         <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {benefits.map(({ icon: Icon, title, text }) => (
             <li

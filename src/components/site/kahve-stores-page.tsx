@@ -1,8 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight, ArrowUpRight, Coffee, MapPin, Store } from "lucide-react";
 
-import coffeeQualityImage from "@/assets/coocentral-calidad.jpg";
-import coffeeGrowerImage from "@/assets/coocentral-caficultor-hero.jpg";
+import coffeeQualityImage from "@/assets/Servicios/Nueva carpeta/Plaza Rosario y Café Kahvé.png";
+import coocentralCoffeeImage from "@/assets/Servicios/Cafes_coocentral/Cafe.webp";
 
 const kahveStores = [
   {
@@ -69,7 +69,7 @@ export function KahveStoresPage() {
               <figure className="relative col-span-3 mt-8 overflow-hidden rounded-[1.75rem] border border-paper/15 bg-paper/10 p-2 shadow-2xl">
                 <img
                   src={coffeeQualityImage}
-                  alt="Selección de café verde como parte del cuidado de la calidad desde el origen"
+                  alt="Tienda Kahvé en el centro comercial Plaza Rosario"
                   width="1024"
                   height="768"
                   fetchPriority="high"
@@ -81,10 +81,8 @@ export function KahveStoresPage() {
               </figure>
               <figure className="relative col-span-2 mb-8 mt-20 overflow-hidden rounded-[1.75rem] border border-paper/15 bg-paper/10 p-2 shadow-2xl">
                 <img
-                  src={coffeeGrowerImage}
-                  alt="Caficultor del Huila en su cultivo"
-                  width="1200"
-                  height="1600"
+                  src={coocentralCoffeeImage}
+                  alt="Presentación de cafés tostados Coocentral"
                   className="aspect-[3/4] w-full rounded-[1.25rem] object-cover"
                 />
                 <figcaption className="absolute inset-x-2 bottom-2 rounded-b-[1.25rem] bg-gradient-to-t from-forest-deep/90 to-transparent px-3 pb-3 pt-10 text-xs font-semibold text-paper">
