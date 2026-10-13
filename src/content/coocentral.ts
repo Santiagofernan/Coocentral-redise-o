@@ -42,13 +42,27 @@ import creditAnticipoSecadoImage from "@/assets/creditos/anticipo-secado.png";
 import creditCupoGeneralImage from "@/assets/creditos/cupo-general.png";
 import creditCheque30DiasImage from "@/assets/creditos/cheque-30-dias.png";
 import creditParticularesImage from "@/assets/creditos/credito-particulares.png";
-import creditCostsGuaranteesImage from "@/assets/creditos/costos-y-garantias.png";
+import creditCostsGuaranteesImage from "@/assets/creditos/costos-y-garantias.webp";
+import history1975GarzonImage from "@/assets/Historia/1975-coocentral-garzon.jpg";
+import history1975GiganteImage from "@/assets/Historia/1975-coocentral-gigante.jpg";
+import history1980DryingPlantImage from "@/assets/Historia/1980-planta-secado.jpg";
+import historySocialDevelopmentImage from "@/assets/Historia/1997-desarrollo-social.jpg";
+import historyAdministrativeOfficeImage from "@/assets/Historia/2009-sede-administrativa.jpg";
+import historyFleetImage from "@/assets/Historia/2010-flota.jpg";
+import historyIndustrialParkImage from "@/assets/Historia/2012-parque-industrial.jpg";
+import historyHotelImage from "@/assets/Historia/2013-hotel-kahve.jpg";
+import historyCoffeeBrandImage from "@/assets/Historia/2015-marca-cafe.jpg";
+import historyKahveStoresImage from "@/assets/Historia/2017-tiendas-kahve.jpg";
+import historyAppImage from "@/assets/Historia/2020-app.gif";
+import historyCoworkingImage from "@/assets/Historia/2021-coworking.jpg";
+import historyExportImage from "@/assets/Historia/2022-exportacion-directa.jpg";
+import historyCoffeeCherriesImage from "@/assets/Historia/2024-ferticoolombia.jpg";
+import historyAnniversaryImage from "@/assets/Historia/2025-50-anios.png";
 
 // Todo el contenido proviene del informe institucional (docs/informe-coocentral.pdf),
 // salvo teléfonos, redes y enlaces legales, tomados de www.coocentral.com.
 
 export const links = {
-  store: "https://www.cafescoocentral.com.co/",
   app: "https://play.google.com/store/apps/details?id=com.coocentral.app&hl=es_CO",
   appStore: "https://apps.apple.com/co/app/nueva-app-red-coopcentral/id6742431196",
   requirements: "https://coocentral.com/requisitos/",
@@ -217,35 +231,92 @@ export const timeline = [
   {
     year: "1975",
     text: "54 pioneros fundan COOCENTRAL en Garzón. Nace la asistencia técnica que dará raíz a FUNDECAFÉ.",
+    image: history1975GarzonImage,
+    imageAlt: "Fotografía histórica de Coocentral en Garzón",
   },
   {
     year: "1976",
     text: "Recursos del Fondo Nacional del Café para comprar café y dotar los primeros almacenes.",
+    image: history1975GiganteImage,
+    imageAlt: "Fotografía histórica de la cooperativa en Gigante",
   },
   {
     year: "1980–2000",
     text: "Planta de secado en Garzón, inversión en Expocafé Trillas y Casa del Café en Guadalupe.",
+    image: history1980DryingPlantImage,
+    imageAlt: "Planta de secado de café en Garzón",
   },
   {
     year: "2007",
     text: "Nace el Área de Desarrollo Social y se estructura el crédito supervisado.",
+    image: historySocialDevelopmentImage,
+    imageAlt: "Jornada histórica de desarrollo social de Coocentral",
   },
-  { year: "2010", text: "Sede administrativa propia en el Centro Comercial El Molino." },
-  { year: "2011", text: "Expansión de la red regional de Almacenes Coocentral." },
-  { year: "2012", text: "Creación de Inversiones Coocentral y apertura del Hotel Kahvé." },
-  { year: "2013", text: "Parque Industrial del Café y creación de Ferticoolombia." },
-  { year: "2015", text: "Lanzamiento de la marca propia Café Coocentral." },
-  { year: "2017", text: "Inauguración de las Tiendas Kahvé de cafés especiales." },
-  { year: "2020", text: "Coocentral App y canal Coocentral TV en los fielatos." },
-  { year: "2021", text: "Salas de Cooworking para capacitación e innovación." },
-  { year: "2022", text: "Plataformas A-Catar (trazabilidad SCA) y Finapp (crédito)." },
+  {
+    year: "2010",
+    text: "Sede administrativa propia en el Centro Comercial El Molino.",
+    image: historyAdministrativeOfficeImage,
+    imageAlt: "Sede administrativa de Coocentral",
+  },
+  {
+    year: "2011",
+    text: "Expansión de la red regional de Almacenes Coocentral.",
+    image: historyFleetImage,
+    imageAlt: "Vehículos de la flota de Coocentral",
+  },
+  {
+    year: "2012",
+    text: "Creación de Inversiones Coocentral y apertura del Hotel Kahvé.",
+    image: historyHotelImage,
+    imageAlt: "Hotel Kahvé en Garzón",
+  },
+  {
+    year: "2013",
+    text: "Parque Industrial del Café y creación de Ferticoolombia.",
+    image: historyIndustrialParkImage,
+    imageAlt: "Instalaciones del Parque Industrial del Café",
+  },
+  {
+    year: "2015",
+    text: "Lanzamiento de la marca propia Café Coocentral.",
+    image: historyCoffeeBrandImage,
+    imageAlt: "Marca Café Coocentral",
+  },
+  {
+    year: "2017",
+    text: "Inauguración de las Tiendas Kahvé de cafés especiales.",
+    image: historyKahveStoresImage,
+    imageAlt: "Tiendas Kahvé de cafés especiales",
+  },
+  {
+    year: "2020",
+    text: "Coocentral App y canal Coocentral TV en los fielatos.",
+    image: historyAppImage,
+    imageAlt: "Aplicación móvil de Coocentral",
+  },
+  {
+    year: "2021",
+    text: "Salas de Cooworking para capacitación e innovación.",
+    image: historyCoworkingImage,
+    imageAlt: "Espacio de coworking de Coocentral",
+  },
+  {
+    year: "2022",
+    text: "Plataformas A-Catar (trazabilidad SCA) y Finapp (crédito).",
+    image: historyExportImage,
+    imageAlt: "Sacos de café preparados para su comercialización",
+  },
   {
     year: "2023–2024",
     text: "Central de Acopio y Planta Mezcladora de Fertilizantes.",
+    image: historyCoffeeCherriesImage,
+    imageAlt: "Cerezas de café del Huila",
   },
   {
     year: "2025",
     text: "Medio siglo de liderazgo transformador, rentabilidad y sostenibilidad.",
+    image: historyAnniversaryImage,
+    imageAlt: "Conmemoración de los 50 años de Coocentral",
   },
 ];
 
@@ -340,9 +411,9 @@ export const membershipEligibility = [
   },
 ];
 
-type ChainStep = { icon: LucideIcon; label: string };
+type CoffeeProcessStep = { icon: LucideIcon; label: string };
 
-export const valueChain: ChainStep[] = [
+export const coffeeProcessSteps: CoffeeProcessStep[] = [
   { icon: Sprout, label: "Finca" },
   { icon: Bean, label: "Recolección" },
   { icon: Scale, label: "Compra y fielato" },
@@ -352,39 +423,6 @@ export const valueChain: ChainStep[] = [
   { icon: Package, label: "Empaque" },
   { icon: Ship, label: "Exportación" },
   { icon: Users, label: "Consumidor final" },
-];
-
-export const specialtyCoffees = [
-  {
-    title: "Mujeres Cafeteras",
-    profile: "Selección producida por asociadas, con perfiles balanceados y notas dulce-frutales.",
-    impact: "Equidad de género y autonomía financiera femenina.",
-  },
-  {
-    title: "Jóvenes Empresarios",
-    profile: "Procesos naturales y fermentaciones controladas de la juventud cafetera.",
-    impact: "Arraigo territorial y relevo generacional.",
-  },
-  {
-    title: "Premium Excelso",
-    profile: "Protocolos estrictos de recolección y secado diseñados por la cooperativa.",
-    impact: "Perfiles superiores para compradores institucionales.",
-  },
-  {
-    title: "Regional",
-    profile: "Microclimas y suelos volcánicos del centro del Huila.",
-    impact: "Sobreprecios por origen y primas de calidad al productor.",
-  },
-  {
-    title: "Varietales",
-    profile: "Bourbon, Geisha, Castillo y Cenicafé 1 con perfiles exóticos.",
-    impact: "Nichos de alto valor y cafeterías de tercera ola.",
-  },
-  {
-    title: "Microlotes",
-    profile: "Finca única con procesos pre y post-cosecha a medida.",
-    impact: "Máxima expresión sensorial y trazabilidad directa.",
-  },
 ];
 
 export const creditImpact = [
@@ -901,16 +939,6 @@ export const serviceShowcase: ServiceShowcase[] = [
     image: coocentralCoffeeImage,
     imageAlt: "Presentación de cafés tostados Coocentral",
     href: "/area-de-cafe",
-  },
-  {
-    id: "cafe-coocentral",
-    title: "Cafés Coocentral",
-    summary:
-      "Café tostado de origen Huila, desde opciones clásicas hasta cafés especiales y ediciones de origen para distintos momentos y preparaciones.",
-    image: coocentralCoffeeImage,
-    imageAlt: "Variedades de café tostado Coocentral",
-    href: "https://www.cafescoocentral.com.co/",
-    action: "Visitar tienda de café",
   },
   {
     id: "hoteles-kahve",

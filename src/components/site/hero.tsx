@@ -17,12 +17,60 @@ export function Hero() {
         width="2048"
         height="768"
         fetchPriority="high"
-        className="hero-zoom absolute inset-0 -z-20 size-full object-cover object-left"
+        className="hero-zoom absolute inset-x-0 top-0 -z-20 h-auto w-full object-contain object-top lg:inset-0 lg:size-full lg:object-cover lg:object-left"
       />
-      <div className="absolute inset-0 -z-10 bg-linear-to-r from-forest-deep via-forest-deep/80 to-forest-deep/10" />
-      <div className="absolute inset-0 -z-10 bg-linear-to-t from-forest-deep via-transparent to-forest-deep/50" />
+      <div className="absolute inset-0 -z-10 bg-linear-to-b from-forest-deep/10 via-transparent to-forest-deep/85 lg:bg-linear-to-r lg:from-forest-deep lg:via-forest-deep/80 lg:to-forest-deep/10" />
+      <div className="absolute inset-0 -z-10 bg-linear-to-t from-forest-deep/70 via-transparent to-transparent lg:from-forest-deep lg:to-forest-deep/50" />
 
-      <div className="mx-auto w-full max-w-7xl px-5 pb-16 pt-32 lg:px-10 lg:pb-24">
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
+        <svg
+          viewBox="0 0 36 60"
+          fill="none"
+          className="nature-leaf nature-leaf--one absolute -top-16 left-[18%] size-8 text-lime/45"
+        >
+          <path
+            d="M18 3C8 12 4 24 10 34c2 4 5 6 8 7 3-1 6-3 8-7 6-10 2-22-8-31Z"
+            fill="currentColor"
+          />
+          <path
+            d="M18 40V13m0 16-7-8m7 1 7-8"
+            stroke="oklch(0.22 0.045 158 / 0.55)"
+            strokeWidth="1.2"
+          />
+        </svg>
+        <svg
+          viewBox="0 0 36 60"
+          fill="none"
+          className="nature-leaf nature-leaf--two absolute -top-20 left-[57%] size-6 text-lime/35"
+        >
+          <path
+            d="M18 3C8 12 4 24 10 34c2 4 5 6 8 7 3-1 6-3 8-7 6-10 2-22-8-31Z"
+            fill="currentColor"
+          />
+          <path
+            d="M18 40V13m0 16-7-8m7 1 7-8"
+            stroke="oklch(0.22 0.045 158 / 0.55)"
+            strokeWidth="1.2"
+          />
+        </svg>
+        <svg
+          viewBox="0 0 36 60"
+          fill="none"
+          className="nature-leaf nature-leaf--three absolute -top-24 left-[82%] size-7 text-paper/30"
+        >
+          <path
+            d="M18 3C8 12 4 24 10 34c2 4 5 6 8 7 3-1 6-3 8-7 6-10 2-22-8-31Z"
+            fill="currentColor"
+          />
+          <path
+            d="M18 40V13m0 16-7-8m7 1 7-8"
+            stroke="oklch(0.22 0.045 158 / 0.55)"
+            strokeWidth="1.2"
+          />
+        </svg>
+      </div>
+
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-5 pt-[calc(100vw*0.375+1.5rem)] pb-12 lg:px-10 lg:pt-32 lg:pb-24">
         <div className="max-w-4xl">
           <p className="editorial-reveal inline-flex items-center gap-3 rounded-full border border-paper/20 bg-paper/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] backdrop-blur-sm">
             <span className="size-2 animate-pulse rounded-full bg-lime" />

@@ -22,11 +22,11 @@ export function WarehousesPage() {
       <section className="relative isolate overflow-hidden bg-forest-deep text-paper">
         <div
           aria-hidden="true"
-          className="absolute -right-28 -top-40 -z-10 size-[34rem] rounded-full border border-lime/15"
+          className="absolute -right-28 -top-40 -z-10 h-[34rem] w-[34rem] rounded-full border border-lime/15"
         />
         <div
           aria-hidden="true"
-          className="absolute -right-16 -top-28 -z-10 size-[26rem] rounded-full border border-lime/10"
+          className="absolute -right-16 -top-28 -z-10 h-[26rem] w-[26rem] rounded-full border border-lime/10"
         />
         <div className="mx-auto max-w-7xl px-5 py-10 sm:py-14 lg:px-10 lg:py-16">
           <div className="flex flex-wrap items-center justify-between gap-3">

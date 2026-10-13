@@ -25,13 +25,10 @@ import {
   mission,
   principles,
   serviceShowcase,
-  specialtyCoffees,
   sustainabilityPillars,
   vision,
 } from "@/content/coocentral";
 import { FarmerCenter } from "@/components/site/farmer-center";
-import { CoffeePlantAnimation } from "@/components/site/coffee-plant-animation";
-import { CoffeeProcessExplorer } from "@/components/site/coffee-process-explorer";
 import { PhoneContactDialog } from "@/components/site/phone-contact-dialog";
 
 export function PageIntro({
@@ -563,59 +560,6 @@ export function MembershipPage() {
             Contactar a Coocentral
             <ArrowRight className="size-4" />
           </Link>
-        </div>
-      </section>
-    </main>
-  );
-}
-
-export function CoffeePage() {
-  return (
-    <main>
-      <section className="border-b border-border bg-sand">
-        <div className="mx-auto grid max-w-7xl items-center gap-8 px-5 py-12 sm:py-16 lg:grid-cols-12 lg:gap-12 lg:px-10 lg:py-20">
-          <div className="lg:col-span-7">
-            <p className="text-xs font-bold uppercase tracking-[0.18em] text-brand">
-              Café Coocentral
-            </p>
-            <h1 className="mt-4 max-w-4xl font-display text-4xl font-medium leading-tight sm:text-5xl lg:text-6xl">
-              Del origen huilense a cada taza
-            </h1>
-            <p className="mt-5 max-w-3xl text-base leading-7 text-ink/70 lg:text-lg">
-              Acompañamos el café desde la finca y la selección del grano hasta la transformación,
-              el empaque y la comercialización.
-            </p>
-          </div>
-          <div className="relative lg:col-span-5">
-            <CoffeePlantAnimation />
-            <p className="mt-1 text-center text-xs font-medium uppercase tracking-[0.16em] text-brand/75">
-              De la semilla nace el origen
-            </p>
-          </div>
-        </div>
-      </section>
-      <CoffeeProcessExplorer />
-      <section className="border-y border-border bg-paper">
-        <div className="mx-auto max-w-7xl px-5 py-14 lg:px-10 lg:py-20">
-          <SectionTitle eyebrow="Origen y diversidad" title="Cafés con identidad propia" />
-          <ul className="grid gap-x-10 sm:grid-cols-2 lg:grid-cols-3">
-            {specialtyCoffees.map((coffee) => (
-              <li key={coffee.title} className="border-t border-border py-5">
-                <h3 className="font-display text-xl font-medium">{coffee.title}</h3>
-                <p className="mt-2 text-sm leading-6 text-ink/65">{coffee.profile}</p>
-                <p className="mt-3 text-xs font-semibold text-brand">{coffee.impact}</p>
-              </li>
-            ))}
-          </ul>
-          <a
-            href="https://www.cafescoocentral.com.co/"
-            target="_blank"
-            rel="noreferrer"
-            className="mt-8 inline-flex items-center gap-2 bg-brand px-5 py-3 text-sm font-semibold text-paper hover:bg-forest"
-          >
-            Visitar tienda virtual
-            <ArrowUpRight className="size-4" />
-          </a>
         </div>
       </section>
     </main>

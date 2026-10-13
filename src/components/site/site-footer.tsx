@@ -101,7 +101,7 @@ export function SiteFooter() {
                       className="group inline-flex min-h-11 items-center gap-2 rounded-full border border-paper/15 bg-paper/5 py-1 pl-1 pr-3 text-xs font-semibold text-paper/75 transition-colors hover:border-lime/50 hover:bg-paper/10 hover:text-paper focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime focus-visible:ring-offset-2 focus-visible:ring-offset-forest-deep"
                     >
                       <span className="grid size-9 place-items-center rounded-full bg-paper/10 text-lime transition-colors group-hover:bg-lime group-hover:text-forest-deep">
-                        <SocialIcon aria-hidden="true" className="size-[18px]" />
+                        <SocialIcon aria-hidden="true" className="h-[18px] w-[18px]" />
                       </span>
                       {social.label}
                       <ArrowUpRight

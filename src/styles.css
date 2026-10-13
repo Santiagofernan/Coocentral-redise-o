@@ -208,6 +208,30 @@
   }
 }
 
+@keyframes coffee-process-flip {
+  from {
+    transform: rotateY(90deg);
+  }
+  to {
+    transform: rotateY(0);
+  }
+}
+
+@keyframes leaf-fall {
+  from {
+    transform: translate3d(0, -2vh, 0) rotate(-20deg);
+  }
+  to {
+    transform: translate3d(9vw, 105vh, 0) rotate(260deg);
+  }
+}
+
+@keyframes roots-grow {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
 @keyframes app-screen-slide {
   from {
     transform: translateX(100%);
@@ -306,6 +330,42 @@
 
 .app-screen-transition {
   animation: app-screen-slide 500ms cubic-bezier(0.22, 0.68, 0, 1) both;
+}
+
+.coffee-process-visual {
+  perspective: 900px;
+}
+
+.coffee-process-vine {
+  color: var(--color-forest);
+  opacity: 0.58;
+}
+
+.coffee-process-illustration {
+  width: min(78%, 250px);
+  height: min(78%, 250px);
+  backface-visibility: hidden;
+  animation: coffee-process-flip 450ms cubic-bezier(0.22, 0.68, 0, 1) both;
+}
+
+.nature-leaf {
+  animation: leaf-fall 20s linear infinite;
+}
+
+.nature-leaf--two {
+  animation-duration: 24s;
+  animation-delay: -8s;
+}
+
+.nature-leaf--three {
+  animation-duration: 22s;
+  animation-delay: -15s;
+}
+
+.nature-root-path {
+  stroke-dasharray: 360;
+  stroke-dashoffset: 360;
+  animation: roots-grow 3s cubic-bezier(0.22, 0.68, 0, 1) 300ms forwards;
 }
 
 .app-phone-image {
@@ -448,15 +508,15 @@
   .hero-zoom,
   .marquee-track,
   .app-screen-transition,
-  .reveal {
-    animation: none;
-  }
-
   .coffee-plant-stem,
   .coffee-plant-branch,
   .coffee-plant-root,
   .coffee-plant-seed,
-  .coffee-plant-leaf {
+  .coffee-plant-leaf,
+  .nature-leaf,
+  .nature-root-path,
+  .coffee-process-illustration,
+  .reveal {
     animation: none;
   }
 
@@ -473,6 +533,10 @@
   .coffee-plant-leaf {
     opacity: 1;
     transform: none;
+  }
+
+  .nature-root-path {
+    stroke-dashoffset: 0;
   }
 }
 

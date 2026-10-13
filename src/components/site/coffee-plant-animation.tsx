@@ -34,14 +34,23 @@ export function CoffeePlantAnimation() {
         />
       </g>
       <g fill="none" stroke="#17653b" strokeLinecap="round" strokeWidth="4">
+        <path className="coffee-plant-stem" d="M180 240c-4-29 3-55 0-81-3-29 2-55 0-82" />
         <path
-          className="coffee-plant-stem"
-          d="M180 240c-4-29 3-55 0-81-3-29 2-55 0-82"
+          className="coffee-plant-branch coffee-plant-branch--one"
+          d="M179 198c-13-8-24-17-32-29"
         />
-        <path className="coffee-plant-branch coffee-plant-branch--one" d="M179 198c-13-8-24-17-32-29" />
-        <path className="coffee-plant-branch coffee-plant-branch--two" d="M181 177c13-8 25-17 34-29" />
-        <path className="coffee-plant-branch coffee-plant-branch--three" d="M179 148c-12-8-22-17-30-28" />
-        <path className="coffee-plant-branch coffee-plant-branch--four" d="M181 124c12-7 21-15 29-25" />
+        <path
+          className="coffee-plant-branch coffee-plant-branch--two"
+          d="M181 177c13-8 25-17 34-29"
+        />
+        <path
+          className="coffee-plant-branch coffee-plant-branch--three"
+          d="M179 148c-12-8-22-17-30-28"
+        />
+        <path
+          className="coffee-plant-branch coffee-plant-branch--four"
+          d="M181 124c12-7 21-15 29-25"
+        />
       </g>
       <g className="coffee-plant-leaf coffee-plant-leaf--one">
         <path d="M150 171c-22-1-37-14-40-34 21-2 38 9 45 27 2 4 0 7-5 7Z" fill="#398c46" />

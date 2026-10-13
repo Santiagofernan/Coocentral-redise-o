@@ -1,3 +1,4 @@
+import { useCallback, useEffect, useRef } from "react";
 import { ArrowRight, BookOpen, ChevronDown, Leaf, Mail, MapPin, Menu } from "lucide-react";
 import { Link, useRouterState } from "@tanstack/react-router";
 
@@ -14,7 +15,18 @@ const exploreIcons = {
 
 export function SiteHeader() {
   const pathname = useRouterState({ select: (state) => state.location.pathname });
-  const moreIsActive = moreNavigation.some((item) => item.href === pathname);
+  const exploreMenuRef = useRef<HTMLDetailsElement>(null);
+  const contactMenuRef = useRef<HTMLDetailsElement>(null);
+  const activeMoreItem = moreNavigation.find((item) => item.href === pathname);
+
+  const closeDropdownMenus = useCallback(() => {
+    exploreMenuRef.current?.removeAttribute("open");
+    contactMenuRef.current?.removeAttribute("open");
+  }, []);
+
+  useEffect(() => {
+    closeDropdownMenus();
+  }, [closeDropdownMenus, pathname]);
 
   return (
     <header className="sticky top-0 z-50 border-b border-brand/15 bg-paper/95 shadow-[0_8px_30px_-22px_oklch(0.22_0.045_158/0.55)] backdrop-blur-xl">
@@ -61,15 +73,15 @@ export function SiteHeader() {
               </li>
             ))}
             <li>
-              <details className="group relative">
+              <details ref={exploreMenuRef} className="group relative">
                 <summary
                   className={cn(
                     "flex h-10 cursor-pointer list-none items-center gap-1.5 rounded-full px-4 text-sm font-semibold text-ink/70 transition-all duration-200 hover:bg-paper hover:text-brand hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 [&::-webkit-details-marker]:hidden",
-                    moreIsActive &&
+                    activeMoreItem &&
                       "bg-forest text-paper shadow-sm hover:bg-forest hover:text-paper",
                   )}
                 >
-                  Explorar{" "}
+                  {activeMoreItem?.label ?? "Explorar"}{" "}
                   <ChevronDown className="size-4 transition-transform duration-200 group-open:rotate-180" />
                 </summary>
                 <div className="absolute right-0 top-full z-50 mt-3 w-[min(22rem,calc(100vw-2rem))] overflow-hidden rounded-2xl border border-brand/15 bg-paper text-ink shadow-[0_24px_70px_-24px_oklch(0.22_0.045_158/0.45)] transition-[opacity,transform] group-open:animate-in group-open:fade-in-0 group-open:slide-in-from-top-1">
@@ -91,6 +103,7 @@ export function SiteHeader() {
                           <Link
                             to={item.href}
                             onClick={() => {
+                              closeDropdownMenus();
                               if (item.href === "/" && pathname === "/") {
                                 window.scrollTo({ top: 0, behavior: "smooth" });
                               }
@@ -125,7 +138,7 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-1 sm:gap-2">
-          <details className="group relative hidden xl:block">
+          <details ref={contactMenuRef} className="group relative hidden xl:block">
             <summary className="group/contact inline-flex h-11 cursor-pointer list-none items-center gap-2 rounded-full bg-lime px-4 text-sm font-bold text-forest-deep shadow-[0_6px_18px_-10px_oklch(0.529_0.146_147.8/0.7)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-lime/90 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 active:translate-y-0 [&::-webkit-details-marker]:hidden">
               Contacto
               <ChevronDown className="size-4 transition-transform duration-200 group-open/contact:rotate-180" />
@@ -154,6 +167,7 @@ export function SiteHeader() {
                 ))}
                 <Link
                   to="/contacto"
+                  onClick={closeDropdownMenus}
                   className="group flex min-h-12 items-center gap-3 rounded-lg border border-transparent px-3 py-3 font-semibold text-ink/75 transition-all hover:translate-x-0.5 hover:border-brand/15 hover:bg-brand/5 hover:text-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
                 >
                   <Mail aria-hidden="true" className="size-5 shrink-0 text-brand" />
@@ -167,6 +181,7 @@ export function SiteHeader() {
               <div className="px-4 pb-4">
                 <Link
                   to="/contacto"
+                  onClick={closeDropdownMenus}
                   className="group inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-forest px-4 text-sm font-bold text-paper shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-brand hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 active:translate-y-0"
                 >
                   Escribirnos

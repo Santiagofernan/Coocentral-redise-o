@@ -1,8 +1,28 @@
 import { useState } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
-import qualityImage from "@/assets/Servicios/Cafes_coocentral/Cafe.webp";
-import { valueChain } from "@/content/coocentral";
+import processStage01 from "@/assets/Cafe/etapas/etapa-01.png";
+import processStage02 from "@/assets/Cafe/etapas/etapa-02.png";
+import processStage03 from "@/assets/Cafe/etapas/etapa-03.png";
+import processStage04 from "@/assets/Cafe/etapas/etapa-04.png";
+import processStage05 from "@/assets/Cafe/etapas/etapa-05.png";
+import processStage06 from "@/assets/Cafe/etapas/etapa-06.png";
+import processStage07 from "@/assets/Cafe/etapas/etapa-07.png";
+import processStage08 from "@/assets/Cafe/etapas/etapa-08.png";
+import processStage09 from "@/assets/Cafe/etapas/etapa-09.png";
+import { coffeeProcessSteps } from "@/content/coocentral";
+
+const processIllustrations = [
+  processStage01,
+  processStage02,
+  processStage03,
+  processStage04,
+  processStage05,
+  processStage06,
+  processStage07,
+  processStage08,
+  processStage09,
+] as const;
 
 const processDetails = [
   {
@@ -54,8 +74,14 @@ const processDetails = [
 
 export function CoffeeProcessExplorer() {
   const [activeStep, setActiveStep] = useState(0);
-  const selectedStep = valueChain[activeStep];
+  const selectedStep = coffeeProcessSteps[activeStep];
   const selectedDetail = processDetails[activeStep];
+  const selectedIllustration = processIllustrations[activeStep];
+
+  if (!selectedStep || !selectedDetail || !selectedIllustration) {
+    throw new Error(`Coffee process data is incomplete for stage ${activeStep + 1}.`);
+  }
+
   const StepIcon = selectedStep.icon;
 
   return (
@@ -74,7 +100,7 @@ export function CoffeeProcessExplorer() {
         </div>
 
         <ol className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-9">
-          {valueChain.map(({ icon: Icon, label }, index) => {
+          {coffeeProcessSteps.map(({ icon: Icon, label }, index) => {
             const isActive = index === activeStep;
 
             return (
@@ -107,7 +133,7 @@ export function CoffeeProcessExplorer() {
           })}
         </ol>
 
-        <div className="mt-5 grid overflow-hidden border border-border lg:grid-cols-12">
+        <div className="mt-5 border border-border lg:grid lg:grid-cols-12">
           <div
             className="flex flex-col justify-between gap-8 bg-sand/60 p-6 sm:p-8 lg:col-span-7 lg:p-10"
             aria-live="polite"
@@ -115,7 +141,7 @@ export function CoffeeProcessExplorer() {
           >
             <div>
               <p className="text-xs font-bold uppercase tracking-[0.16em] text-brand">
-                Etapa {String(activeStep + 1).padStart(2, "0")} de {valueChain.length}
+                Etapa {String(activeStep + 1).padStart(2, "0")} de {coffeeProcessSteps.length}
               </p>
               <div className="mt-5 flex items-start gap-4">
                 <span className="grid size-12 shrink-0 place-items-center rounded-full bg-lime/40 text-forest-deep">
@@ -144,8 +170,10 @@ export function CoffeeProcessExplorer() {
               <span className="text-xs font-medium text-ink/45">{selectedStep.label}</span>
               <button
                 type="button"
-                onClick={() => setActiveStep((step) => Math.min(valueChain.length - 1, step + 1))}
-                disabled={activeStep === valueChain.length - 1}
+                onClick={() =>
+                  setActiveStep((step) => Math.min(coffeeProcessSteps.length - 1, step + 1))
+                }
+                disabled={activeStep === coffeeProcessSteps.length - 1}
                 className="inline-flex min-h-10 items-center gap-2 text-sm font-semibold text-brand transition-colors hover:text-forest disabled:cursor-not-allowed disabled:opacity-40"
               >
                 Siguiente
@@ -153,20 +181,36 @@ export function CoffeeProcessExplorer() {
               </button>
             </div>
           </div>
-          <figure className="relative min-h-64 bg-forest-deep lg:col-span-5 lg:min-h-full">
-            <img
-              src={qualityImage}
-              alt="Selección y control de calidad del café producido en el Huila"
-              loading="lazy"
-              decoding="async"
-              width="1024"
-              height="768"
-              className="absolute inset-0 size-full object-cover"
-            />
-            <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-forest-deep/90 via-forest-deep/45 to-transparent px-5 pb-5 pt-14 text-sm font-medium text-paper">
-              Cada etapa aporta a la calidad y la identidad del café del Huila.
-            </figcaption>
-          </figure>
+          <div className="coffee-process-visual flex min-h-64 items-center justify-center overflow-hidden bg-sand p-5 sm:p-8 lg:col-span-5 lg:min-h-full">
+            <div className="relative flex aspect-[4/3] w-full max-w-lg items-center justify-center">
+              <svg
+                aria-hidden="true"
+                className="coffee-process-vine absolute inset-0 size-full"
+                viewBox="0 0 512 384"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                >
+                  <path d="M18 352C48 326 52 297 64 264M42 325C26 319 19 308 15 294M51 302C69 294 78 282 82 269M465 24C439 49 437 76 425 101M447 50C430 45 419 35 414 22M438 74C455 72 468 63 477 51M492 366C465 344 460 322 451 300M472 346C486 339 494 328 499 315" />
+                  <path d="M15 294C23 291 33 294 42 305C34 311 24 309 15 294ZM82 269C73 267 64 273 58 285C67 291 76 284 82 269ZM414 22C423 22 432 29 438 42C429 47 420 38 414 22ZM477 51C468 48 458 53 451 64C459 71 470 64 477 51ZM499 315C490 315 481 322 477 335C486 341 495 331 499 315Z" />
+                  <circle cx="33" cy="282" r="5" />
+                  <circle cx="45" cy="277" r="5" />
+                  <circle cx="39" cy="268" r="5" />
+                </g>
+              </svg>
+              <img
+                key={activeStep}
+                src={selectedIllustration}
+                alt={`Ilustración: ${selectedDetail.title}`}
+                className="coffee-process-illustration relative z-10 object-contain"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </section>
