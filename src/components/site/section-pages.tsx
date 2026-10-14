@@ -30,6 +30,13 @@ import {
 } from "@/content/coocentral";
 import { FarmerCenter } from "@/components/site/farmer-center";
 import { PhoneContactDialog } from "@/components/site/phone-contact-dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 export function PageIntro({
   eyebrow,
@@ -96,7 +103,7 @@ export function CooperativePage() {
       </section>
       <section className="border-y border-border bg-paper">
         <div className="mx-auto max-w-7xl px-5 py-6 lg:px-10 lg:py-10">
-          <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-ink/55">
+          <p className="mb-4 text-xs font-bold uppercase tracking-[0.16em] text-brand">
             Selecciona un recurso para continuar
           </p>
           <ul className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
@@ -104,22 +111,27 @@ export function CooperativePage() {
               const ResourceIcon = item.external ? ArrowUpRight : ArrowRight;
 
               return (
-                <li key={item.label}>
+                <li key={item.label} className="h-full">
                   <a
                     href={item.href}
                     target={item.external ? "_blank" : undefined}
                     rel={item.external ? "noreferrer" : undefined}
-                    className="group flex min-h-20 items-center gap-3 border border-border bg-background p-4 transition-all duration-200 hover:-translate-y-0.5 hover:border-brand/50 hover:bg-sand/60 hover:shadow-md active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+                    className="group flex h-full min-h-[5.25rem] items-center gap-3 rounded-xl border border-brand/15 bg-background p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand/40 hover:bg-sand/70 hover:shadow-[0_14px_28px_-18px_oklch(0.3_0.06_156/0.55)] active:translate-y-0 active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
                   >
-                    <span className="grid size-10 shrink-0 place-items-center bg-sand font-display text-sm font-semibold text-brand transition-colors group-hover:bg-brand group-hover:text-paper">
+                    <span className="grid size-10 shrink-0 place-items-center rounded-full bg-brand/8 font-display text-sm font-bold text-brand transition-colors duration-300 group-hover:bg-brand group-hover:text-paper">
                       {String(index + 1).padStart(2, "0")}
                     </span>
                     <span className="min-w-0 flex-1">
-                      <span className="block text-sm font-semibold leading-5 text-ink transition-colors group-hover:text-brand">
+                      <span className="block text-sm font-semibold leading-5 text-ink transition-colors duration-200 group-hover:text-brand">
                         {item.label}
                       </span>
                     </span>
-                    <ResourceIcon className="size-4 shrink-0 text-brand/65 transition-transform group-hover:translate-x-0.5" />
+                    <span className="grid size-9 shrink-0 place-items-center rounded-full bg-sand text-brand/70 transition-all duration-300 group-hover:translate-x-0.5 group-hover:bg-lime group-hover:text-forest">
+                      <ResourceIcon
+                        aria-hidden="true"
+                        className="size-4 transition-transform duration-300 group-hover:translate-x-0.5"
+                      />
+                    </span>
                   </a>
                 </li>
               );
@@ -590,18 +602,20 @@ export function ServicesPage() {
             </p>
           </div>
           <nav aria-label="Servicios de Coocentral">
-            <ul className="grid gap-2 sm:grid-cols-2 lg:grid-cols-5">
+            <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
               {serviceShowcase.map((service, index) => (
-                <li key={service.id}>
+                <li key={service.id} className="h-full">
                   <a
                     href={`#${service.id}`}
-                    className="group flex min-h-14 items-center gap-2 border border-border bg-paper px-3 py-2 text-sm font-semibold text-ink transition-all hover:-translate-y-0.5 hover:border-brand/50 hover:text-brand hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+                    className="group relative isolate flex min-h-[4.75rem] h-full items-center gap-3 overflow-hidden rounded-xl border border-brand/15 bg-paper px-4 py-3 text-sm font-semibold text-ink shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand/40 hover:bg-lime/10 hover:text-forest hover:shadow-[0_14px_28px_-18px_oklch(0.3_0.06_156/0.55)] active:translate-y-0 active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
                   >
-                    <span className="font-display text-xs text-brand/70">
+                    <span className="grid size-9 shrink-0 place-items-center rounded-full bg-brand/8 font-display text-xs font-bold text-brand transition-colors duration-300 group-hover:bg-brand group-hover:text-paper">
                       {String(index + 1).padStart(2, "0")}
                     </span>
-                    <span className="flex-1 leading-4">{service.title}</span>
-                    <ArrowRight className="size-4 shrink-0 text-brand/60 transition-transform group-hover:translate-x-0.5" />
+                    <span className="min-w-0 flex-1 leading-5">{service.title}</span>
+                    <span className="grid size-8 shrink-0 place-items-center rounded-full bg-sand text-brand/70 transition-all duration-300 group-hover:translate-x-0.5 group-hover:bg-lime group-hover:text-forest">
+                      <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+                    </span>
                   </a>
                 </li>
               ))}
@@ -732,45 +746,55 @@ export function ServicesPage() {
                 </div>
                 <p className="mt-1 text-sm text-paper/65">{line.text}</p>
                 {detailedCreditLines.some((detail) => detail.name === line.name) && (
-                  <details className="group mt-3 border border-paper/15 bg-paper/5">
-                    <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 px-3 py-2 text-sm font-semibold text-lime transition-colors hover:bg-paper/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime [&::-webkit-details-marker]:hidden">
-                      Ver condiciones y requisitos
-                      <ArrowRight
-                        aria-hidden="true"
-                        className="size-4 shrink-0 transition-transform group-open:rotate-90"
-                      />
-                    </summary>
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <button
+                        type="button"
+                        className="mt-3 inline-flex min-h-10 w-full items-center justify-between gap-3 border border-paper/15 bg-paper/5 px-3 py-2 text-left text-sm font-semibold text-lime transition-colors hover:border-lime/35 hover:bg-paper/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime"
+                      >
+                        Ver condiciones y requisitos
+                        <ArrowUpRight aria-hidden="true" className="size-4 shrink-0" />
+                      </button>
+                    </DialogTrigger>
                     {detailedCreditLines
                       .filter((detail) => detail.name === line.name)
                       .map((detail) => (
-                        <div
+                        <DialogContent
                           key={detail.name}
-                          className="space-y-4 border-t border-paper/15 px-4 py-4 text-sm leading-6 text-paper/75"
+                          className="max-h-[min(85vh,48rem)] max-w-2xl overflow-y-auto border-lime/20 bg-forest-deep text-paper duration-100 sm:rounded-2xl"
+                          closeClassName="text-paper/70 hover:text-paper focus:ring-lime"
                         >
-                          <p>{detail.description}</p>
-                          {detail.conditions.length > 0 && (
-                            <div>
-                              <h4 className="font-semibold text-paper">Condiciones</h4>
-                              <ul className="mt-2 list-disc space-y-1 pl-5 marker:text-lime">
-                                {detail.conditions.map((condition) => (
-                                  <li key={condition}>{condition}</li>
-                                ))}
-                              </ul>
-                            </div>
-                          )}
-                          {detail.requirements.length > 0 && (
-                            <div>
-                              <h4 className="font-semibold text-paper">Requisitos publicados</h4>
-                              <ul className="mt-2 list-disc space-y-1 pl-5 marker:text-lime">
-                                {detail.requirements.map((requirement) => (
-                                  <li key={requirement}>{requirement}</li>
-                                ))}
-                              </ul>
-                            </div>
-                          )}
-                        </div>
+                          <DialogTitle className="pr-8 font-display text-2xl font-medium text-lime">
+                            {detail.name}
+                          </DialogTitle>
+                          <DialogDescription className="text-sm leading-6 text-paper/70">
+                            {detail.description}
+                          </DialogDescription>
+                          <div className="space-y-5 text-sm leading-6 text-paper/80">
+                            {detail.conditions.length > 0 && (
+                              <section>
+                                <h4 className="font-semibold text-paper">Condiciones</h4>
+                                <ul className="mt-2 list-disc space-y-1 pl-5 marker:text-lime">
+                                  {detail.conditions.map((condition) => (
+                                    <li key={condition}>{condition}</li>
+                                  ))}
+                                </ul>
+                              </section>
+                            )}
+                            {detail.requirements.length > 0 && (
+                              <section>
+                                <h4 className="font-semibold text-paper">Requisitos publicados</h4>
+                                <ul className="mt-2 list-disc space-y-1 pl-5 marker:text-lime">
+                                  {detail.requirements.map((requirement) => (
+                                    <li key={requirement}>{requirement}</li>
+                                  ))}
+                                </ul>
+                              </section>
+                            )}
+                          </div>
+                        </DialogContent>
                       ))}
-                  </details>
+                  </Dialog>
                 )}
               </li>
             ))}

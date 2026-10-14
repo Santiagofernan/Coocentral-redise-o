@@ -19,8 +19,8 @@ export function Hero() {
         fetchPriority="high"
         className="hero-zoom absolute inset-x-0 top-0 -z-20 h-auto w-full object-contain object-top lg:inset-0 lg:size-full lg:object-cover lg:object-left"
       />
-      <div className="absolute inset-0 -z-10 bg-linear-to-b from-forest-deep/10 via-transparent to-forest-deep/85 lg:bg-linear-to-r lg:from-forest-deep lg:via-forest-deep/80 lg:to-forest-deep/10" />
-      <div className="absolute inset-0 -z-10 bg-linear-to-t from-forest-deep/70 via-transparent to-transparent lg:from-forest-deep lg:to-forest-deep/50" />
+      <div className="absolute inset-0 -z-10 bg-linear-to-b from-forest-deep/10 via-transparent to-forest-deep/70 lg:bg-linear-to-r lg:from-forest-deep/65 lg:via-forest-deep/35 lg:to-transparent" />
+      <div className="absolute inset-0 -z-10 bg-linear-to-t from-forest-deep/40 via-transparent to-transparent lg:from-transparent" />
 
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
         <svg
@@ -77,11 +77,12 @@ export function Hero() {
             50 años · 1975–2025 · Huila, Colombia
           </p>
           <h1
-            className="editorial-reveal mt-8 text-4xl font-medium leading-[1.04] tracking-normal sm:text-6xl lg:text-7xl"
+            className="editorial-reveal mt-8 max-w-3xl text-4xl font-medium leading-[1.04] tracking-normal drop-shadow-[0_2px_10px_oklch(0.16_0.035_158/0.8)] sm:text-6xl lg:text-7xl"
             style={{ animationDelay: "120ms" }}
           >
-            Más que una cooperativa: Una <em className="font-normal text-lime">familia</em> al
-            servicio del caficultor
+            Más que una cooperativa:
+            <br />
+            una <em className="font-normal text-lime">familia cafetera</em>
           </h1>
           <p
             className="editorial-reveal mt-8 max-w-[56ch] text-lg leading-8 text-paper/80 lg:text-xl"

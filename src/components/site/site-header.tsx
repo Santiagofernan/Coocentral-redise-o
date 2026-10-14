@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useRef } from "react";
-import { ArrowRight, BookOpen, ChevronDown, Leaf, Mail, MapPin, Menu } from "lucide-react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { ArrowRight, BookOpen, ChevronDown, Coffee, Leaf, Mail, MapPin, Menu } from "lucide-react";
 import { Link, useRouterState } from "@tanstack/react-router";
 
 import logo from "@/assets/coocentral-logo.svg";
@@ -13,11 +13,90 @@ const exploreIcons = {
   "/sostenibilidad": Leaf,
 } as const;
 
+type CursorStyle = "leaf" | "bean";
+
+const cursorStorageKey = "coocentral-cursor-style";
+
+function CursorSelector({
+  cursorStyle,
+  onChange,
+  dark = false,
+}: {
+  cursorStyle: CursorStyle;
+  onChange: (style: CursorStyle) => void;
+  dark?: boolean;
+}) {
+  const options = [
+    { value: "leaf", label: "Hoja", Icon: Leaf },
+    { value: "bean", label: "Grano", Icon: Coffee },
+  ] as const;
+
+  return (
+    <div
+      role="group"
+      aria-label="Seleccionar estilo del cursor"
+      className={cn(
+        "inline-flex items-center gap-1 rounded-full border p-1",
+        dark ? "border-paper/15 bg-paper/5" : "border-brand/15 bg-sand/60",
+      )}
+    >
+      {options.map(({ value, label, Icon }) => (
+        <button
+          key={value}
+          type="button"
+          aria-label={`Cursor de ${label.toLowerCase()} de café`}
+          aria-pressed={cursorStyle === value}
+          onClick={() => onChange(value)}
+          className={cn(
+            "inline-flex min-h-9 items-center gap-1.5 rounded-full px-3 text-xs font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2",
+            dark
+              ? "text-paper/75 hover:bg-paper/10 hover:text-paper focus-visible:ring-lime"
+              : "text-ink/70 hover:bg-paper hover:text-brand focus-visible:ring-brand",
+            cursorStyle === value &&
+              (dark ? "bg-lime/15 text-lime" : "bg-paper text-brand shadow-sm"),
+          )}
+        >
+          <Icon aria-hidden="true" className="size-4" />
+          {label}
+        </button>
+      ))}
+    </div>
+  );
+}
+
 export function SiteHeader() {
   const pathname = useRouterState({ select: (state) => state.location.pathname });
   const exploreMenuRef = useRef<HTMLDetailsElement>(null);
   const contactMenuRef = useRef<HTMLDetailsElement>(null);
+  const [cursorStyle, setCursorStyle] = useState<CursorStyle>("leaf");
   const activeMoreItem = moreNavigation.find((item) => item.href === pathname);
+
+  useEffect(() => {
+    let storedStyle: string | null;
+
+    try {
+      storedStyle = window.localStorage.getItem(cursorStorageKey);
+    } catch (error) {
+      console.error("No se pudo leer la preferencia de cursor guardada.", error);
+      document.documentElement.dataset.cursor = "leaf";
+      return;
+    }
+
+    const initialStyle: CursorStyle = storedStyle === "bean" ? "bean" : "leaf";
+    setCursorStyle(initialStyle);
+    document.documentElement.dataset.cursor = initialStyle;
+  }, []);
+
+  const updateCursorStyle = useCallback((style: CursorStyle) => {
+    setCursorStyle(style);
+    document.documentElement.dataset.cursor = style;
+
+    try {
+      window.localStorage.setItem(cursorStorageKey, style);
+    } catch (error) {
+      console.error("No se pudo guardar la preferencia de cursor.", error);
+    }
+  }, []);
 
   const closeDropdownMenus = useCallback(() => {
     exploreMenuRef.current?.removeAttribute("open");
@@ -27,6 +106,24 @@ export function SiteHeader() {
   useEffect(() => {
     closeDropdownMenus();
   }, [closeDropdownMenus, pathname]);
+
+  useEffect(() => {
+    const closeDropdownMenusOnOutsideClick = (event: MouseEvent) => {
+      if (!(event.target instanceof Node)) return;
+
+      for (const menuRef of [exploreMenuRef, contactMenuRef]) {
+        if (menuRef.current?.open && !menuRef.current.contains(event.target)) {
+          menuRef.current.removeAttribute("open");
+        }
+      }
+    };
+
+    document.addEventListener("click", closeDropdownMenusOnOutsideClick);
+
+    return () => {
+      document.removeEventListener("click", closeDropdownMenusOnOutsideClick);
+    };
+  }, []);
 
   return (
     <header className="sticky top-0 z-50 border-b border-brand/15 bg-paper/95 shadow-[0_8px_30px_-22px_oklch(0.22_0.045_158/0.55)] backdrop-blur-xl">
@@ -138,6 +235,9 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-1 sm:gap-2">
+          <div className="hidden xl:block">
+            <CursorSelector cursorStyle={cursorStyle} onChange={updateCursorStyle} />
+          </div>
           <details ref={contactMenuRef} className="group relative hidden xl:block">
             <summary className="group/contact inline-flex h-11 cursor-pointer list-none items-center gap-2 rounded-full bg-lime px-4 text-sm font-bold text-forest-deep shadow-[0_6px_18px_-10px_oklch(0.529_0.146_147.8/0.7)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-lime/90 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 active:translate-y-0 [&::-webkit-details-marker]:hidden">
               Contacto
@@ -222,6 +322,12 @@ export function SiteHeader() {
                   />
                 </Link>
               </SheetClose>
+              <div className="mt-8">
+                <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-lime">
+                  Estilo del cursor
+                </p>
+                <CursorSelector cursorStyle={cursorStyle} onChange={updateCursorStyle} dark />
+              </div>
               <nav aria-label="Navegación móvil" className="mt-8">
                 <ul className="space-y-2">
                   {navigation.map((item) => (

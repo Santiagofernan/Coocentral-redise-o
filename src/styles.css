@@ -226,6 +226,15 @@
   }
 }
 
+@keyframes coffee-bean-fall {
+  from {
+    transform: translate3d(0, -12vh, 0) rotate(-24deg);
+  }
+  to {
+    transform: translate3d(5vw, 110vh, 0) rotate(300deg);
+  }
+}
+
 @keyframes roots-grow {
   to {
     stroke-dashoffset: 0;
@@ -334,6 +343,47 @@
 
 .coffee-process-visual {
   perspective: 900px;
+}
+
+.coffee-process-intro {
+  background:
+    radial-gradient(ellipse at 78% 48%, oklch(0.766 0.166 130 / 0.2), transparent 38%),
+    linear-gradient(125deg, var(--color-sand), var(--color-paper) 48%, oklch(0.91 0.06 128));
+}
+
+.coffee-bean {
+  position: absolute;
+  top: -3rem;
+  width: 1.5rem;
+  color: oklch(0.43 0.09 55 / 0.4);
+  animation: coffee-bean-fall 22s linear infinite;
+}
+
+.coffee-bean--1 {
+  left: 12%;
+  width: 1.2rem;
+  animation-delay: -14s;
+  animation-duration: 25s;
+}
+
+.coffee-bean--2 {
+  left: 39%;
+  animation-delay: -5s;
+  animation-duration: 21s;
+}
+
+.coffee-bean--3 {
+  left: 73%;
+  width: 1.75rem;
+  animation-delay: -18s;
+  animation-duration: 27s;
+}
+
+.coffee-bean--4 {
+  left: 91%;
+  width: 1.1rem;
+  animation-delay: -9s;
+  animation-duration: 23s;
 }
 
 .coffee-process-vine {
@@ -515,6 +565,7 @@
   .coffee-plant-leaf,
   .nature-leaf,
   .nature-root-path,
+  .coffee-bean,
   .coffee-process-illustration,
   .reveal {
     animation: none;
@@ -543,7 +594,7 @@
 @media (hover: hover) and (pointer: fine) {
   body {
     cursor:
-      url("./assets/coffee-bean-cursor.svg") 16 16,
+      url("./assets/coffee-leaf-cursor.svg") 4 4,
       auto !important;
   }
 
@@ -552,7 +603,7 @@
   [role="button"],
   summary {
     cursor:
-      url("./assets/coffee-bean-cursor.svg") 16 16,
+      url("./assets/coffee-leaf-cursor.svg") 4 4,
       pointer !important;
   }
 
@@ -560,5 +611,20 @@
   textarea,
   [contenteditable="true"] {
     cursor: text !important;
+  }
+
+  html[data-cursor="bean"] body {
+    cursor:
+      url("./assets/coffee-bean-cursor.svg") 16 16,
+      auto !important;
+  }
+
+  html[data-cursor="bean"] a,
+  html[data-cursor="bean"] button,
+  html[data-cursor="bean"] [role="button"],
+  html[data-cursor="bean"] summary {
+    cursor:
+      url("./assets/coffee-bean-cursor.svg") 16 16,
+      pointer !important;
   }
 }
