@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import {
   ArrowLeft,
@@ -12,11 +13,36 @@ import {
 } from "lucide-react";
 
 import { warehouseLocations, warehouseProductLines } from "@/content/coocentral";
+import { getWarehouseStatus, type WarehouseStatus } from "@/lib/warehouse-schedule";
 
 const municipalities = [...new Set(warehouseLocations.map((location) => location.municipality))];
 const productLineIcons = [Sprout, House, Wrench, Cog];
 
+const statusLabels: Record<WarehouseStatus, string> = {
+  open: "Abierto ahora",
+  break: "En descanso",
+  closed: "Cerrado ahora",
+};
+
+const statusStyles: Record<WarehouseStatus, string> = {
+  open: "bg-lime/25 text-forest-deep",
+  break: "bg-amber-100 text-amber-900",
+  closed: "bg-ink/5 text-ink/60",
+};
+
 export function WarehousesPage() {
+  const [now, setNow] = useState<Date | null>(null);
+
+  useEffect(() => {
+    const updateClock = () => setNow(new Date());
+    updateClock();
+    const intervalId = window.setInterval(updateClock, 60_000);
+
+    return () => window.clearInterval(intervalId);
+  }, []);
+
+  const status = now ? getWarehouseStatus(now) : null;
+
   return (
     <main>
       <section className="relative isolate overflow-hidden bg-forest-deep text-paper">
@@ -156,7 +182,25 @@ export function WarehousesPage() {
                           key={`${location.municipality}-${location.name}`}
                           className="rounded-xl border border-border bg-background p-5 sm:p-6"
                         >
-                          <h4 className="font-display text-xl">{location.name}</h4>
+                          <div className="flex flex-wrap items-start justify-between gap-3">
+                            <h4 className="font-display text-xl">{location.name}</h4>
+                            <span
+                              className={`inline-flex min-h-7 items-center gap-2 rounded-full px-2.5 py-1 text-[11px] font-bold ${
+                                status ? statusStyles[status] : "bg-ink/5 text-ink/60"
+                              }`}
+                            >
+                              <span
+                                className={`size-2 rounded-full ${
+                                  status === "open"
+                                    ? "bg-forest motion-safe:animate-pulse"
+                                    : status === "break"
+                                      ? "bg-amber-600"
+                                      : "bg-ink/35"
+                                }`}
+                              />
+                              {status ? statusLabels[status] : "Consultando horario"}
+                            </span>
+                          </div>
                           <div className="mt-4 flex items-start gap-2.5 text-sm leading-6 text-ink/70">
                             <MapPin
                               aria-hidden="true"

@@ -1,21 +1,109 @@
+import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { ArrowLeft, ArrowRight, ArrowUpRight, Coffee, MapPin, Store } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight, Clock3, Coffee, MapPin, Store } from "lucide-react";
 
 import coffeeQualityImage from "@/assets/Servicios/Nueva carpeta/Plaza Rosario y Café Kahvé.png";
 import coocentralCoffeeImage from "@/assets/Servicios/Cafes_coocentral/Cafe.webp";
+import { getStoreStatus, type StoreStatus, type StoreWeeklySchedule } from "@/lib/store-schedule";
+
+const rosarioSchedule: StoreWeeklySchedule = {
+  0: [[780, 1140]],
+  1: [[420, 1200]],
+  2: [[420, 1200]],
+  3: [[420, 1200]],
+  4: [[420, 1200]],
+  5: [[420, 1200]],
+  6: [[420, 1200]],
+};
+
+const hotelKahveSchedule: StoreWeeklySchedule = {
+  0: [[480, 720]],
+  1: [[360, 1200]],
+  2: [[360, 1200]],
+  3: [[360, 1200]],
+  4: [[360, 1200]],
+  5: [[360, 1200]],
+  6: [[360, 1200]],
+};
+
+const guadalupeSchedule: StoreWeeklySchedule = {
+  2: [
+    [480, 660],
+    [960, 1260],
+  ],
+  3: [
+    [480, 660],
+    [960, 1260],
+  ],
+  4: [
+    [480, 660],
+    [900, 1260],
+  ],
+  5: [
+    [480, 660],
+    [900, 1260],
+  ],
+  6: [
+    [480, 660],
+    [900, 1260],
+  ],
+  0: [
+    [480, 660],
+    [900, 1260],
+  ],
+};
 
 const kahveStores = [
   {
     city: "Garzón",
+    name: "Rosario",
     address: "Carrera 8 #11-32, Centro Comercial Paseo del Rosario",
+    hours: ["Lunes a sábado · 7:00 a. m.–8:00 p. m.", "Domingo · 1:00–7:00 p. m."],
+    schedule: rosarioSchedule,
   },
   {
-    city: "Neiva",
-    address: "Carrera 5 #10-38, plazoleta de la Cámara de Comercio",
+    city: "Garzón",
+    name: "Hotel Kahve",
+    address: "Hotel Kahve, Garzón, Huila",
+    hours: ["Lunes a sábado · 6:00 a. m.–8:00 p. m.", "Domingo · 8:00 a. m.–12:00 p. m."],
+    schedule: hotelKahveSchedule,
+  },
+  {
+    city: "Guadalupe",
+    name: "Tienda Guadalupe",
+    address: "Cl. 4 #carrera 6",
+    hours: [
+      "Martes y miércoles · 8:00–11:00 a. m. y 4:00–9:00 p. m.",
+      "Jueves a domingo · 8:00–11:00 a. m. y 3:00–9:00 p. m.",
+      "Lunes · Cerrado",
+    ],
+    schedule: guadalupeSchedule,
   },
 ];
 
+const statusLabels: Record<StoreStatus, string> = {
+  open: "Abierto ahora",
+  break: "En descanso",
+  closed: "Cerrado ahora",
+};
+
+const statusStyles: Record<StoreStatus, string> = {
+  open: "bg-lime/25 text-forest-deep",
+  break: "bg-amber-100 text-amber-900",
+  closed: "bg-ink/5 text-ink/60",
+};
+
 export function KahveStoresPage() {
+  const [now, setNow] = useState<Date | null>(null);
+
+  useEffect(() => {
+    const updateClock = () => setNow(new Date());
+    updateClock();
+    const intervalId = window.setInterval(updateClock, 60_000);
+
+    return () => window.clearInterval(intervalId);
+  }, []);
+
   return (
     <main>
       <section className="relative isolate overflow-hidden bg-forest-deep text-paper">
@@ -49,8 +137,8 @@ export function KahveStoresPage() {
                 Tiendas <span className="text-lime">Kahvé</span>
               </h1>
               <p className="mt-5 max-w-xl text-base leading-7 text-paper/70 sm:text-lg">
-                Un espacio para disfrutar la cultura del café. Visítanos en Garzón o Neiva y vive
-                una pausa con sabor a Huila.
+                Un espacio para disfrutar la cultura del café. Visítanos en Garzón o Guadalupe y
+                vive una pausa con sabor a Huila.
               </p>
               <a
                 href="#encuentranos"
@@ -107,24 +195,25 @@ export function KahveStoresPage() {
           <div className="flex flex-wrap items-end justify-between gap-5">
             <div className="max-w-2xl">
               <p className="text-xs font-bold uppercase tracking-[0.17em] text-brand">
-                Dos puntos para visitarnos
+                Encuéntranos
               </p>
               <h2 className="mt-3 font-display text-3xl font-medium leading-tight sm:text-4xl lg:text-5xl">
                 El café del Huila, más cerca.
               </h2>
             </div>
             <p className="max-w-md text-sm leading-6 text-ink/65">
-              Encuentra la tienda Kahvé más cercana en Garzón o Neiva.
+              Encuentra la tienda Kahvé más cercana en Garzón o Guadalupe.
             </p>
           </div>
 
           <ul className="mt-9 grid gap-5 lg:grid-cols-2">
             {kahveStores.map((store, index) => {
               const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${store.address}, ${store.city}, Huila`)}`;
+              const status = now && store.schedule ? getStoreStatus(now, store.schedule) : null;
 
               return (
                 <li
-                  key={store.city}
+                  key={`${store.city}-${store.name}`}
                   className="group relative isolate overflow-hidden rounded-3xl border border-border bg-background p-6 transition-all duration-200 hover:-translate-y-1 hover:border-brand/35 hover:shadow-xl sm:p-8"
                 >
                   <span className="absolute -right-5 -top-8 -z-10 font-display text-9xl text-brand/[0.06] transition-colors group-hover:text-brand/10">
@@ -135,14 +224,46 @@ export function KahveStoresPage() {
                       <Store aria-hidden="true" className="size-5" />
                     </span>
                     <span className="rounded-full border border-brand/15 bg-paper px-3 py-1 text-xs font-bold text-brand">
-                      Tienda Kahvé
+                      {store.name}
                     </span>
                   </div>
-                  <h3 className="mt-6 font-display text-3xl font-medium">{store.city}</h3>
+                  <div className="mt-6 flex flex-wrap items-center justify-between gap-3">
+                    <h3 className="font-display text-3xl font-medium">{store.city}</h3>
+                    <span
+                      className={`inline-flex min-h-8 items-center gap-2 rounded-full px-3 py-1 text-xs font-bold ${
+                        status ? statusStyles[status] : "bg-ink/5 text-ink/60"
+                      }`}
+                    >
+                      <span
+                        className={`size-2 rounded-full ${
+                          status === "open"
+                            ? "bg-forest motion-safe:animate-pulse"
+                            : status === "break"
+                              ? "bg-amber-600"
+                              : "bg-ink/35"
+                        }`}
+                      />
+                      {status
+                        ? statusLabels[status]
+                        : store.schedule
+                          ? "Consultando horario"
+                          : "Horario por confirmar"}
+                    </span>
+                  </div>
                   <div className="mt-3 flex items-start gap-2.5 text-sm leading-6 text-ink/70">
                     <MapPin aria-hidden="true" className="mt-1 size-4 shrink-0 text-brand" />
                     <address className="not-italic">{store.address}</address>
                   </div>
+                  {store.hours && (
+                    <div className="mt-4 flex items-start gap-2.5">
+                      <Clock3 aria-hidden="true" className="mt-0.5 size-4 shrink-0 text-brand" />
+                      <ul className="space-y-1 text-sm leading-5 text-ink/70">
+                        {store.hours.map((hours) => (
+                          <li key={hours}>{hours}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
                   <a
                     href={mapsUrl}
                     target="_blank"

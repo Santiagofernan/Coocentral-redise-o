@@ -1,10 +1,15 @@
-import { ArrowDown, ArrowRight } from "lucide-react";
+import { ArrowDown, ArrowRight, CalendarDays } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 
 import heroImage from "@/assets/Inicio/50 años de Coocentral en verde y oro.png";
 import { heroBadges } from "@/content/coocentral";
+import { getCoocentralAnniversary, getCoocentralCalendarYear } from "@/lib/coocentral-anniversary";
 
 export function Hero() {
+  const today = new Date();
+  const { count: anniversaryCount } = getCoocentralAnniversary(today);
+  const currentYear = getCoocentralCalendarYear(today);
+
   return (
     <section
       id="inicio"
@@ -72,12 +77,8 @@ export function Hero() {
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-5 pt-[calc(100vw*0.375+1.5rem)] pb-12 lg:px-10 lg:pt-32 lg:pb-24">
         <div className="max-w-4xl">
-          <p className="editorial-reveal inline-flex items-center gap-3 rounded-full border border-paper/20 bg-paper/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] backdrop-blur-sm">
-            <span className="size-2 animate-pulse rounded-full bg-lime" />
-            50 años · 1975–2025 · Huila, Colombia
-          </p>
           <h1
-            className="editorial-reveal mt-8 max-w-3xl text-4xl font-medium leading-[1.04] tracking-normal drop-shadow-[0_2px_10px_oklch(0.16_0.035_158/0.8)] sm:text-6xl lg:text-7xl"
+            className="editorial-reveal max-w-3xl text-4xl font-medium leading-[1.04] tracking-normal drop-shadow-[0_2px_10px_oklch(0.16_0.035_158/0.8)] sm:text-6xl lg:text-7xl"
             style={{ animationDelay: "120ms" }}
           >
             Más que una cooperativa:
@@ -92,7 +93,22 @@ export function Hero() {
             que la caficultura del Huila sea rentable, tecnificada y sostenible.
           </p>
           <div
-            className="editorial-reveal mt-10 flex flex-wrap gap-3"
+            className="editorial-reveal mt-7 inline-flex min-h-12 items-center gap-3 rounded-xl border border-lime/35 bg-forest-deep/65 px-4 py-2 shadow-[0_8px_24px_-16px_oklch(0.08_0.02_158/0.8)] backdrop-blur-sm"
+            style={{ animationDelay: "300ms" }}
+          >
+            <span className="grid size-8 shrink-0 place-items-center rounded-lg bg-lime/15 text-lime">
+              <CalendarDays aria-hidden="true" className="size-4" />
+            </span>
+            <span className="font-display text-lg font-semibold leading-none text-lime">
+              {anniversaryCount} años
+            </span>
+            <span className="h-6 w-px bg-paper/20" aria-hidden="true" />
+            <span className="text-xs font-semibold tracking-wide text-paper/80 sm:text-sm">
+              1975–{currentYear} · Huila, Colombia
+            </span>
+          </div>
+          <div
+            className="editorial-reveal mt-5 flex flex-wrap gap-3"
             style={{ animationDelay: "360ms" }}
           >
             <Link

@@ -71,20 +71,6 @@ function SectionTitle({ eyebrow, title }: { eyebrow?: string; title: string }) {
   );
 }
 
-function ExternalLink({ href, children }: { href: string; children: string }) {
-  return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noreferrer"
-      className="group inline-flex items-center gap-2 text-sm font-semibold text-brand hover:underline"
-    >
-      {children}
-      <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-    </a>
-  );
-}
-
 export function CooperativePage() {
   return (
     <main>
@@ -514,9 +500,54 @@ export function MembershipPage() {
               cumplimiento de obligaciones con la cooperativa.
             </p>
             <div className="mt-6">
-              <ExternalLink href="https://coocentral.com/requisitos/">
-                Consultar requisitos oficiales
-              </ExternalLink>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <button
+                    type="button"
+                    className="group inline-flex min-h-11 items-center gap-2 rounded-full border border-brand/25 bg-paper px-4 py-2 text-sm font-semibold text-brand shadow-sm transition-colors hover:border-brand/45 hover:bg-brand/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+                  >
+                    Consultar requisitos
+                    <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </button>
+                </DialogTrigger>
+                <DialogContent className="max-h-[min(85vh,48rem)] max-w-2xl overflow-y-auto border-brand/15 bg-paper text-ink duration-100 sm:rounded-2xl">
+                  <DialogTitle className="pr-8 font-display text-2xl font-medium text-brand">
+                    Requisitos para asociarte
+                  </DialogTitle>
+                  <DialogDescription className="text-sm leading-6 text-ink/65">
+                    Estos son los requisitos básicos publicados por Coocentral para iniciar el
+                    proceso de vinculación.
+                  </DialogDescription>
+                  <ol className="space-y-4">
+                    {membershipEligibility.map((item, index) => (
+                      <li
+                        key={item.title}
+                        className="grid gap-3 rounded-xl border border-border bg-sand/55 p-4 sm:grid-cols-[2.5rem_1fr]"
+                      >
+                        <span className="grid size-9 place-items-center rounded-full bg-brand/10 font-display text-lg font-semibold text-brand">
+                          {index + 1}
+                        </span>
+                        <div>
+                          <h3 className="font-semibold text-ink">{item.title}</h3>
+                          <p className="mt-1 text-sm leading-6 text-ink/70">{item.text}</p>
+                        </div>
+                      </li>
+                    ))}
+                  </ol>
+                  <p className="text-xs leading-5 text-ink/55">
+                    El ingreso de menores de edad se rige por las normas vigentes y la
+                    reglamentación del Consejo de Administración. Para conocer el proceso y los
+                    documentos aplicables a tu caso, comunícate con nuestro equipo.
+                  </p>
+                  <Link
+                    to="/contacto"
+                    className="inline-flex min-h-11 w-fit items-center gap-2 rounded-full bg-brand px-5 py-2 text-sm font-semibold text-paper transition-colors hover:bg-forest focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+                  >
+                    Contactar a Coocentral
+                    <ArrowRight aria-hidden="true" className="size-4" />
+                  </Link>
+                </DialogContent>
+              </Dialog>
             </div>
           </div>
           <ol className="divide-y divide-border border-y border-border lg:col-span-8">

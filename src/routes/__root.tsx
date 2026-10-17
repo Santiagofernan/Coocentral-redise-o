@@ -13,6 +13,7 @@ import type { ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { SiteHeader } from "@/components/site/site-header";
 import { SiteFooter } from "@/components/site/site-footer";
+import { WhatsAppFloatingButton } from "@/components/site/whatsapp-floating-button";
 
 function NotFoundComponent() {
   return (
@@ -133,6 +134,7 @@ function RootComponent() {
       <SiteHeader />
       <Outlet />
       <SiteFooter />
+      <WhatsAppFloatingButton />
     </QueryClientProvider>
   );
 }

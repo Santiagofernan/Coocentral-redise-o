@@ -65,7 +65,6 @@ import historyAnniversaryImage from "@/assets/Historia/2025-50-anios.png";
 export const links = {
   app: "https://play.google.com/store/apps/details?id=com.coocentral.app&hl=es_CO",
   appStore: "https://apps.apple.com/co/app/nueva-app-red-coopcentral/id6742431196",
-  requirements: "https://coocentral.com/requisitos/",
   complaints: "https://coocentral.com/wp-content/uploads/2026/08/IMG-20260806-WA0469.jpg",
 };
 
@@ -73,6 +72,7 @@ export const contact = {
   address: "Centro Comercial El Molino · Carrera 12 No. 2-56",
   city: "Garzón, Huila, Colombia",
   phones: ["311 538 6395", "318 612 8444"],
+  whatsapp: "573186128444",
   email: "info@coocentral.co",
 };
 
@@ -722,152 +722,107 @@ export const warehouseProductLines = [
   },
 ] as const;
 
+const standardWarehouseHours = [
+  "Lunes a viernes · 7:30 a. m.–12:30 p. m. y 2:00–4:00 p. m.",
+  "Sábado · 7:00 a. m.–1:00 p. m.",
+] as const;
+
 export const warehouseLocations = [
   {
     municipality: "Garzón",
     name: "Centro Comercial El Molino",
     address: "Calle 3 #11-31",
-    hours: [
-      "Lunes a viernes · 7:00 a. m.–12:30 p. m. y 2:00–4:30 p. m.",
-      "Sábado · 7:00 a. m.–1:00 p. m.",
-    ],
+    hours: standardWarehouseHours,
   },
   {
     municipality: "Garzón",
     name: "C.C. Café",
     address: "Calle 2 #10A-58",
-    hours: [
-      "Lunes a viernes · 7:00 a. m.–12:30 p. m. y 2:00–4:30 p. m.",
-      "Sábado · 7:00 a. m.–1:00 p. m.",
-    ],
+    hours: standardWarehouseHours,
   },
   {
     municipality: "Garzón",
     name: "Ferretería · Nueva sede",
     address: "Carrera 12 #2-55",
-    hours: [
-      "Lunes a viernes · 7:00 a. m.–12:00 m. y 2:00–5:00 p. m.",
-      "Sábado · 7:00 a. m.–1:00 p. m.",
-    ],
+    hours: standardWarehouseHours,
   },
   {
     municipality: "Garzón",
     name: "Ferretería La 14",
     address: "Calle 9 #14-35",
-    hours: [
-      "Lunes a viernes · 7:00 a. m.–12:00 m. y 2:00–5:00 p. m.",
-      "Sábado · 7:00 a. m.–1:00 p. m.",
-    ],
+    hours: standardWarehouseHours,
   },
   {
     municipality: "Garzón",
     name: "Centro poblado Zuluaga",
     address: "Carrera 5 #2-45",
-    hours: [
-      "Martes a viernes · 7:00 a. m.–12:30 p. m. y 2:00–4:00 p. m.",
-      "Sábado y domingo · 7:00 a. m.–1:00 p. m.",
-    ],
+    hours: standardWarehouseHours,
   },
   {
     municipality: "Garzón",
     name: "Corregimiento de San Antonio del Pescado",
     address: "",
-    hours: [
-      "Martes a viernes · 7:00 a. m.–12:30 p. m. y 2:00–4:00 p. m.",
-      "Sábado · 7:00 a. m.–12:30 p. m. y 2:00–4:00 p. m.",
-      "Domingo · 7:00 a. m.–1:00 p. m.",
-    ],
+    hours: standardWarehouseHours,
   },
   {
     municipality: "Gigante",
     name: "Sede principal",
     address: "Carrera 4 #3-92",
-    hours: [
-      "Lunes a viernes · 8:00 a. m.–12:30 p. m. y 2:00–5:00 p. m.",
-      "Sábado · 7:00 a. m.–1:00 p. m.",
-    ],
+    hours: standardWarehouseHours,
   },
   {
     municipality: "Gigante",
     name: "Inspección de Potrerillos",
     address: "",
-    hours: [
-      "Martes a viernes · 7:00 a. m.–12:30 p. m. y 2:00–4:30 p. m.",
-      "Sábado · 7:00 a. m.–1:00 p. m.",
-    ],
+    hours: standardWarehouseHours,
   },
   {
     municipality: "Guadalupe",
     name: "Sede principal",
     address: "Calle 4 #5-52, local 2",
-    hours: [
-      "Martes a viernes · 7:00 a. m.–12:30 p. m. y 2:00–4:30 p. m.",
-      "Sábado y domingo · 7:00 a. m.–1:00 p. m.",
-    ],
+    hours: standardWarehouseHours,
   },
   {
     municipality: "Agrado",
     name: "Sede principal",
     address: "Carrera 5 #4-35",
-    hours: [
-      "Martes a viernes · 7:00 a. m.–12:30 p. m. y 2:00–4:00 p. m.",
-      "Sábado y domingo · 7:00 a. m.–1:00 p. m.",
-    ],
+    hours: standardWarehouseHours,
   },
   {
     municipality: "Pital",
     name: "Sede principal",
     address: "Carrera 10 #8-68",
-    hours: [
-      "Martes a viernes · 7:00 a. m.–1:00 p. m. y 2:00–4:00 p. m.",
-      "Sábado y domingo · 7:00 a. m.–1:00 p. m.",
-    ],
+    hours: standardWarehouseHours,
   },
   {
     municipality: "Pital",
     name: "Inspección El Socorro",
     address: "",
-    hours: [
-      "Martes a viernes · 7:00 a. m.–12:30 p. m. y 2:00–4:00 p. m.",
-      "Sábado · 7:00 a. m.–3:00 p. m.",
-      "Domingo · 7:00 a. m.–1:00 p. m.",
-    ],
+    hours: standardWarehouseHours,
   },
   {
     municipality: "Suaza",
     name: "Sede principal",
     address: "Calle 6 #4-33/45",
-    hours: [
-      "Lunes a viernes · 7:00 a. m.–12:30 p. m. y 2:00–4:30 p. m.",
-      "Sábado · 7:00 a. m.–1:00 p. m.",
-    ],
+    hours: standardWarehouseHours,
   },
   {
     municipality: "Tarqui",
     name: "Sede principal",
     address: "Carrera 6 #1-66",
-    hours: [
-      "Lunes a viernes · 7:00 a. m.–12:30 p. m. y 2:00–4:00 p. m.",
-      "Sábado · 7:00 a. m.–1:00 p. m.",
-    ],
+    hours: standardWarehouseHours,
   },
   {
     municipality: "Tarqui",
     name: "Centro poblado Quituro",
     address: "",
-    hours: [
-      "Lunes a viernes · 7:00 a. m.–12:00 m. y 2:00–4:30 p. m.",
-      "Sábado · 7:00 a. m.–1:00 p. m.",
-    ],
+    hours: standardWarehouseHours,
   },
   {
     municipality: "Tarqui",
     name: "Centro poblado Maito",
     address: "",
-    hours: [
-      "Lunes a viernes · 7:00 a. m.–12:00 m. y 2:00–4:00 p. m.",
-      "Sábado · 7:00 a. m.–1:00 p. m.",
-    ],
+    hours: standardWarehouseHours,
   },
 ] as const;
 

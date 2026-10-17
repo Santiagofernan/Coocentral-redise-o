@@ -1,5 +1,15 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { ArrowRight, BookOpen, ChevronDown, Coffee, Leaf, Mail, MapPin, Menu } from "lucide-react";
+import {
+  ArrowRight,
+  BookOpen,
+  ChevronDown,
+  Coffee,
+  Leaf,
+  Mail,
+  MapPin,
+  Menu,
+  X,
+} from "lucide-react";
 import { Link, useRouterState } from "@tanstack/react-router";
 
 import logo from "@/assets/coocentral-logo.svg";
@@ -16,6 +26,11 @@ const exploreIcons = {
 type CursorStyle = "leaf" | "bean";
 
 const cursorStorageKey = "coocentral-cursor-style";
+const contactEmailHref = `mailto:${contact.email}?subject=${encodeURIComponent(
+  "Consulta desde el sitio web de Coocentral",
+)}&body=${encodeURIComponent(
+  "Hola, quisiera recibir más información sobre los servicios de Coocentral.",
+)}`;
 
 function CursorSelector({
   cursorStyle,
@@ -68,6 +83,8 @@ export function SiteHeader() {
   const pathname = useRouterState({ select: (state) => state.location.pathname });
   const exploreMenuRef = useRef<HTMLDetailsElement>(null);
   const contactMenuRef = useRef<HTMLDetailsElement>(null);
+  const mobileMenuTouchStartRef = useRef<{ x: number; y: number } | null>(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [cursorStyle, setCursorStyle] = useState<CursorStyle>("leaf");
   const activeMoreItem = moreNavigation.find((item) => item.href === pathname);
 
@@ -265,8 +282,8 @@ export function SiteHeader() {
                     className="group flex min-h-12 w-full items-center gap-3 rounded-lg border border-transparent bg-sand/55 px-3 py-3 text-left font-semibold text-ink/75 transition-all hover:translate-x-0.5 hover:border-brand/15 hover:bg-brand/5 hover:text-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
                   />
                 ))}
-                <Link
-                  to="/contacto"
+                <a
+                  href={contactEmailHref}
                   onClick={closeDropdownMenus}
                   className="group flex min-h-12 items-center gap-3 rounded-lg border border-transparent px-3 py-3 font-semibold text-ink/75 transition-all hover:translate-x-0.5 hover:border-brand/15 hover:bg-brand/5 hover:text-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
                 >
@@ -276,7 +293,7 @@ export function SiteHeader() {
                     aria-hidden="true"
                     className="ml-auto size-4 shrink-0 text-brand/60 transition-transform group-hover:translate-x-0.5"
                   />
-                </Link>
+                </a>
               </address>
               <div className="px-4 pb-4">
                 <Link
@@ -285,24 +302,66 @@ export function SiteHeader() {
                   className="group inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-forest px-4 text-sm font-bold text-paper shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-brand hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 active:translate-y-0"
                 >
                   Escribirnos
-                  <ArrowRight className="size-4" />
+                  <ArrowRight aria-hidden="true" className="size-4" />
                 </Link>
               </div>
             </div>
           </details>
 
-          <Sheet>
+          <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
             <SheetTrigger
-              aria-label="Abrir menú"
+              aria-label={mobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
+              aria-expanded={mobileMenuOpen}
               className={cn(
-                "grid size-11 cursor-pointer place-items-center rounded-full border border-brand/15 bg-paper text-forest shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-forest hover:bg-forest hover:text-paper hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 active:translate-y-0 xl:hidden",
+                "group grid size-12 cursor-pointer place-items-center rounded-2xl border border-brand/25 bg-sand text-forest shadow-[0_8px_20px_-10px_oklch(0.22_0.045_158/0.3)] transition-[transform,background-color,border-color,box-shadow] duration-200 hover:-translate-y-0.5 hover:border-brand/40 hover:bg-brand/10 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 active:translate-y-0 active:scale-[0.97] xl:hidden",
               )}
             >
-              <Menu className="size-5" />
+              <span className="relative grid size-9 place-items-center rounded-xl bg-lime/35 text-brand transition-colors group-hover:bg-lime/60">
+                <Menu
+                  aria-hidden="true"
+                  className={cn(
+                    "absolute size-6 transition-[transform,opacity] duration-200",
+                    mobileMenuOpen
+                      ? "rotate-90 scale-75 opacity-0"
+                      : "rotate-0 scale-100 opacity-100",
+                  )}
+                  strokeWidth={2.25}
+                />
+                <X
+                  aria-hidden="true"
+                  className={cn(
+                    "absolute size-6 transition-[transform,opacity] duration-200",
+                    mobileMenuOpen
+                      ? "rotate-0 scale-100 opacity-100"
+                      : "-rotate-90 scale-75 opacity-0",
+                  )}
+                  strokeWidth={2.25}
+                />
+              </span>
             </SheetTrigger>
             <SheetContent
               side="right"
-              className="flex w-full flex-col overflow-y-auto border-l-0 bg-forest-deep p-6 text-paper sm:max-w-md sm:p-8 [&>button]:rounded-full [&>button]:text-paper"
+              className="flex w-full flex-col overflow-y-auto border-l-0 bg-forest-deep p-6 text-paper data-[state=open]:duration-300 data-[state=closed]:duration-200 sm:max-w-md sm:p-8 [&>button]:right-6 [&>button]:top-7 [&>button]:grid [&>button]:size-11 [&>button]:place-items-center [&>button]:rounded-full [&>button]:bg-paper/10 [&>button]:text-paper [&>button]:transition-colors [&>button:hover]:bg-paper/20 [&>button>svg]:size-6"
+              onTouchStart={(event) => {
+                const touch = event.touches[0];
+                mobileMenuTouchStartRef.current = touch
+                  ? { x: touch.clientX, y: touch.clientY }
+                  : null;
+              }}
+              onTouchEnd={(event) => {
+                const start = mobileMenuTouchStartRef.current;
+                const touch = event.changedTouches[0];
+                mobileMenuTouchStartRef.current = null;
+
+                if (!start || !touch) return;
+
+                const deltaX = touch.clientX - start.x;
+                const deltaY = touch.clientY - start.y;
+
+                if (deltaX > 70 && deltaX > Math.abs(deltaY) * 1.2) {
+                  setMobileMenuOpen(false);
+                }
+              }}
             >
               <SheetTitle className="sr-only">Menú de navegación</SheetTitle>
               <SheetClose asChild>
@@ -322,12 +381,6 @@ export function SiteHeader() {
                   />
                 </Link>
               </SheetClose>
-              <div className="mt-8">
-                <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-lime">
-                  Estilo del cursor
-                </p>
-                <CursorSelector cursorStyle={cursorStyle} onChange={updateCursorStyle} dark />
-              </div>
               <nav aria-label="Navegación móvil" className="mt-8">
                 <ul className="space-y-2">
                   {navigation.map((item) => (
@@ -412,22 +465,27 @@ export function SiteHeader() {
                       className="flex min-h-12 w-full items-center gap-3 rounded-lg border border-paper/10 bg-paper/5 px-3 py-3 text-left font-semibold text-paper/85 transition-colors hover:border-lime/30 hover:bg-paper/10 hover:text-paper focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime focus-visible:ring-offset-2 focus-visible:ring-offset-forest-deep"
                     />
                   ))}
-                  <Link
-                    to="/contacto"
-                    className="flex min-h-12 items-center gap-3 rounded-lg border border-paper/10 px-3 py-3 font-semibold text-paper/85 transition-colors hover:border-lime/30 hover:bg-paper/10 hover:text-paper focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime focus-visible:ring-offset-2 focus-visible:ring-offset-forest-deep"
-                  >
-                    <Mail aria-hidden="true" className="size-5 shrink-0 text-lime" />
-                    <span className="min-w-0 break-all">{contact.email}</span>
-                    <ArrowRight aria-hidden="true" className="ml-auto size-4 shrink-0 text-lime" />
-                  </Link>
+                  <SheetClose asChild>
+                    <a
+                      href={contactEmailHref}
+                      className="flex min-h-12 items-center gap-3 rounded-lg border border-paper/10 px-3 py-3 font-semibold text-paper/85 transition-colors hover:border-lime/30 hover:bg-paper/10 hover:text-paper focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime focus-visible:ring-offset-2 focus-visible:ring-offset-forest-deep"
+                    >
+                      <Mail aria-hidden="true" className="size-5 shrink-0 text-lime" />
+                      <span className="min-w-0 break-all">{contact.email}</span>
+                      <ArrowRight
+                        aria-hidden="true"
+                        className="ml-auto size-4 shrink-0 text-lime"
+                      />
+                    </a>
+                  </SheetClose>
                 </address>
                 <SheetClose asChild>
                   <Link
                     to="/contacto"
-                    className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-lime hover:underline"
+                    className="mt-4 inline-flex min-h-11 items-center gap-2 rounded-full bg-lime px-4 text-sm font-bold text-forest-deep transition-colors hover:bg-paper focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime focus-visible:ring-offset-2 focus-visible:ring-offset-forest-deep"
                   >
                     Escribirnos
-                    <ArrowRight className="size-4" />
+                    <ArrowRight aria-hidden="true" className="size-4" />
                   </Link>
                 </SheetClose>
               </section>

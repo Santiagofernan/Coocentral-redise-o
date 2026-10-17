@@ -1,15 +1,53 @@
-import { ArrowUpRight, Facebook, Instagram, Music2, Youtube } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { Link, useRouterState } from "@tanstack/react-router";
 
 import logo from "@/assets/coocentral-logo.svg";
 import { contact, footerColumns, socials } from "@/content/coocentral";
 
-const socialIcons = {
-  Facebook,
-  Instagram,
-  YouTube: Youtube,
-  TikTok: Music2,
-} as const;
+function SocialBrandIcon({ label }: { label: string }) {
+  if (label === "Facebook") {
+    return (
+      <svg aria-hidden="true" viewBox="0 0 24 24" className="h-[18px] w-[18px]" fill="currentColor">
+        <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073c0 6.019 4.388 11.002 10.125 11.854v-8.385H7.078v-3.47h3.047V9.426c0-3.017 1.792-4.686 4.533-4.686 1.312 0 2.686.235 2.686.235v2.953h-1.513c-1.49 0-1.954.93-1.954 1.886v2.258h3.328l-.532 3.47h-2.796v8.385C19.612 23.075 24 18.092 24 12.073" />
+      </svg>
+    );
+  }
+
+  if (label === "Instagram") {
+    return (
+      <svg
+        aria-hidden="true"
+        viewBox="0 0 24 24"
+        className="h-[18px] w-[18px]"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+      >
+        <rect x="3" y="3" width="18" height="18" rx="5" />
+        <circle cx="12" cy="12" r="4" />
+        <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+      </svg>
+    );
+  }
+
+  if (label === "YouTube") {
+    return (
+      <svg aria-hidden="true" viewBox="0 0 24 24" className="h-[18px] w-[18px]" fill="currentColor">
+        <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z" />
+      </svg>
+    );
+  }
+
+  if (label === "TikTok") {
+    return (
+      <svg aria-hidden="true" viewBox="0 0 24 24" className="h-[18px] w-[18px]" fill="currentColor">
+        <path d="M19.6 6.7a5.3 5.3 0 0 1-3.3-4.5V1h-4.1v14.7a3.1 3.1 0 1 1-3.1-3.1c.4 0 .8.1 1.1.2V8.6a7.1 7.1 0 1 0 6.1 7.1V8.2a9.2 9.2 0 0 0 5.3 1.7V5.8c-.7 0-1.4-.1-2-.4Z" />
+      </svg>
+    );
+  }
+
+  throw new Error(`No hay un logotipo de red social configurado para "${label}".`);
+}
 
 export function SiteFooter() {
   const pathname = useRouterState({ select: (state) => state.location.pathname });
@@ -89,8 +127,6 @@ export function SiteFooter() {
             </p>
             <ul className="flex flex-wrap gap-2">
               {socials.map((social) => {
-                const SocialIcon = socialIcons[social.label];
-
                 return (
                   <li key={social.label}>
                     <a
@@ -101,7 +137,7 @@ export function SiteFooter() {
                       className="group inline-flex min-h-11 items-center gap-2 rounded-full border border-paper/15 bg-paper/5 py-1 pl-1 pr-3 text-xs font-semibold text-paper/75 transition-colors hover:border-lime/50 hover:bg-paper/10 hover:text-paper focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime focus-visible:ring-offset-2 focus-visible:ring-offset-forest-deep"
                     >
                       <span className="grid size-9 place-items-center rounded-full bg-paper/10 text-lime transition-colors group-hover:bg-lime group-hover:text-forest-deep">
-                        <SocialIcon aria-hidden="true" className="h-[18px] w-[18px]" />
+                        <SocialBrandIcon label={social.label} />
                       </span>
                       {social.label}
                       <ArrowUpRight

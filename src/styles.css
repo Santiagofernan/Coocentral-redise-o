@@ -274,6 +274,23 @@
   }
 }
 
+@keyframes whatsapp-gentle-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 12px 30px -10px oklch(0.15 0.04 150 / 0.65);
+  }
+
+  50% {
+    transform: scale(1.035);
+    box-shadow: 0 14px 34px -9px oklch(0.45 0.16 150 / 0.45);
+  }
+}
+
+.whatsapp-float-pulse {
+  animation: whatsapp-gentle-pulse 3.2s ease-in-out infinite;
+}
+
 .coffee-plant-stem {
   stroke-dasharray: 180;
   stroke-dashoffset: 180;
@@ -567,6 +584,7 @@
   .nature-root-path,
   .coffee-bean,
   .coffee-process-illustration,
+  .whatsapp-float-pulse,
   .reveal {
     animation: none;
   }

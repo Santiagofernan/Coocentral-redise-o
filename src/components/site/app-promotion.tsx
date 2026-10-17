@@ -1,12 +1,5 @@
 import { useEffect, useState } from "react";
-import {
-  ArrowUpRight,
-  Apple,
-  BadgeCheck,
-  ClipboardList,
-  CircleDollarSign,
-  Smartphone,
-} from "lucide-react";
+import { BadgeCheck, ClipboardList, CircleDollarSign, Smartphone } from "lucide-react";
 
 import appScreen1 from "@/assets/App_coocentral/1_Imagen.jpeg";
 import appScreen2 from "@/assets/App_coocentral/2_imagen.jpeg";
@@ -34,6 +27,9 @@ const appFeatures = [
   { icon: BadgeCheck, label: "Revisa tus aportes" },
   { icon: ClipboardList, label: "Gestiona tus trámites" },
 ];
+
+const storeBadgeClass = "h-16 w-44 shrink-0 object-fill";
+const googlePlayBadgeClass = "h-17 w-46 shrink-0 object-fill";
 
 export function AppPromotion() {
   const [activeScreen, setActiveScreen] = useState(0);
@@ -84,20 +80,31 @@ export function AppPromotion() {
               href={links.app}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex min-h-12 w-fit items-center gap-2 rounded-md bg-lime px-5 text-sm font-bold text-forest-deep transition-colors hover:bg-paper focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime focus-visible:ring-offset-2 focus-visible:ring-offset-forest-deep"
+              aria-label="Descargar Coocentral en Google Play"
+              className="inline-flex h-17 w-46 items-center justify-center rounded-md transition-transform hover:scale-[1.03] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime focus-visible:ring-offset-2 focus-visible:ring-offset-forest-deep"
             >
-              Google Play · Android
-              <ArrowUpRight aria-hidden="true" className="size-4" />
+              <img
+                src="/badges/google-play-badge.png"
+                alt="Disponible en Google Play"
+                width={184}
+                height={68}
+                className={googlePlayBadgeClass}
+              />
             </a>
             <a
               href={links.appStore}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex min-h-12 w-fit items-center gap-2 rounded-md border border-paper/25 bg-paper/5 px-5 text-sm font-bold text-paper transition-colors hover:border-paper/50 hover:bg-paper/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime focus-visible:ring-offset-2 focus-visible:ring-offset-forest-deep"
+              aria-label="Descargar Coocentral en App Store"
+              className="inline-flex h-16 w-44 items-center justify-center rounded-md transition-transform hover:scale-[1.03] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime focus-visible:ring-offset-2 focus-visible:ring-offset-forest-deep"
             >
-              <Apple aria-hidden="true" className="size-4" />
-              App Store · iPhone
-              <ArrowUpRight aria-hidden="true" className="size-4" />
+              <img
+                src="/badges/apple-app-store-badge.svg"
+                alt="Descárgalo en el App Store"
+                width={176}
+                height={64}
+                className={storeBadgeClass}
+              />
             </a>
           </div>
         </div>
@@ -137,8 +144,11 @@ export function AppPromotion() {
                   className="mx-auto aspect-square h-auto w-full max-w-40"
                 />
               </div>
-              <p className="mt-2 text-xs font-bold leading-4">Google Play</p>
-              <p className="mt-1 text-[10px] text-ink/55">Android</p>
+              <img
+                src="/badges/google-play-mark.png"
+                alt="Google Play"
+                className="mx-auto mt-2 h-8 w-8 object-contain"
+              />
             </div>
             <div className="rounded-2xl bg-background p-2 shadow-xl sm:p-3">
               <div className="rounded-xl border border-border p-1.5 sm:p-2">
@@ -148,8 +158,11 @@ export function AppPromotion() {
                   className="mx-auto aspect-square h-auto w-full max-w-40"
                 />
               </div>
-              <p className="mt-2 text-xs font-bold leading-4">App Store</p>
-              <p className="mt-1 text-[10px] text-ink/55">iPhone · iOS</p>
+              <img
+                src="/badges/apple-logo.svg"
+                alt="Apple App Store"
+                className="mx-auto mt-2 h-8 w-8 object-contain"
+              />
             </div>
           </div>
           <p className="col-span-full text-center text-[10px] text-paper/45">

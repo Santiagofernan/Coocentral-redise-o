@@ -9,7 +9,7 @@ export const Route = createFileRoute("/contacto")({
       {
         name: "description",
         content:
-          "Comunícate con Coocentral mediante el formulario de contacto, correo, teléfono o en nuestra oficina principal.",
+          "Comunícate directamente con Coocentral por correo, teléfono, WhatsApp o en nuestra oficina principal.",
       },
     ],
   }),

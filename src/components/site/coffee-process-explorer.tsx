@@ -74,9 +74,37 @@ const processDetails = [
 
 export function CoffeeProcessExplorer() {
   const [activeStep, setActiveStep] = useState(0);
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
   const selectedStep = coffeeProcessSteps[activeStep];
   const selectedDetail = processDetails[activeStep];
   const selectedIllustration = processIllustrations[activeStep];
+
+  const changeStep = (direction: "prev" | "next") => {
+    setActiveStep((step) => {
+      if (direction === "prev") {
+        return Math.max(0, step - 1);
+      }
+
+      return Math.min(coffeeProcessSteps.length - 1, step + 1);
+    });
+  };
+
+  const handleTouchStart = (event: React.TouchEvent<HTMLDivElement>) => {
+    setTouchStartX(event.touches[0]?.clientX ?? null);
+  };
+
+  const handleTouchEnd = (event: React.TouchEvent<HTMLDivElement>) => {
+    if (touchStartX === null) return;
+
+    const endX = event.changedTouches[0]?.clientX ?? touchStartX;
+    const distance = endX - touchStartX;
+
+    if (Math.abs(distance) > 60) {
+      changeStep(distance < 0 ? "next" : "prev");
+    }
+
+    setTouchStartX(null);
+  };
 
   if (!selectedStep || !selectedDetail || !selectedIllustration) {
     throw new Error(`Coffee process data is incomplete for stage ${activeStep + 1}.`);
@@ -146,14 +174,19 @@ export function CoffeeProcessExplorer() {
         </ol>
 
         <div className="mt-6 overflow-hidden rounded-2xl border border-brand/15 bg-paper shadow-xl shadow-forest/5 sm:rounded-3xl lg:grid lg:grid-cols-12">
-          <div className="coffee-process-visual relative order-1 flex min-h-56 items-center justify-center overflow-hidden bg-linear-to-br from-lime/15 via-sand to-paper p-4 sm:min-h-72 sm:p-6 lg:order-2 lg:col-span-5 lg:min-h-[26rem] lg:p-8">
+          <div className="coffee-process-visual relative order-1 flex min-h-56 items-center justify-center overflow-hidden bg-linear-to-br from-lime/15 via-sand to-paper p-4 sm:min-h-72 sm:p-6 lg:order-2 lg:col-span-5 lg:min-h-104 lg:p-8">
             <span
               aria-hidden="true"
               className="absolute left-4 top-4 rounded-full border border-brand/15 bg-paper/85 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-forest shadow-sm sm:left-6 sm:top-6"
             >
               {selectedStep.label}
             </span>
-            <div className="relative flex aspect-[4/3] w-full max-w-lg items-center justify-center">
+            <div
+              className="relative flex aspect-4/3 w-full max-w-lg items-center justify-center"
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
+              style={{ touchAction: "pan-y" }}
+            >
               <svg
                 aria-hidden="true"
                 className="coffee-process-vine absolute inset-0 size-full"
@@ -218,7 +251,7 @@ export function CoffeeProcessExplorer() {
             <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-2 border-t border-border pt-4 sm:gap-4 sm:pt-5">
               <button
                 type="button"
-                onClick={() => setActiveStep((step) => Math.max(0, step - 1))}
+                onClick={() => changeStep("prev")}
                 disabled={activeStep === 0}
                 className="inline-flex min-h-11 w-full items-center justify-center gap-1.5 rounded-full border border-brand/20 px-3 text-sm font-semibold text-forest transition-colors hover:border-brand/50 hover:bg-sand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-40 sm:w-fit sm:justify-self-start sm:gap-2 sm:px-4"
               >
@@ -230,9 +263,7 @@ export function CoffeeProcessExplorer() {
               </span>
               <button
                 type="button"
-                onClick={() =>
-                  setActiveStep((step) => Math.min(coffeeProcessSteps.length - 1, step + 1))
-                }
+                onClick={() => changeStep("next")}
                 disabled={activeStep === coffeeProcessSteps.length - 1}
                 className="inline-flex min-h-11 w-full items-center justify-center gap-1.5 rounded-full bg-forest-deep px-3 text-sm font-semibold text-paper transition-colors hover:bg-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-40 sm:w-fit sm:justify-self-end sm:gap-2 sm:px-4"
               >
