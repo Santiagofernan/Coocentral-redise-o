@@ -35,7 +35,7 @@ import fundecafeImage from "@/assets/Servicios/Fundecafe/Fundecafe.jpg";
 import hotelKahveImage from "@/assets/Servicios/Hotel_Kahve/Planta.webp";
 import coworkingShowcaseImage from "@/assets/Servicios/Coworking/YDRAY-IMG_9436-1-scaled.webp";
 import coocentralCoffeeImage from "@/assets/Servicios/Cafes_coocentral/Cafe.webp";
-import tiendasKahveImage from "@/assets/Servicios/Nueva carpeta/Plaza Rosario y Café Kahvé.png";
+import tiendasKahveImage from "@/assets/Servicios/Tiendas/Plaza Rosario y Café Kahvé.webp";
 import creditFondoRotatorioImage from "@/assets/creditos/fondo-rotatorio.png";
 import creditFuturitoImage from "@/assets/creditos/futurito.png";
 import creditAnticipoSecadoImage from "@/assets/creditos/anticipo-secado.png";

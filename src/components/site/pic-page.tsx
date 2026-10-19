@@ -9,6 +9,7 @@ import {
   ShieldCheck,
   Warehouse,
 } from "lucide-react";
+import picIndustrialPark from "@/assets/Servicios/Pic/Parque industrial.webp";
 
 const processes = [
   {
@@ -55,19 +56,21 @@ export function PicPage() {
           aria-hidden="true"
           className="absolute -right-16 -top-28 -z-10 h-[26rem] w-[26rem] rounded-full border border-lime/10"
         />
-        <div className="mx-auto max-w-7xl px-5 py-10 sm:py-14 lg:px-10 lg:py-16">
-          <Link
-            to="/servicios"
-            className="group inline-flex min-h-10 items-center gap-2 rounded-full border border-paper/20 bg-paper/5 px-4 text-sm font-semibold text-paper/80 shadow-sm transition-all duration-200 hover:-translate-x-0.5 hover:border-lime/60 hover:bg-lime hover:text-forest-deep hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime focus-visible:ring-offset-2 focus-visible:ring-offset-forest-deep"
-          >
-            <ArrowLeft
-              aria-hidden="true"
-              className="size-4 transition-transform duration-200 group-hover:-translate-x-1"
-            />
-            Volver a servicios
-          </Link>
-          <div className="mt-10 grid gap-8 lg:grid-cols-12 lg:items-end lg:gap-10">
-            <div className="lg:col-span-7">
+        <div className="mx-auto grid max-w-7xl gap-10 px-5 py-10 sm:py-14 lg:grid-cols-12 lg:items-center lg:gap-8 lg:px-10 lg:py-16">
+          <div className="lg:col-span-6">
+            <div className="mb-8">
+              <Link
+                to="/servicios"
+                className="group inline-flex min-h-10 items-center gap-2 rounded-full border border-paper/20 bg-paper/5 px-4 text-sm font-semibold text-paper/80 shadow-sm transition-all duration-200 hover:-translate-x-0.5 hover:border-lime/60 hover:bg-lime hover:text-forest-deep hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime focus-visible:ring-offset-2 focus-visible:ring-offset-forest-deep"
+              >
+                <ArrowLeft
+                  aria-hidden="true"
+                  className="size-4 transition-transform duration-200 group-hover:-translate-x-1"
+                />
+                Volver a servicios
+              </Link>
+            </div>
+            <div>
               <p className="inline-flex items-center gap-2 rounded-full border border-lime/30 bg-lime/10 px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.18em] text-lime">
                 <span className="size-1.5 rounded-full bg-lime" />
                 Servicio 02 · Infraestructura cafetera
@@ -79,33 +82,40 @@ export function PicPage() {
                 Un ecosistema de innovación, transformación y sostenibilidad que integra procesos
                 especializados y fortalece la cadena de valor del café.
               </p>
-            </div>
-            <div className="lg:col-span-5 lg:justify-self-end">
-              <p className="max-w-md border-l-2 border-lime/70 pl-4 font-display text-lg leading-7 text-paper/80 sm:text-xl">
+              <p className="mt-8 max-w-md border-l-2 border-lime/70 pl-4 font-display text-lg leading-7 text-paper/80 sm:text-xl">
                 Infraestructura moderna para generar valor agregado y fortalecer la competitividad
                 de las familias caficultoras.
               </p>
             </div>
           </div>
-        </div>
-      </section>
-
-      <section className="bg-paper px-5 py-8 sm:py-10 lg:px-10">
-        <div className="mx-auto max-w-7xl overflow-hidden rounded-3xl bg-forest-deep shadow-xl">
-          <img
-            src="https://coocentral.com/wp-content/uploads/2026/05/jp_pic-1536x634.jpg"
-            alt="Vista panorámica de las instalaciones del Parque Industrial del Café de Coocentral"
-            width="1536"
-            height="634"
-            fetchPriority="high"
-            className="aspect-[2.42/1] w-full object-cover"
-          />
-          <p className="sr-only">Parque Industrial del Café de Coocentral.</p>
+          <div className="relative mx-auto w-full max-w-xl lg:col-span-6">
+            <div className="absolute -bottom-4 -left-4 size-28 rounded-2xl bg-lime sm:-bottom-5 sm:-left-5 sm:size-36" />
+            <div className="absolute -right-3 -top-3 size-20 rounded-full border-[10px] border-brand sm:-right-5 sm:-top-5 sm:size-28" />
+            <figure className="relative z-10 overflow-hidden rounded-[1.75rem] border border-white/15 bg-paper/10 p-2 shadow-2xl">
+              <img
+                src={picIndustrialPark}
+                alt="Vista aérea de las instalaciones del Parque Industrial del Café de Coocentral"
+                fetchPriority="high"
+                className="aspect-[16/10] w-full rounded-[1.25rem] object-cover"
+              />
+            </figure>
+          </div>
         </div>
       </section>
 
       <section className="bg-paper">
-        <div className="mx-auto max-w-7xl px-5 pb-14 pt-8 lg:px-10 lg:pb-20">
+        <div className="mx-auto max-w-7xl px-5 py-8 sm:py-10 lg:px-10 lg:pb-20">
+          <div className="mb-10 overflow-hidden rounded-3xl bg-forest-deep shadow-xl">
+            <img
+              src="https://coocentral.com/wp-content/uploads/2026/05/jp_pic-1536x634.jpg"
+              alt="Vista panorámica de las instalaciones del Parque Industrial del Café de Coocentral"
+              width="1536"
+              height="634"
+              fetchPriority="high"
+              className="aspect-[2.42/1] w-full object-cover"
+            />
+            <p className="sr-only">Parque Industrial del Café de Coocentral.</p>
+          </div>
           <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
             <div className="lg:col-span-7">
               <p className="text-xs font-bold uppercase tracking-[0.17em] text-brand">

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight, ArrowUpRight, Clock3, Coffee, MapPin, Store } from "lucide-react";
 
-import coffeeQualityImage from "@/assets/Servicios/Nueva carpeta/Plaza Rosario y Café Kahvé.png";
+import coffeeQualityImage from "@/assets/Servicios/Tiendas/Plaza Rosario y Café Kahvé.webp";
 import coocentralCoffeeImage from "@/assets/Servicios/Cafes_coocentral/Cafe.webp";
 import { getStoreStatus, type StoreStatus, type StoreWeeklySchedule } from "@/lib/store-schedule";
 
@@ -158,10 +158,8 @@ export function KahveStoresPage() {
                 <img
                   src={coffeeQualityImage}
                   alt="Tienda Kahvé en el centro comercial Plaza Rosario"
-                  width="1024"
-                  height="768"
                   fetchPriority="high"
-                  className="aspect-[4/5] w-full rounded-[1.25rem] object-cover"
+                  className="aspect-[3/2] w-full rounded-[1.25rem] object-cover"
                 />
                 <figcaption className="absolute inset-x-2 bottom-2 rounded-b-[1.25rem] bg-gradient-to-t from-forest-deep/90 to-transparent px-4 pb-4 pt-12 text-sm font-semibold text-paper">
                   Cultura cafetera desde el origen
@@ -171,7 +169,7 @@ export function KahveStoresPage() {
                 <img
                   src={coocentralCoffeeImage}
                   alt="Presentación de cafés tostados Coocentral"
-                  className="aspect-[3/4] w-full rounded-[1.25rem] object-cover"
+                  className="aspect-[4/5] w-full rounded-[1.25rem] bg-white object-contain"
                 />
                 <figcaption className="absolute inset-x-2 bottom-2 rounded-b-[1.25rem] bg-gradient-to-t from-forest-deep/90 to-transparent px-3 pb-3 pt-10 text-xs font-semibold text-paper">
                   Orgullo cafetero huilense
