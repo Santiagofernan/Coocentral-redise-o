@@ -92,7 +92,8 @@ export function SiteFooter() {
             <ul className="mt-4 space-y-3">
               {column.links.map((item) => (
                 <li key={item.href}>
-                  {item.href.startsWith("/") ? (
+                  {item.href.startsWith("/") &&
+                  !/\.(pdf|jpe?g|png|webp)(?:[?#]|$)/i.test(item.href) ? (
                     <Link
                       to={item.href}
                       className="inline-flex items-start text-sm leading-5 text-paper/70 transition-colors hover:text-paper"
@@ -102,8 +103,8 @@ export function SiteFooter() {
                   ) : (
                     <a
                       href={item.href}
-                      target="_blank"
-                      rel="noreferrer"
+                      target={item.href.startsWith("/") ? undefined : "_blank"}
+                      rel={item.href.startsWith("/") ? undefined : "noreferrer"}
                       className="inline-flex items-start gap-1 text-sm leading-5 text-paper/70 transition-colors hover:text-paper"
                     >
                       {item.label}

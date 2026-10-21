@@ -125,15 +125,15 @@ export function CoworkingPage() {
 
           <div className="relative mx-auto w-full max-w-xl lg:col-span-6">
             <div className="absolute -bottom-4 -left-4 size-28 rounded-2xl bg-lime sm:-bottom-5 sm:-left-5 sm:size-36" />
-            <div className="absolute -right-3 -top-3 size-20 rounded-full border-[10px] border-brand sm:-right-5 sm:-top-5 sm:size-28" />
-            <figure className="relative z-10 overflow-hidden rounded-[1.75rem] border border-white/15 bg-paper/10 p-2 shadow-2xl">
+            <div className="absolute -right-3 -top-3 size-20 rounded-full border-8 border-brand sm:-right-5 sm:-top-5 sm:size-28" />
+            <figure className="relative z-10 overflow-hidden rounded-4xl border border-white/15 bg-paper/10 p-2 shadow-2xl">
               <img
                 src={coworkingMeetingRoom}
                 alt="Sala de reuniones del Coworking Coocentral"
                 width="1600"
                 height="1067"
                 fetchPriority="high"
-                className="aspect-[4/3] w-full rounded-[1.25rem] object-cover"
+                className="aspect-4/3 w-full rounded-2xl object-cover"
               />
             </figure>
             <div className="absolute -bottom-5 right-3 z-20 w-32 overflow-hidden rounded-2xl border-4 border-paper shadow-xl sm:-bottom-7 sm:right-8 sm:w-44">

@@ -52,14 +52,14 @@ export function CoffeeAreaPage() {
             </div>
             <figure className="relative mx-auto w-full max-w-xl lg:col-span-6">
               <div className="absolute -bottom-4 -left-4 size-28 rounded-2xl bg-lime sm:-bottom-5 sm:-left-5 sm:size-36" />
-              <div className="relative overflow-hidden rounded-[1.75rem] border border-white/15 bg-paper/10 p-2 shadow-2xl">
+              <div className="relative overflow-hidden rounded-4xl border border-white/15 bg-paper/10 p-2 shadow-2xl">
                 <img
                   src={qualityImage}
                   alt="Presentación de cafés tostados Coocentral"
                   width="1024"
                   height="768"
                   fetchPriority="high"
-                  className="aspect-[4/3] w-full rounded-[1.25rem] object-cover"
+                  className="aspect-4/3 w-full rounded-2xl object-cover"
                 />
               </div>
               <figcaption className="absolute -bottom-5 right-3 rounded-full border border-border bg-paper px-4 py-2 text-xs font-bold text-forest-deep shadow-lg sm:-bottom-6 sm:right-8">

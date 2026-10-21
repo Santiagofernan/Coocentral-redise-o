@@ -10,6 +10,7 @@ import {
   Warehouse,
 } from "lucide-react";
 import picIndustrialPark from "@/assets/Servicios/Pic/Parque industrial.webp";
+import picIndustrialPanorama from "@/assets/Servicios/Pic/parque-industrial-panorama.webp";
 
 const processes = [
   {
@@ -50,11 +51,11 @@ export function PicPage() {
       <section className="relative isolate overflow-hidden bg-forest-deep text-paper">
         <div
           aria-hidden="true"
-          className="absolute -right-28 -top-40 -z-10 h-[34rem] w-[34rem] rounded-full border border-lime/15"
+          className="absolute -right-28 -top-40 -z-10 size-136 rounded-full border border-lime/15"
         />
         <div
           aria-hidden="true"
-          className="absolute -right-16 -top-28 -z-10 h-[26rem] w-[26rem] rounded-full border border-lime/10"
+          className="absolute -right-16 -top-28 -z-10 size-104 rounded-full border border-lime/10"
         />
         <div className="mx-auto grid max-w-7xl gap-10 px-5 py-10 sm:py-14 lg:grid-cols-12 lg:items-center lg:gap-8 lg:px-10 lg:py-16">
           <div className="lg:col-span-6">
@@ -90,13 +91,13 @@ export function PicPage() {
           </div>
           <div className="relative mx-auto w-full max-w-xl lg:col-span-6">
             <div className="absolute -bottom-4 -left-4 size-28 rounded-2xl bg-lime sm:-bottom-5 sm:-left-5 sm:size-36" />
-            <div className="absolute -right-3 -top-3 size-20 rounded-full border-[10px] border-brand sm:-right-5 sm:-top-5 sm:size-28" />
-            <figure className="relative z-10 overflow-hidden rounded-[1.75rem] border border-white/15 bg-paper/10 p-2 shadow-2xl">
+            <div className="absolute -right-3 -top-3 size-20 rounded-full border-8 border-brand sm:-right-5 sm:-top-5 sm:size-28" />
+            <figure className="relative z-10 overflow-hidden rounded-4xl border border-white/15 bg-paper/10 p-2 shadow-2xl">
               <img
                 src={picIndustrialPark}
                 alt="Vista aérea de las instalaciones del Parque Industrial del Café de Coocentral"
                 fetchPriority="high"
-                className="aspect-[16/10] w-full rounded-[1.25rem] object-cover"
+                className="aspect-video w-full rounded-2xl object-cover"
               />
             </figure>
           </div>
@@ -107,7 +108,7 @@ export function PicPage() {
         <div className="mx-auto max-w-7xl px-5 py-8 sm:py-10 lg:px-10 lg:pb-20">
           <div className="mb-10 overflow-hidden rounded-3xl bg-forest-deep shadow-xl">
             <img
-              src="https://coocentral.com/wp-content/uploads/2026/05/jp_pic-1536x634.jpg"
+              src={picIndustrialPanorama}
               alt="Vista panorámica de las instalaciones del Parque Industrial del Café de Coocentral"
               width="1536"
               height="634"
@@ -137,7 +138,7 @@ export function PicPage() {
                 key={number}
                 className="group relative overflow-hidden rounded-2xl border border-border bg-background p-5 transition-all duration-200 hover:-translate-y-1 hover:border-brand/35 hover:shadow-lg"
               >
-                <span className="absolute -right-4 -top-7 font-display text-7xl text-brand/[0.06] transition-colors group-hover:text-brand/10">
+                <span className="absolute -right-4 -top-7 font-display text-7xl text-brand/5 transition-colors group-hover:text-brand/10">
                   {number}
                 </span>
                 <span className="relative grid size-11 place-items-center rounded-xl bg-lime/25 text-forest-deep transition-colors group-hover:bg-lime">

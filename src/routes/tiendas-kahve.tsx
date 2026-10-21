@@ -1,17 +1,16 @@
-import { createFileRoute } from "@tanstack/react-router";
-
-import { KahveStoresPage } from "@/components/site/kahve-stores-page";
+import { createFileRoute, lazyRouteComponent } from "@tanstack/react-router";
+import { createSeoHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/tiendas-kahve")({
-  head: () => ({
-    meta: [
-      { title: "Tiendas Kahvé · Garzón y Neiva | Coocentral" },
-      {
-        name: "description",
-        content:
-          "Conoce las Tiendas Kahvé de cafés especiales y encuentra sus puntos en Garzón y Neiva.",
-      },
-    ],
-  }),
-  component: KahveStoresPage,
+  head: () =>
+    createSeoHead({
+      title: "Tiendas Kahvé | Café especial en Garzón y Guadalupe",
+      description:
+        "Visita las Tiendas Kahvé de Coocentral y disfruta cafés especiales del Huila en Garzón y Guadalupe.",
+      path: "/tiendas-kahve",
+    }),
+  component: lazyRouteComponent(
+    () => import("@/components/site/kahve-stores-page"),
+    "KahveStoresPage",
+  ),
 });

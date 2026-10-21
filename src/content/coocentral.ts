@@ -30,8 +30,9 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import ferticoolombiaLogo from "@/assets/Servicios/Ferticoolombia/Logo Ferticoolombia TRAZO BLANCO.png";
-import almacenesCoocentralImage from "@/assets/Servicios/Almacenes/Almacenes Coocentral.png";
+import almacenesCoocentralImage from "@/assets/Servicios/Almacenes/almacenes-coocentral.webp";
 import fundecafeImage from "@/assets/Servicios/Fundecafe/Fundecafe.jpg";
+import picIndustrialPanorama from "@/assets/Servicios/Pic/parque-industrial-panorama.webp";
 import hotelKahveImage from "@/assets/Servicios/Hotel_Kahve/Planta.webp";
 import coworkingShowcaseImage from "@/assets/Servicios/Coworking/YDRAY-IMG_9436-1-scaled.webp";
 import coocentralCoffeeImage from "@/assets/Servicios/Cafes_coocentral/Cafe.webp";
@@ -57,7 +58,7 @@ import historyAppImage from "@/assets/Historia/2020-app.gif";
 import historyCoworkingImage from "@/assets/Historia/2021-coworking.jpg";
 import historyExportImage from "@/assets/Historia/2022-exportacion-directa.jpg";
 import historyCoffeeCherriesImage from "@/assets/Historia/2024-ferticoolombia.jpg";
-import historyAnniversaryImage from "@/assets/Historia/2025-50-anios.png";
+import historyAnniversaryImage from "@/assets/Historia/coocentral-50-anios-2025.webp";
 
 // Todo el contenido proviene del informe institucional (docs/informe-coocentral.pdf),
 // salvo teléfonos, redes y enlaces legales, tomados de www.coocentral.com.
@@ -65,7 +66,7 @@ import historyAnniversaryImage from "@/assets/Historia/2025-50-anios.png";
 export const links = {
   app: "https://play.google.com/store/apps/details?id=com.coocentral.app&hl=es_CO",
   appStore: "https://apps.apple.com/co/app/nueva-app-red-coopcentral/id6742431196",
-  complaints: "https://coocentral.com/wp-content/uploads/2026/08/IMG-20260806-WA0469.jpg",
+  complaints: "/denuncias/yo-denuncio-ciberextorsion.jpg",
 };
 
 export const contact = {
@@ -97,8 +98,8 @@ export const cooperativeResources = [
   { label: "Reseña Histórica", href: "/historia", external: false },
   {
     label: "Acta de compromiso Fundecafé",
-    href: "https://coocentral.com/wp-content/uploads/2023/05/Acta-de-Compromiso-y-proteccion-datos.pdf",
-    external: true,
+    href: "/documentos/cooperativa/Acta-compromiso-Fundecafe-proteccion-datos.pdf",
+    external: false,
   },
   {
     label: "Política de privacidad",
@@ -328,40 +329,47 @@ export const socialInvestment = {
   yearly: "USD 0,5 M promedio anual",
 };
 
-type Benefit = { icon: LucideIcon; title: string; text: string };
+type Benefit = { id: string; icon: LucideIcon; title: string; text: string };
 
 export const benefits: Benefit[] = [
   {
+    id: "educacion-superior",
     icon: GraduationCap,
     title: "Educación superior",
     text: "Hasta 2 SMMLV por semestre con primas de Comercio Justo: más de $2.100 millones y +350 estudiantes.",
   },
   {
+    id: "salud-asociado",
     icon: HeartPulse,
     title: "Salud del asociado",
     text: "Subsidios directos para cofinanciar la afiliación al sistema de salud del asociado y su familia.",
   },
   {
+    id: "salud-visual",
     icon: Glasses,
     title: "Salud visual",
     text: "Jornadas de valoración especializada y entrega gratuita de lentes graduados.",
   },
   {
+    id: "beps",
     icon: PiggyBank,
     title: "BEPS",
     text: "Acompañamiento para vincularse a esquemas de protección para la vejez con ingreso vitalicio.",
   },
   {
+    id: "poliza-exequial",
     icon: ShieldCheck,
     title: "Póliza exequial",
     text: "Convenio con Los Olivos-Emcofun que ampara a más de 10.000 personas en la región.",
   },
   {
+    id: "fondo-solidario",
     icon: HandHeart,
     title: "Fondo solidario",
     text: "Auxilios inmediatos ante calamidades domésticas, emergencias médicas y contingencias.",
   },
   {
+    id: "dia-asociado",
     icon: PartyPopper,
     title: "Día del asociado",
     text: "Encuentros de integración, actualización tecnológica, cultura y recreación.",
@@ -864,7 +872,7 @@ export const serviceShowcase: ServiceShowcase[] = [
     title: "PIC · Parque Industrial del Café",
     summary:
       "Infraestructura que integra secado, trilla, tostión, almacenamiento y control de calidad para agregar valor al café del Huila.",
-    image: "https://coocentral.com/wp-content/uploads/2026/05/jp_pic-1536x634.jpg",
+    image: picIndustrialPanorama,
     imageAlt: "Instalaciones del Parque Industrial del Café de Coocentral",
     href: "/pic",
   },
@@ -1020,23 +1028,20 @@ export const footerColumns = [
   {
     title: "La cooperativa",
     links: [
-      { label: "¿Quiénes somos?", href: "https://coocentral.com/mision-y-vision/" },
-      { label: "Reseña histórica", href: "https://coocentral.com/resena-historica/" },
-      { label: "Estatutos y reglamentos", href: "https://coocentral.com/estatutos-y-reglamentos/" },
-      {
-        label: "Administración y control",
-        href: "https://coocentral.com/administracion-y-control/",
-      },
+      { label: "¿Quiénes somos?", href: "/cooperativa#quienes-somos" },
+      { label: "Reseña histórica", href: "/historia" },
+      { label: "Estatutos y reglamentos", href: "/cooperativa#recursos" },
+      { label: "Administración y control", href: "/cooperativa#administracion-control" },
     ],
   },
   {
     title: "Beneficios",
     links: [
-      { label: "Educación", href: "https://coocentral.com/educacion/" },
-      { label: "Salud visual", href: "https://coocentral.com/salud-visual/" },
-      { label: "Crédito y cartera", href: "https://coocentral.com/credito-y-cartera/" },
-      { label: "Vivienda", href: "https://coocentral.com/vivienda/" },
-      { label: "Previsión exequial", href: "https://coocentral.com/proteccion-exequial/" },
+      { label: "Educación", href: "/asociarme#beneficio-educacion-superior" },
+      { label: "Salud visual", href: "/asociarme#beneficio-salud-visual" },
+      { label: "Crédito y cartera", href: "/credito-y-cartera" },
+      { label: "Vivienda", href: "/contacto" },
+      { label: "Previsión exequial", href: "/asociarme#beneficio-exequial" },
     ],
   },
   {
@@ -1062,6 +1067,7 @@ export const footerColumns = [
         label: "Artículo 364-5 E.T.",
         href: "/documentos/cooperativa/Articulo_364-5_Estatuto_Tributario_COOCENTRAL.pdf",
       },
+      { label: "Yo denuncio: guía contra la ciberextorsión", href: links.complaints },
     ],
   },
 ];
@@ -1069,5 +1075,4 @@ export const footerColumns = [
 export const heroBadges = [
   { icon: HandCoins, label: "Crédito adaptado" },
   { icon: Leaf, label: "Cero deforestación" },
-  { icon: Coffee, label: "100% arábica" },
 ];

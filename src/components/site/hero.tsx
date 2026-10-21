@@ -1,7 +1,7 @@
 import { ArrowDown, ArrowRight, CalendarDays } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 
-import heroImage from "@/assets/Inicio/50 años de Coocentral en verde y oro.png";
+import heroImage from "@/assets/Inicio/coocentral-50-anios-hero.webp";
 import { heroBadges } from "@/content/coocentral";
 import { getCoocentralAnniversary, getCoocentralCalendarYear } from "@/lib/coocentral-anniversary";
 
@@ -19,8 +19,8 @@ export function Hero() {
         src={heroImage}
         alt=""
         aria-hidden="true"
-        width="2048"
-        height="768"
+        width="1952"
+        height="806"
         fetchPriority="high"
         className="hero-zoom absolute inset-x-0 top-0 -z-20 h-auto w-full object-contain object-top lg:inset-0 lg:size-full lg:object-cover lg:object-left"
       />
@@ -75,7 +75,7 @@ export function Hero() {
         </svg>
       </div>
 
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-5 pt-[calc(100vw*0.375+1.5rem)] pb-12 lg:px-10 lg:pt-32 lg:pb-24">
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-5 pt-[calc(100vw*0.413+1.5rem)] pb-12 lg:px-10 lg:pt-32 lg:pb-24">
         <div className="max-w-4xl">
           <h1
             className="editorial-reveal max-w-3xl text-4xl font-medium leading-[1.04] tracking-normal drop-shadow-[0_2px_10px_oklch(0.16_0.035_158/0.8)] sm:text-6xl lg:text-7xl"

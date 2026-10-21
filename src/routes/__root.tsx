@@ -10,6 +10,8 @@ import {
 } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 
+import socialPreview from "@/assets/Inicio/coocentral-50-anios-hero.webp";
+import logo from "@/assets/coocentral-logo.svg";
 import appCss from "../styles.css?url";
 import { SiteHeader } from "@/components/site/site-header";
 import { SiteFooter } from "@/components/site/site-footer";
@@ -78,18 +80,34 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { name: "theme-color", content: "#148135" },
-      { title: "Coocentral | Caficultores del Huila" },
+      { title: "Coocentral | Cooperativa de caficultores del Huila" },
       {
         name: "description",
-        content: "Coocentral, cooperativa al servicio de las familias caficultoras del Huila.",
+        content:
+          "Cooperativa de caficultores en Garzón, Huila. Acompañamos a productores de café con comercialización, servicios y desarrollo rural.",
       },
       { name: "author", content: "Coocentral" },
-      { property: "og:title", content: "Coocentral | Caficultores del Huila" },
+      { property: "og:site_name", content: "Coocentral" },
+      { property: "og:locale", content: "es_CO" },
+      { property: "og:title", content: "Coocentral | Cooperativa de caficultores del Huila" },
       {
         property: "og:description",
-        content: "Coocentral, cooperativa al servicio de las familias caficultoras del Huila.",
+        content:
+          "Cooperativa de caficultores en Garzón, Huila. Acompañamos a productores de café con comercialización, servicios y desarrollo rural.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: `https://coocentral.com${socialPreview}` },
+      { property: "og:image:type", content: "image/webp" },
+      { property: "og:image:width", content: "1952" },
+      { property: "og:image:height", content: "806" },
+      { property: "og:image:alt", content: "Coocentral, cooperativa de caficultores del Huila" },
+      { name: "twitter:title", content: "Coocentral | Cooperativa de caficultores del Huila" },
+      {
+        name: "twitter:description",
+        content:
+          "Cooperativa de caficultores en Garzón, Huila. Acompañamos a productores de café con comercialización, servicios y desarrollo rural.",
+      },
+      { name: "twitter:image", content: `https://coocentral.com${socialPreview}` },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
@@ -128,9 +146,51 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const organizationStructuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://coocentral.com/#organization",
+        name: "Cooperativa Central de Caficultores del Huila",
+        alternateName: "Coocentral",
+        url: "https://coocentral.com/",
+        logo: `https://coocentral.com${logo}`,
+        description:
+          "Cooperativa de caficultores con sede en Garzón, Huila, que acompaña a productores de café y sus familias.",
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: "Centro Comercial El Molino, Carrera 12 No. 2-56",
+          addressLocality: "Garzón",
+          addressRegion: "Huila",
+          addressCountry: "CO",
+        },
+        telephone: ["+57 311 538 6395", "+57 318 612 8444"],
+        email: "info@coocentral.co",
+        sameAs: [
+          "https://www.facebook.com/coocentral",
+          "https://instagram.com/coocentral",
+          "https://www.youtube.com/@CoocentralSistemas",
+          "https://www.tiktok.com/@coocentral",
+        ],
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://coocentral.com/#website",
+        url: "https://coocentral.com/",
+        name: "Coocentral",
+        inLanguage: "es-CO",
+        publisher: { "@id": "https://coocentral.com/#organization" },
+      },
+    ],
+  };
 
   return (
     <QueryClientProvider client={queryClient}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationStructuredData) }}
+      />
       <SiteHeader />
       <Outlet />
       <SiteFooter />

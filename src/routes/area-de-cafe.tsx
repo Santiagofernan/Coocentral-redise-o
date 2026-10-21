@@ -1,17 +1,16 @@
-import { createFileRoute } from "@tanstack/react-router";
-
-import { CoffeeAreaPage } from "@/components/site/coffee-area-page";
+import { createFileRoute, lazyRouteComponent } from "@tanstack/react-router";
+import { createSeoHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/area-de-cafe")({
-  head: () => ({
-    meta: [
-      { title: "Área de Café · Puntos de compra y venta | Coocentral" },
-      {
-        name: "description",
-        content:
-          "Consulta los puntos de compra y venta de café verde y seco de Coocentral en el centro del Huila.",
-      },
-    ],
-  }),
-  component: CoffeeAreaPage,
+  head: () =>
+    createSeoHead({
+      title: "Compra y venta de café en el Huila | Coocentral",
+      description:
+        "Consulta los puntos de Coocentral para la compra y venta de café verde y seco en Garzón y municipios del centro del Huila.",
+      path: "/area-de-cafe",
+    }),
+  component: lazyRouteComponent(
+    () => import("@/components/site/coffee-area-page"),
+    "CoffeeAreaPage",
+  ),
 });

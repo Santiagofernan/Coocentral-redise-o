@@ -95,18 +95,18 @@ export function SiteHeader() {
       storedStyle = window.localStorage.getItem(cursorStorageKey);
     } catch (error) {
       console.error("No se pudo leer la preferencia de cursor guardada.", error);
-      document.documentElement.dataset.cursor = "leaf";
+      document.documentElement.dataset["cursor"] = "leaf";
       return;
     }
 
     const initialStyle: CursorStyle = storedStyle === "bean" ? "bean" : "leaf";
     setCursorStyle(initialStyle);
-    document.documentElement.dataset.cursor = initialStyle;
+    document.documentElement.dataset["cursor"] = initialStyle;
   }, []);
 
   const updateCursorStyle = useCallback((style: CursorStyle) => {
     setCursorStyle(style);
-    document.documentElement.dataset.cursor = style;
+    document.documentElement.dataset["cursor"] = style;
 
     try {
       window.localStorage.setItem(cursorStorageKey, style);
@@ -171,6 +171,7 @@ export function SiteHeader() {
               <li key={item.href}>
                 <Link
                   to={item.href}
+                  preload="intent"
                   onClick={() => {
                     if (item.href === "/" && pathname === "/") {
                       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -216,14 +217,12 @@ export function SiteHeader() {
                         <li key={item.href}>
                           <Link
                             to={item.href}
+                            preload="intent"
                             onClick={() => {
                               closeDropdownMenus();
-                              if (item.href === "/" && pathname === "/") {
-                                window.scrollTo({ top: 0, behavior: "smooth" });
-                              }
                             }}
                             className={cn(
-                              "group/item flex min-h-[4.5rem] items-center gap-3 rounded-xl border border-transparent px-3 py-2.5 transition-all hover:translate-x-0.5 hover:border-brand/15 hover:bg-sand/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand",
+                              "group/item flex min-h-18 items-center gap-3 rounded-xl border border-transparent px-3 py-2.5 transition-all hover:translate-x-0.5 hover:border-brand/15 hover:bg-sand/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand",
                               pathname === item.href && "border-brand/15 bg-sand/60",
                             )}
                           >
@@ -298,6 +297,7 @@ export function SiteHeader() {
               <div className="px-4 pb-4">
                 <Link
                   to="/contacto"
+                  preload="intent"
                   onClick={closeDropdownMenus}
                   className="group inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-forest px-4 text-sm font-bold text-paper shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-brand hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 active:translate-y-0"
                 >
@@ -388,6 +388,7 @@ export function SiteHeader() {
                       <SheetClose asChild>
                         <Link
                           to={item.href}
+                          preload="intent"
                           className={cn(
                             "group flex min-h-14 items-center justify-between rounded-xl border border-paper/10 bg-paper/[0.04] px-4 font-display text-xl font-semibold text-paper/90 transition-all duration-200 hover:translate-x-1 hover:border-lime/25 hover:bg-paper/10 hover:text-lime focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-lime",
                             pathname === item.href && "border-lime/30 bg-lime/10 text-lime",
@@ -413,8 +414,9 @@ export function SiteHeader() {
                           <SheetClose asChild>
                             <Link
                               to={item.href}
+                              preload="intent"
                               className={cn(
-                                "flex min-h-[4.5rem] items-center gap-3 rounded-xl border border-paper/10 bg-paper/5 p-3 transition-colors hover:border-lime/30 hover:bg-paper/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime",
+                                "flex min-h-18 items-center gap-3 rounded-xl border border-paper/10 bg-paper/5 p-3 transition-colors hover:border-lime/30 hover:bg-paper/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime",
                                 pathname === item.href && "border-lime/30 bg-paper/10",
                               )}
                             >
@@ -482,6 +484,7 @@ export function SiteHeader() {
                 <SheetClose asChild>
                   <Link
                     to="/contacto"
+                    preload="intent"
                     className="mt-4 inline-flex min-h-11 items-center gap-2 rounded-full bg-lime px-4 text-sm font-bold text-forest-deep transition-colors hover:bg-paper focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime focus-visible:ring-offset-2 focus-visible:ring-offset-forest-deep"
                   >
                     Escribirnos

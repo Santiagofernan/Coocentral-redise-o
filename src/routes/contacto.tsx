@@ -1,17 +1,13 @@
-import { createFileRoute } from "@tanstack/react-router";
-
-import { ContactPage } from "@/components/site/contact-page";
+import { createFileRoute, lazyRouteComponent } from "@tanstack/react-router";
+import { createSeoHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/contacto")({
-  head: () => ({
-    meta: [
-      { title: "Contacto | Coocentral" },
-      {
-        name: "description",
-        content:
-          "Comunícate directamente con Coocentral por correo, teléfono, WhatsApp o en nuestra oficina principal.",
-      },
-    ],
-  }),
-  component: ContactPage,
+  head: () =>
+    createSeoHead({
+      title: "Contacto Coocentral | Oficina en Garzón, Huila",
+      description:
+        "Contacta a Coocentral por teléfono, WhatsApp o correo. Encuentra nuestra oficina principal en Garzón, Huila.",
+      path: "/contacto",
+    }),
+  component: lazyRouteComponent(() => import("@/components/site/contact-page"), "ContactPage"),
 });

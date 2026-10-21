@@ -6,4 +6,19 @@ import { defineConfig } from "vite";
 export default defineConfig({
   plugins: [tanstackStart({ server: { entry: "server" } }), react(), tailwindcss()],
   resolve: { tsconfigPaths: true },
+  build: {
+    rolldownOptions: {
+      output: {
+        codeSplitting: {
+          groups: [
+            {
+              name: "initial",
+              tags: ["$initial"],
+              maxSize: 450_000,
+            },
+          ],
+        },
+      },
+    },
+  },
 });

@@ -1,20 +1,24 @@
 import { ArrowDown, ArrowRight, Coffee, Leaf } from "lucide-react";
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, lazyRouteComponent } from "@tanstack/react-router";
+import { createSeoHead } from "@/lib/seo";
 
-import { CoffeePlantAnimation } from "@/components/site/coffee-plant-animation";
-import { CoffeeProcessExplorer } from "@/components/site/coffee-process-explorer";
+const CoffeePlantAnimation = lazyRouteComponent(
+  () => import("@/components/site/coffee-plant-animation"),
+  "CoffeePlantAnimation",
+);
+const CoffeeProcessExplorer = lazyRouteComponent(
+  () => import("@/components/site/coffee-process-explorer"),
+  "CoffeeProcessExplorer",
+);
 
 export const Route = createFileRoute("/cafe")({
-  head: () => ({
-    meta: [
-      { title: "Procesos del café | Coocentral" },
-      {
-        name: "description",
-        content:
-          "Explora las etapas de la cadena del café, desde el cultivo en finca hasta su preparación en taza.",
-      },
-    ],
-  }),
+  head: () =>
+    createSeoHead({
+      title: "Del cultivo a la taza: procesos del café | Coocentral",
+      description:
+        "Conoce las etapas de la producción cafetera, desde el cultivo y la cosecha en finca hasta el beneficio, secado y preparación del café.",
+      path: "/cafe",
+    }),
   component: CoffeeProcessPage,
 });
 

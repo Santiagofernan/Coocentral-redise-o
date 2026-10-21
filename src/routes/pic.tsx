@@ -1,17 +1,13 @@
-import { createFileRoute } from "@tanstack/react-router";
-
-import { PicPage } from "@/components/site/pic-page";
+import { createFileRoute, lazyRouteComponent } from "@tanstack/react-router";
+import { createSeoHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/pic")({
-  head: () => ({
-    meta: [
-      { title: "PIC · Parque Industrial del Café | Coocentral" },
-      {
-        name: "description",
-        content:
-          "Conoce el Parque Industrial del Café de Coocentral, su cadena de procesos, misión y visión.",
-      },
-    ],
-  }),
-  component: PicPage,
+  head: () =>
+    createSeoHead({
+      title: "Parque Industrial del Café (PIC) | Coocentral",
+      description:
+        "Conoce el Parque Industrial del Café de Coocentral en el Huila y sus procesos de transformación y valor agregado para el café.",
+      path: "/pic",
+    }),
+  component: lazyRouteComponent(() => import("@/components/site/pic-page"), "PicPage"),
 });

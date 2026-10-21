@@ -111,7 +111,7 @@ export function History() {
               loading="lazy"
               width="1536"
               height="864"
-              className="aspect-[4/3] w-full rounded-3xl object-cover"
+              className="aspect-4/3 w-full rounded-3xl object-cover"
             />
             <figcaption className="absolute -bottom-6 left-6 rounded-2xl bg-lime px-6 py-4 text-forest-deep shadow-xl">
               <span className="block font-display text-4xl font-medium leading-none">54</span>
@@ -160,7 +160,7 @@ export function History() {
           {timeline.map((item) => (
             <li
               key={item.year}
-              className="group relative flex min-h-[27rem] w-[min(18rem,calc(100vw-2.5rem))] shrink-0 snap-start flex-col rounded-3xl border border-paper/12 bg-paper/5 p-7 transition-colors hover:border-lime/60 hover:bg-paper/10 sm:w-80"
+              className="group relative flex min-h-108 w-[min(18rem,calc(100vw-2.5rem))] shrink-0 snap-start flex-col rounded-3xl border border-paper/12 bg-paper/5 p-7 transition-colors hover:border-lime/60 hover:bg-paper/10 sm:w-80"
             >
               <span className="block font-display text-4xl font-medium tracking-tight text-lime">
                 {item.year}

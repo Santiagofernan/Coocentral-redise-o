@@ -1,6 +1,18 @@
-import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
+import {
+  ArrowLeft,
+  ArrowRight,
+  ArrowUpRight,
+  Building2,
+  ClipboardCheck,
+  HandCoins,
+  Leaf,
+  MapPin,
+  Sprout,
+  Users,
+} from "lucide-react";
 import { Link } from "@tanstack/react-router";
 
+import losOlivosLogo from "@/assets/Asociados/los-olivos-logo.webp";
 import {
   agroServices,
   allies,
@@ -74,20 +86,80 @@ function SectionTitle({ eyebrow, title }: { eyebrow?: string; title: string }) {
 export function CooperativePage() {
   return (
     <main>
-      <section className="border-b border-border bg-sand">
-        <div className="mx-auto max-w-7xl px-5 py-3 sm:py-6 lg:px-10 lg:py-8">
-          <p className="text-xs font-bold uppercase tracking-[0.18em] text-brand">La cooperativa</p>
-          <div className="mt-2 flex flex-col gap-2 xl:flex-row xl:items-end xl:justify-between xl:gap-8">
-            <h1 className="max-w-3xl font-display text-2xl font-medium leading-tight sm:text-3xl xl:text-4xl">
-              Información, documentos y atención
-            </h1>
-            <p className="hidden max-w-md text-sm leading-6 text-ink/65 xl:block">
-              Accede a documentos institucionales, políticas y canales de atención de Coocentral.
+      <section className="relative isolate overflow-hidden bg-forest-deep text-paper">
+        <div
+          aria-hidden="true"
+          className="absolute -right-20 -top-28 -z-10 size-96 rounded-full border border-lime/15"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute -right-4 -top-10 -z-10 size-64 rounded-full border border-paper/10"
+        />
+        <div className="mx-auto grid max-w-7xl gap-10 px-5 py-12 sm:py-16 lg:grid-cols-12 lg:items-center lg:gap-12 lg:px-10 lg:py-20">
+          <div className="lg:col-span-7">
+            <p className="inline-flex items-center gap-2 rounded-full border border-lime/30 bg-lime/10 px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.18em] text-lime">
+              <Building2 aria-hidden="true" className="size-4" />
+              Cooperativa Central de Caficultores del Huila
             </p>
+            <h1 className="mt-5 max-w-3xl font-display text-4xl font-medium leading-[1.08] sm:text-5xl lg:text-6xl">
+              Una historia de unión, servicio y <span className="text-lime">caficultura.</span>
+            </h1>
+            <p className="mt-5 max-w-2xl text-base leading-7 text-paper/75 sm:text-lg">
+              Conoce quiénes somos, los principios que nos orientan y los documentos institucionales
+              de Coocentral.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <a
+                href="#quienes-somos"
+                className="inline-flex min-h-12 items-center gap-2 rounded-full bg-lime px-5 text-sm font-bold text-forest-deep transition-colors hover:bg-paper focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime focus-visible:ring-offset-2 focus-visible:ring-offset-forest-deep"
+              >
+                Conocer Coocentral
+                <ArrowRight aria-hidden="true" className="size-4" />
+              </a>
+              <a
+                href="#recursos"
+                className="inline-flex min-h-12 items-center gap-2 rounded-full border border-paper/20 bg-paper/5 px-5 text-sm font-semibold text-paper transition-colors hover:border-lime/50 hover:bg-paper/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime focus-visible:ring-offset-2 focus-visible:ring-offset-forest-deep"
+              >
+                Documentos y recursos
+                <ArrowRight aria-hidden="true" className="size-4" />
+              </a>
+            </div>
           </div>
+          <aside className="relative overflow-hidden rounded-3xl border border-paper/15 bg-paper/[0.06] p-6 backdrop-blur-sm sm:p-8 lg:col-span-5 lg:p-9">
+            <span
+              aria-hidden="true"
+              className="absolute -bottom-20 -right-16 size-56 rounded-full border border-lime/15"
+            />
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-lime">
+              Cooperativismo cafetero
+            </p>
+            <p className="mt-3 font-display text-3xl font-medium leading-tight sm:text-4xl">
+              Al servicio de las familias caficultoras.
+            </p>
+            <div className="mt-8 grid gap-4 border-t border-paper/15 pt-5 sm:grid-cols-2">
+              <div className="flex items-center gap-3">
+                <span className="grid size-10 shrink-0 place-items-center rounded-xl bg-lime/15 text-lime">
+                  <Building2 aria-hidden="true" className="size-5" />
+                </span>
+                <div>
+                  <p className="font-display text-2xl font-medium">1975</p>
+                  <p className="text-xs text-paper/65">Año de fundación</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <span className="grid size-10 shrink-0 place-items-center rounded-xl bg-lime/15 text-lime">
+                  <MapPin aria-hidden="true" className="size-5" />
+                </span>
+                <div>
+                  <p className="font-display text-2xl font-medium">{coreMunicipalities.length}</p>
+                  <p className="text-xs text-paper/65">Municipios núcleo</p>
+                </div>
+              </div>
+            </div>
+          </aside>
         </div>
       </section>
-      <section className="border-y border-border bg-paper">
+      <section id="recursos" className="scroll-mt-24 border-y border-border bg-paper">
         <div className="mx-auto max-w-7xl px-5 py-6 lg:px-10 lg:py-10">
           <p className="mb-4 text-xs font-bold uppercase tracking-[0.16em] text-brand">
             Selecciona un recurso para continuar
@@ -102,7 +174,7 @@ export function CooperativePage() {
                     href={item.href}
                     target={item.external ? "_blank" : undefined}
                     rel={item.external ? "noreferrer" : undefined}
-                    className="group flex h-full min-h-[5.25rem] items-center gap-3 rounded-xl border border-brand/15 bg-background p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand/40 hover:bg-sand/70 hover:shadow-[0_14px_28px_-18px_oklch(0.3_0.06_156/0.55)] active:translate-y-0 active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+                    className="group flex h-full min-h-21 items-center gap-3 rounded-xl border border-brand/15 bg-background p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand/40 hover:bg-sand/70 hover:shadow-[0_14px_28px_-18px_oklch(0.3_0.06_156/0.55)] active:translate-y-0 active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
                   >
                     <span className="grid size-10 shrink-0 place-items-center rounded-full bg-brand/8 font-display text-sm font-bold text-brand transition-colors duration-300 group-hover:bg-brand group-hover:text-paper">
                       {String(index + 1).padStart(2, "0")}
@@ -159,7 +231,7 @@ export function CooperativePage() {
               ))}
             </ol>
           </section>
-          <section className="lg:col-span-5">
+          <section id="administracion-control" className="scroll-mt-24 lg:col-span-5">
             <SectionTitle eyebrow="Gobierno corporativo" title="Cómo nos organizamos" />
             <ol className="space-y-4 border-l border-brand/30 pl-5">
               {governance.map((level, index) => (
@@ -305,7 +377,7 @@ export function CreditAndCarteraPage() {
                   src={product.image}
                   alt={product.imageAlt}
                   loading="lazy"
-                  className="mb-4 aspect-[3/2] w-full rounded-xl bg-paper object-contain p-3"
+                  className="mb-4 aspect-3/2 w-full rounded-xl bg-paper object-contain p-3"
                 />
                 <span className="flex items-center justify-between gap-3">
                   <span className="text-xs font-bold uppercase tracking-[0.14em] text-brand">
@@ -426,7 +498,7 @@ export function CreditProductPage({ slug }: { slug: string }) {
             <img
               src={product.image}
               alt={product.imageAlt}
-              className="mb-6 aspect-[3/2] w-full rounded-2xl bg-sand object-contain p-4 sm:max-h-80"
+              className="mb-6 aspect-3/2 w-full rounded-2xl bg-sand object-contain p-4 sm:max-h-80"
             />
             <p className="text-xs font-bold uppercase tracking-[0.16em] text-brand">
               Información del crédito
@@ -483,31 +555,146 @@ export function CreditProductPage({ slug }: { slug: string }) {
 }
 
 export function MembershipPage() {
+  const requirementIcons = {
+    "Comercialización comprometida": Sprout,
+    "Aportes sociales al día": HandCoins,
+    "Cumplimiento crediticio": ClipboardCheck,
+  };
+  const eligibilityIcons = {
+    "Productores mayores de edad": Sprout,
+    "Menores de edad": Users,
+    "Personas jurídicas y entidades solidarias": Building2,
+  };
+
   return (
     <main>
-      <PageIntro
-        eyebrow="Asociarme"
-        title="Hagamos crecer juntos la caficultura del Huila"
-        description="Ser asociado conecta tu finca con servicios, acompañamiento técnico, oportunidades de comercialización y programas de bienestar."
-      />
+      <section className="relative isolate overflow-hidden bg-forest-deep text-paper">
+        <div
+          aria-hidden="true"
+          className="absolute -right-20 -top-24 -z-10 size-80 rounded-full border border-lime/15"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute -right-4 -top-8 -z-10 size-48 rounded-full border border-paper/10"
+        />
+        <div className="mx-auto grid max-w-7xl gap-10 px-5 py-14 sm:py-18 lg:grid-cols-12 lg:items-center lg:gap-12 lg:px-10 lg:py-24">
+          <div className="lg:col-span-7">
+            <p className="inline-flex items-center gap-2 rounded-full border border-lime/30 bg-lime/10 px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.18em] text-lime">
+              <Sprout aria-hidden="true" className="size-4" />
+              Asociación · Coocentral
+            </p>
+            <h1 className="mt-5 max-w-3xl font-display text-4xl font-medium leading-[1.08] sm:text-5xl lg:text-6xl">
+              Hagamos crecer juntos la caficultura <span className="text-lime">del Huila.</span>
+            </h1>
+            <p className="mt-5 max-w-2xl text-base leading-7 text-paper/75 sm:text-lg">
+              Ser asociado conecta tu finca con servicios, acompañamiento técnico, oportunidades de
+              comercialización y programas de bienestar.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link
+                to="/contacto"
+                className="inline-flex min-h-12 items-center gap-2 rounded-full bg-lime px-5 text-sm font-bold text-forest-deep transition-colors hover:bg-paper focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime focus-visible:ring-offset-2 focus-visible:ring-offset-forest-deep"
+              >
+                Iniciar mi consulta
+                <ArrowRight aria-hidden="true" className="size-4" />
+              </Link>
+              <a
+                href="#requisitos"
+                className="inline-flex min-h-12 items-center gap-2 rounded-full border border-paper/20 bg-paper/5 px-5 text-sm font-semibold text-paper transition-colors hover:border-lime/50 hover:bg-paper/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime focus-visible:ring-offset-2 focus-visible:ring-offset-forest-deep"
+              >
+                Conocer los compromisos
+                <ArrowRight aria-hidden="true" className="size-4" />
+              </a>
+            </div>
+          </div>
+          <aside className="relative overflow-hidden rounded-3xl border border-paper/15 bg-paper/[0.06] p-6 backdrop-blur-sm sm:p-8 lg:col-span-5 lg:p-9">
+            <span
+              aria-hidden="true"
+              className="absolute -bottom-20 -right-16 size-56 rounded-full border border-lime/15"
+            />
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-lime">
+              Una cooperativa de caficultores
+            </p>
+            <p className="mt-5 font-display text-3xl font-medium leading-tight sm:text-4xl">
+              Tu finca, tu comunidad, un propósito compartido.
+            </p>
+            <div className="mt-8 flex items-center gap-3 border-t border-paper/15 pt-5">
+              <span className="grid size-11 shrink-0 place-items-center rounded-2xl bg-lime/15 text-lime">
+                <Users aria-hidden="true" className="size-5" />
+              </span>
+              <p className="text-sm leading-6 text-paper/70">
+                Conoce cómo vincularte y qué compromisos implica ser asociado.
+              </p>
+            </div>
+          </aside>
+        </div>
+      </section>
       <FarmerCenter />
-      <section className="mx-auto max-w-7xl px-5 py-14 lg:px-10 lg:py-20">
-        <div className="grid gap-10 lg:grid-cols-12">
-          <div className="lg:col-span-4">
-            <SectionTitle eyebrow="Vinculación" title="Requisitos para asociarte" />
-            <p className="text-sm leading-6 text-ink/65">
+
+      <section id="requisitos" className="scroll-mt-24 border-y border-border bg-sand">
+        <div className="mx-auto max-w-7xl px-5 py-14 lg:px-10 lg:py-20">
+          <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
+            <div className="lg:col-span-7">
+              <p className="text-xs font-bold uppercase tracking-[0.17em] text-brand">
+                Vinculación
+              </p>
+              <h2 className="mt-3 max-w-2xl font-display text-3xl font-medium leading-tight sm:text-4xl lg:text-5xl">
+                Requisitos para crecer en comunidad.
+              </h2>
+            </div>
+            <p className="max-w-xl text-sm leading-7 text-ink/65 sm:text-base lg:col-span-5 lg:justify-self-end">
               La vinculación contempla compromisos de comercialización, aportes sociales y
               cumplimiento de obligaciones con la cooperativa.
             </p>
-            <div className="mt-6">
+          </div>
+
+          <ol className="mt-9 grid gap-4 md:grid-cols-3">
+            {membershipRequirements.map((item, index) => {
+              const RequirementIcon = requirementIcons[item.title];
+
+              return (
+                <li
+                  key={item.title}
+                  className="group relative overflow-hidden rounded-3xl border border-border bg-paper p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-brand/30 hover:shadow-lg sm:p-7"
+                >
+                  <span className="absolute -right-3 -top-7 font-display text-8xl text-brand/5 transition-colors group-hover:text-brand/10">
+                    0{index + 1}
+                  </span>
+                  <span className="relative grid size-12 place-items-center rounded-2xl bg-lime/30 text-forest-deep transition-colors group-hover:bg-lime">
+                    <RequirementIcon aria-hidden="true" className="size-5" />
+                  </span>
+                  <h3 className="relative mt-6 font-display text-xl font-medium">{item.title}</h3>
+                  <p className="relative mt-2 text-sm leading-6 text-ink/65">{item.text}</p>
+                </li>
+              );
+            })}
+          </ol>
+
+          <section className="mt-14 rounded-3xl bg-paper p-6 sm:p-8 lg:p-10">
+            <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
+              <div className="lg:col-span-8">
+                <p className="text-xs font-bold uppercase tracking-[0.17em] text-brand">
+                  Quién puede vincularse
+                </p>
+                <h2 className="mt-3 font-display text-3xl font-medium sm:text-4xl">
+                  Criterios de elegibilidad
+                </h2>
+                <p className="mt-3 max-w-2xl text-sm leading-6 text-ink/65">
+                  La información publicada contempla distintos tipos de personas y productores.
+                  Confirma con nuestro equipo los pasos y documentos para tu caso.
+                </p>
+              </div>
               <Dialog>
                 <DialogTrigger asChild>
                   <button
                     type="button"
-                    className="group inline-flex min-h-11 items-center gap-2 rounded-full border border-brand/25 bg-paper px-4 py-2 text-sm font-semibold text-brand shadow-sm transition-colors hover:border-brand/45 hover:bg-brand/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+                    className="group inline-flex min-h-11 items-center gap-2 rounded-full border border-brand/25 bg-paper px-4 py-2 text-sm font-semibold text-brand shadow-sm transition-colors hover:border-brand/45 hover:bg-brand/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 lg:col-span-4 lg:justify-self-end"
                   >
-                    Consultar requisitos
-                    <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    Consultar requisitos oficiales
+                    <ArrowUpRight
+                      aria-hidden="true"
+                      className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                    />
                   </button>
                 </DialogTrigger>
                 <DialogContent className="max-h-[min(85vh,48rem)] max-w-2xl overflow-y-auto border-brand/15 bg-paper text-ink duration-100 sm:rounded-2xl">
@@ -549,60 +736,109 @@ export function MembershipPage() {
                 </DialogContent>
               </Dialog>
             </div>
-          </div>
-          <ol className="divide-y divide-border border-y border-border lg:col-span-8">
-            {membershipRequirements.map((item, index) => (
-              <li key={item.title} className="grid gap-2 py-5 sm:grid-cols-[3rem_1fr]">
-                <span className="font-display text-2xl text-brand">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <div>
-                  <h3 className="font-semibold">{item.title}</h3>
-                  <p className="mt-1 text-sm leading-6 text-ink/65">{item.text}</p>
-                </div>
-              </li>
-            ))}
-          </ol>
-        </div>
-        <section className="mt-14 border-t border-border pt-12">
-          <div className="max-w-3xl">
-            <SectionTitle eyebrow="Quién puede vincularse" title="Criterios de elegibilidad" />
-            <p className="text-sm leading-6 text-ink/65">
-              Estos criterios resumen la información publicada por Coocentral. Para confirmar el
-              proceso y la documentación aplicable a cada caso, comunícate con nuestro equipo.
+
+            <ul className="mt-7 grid gap-4 md:grid-cols-3">
+              {membershipEligibility.map((item, index) => {
+                const EligibilityIcon = eligibilityIcons[item.title];
+
+                return (
+                  <li
+                    key={item.title}
+                    className="rounded-2xl border border-border bg-background p-5 transition-colors hover:border-brand/30 sm:p-6"
+                  >
+                    <div className="flex items-center justify-between gap-3">
+                      <span className="grid size-10 place-items-center rounded-xl bg-lime/25 text-brand">
+                        <EligibilityIcon aria-hidden="true" className="size-5" />
+                      </span>
+                      <span className="font-display text-lg font-medium text-brand">
+                        0{index + 1}
+                      </span>
+                    </div>
+                    <h3 className="mt-5 font-display text-lg font-medium">{item.title}</h3>
+                    <p className="mt-2 text-sm leading-6 text-ink/65">{item.text}</p>
+                  </li>
+                );
+              })}
+            </ul>
+            <p className="mt-5 text-xs leading-5 text-ink/55">
+              La admisión de menores y de personas jurídicas se rige por las normas vigentes y la
+              reglamentación interna de la Cooperativa.
             </p>
+          </section>
+
+          <div className="mt-8 flex flex-col gap-5 rounded-3xl bg-forest-deep p-6 text-paper sm:flex-row sm:items-center sm:justify-between sm:p-8">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.17em] text-lime">
+                Da el primer paso
+              </p>
+              <h2 className="mt-2 font-display text-2xl font-medium sm:text-3xl">
+                Conversemos sobre tu vinculación.
+              </h2>
+              <p className="mt-2 max-w-xl text-sm leading-6 text-paper/70">
+                El equipo de Coocentral puede orientarte sobre el proceso y la documentación
+                vigente.
+              </p>
+            </div>
+            <Link
+              to="/contacto"
+              className="inline-flex min-h-12 shrink-0 items-center justify-center gap-2 rounded-full bg-lime px-5 text-sm font-bold text-forest-deep transition-colors hover:bg-paper focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime focus-visible:ring-offset-2 focus-visible:ring-offset-forest-deep"
+            >
+              Contactar a Coocentral
+              <ArrowRight aria-hidden="true" className="size-4" />
+            </Link>
           </div>
-          <ul className="mt-7 grid gap-4 md:grid-cols-3">
-            {membershipEligibility.map((item, index) => (
-              <li
-                key={item.title}
-                className="border border-border bg-paper p-5 transition-all hover:-translate-y-0.5 hover:border-brand/35 hover:shadow-md sm:p-6"
-              >
-                <span className="font-display text-2xl text-brand">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <h3 className="mt-4 font-display text-xl font-medium">{item.title}</h3>
-                <p className="mt-2 text-sm leading-6 text-ink/65">{item.text}</p>
-              </li>
-            ))}
-          </ul>
-          <p className="mt-5 text-xs leading-5 text-ink/55">
-            La admisión de menores y de personas jurídicas se rige por las normas vigentes y la
-            reglamentación interna de la Cooperativa.
-          </p>
-        </section>
-        <div className="mt-12 flex flex-wrap items-center justify-between gap-5 border-t border-border pt-7">
-          <p className="max-w-xl text-sm leading-6 text-ink/65">
-            Para iniciar tu proceso, consulta los canales de atención y la documentación vigente con
-            nuestro equipo.
-          </p>
-          <Link
-            to="/contacto"
-            className="inline-flex items-center gap-2 bg-brand px-5 py-3 text-sm font-semibold text-paper hover:bg-forest"
+
+          <article
+            id="beneficio-exequial"
+            className="mt-6 scroll-mt-24 overflow-hidden rounded-3xl border border-brand/15 bg-lime/15 p-6 sm:p-8 lg:p-10"
           >
-            Contactar a Coocentral
-            <ArrowRight className="size-4" />
-          </Link>
+            <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+              <div>
+                <div className="inline-flex overflow-hidden rounded-2xl border border-brand/10 bg-paper shadow-sm">
+                  <img
+                    src={losOlivosLogo}
+                    alt="Los Olivos, un homenaje al amor"
+                    className="h-auto w-full max-w-sm object-contain"
+                    width="445"
+                    height="245"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <p className="mt-6 text-xs font-bold uppercase tracking-[0.17em] text-brand">
+                  Beneficio para asociados
+                </p>
+                <h2 className="mt-2 font-display text-2xl font-medium text-ink sm:text-3xl">
+                  Previsión exequial
+                </h2>
+                <p className="mt-3 max-w-xl text-sm leading-6 text-ink/70">
+                  Coocentral ofrece un subsidio para la afiliación o renovación de la previsión
+                  exequial con Los Olivos.
+                </p>
+              </div>
+
+              <div className="rounded-2xl border border-brand/10 bg-paper p-5 sm:p-6">
+                <h3 className="font-display text-lg font-medium text-ink">
+                  ¿A quién está dirigido?
+                </h3>
+                <p className="mt-2 text-sm leading-6 text-ink/70">
+                  A asociados que estén vinculados directa o indirectamente al servicio. La
+                  vinculación indirecta incluye a su cónyuge o hijo.
+                </p>
+                <p className="mt-4 border-t border-border pt-4 text-sm leading-6 text-ink/60">
+                  Para conocer los requisitos, el valor del subsidio y las condiciones vigentes,
+                  consulta al equipo de Coocentral.
+                </p>
+                <Link
+                  to="/contacto"
+                  className="mt-5 inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-brand px-5 text-sm font-bold text-paper transition-colors hover:bg-forest focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+                >
+                  Consultar en Coocentral
+                  <ArrowRight aria-hidden="true" className="size-4" />
+                </Link>
+              </div>
+            </div>
+          </article>
         </div>
       </section>
     </main>
@@ -612,13 +848,72 @@ export function MembershipPage() {
 export function ServicesPage() {
   return (
     <main>
-      <PageIntro
-        eyebrow="Servicios"
-        title="Herramientas para una finca más fuerte"
-        description="Acompañamiento técnico, crédito, insumos y servicios agroindustriales para fortalecer la producción y el bienestar de los asociados."
-      />
+      <section className="relative isolate overflow-hidden bg-forest-deep text-paper">
+        <div
+          aria-hidden="true"
+          className="absolute -right-20 -top-28 -z-10 size-96 rounded-full border border-lime/15"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute -right-4 -top-10 -z-10 size-64 rounded-full border border-paper/10"
+        />
+        <div className="mx-auto grid max-w-7xl gap-10 px-5 py-12 sm:py-16 lg:grid-cols-12 lg:items-center lg:gap-12 lg:px-10 lg:py-20">
+          <div className="lg:col-span-7">
+            <p className="inline-flex items-center gap-2 rounded-full border border-lime/30 bg-lime/10 px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.18em] text-lime">
+              <Sprout aria-hidden="true" className="size-4" />
+              Servicios · Coocentral
+            </p>
+            <h1 className="mt-5 max-w-3xl font-display text-4xl font-medium leading-[1.08] sm:text-5xl lg:text-6xl">
+              Herramientas para una finca <span className="text-lime">más fuerte.</span>
+            </h1>
+            <p className="mt-5 max-w-2xl text-base leading-7 text-paper/75 sm:text-lg">
+              Acompañamiento técnico, crédito, insumos y servicios agroindustriales para fortalecer
+              la producción y el bienestar de los asociados.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <a
+                href="#explora-servicios"
+                className="inline-flex min-h-12 items-center gap-2 rounded-full bg-lime px-5 text-sm font-bold text-forest-deep transition-colors hover:bg-paper focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime focus-visible:ring-offset-2 focus-visible:ring-offset-forest-deep"
+              >
+                Explorar servicios
+                <ArrowRight aria-hidden="true" className="size-4" />
+              </a>
+              <a
+                href="#servicios-agropecuarios"
+                className="inline-flex min-h-12 items-center gap-2 rounded-full border border-paper/20 bg-paper/5 px-5 text-sm font-semibold text-paper transition-colors hover:border-lime/50 hover:bg-paper/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime focus-visible:ring-offset-2 focus-visible:ring-offset-forest-deep"
+              >
+                Acompañamiento agropecuario
+                <ArrowRight aria-hidden="true" className="size-4" />
+              </a>
+            </div>
+          </div>
+          <aside className="relative overflow-hidden rounded-3xl border border-paper/15 bg-paper/[0.06] p-6 backdrop-blur-sm sm:p-8 lg:col-span-5 lg:p-9">
+            <span
+              aria-hidden="true"
+              className="absolute -bottom-20 -right-16 size-56 rounded-full border border-lime/15"
+            />
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-lime">
+              Acompañamiento para el ciclo productivo
+            </p>
+            <p className="mt-3 font-display text-3xl font-medium leading-tight sm:text-4xl">
+              Del cuidado de la finca a la transformación del café.
+            </p>
+            <div className="mt-8 flex items-center gap-3 border-t border-paper/15 pt-5">
+              <span className="grid size-11 shrink-0 place-items-center rounded-2xl bg-lime/15 text-lime">
+                <Building2 aria-hidden="true" className="size-5" />
+              </span>
+              <p className="text-sm leading-6 text-paper/70">
+                Conoce las opciones disponibles para asociados y familias caficultoras.
+              </p>
+            </div>
+          </aside>
+        </div>
+      </section>
       <section className="border-y border-border bg-sand">
-        <div className="mx-auto max-w-7xl px-5 py-10 lg:px-10 lg:py-14">
+        <div
+          id="explora-servicios"
+          className="mx-auto max-w-7xl scroll-mt-24 px-5 py-10 lg:px-10 lg:py-14"
+        >
           <div className="mb-6 flex flex-wrap items-end justify-between gap-4">
             <div>
               <p className="text-xs font-bold uppercase tracking-[0.16em] text-brand">
@@ -638,7 +933,7 @@ export function ServicesPage() {
                 <li key={service.id} className="h-full">
                   <a
                     href={`#${service.id}`}
-                    className="group relative isolate flex min-h-[4.75rem] h-full items-center gap-3 overflow-hidden rounded-xl border border-brand/15 bg-paper px-4 py-3 text-sm font-semibold text-ink shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand/40 hover:bg-lime/10 hover:text-forest hover:shadow-[0_14px_28px_-18px_oklch(0.3_0.06_156/0.55)] active:translate-y-0 active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+                    className="group relative isolate flex min-h-19 h-full items-center gap-3 overflow-hidden rounded-xl border border-brand/15 bg-paper px-4 py-3 text-sm font-semibold text-ink shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand/40 hover:bg-lime/10 hover:text-forest hover:shadow-[0_14px_28px_-18px_oklch(0.3_0.06_156/0.55)] active:translate-y-0 active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
                   >
                     <span className="grid size-9 shrink-0 place-items-center rounded-full bg-brand/8 font-display text-xs font-bold text-brand transition-colors duration-300 group-hover:bg-brand group-hover:text-paper">
                       {String(index + 1).padStart(2, "0")}
@@ -663,7 +958,13 @@ export function ServicesPage() {
             className="scroll-mt-24 border-b border-border py-10 sm:py-14 lg:py-16"
           >
             <div className="mx-auto grid max-w-7xl items-center gap-7 px-5 lg:grid-cols-12 lg:gap-12 lg:px-10">
-              <div className={`lg:col-span-5 ${index % 2 === 1 ? "lg:order-2" : ""}`}>
+              <div
+                className={`service-scroll-reveal ${
+                  index % 2 === 1
+                    ? "service-scroll-reveal--right lg:order-2"
+                    : "service-scroll-reveal--left"
+                } lg:col-span-5`}
+              >
                 <p className="text-xs font-bold uppercase tracking-[0.16em] text-brand">
                   Servicio {String(index + 1).padStart(2, "0")}
                 </p>
@@ -710,7 +1011,13 @@ export function ServicesPage() {
                     </a>
                   ))}
               </div>
-              <figure className={`lg:col-span-7 ${index % 2 === 1 ? "lg:order-1" : ""}`}>
+              <figure
+                className={`service-scroll-reveal ${
+                  index % 2 === 1
+                    ? "service-scroll-reveal--left lg:order-1"
+                    : "service-scroll-reveal--right"
+                } lg:col-span-7`}
+              >
                 <img
                   src={service.image}
                   alt={service.imageAlt}
@@ -734,7 +1041,10 @@ export function ServicesPage() {
         ))}
       </section>
 
-      <section className="mx-auto max-w-7xl px-5 py-14 lg:px-10 lg:py-20">
+      <section
+        id="servicios-agropecuarios"
+        className="mx-auto max-w-7xl scroll-mt-24 px-5 py-14 lg:px-10 lg:py-20"
+      >
         <SectionTitle
           eyebrow="Servicios agropecuarios"
           title="Atención a lo largo del ciclo productivo"
@@ -939,12 +1249,71 @@ export function ServicesPage() {
 export function SustainabilityPage() {
   return (
     <main>
-      <PageIntro
-        eyebrow="Sostenibilidad"
-        title="Rentabilidad con impacto en el territorio"
-        description="La sostenibilidad integra productividad, cuidado ambiental y bienestar para las familias cafeteras."
-      />
-      <section className="mx-auto max-w-7xl px-5 py-14 lg:px-10 lg:py-20">
+      <section className="relative isolate overflow-hidden bg-forest-deep text-paper">
+        <div
+          aria-hidden="true"
+          className="absolute -right-20 -top-28 -z-10 size-96 rounded-full border border-lime/15"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute -right-4 -top-10 -z-10 size-64 rounded-full border border-paper/10"
+        />
+        <div className="mx-auto grid max-w-7xl gap-10 px-5 py-12 sm:py-16 lg:grid-cols-12 lg:items-center lg:gap-12 lg:px-10 lg:py-20">
+          <div className="lg:col-span-7">
+            <p className="inline-flex items-center gap-2 rounded-full border border-lime/30 bg-lime/10 px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.18em] text-lime">
+              <Leaf aria-hidden="true" className="size-4" />
+              Sostenibilidad · Coocentral
+            </p>
+            <h1 className="mt-5 max-w-3xl font-display text-4xl font-medium leading-[1.08] sm:text-5xl lg:text-6xl">
+              Rentabilidad con impacto <span className="text-lime">en el territorio.</span>
+            </h1>
+            <p className="mt-5 max-w-2xl text-base leading-7 text-paper/75 sm:text-lg">
+              La sostenibilidad integra productividad, cuidado ambiental y bienestar para las
+              familias cafeteras.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <a
+                href="#triple-impacto"
+                className="inline-flex min-h-12 items-center gap-2 rounded-full bg-lime px-5 text-sm font-bold text-forest-deep transition-colors hover:bg-paper focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime focus-visible:ring-offset-2 focus-visible:ring-offset-forest-deep"
+              >
+                Conocer el triple impacto
+                <ArrowRight aria-hidden="true" className="size-4" />
+              </a>
+              <a
+                href="#verificacion"
+                className="inline-flex min-h-12 items-center gap-2 rounded-full border border-paper/20 bg-paper/5 px-5 text-sm font-semibold text-paper transition-colors hover:border-lime/50 hover:bg-paper/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime focus-visible:ring-offset-2 focus-visible:ring-offset-forest-deep"
+              >
+                Certificaciones y proyectos
+                <ArrowRight aria-hidden="true" className="size-4" />
+              </a>
+            </div>
+          </div>
+          <aside className="relative overflow-hidden rounded-3xl border border-paper/15 bg-paper/[0.06] p-6 backdrop-blur-sm sm:p-8 lg:col-span-5 lg:p-9">
+            <span
+              aria-hidden="true"
+              className="absolute -bottom-20 -right-16 size-56 rounded-full border border-lime/15"
+            />
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-lime">
+              Un propósito compartido
+            </p>
+            <p className="mt-3 font-display text-3xl font-medium leading-tight sm:text-4xl">
+              Fincas productivas, territorio cuidado, familias con bienestar.
+            </p>
+            <div className="mt-8 flex items-center gap-3 border-t border-paper/15 pt-5">
+              <span className="grid size-11 shrink-0 place-items-center rounded-2xl bg-lime/15 text-lime">
+                <Sprout aria-hidden="true" className="size-5" />
+              </span>
+              <p className="text-sm leading-6 text-paper/70">
+                Tres dimensiones que conectan el desarrollo de la caficultura del Huila.
+              </p>
+            </div>
+          </aside>
+        </div>
+      </section>
+      <section
+        id="triple-impacto"
+        className="mx-auto max-w-7xl scroll-mt-24 px-5 py-14 lg:px-10 lg:py-20"
+      >
         <SectionTitle eyebrow="Triple impacto" title="Tres dimensiones, un mismo propósito" />
         <ul className="grid gap-x-10 sm:grid-cols-3">
           {sustainabilityPillars.map((pillar, index) => (
@@ -956,7 +1325,7 @@ export function SustainabilityPage() {
           ))}
         </ul>
       </section>
-      <section className="bg-forest-deep text-paper">
+      <section id="verificacion" className="scroll-mt-24 bg-forest-deep text-paper">
         <div className="mx-auto max-w-7xl px-5 py-14 lg:px-10 lg:py-20">
           <SectionTitle eyebrow="Verificación" title="Certificaciones y cooperación" />
           <ul className="grid gap-x-10 sm:grid-cols-3">

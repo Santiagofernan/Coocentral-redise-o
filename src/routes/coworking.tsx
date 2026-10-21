@@ -1,17 +1,13 @@
-import { createFileRoute } from "@tanstack/react-router";
-
-import { CoworkingPage } from "@/components/site/coworking-page";
+import { createFileRoute, lazyRouteComponent } from "@tanstack/react-router";
+import { createSeoHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/coworking")({
-  head: () => ({
-    meta: [
-      { title: "Coworking Martha Stella Velásquez | Coocentral" },
-      {
-        name: "description",
-        content:
-          "Conoce el espacio Coworking de Coocentral en Garzón: servicios, instalaciones y canales de contacto.",
-      },
-    ],
-  }),
-  component: CoworkingPage,
+  head: () =>
+    createSeoHead({
+      title: "Coworking en Garzón, Huila | Coocentral",
+      description:
+        "Conoce el espacio de coworking Martha Stella Velásquez de Coocentral en Garzón: instalaciones, servicios y canales de contacto.",
+      path: "/coworking",
+    }),
+  component: lazyRouteComponent(() => import("@/components/site/coworking-page"), "CoworkingPage"),
 });

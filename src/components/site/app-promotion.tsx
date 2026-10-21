@@ -122,12 +122,13 @@ export function AppPromotion() {
             <span aria-hidden="true" className="app-phone-button app-phone-button--left-top" />
             <span aria-hidden="true" className="app-phone-button app-phone-button--left-bottom" />
             <span aria-hidden="true" className="app-phone-button app-phone-button--right" />
-            <div className="app-phone-screen relative overflow-hidden rounded-[2.05rem] bg-background">
+            <div className="app-phone-screen relative overflow-hidden rounded-4xl bg-background">
               <img
                 key={activeScreen}
                 src={appScreens[activeScreen]}
                 alt={`Captura ${activeScreen + 1} de ${appScreens.length} de la aplicación Coocentral`}
                 className="app-screen-transition app-phone-image block w-full object-cover"
+                loading="lazy"
                 decoding="async"
               />
             </div>
@@ -139,9 +140,11 @@ export function AppPromotion() {
             <div className="rounded-2xl bg-background p-2 shadow-xl sm:p-3">
               <div className="rounded-xl border border-border p-1.5 sm:p-2">
                 <img
-                  src="/QR_Descarga_APP/android-qr-app-coocentral.png"
+                  src="/QR_Descarga_APP/android-qr-app-coocentral-optimized.png"
                   alt="Código QR para descargar la aplicación Coocentral en Google Play para Android"
                   className="mx-auto aspect-square h-auto w-full max-w-40"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
               <img
@@ -153,9 +156,11 @@ export function AppPromotion() {
             <div className="rounded-2xl bg-background p-2 shadow-xl sm:p-3">
               <div className="rounded-xl border border-border p-1.5 sm:p-2">
                 <img
-                  src="/QR_Descarga_APP/ios-qr-app-coocentral.png"
+                  src="/QR_Descarga_APP/ios-qr-app-coocentral-optimized.png"
                   alt="Código QR para descargar la aplicación Coocentral en App Store para iPhone"
                   className="mx-auto aspect-square h-auto w-full max-w-40"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
               <img

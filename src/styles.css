@@ -564,6 +564,45 @@
     animation-timeline: view();
     animation-range: entry 5% entry 45%;
   }
+
+  .service-scroll-reveal {
+    animation-timeline: view();
+    animation-range: entry 0% entry 60%;
+    animation-fill-mode: both;
+    animation-timing-function: linear;
+  }
+
+  .service-scroll-reveal--left {
+    animation-name: service-enter-left;
+  }
+
+  .service-scroll-reveal--right {
+    animation-name: service-enter-right;
+  }
+}
+
+@keyframes service-enter-left {
+  from {
+    opacity: 0.15;
+    transform: translate(-5rem, 1.5rem) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+@keyframes service-enter-right {
+  from {
+    opacity: 0.15;
+    transform: translate(5rem, 1.5rem) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -585,7 +624,8 @@
   .coffee-bean,
   .coffee-process-illustration,
   .whatsapp-float-pulse,
-  .reveal {
+  .reveal,
+  .service-scroll-reveal {
     animation: none;
   }
 

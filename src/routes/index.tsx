@@ -6,18 +6,16 @@ import { ImpactStats } from "@/components/site/impact-stats";
 import { OfficeLocation } from "@/components/site/office-location";
 import { AppPromotion } from "@/components/site/app-promotion";
 import { industrialProjects } from "@/content/coocentral";
+import { createSeoHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Coocentral | Una cooperativa al servicio del caficultor" },
-      {
-        name: "description",
-        content:
-          "Conoce la cooperativa que acompaña a las familias caficultoras del Huila desde 1975.",
-      },
-    ],
-  }),
+  head: () =>
+    createSeoHead({
+      title: "Coocentral | Cooperativa de caficultores del Huila",
+      description:
+        "Cooperativa de caficultores en Garzón, Huila. Acompañamos a productores de café con comercialización, servicios y desarrollo rural desde 1975.",
+      path: "/",
+    }),
   component: HomePage,
 });
 

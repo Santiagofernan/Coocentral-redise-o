@@ -9,7 +9,7 @@ const socialShare = (social.value / (social.value + productivity.value)) * 100;
 
 export function FarmerCenter() {
   return (
-    <section id="asociados" className="bg-sand">
+    <section id="beneficios-asociados" className="scroll-mt-24 bg-sand">
       <div className="mx-auto max-w-7xl px-5 py-20 lg:px-10 lg:py-32">
         <SectionHeading
           eyebrow="El caficultor en el centro"
@@ -82,10 +82,11 @@ export function FarmerCenter() {
           Bienestar para el asociado
         </h3>
         <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {benefits.map(({ icon: Icon, title, text }) => (
+          {benefits.map(({ id, icon: Icon, title, text }) => (
             <li
+              id={`beneficio-${id}`}
               key={title}
-              className="reveal group rounded-3xl bg-paper p-7 transition-all hover:-translate-y-1 hover:shadow-[0_20px_40px_-20px_oklch(0.3_0.06_156/0.35)]"
+              className="reveal group scroll-mt-24 rounded-3xl bg-paper p-7 transition-all hover:-translate-y-1 hover:shadow-[0_20px_40px_-20px_oklch(0.3_0.06_156/0.35)]"
             >
               <span className="inline-flex size-12 items-center justify-center rounded-2xl bg-sand text-brand transition-colors group-hover:bg-brand group-hover:text-paper">
                 <Icon className="size-6" />

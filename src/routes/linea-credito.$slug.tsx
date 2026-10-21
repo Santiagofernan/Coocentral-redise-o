@@ -1,17 +1,27 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, lazyRouteComponent } from "@tanstack/react-router";
 
-import { CreditProductPage } from "@/components/site/section-pages";
+import { creditProductDetails } from "@/content/coocentral";
+import { createSeoHead } from "@/lib/seo";
+
+const CreditProductPage = lazyRouteComponent(
+  () => import("@/components/site/section-pages"),
+  "CreditProductPage",
+);
 
 export const Route = createFileRoute("/linea-credito/$slug")({
-  head: () => ({
-    meta: [
-      { title: "Línea de crédito | Coocentral" },
-      {
-        name: "description",
-        content: "Información y requisitos de las líneas de crédito de Coocentral.",
-      },
-    ],
-  }),
+  head: ({ params }) => {
+    const product = creditProductDetails.find((item) => item.slug === params.slug);
+
+    return createSeoHead({
+      title: product
+        ? `${product.name} | Crédito Coocentral`
+        : "Líneas de crédito para caficultores | Coocentral",
+      description: product
+        ? `${product.summary} Consulta el plazo y los requisitos de esta línea de crédito de Coocentral.`
+        : "Consulta las líneas de crédito de Coocentral para asociados y productores del sector cafetero.",
+      path: `/linea-credito/${params.slug}`,
+    });
+  },
   component: CreditProductRoute,
 });
 
