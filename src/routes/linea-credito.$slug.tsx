@@ -17,9 +17,10 @@ export const Route = createFileRoute("/linea-credito/$slug")({
         ? `${product.name} | Crédito Coocentral`
         : "Líneas de crédito para caficultores | Coocentral",
       description: product
-        ? `${product.summary} Consulta el plazo y los requisitos de esta línea de crédito de Coocentral.`
+        ? `${product.summary} Conoce requisitos y plazo con Coocentral.`
         : "Consulta las líneas de crédito de Coocentral para asociados y productores del sector cafetero.",
       path: `/linea-credito/${params.slug}`,
+      noIndex: !product,
     });
   },
   component: CreditProductRoute,

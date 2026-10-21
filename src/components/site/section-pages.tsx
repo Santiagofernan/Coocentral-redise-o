@@ -806,7 +806,7 @@ export function MembershipPage() {
                   />
                 </div>
                 <p className="mt-6 text-xs font-bold uppercase tracking-[0.17em] text-brand">
-                  Beneficio para asociados
+                  Beneficio para asociados y trabajadores
                 </p>
                 <h2 className="mt-2 font-display text-2xl font-medium text-ink sm:text-3xl">
                   Previsión exequial
@@ -822,8 +822,9 @@ export function MembershipPage() {
                   ¿A quién está dirigido?
                 </h3>
                 <p className="mt-2 text-sm leading-6 text-ink/70">
-                  A asociados que estén vinculados directa o indirectamente al servicio. La
-                  vinculación indirecta incluye a su cónyuge o hijo.
+                  Está dirigido a asociados y trabajadores de la cooperativa. La vinculación
+                  indirecta puede incluir al cónyuge o a los hijos del asociado, según las
+                  condiciones del servicio.
                 </p>
                 <p className="mt-4 border-t border-border pt-4 text-sm leading-6 text-ink/60">
                   Para conocer los requisitos, el valor del subsidio y las condiciones vigentes,
