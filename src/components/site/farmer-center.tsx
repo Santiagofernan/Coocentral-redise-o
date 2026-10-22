@@ -31,18 +31,18 @@ export function FarmerCenter() {
               aria-hidden="true"
               className="absolute -right-2 -top-8 size-48 rounded-full border border-paper/10"
             />
-            <Quote aria-hidden="true" className="relative size-7 text-lime" />
+            <Quote aria-hidden="true" className="relative size-7 text-paper/75" />
             <p className="relative mt-5 max-w-xl font-display text-xl italic leading-snug lg:text-2xl">
               “{quotes.farmer.text}”
             </p>
             <footer className="relative mt-5 text-sm">
-              <span className="font-bold text-lime">{quotes.farmer.author}</span>
+              <span className="font-bold text-paper">{quotes.farmer.author}</span>
               <span className="text-paper/70"> · {quotes.farmer.role}</span>
             </footer>
           </blockquote>
 
           <article className="reveal flex flex-col rounded-3xl bg-forest p-8 text-paper lg:col-span-5 lg:p-10">
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-lime">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-paper">
               {socialInvestment.period}
             </p>
             <p className="mt-6 font-display text-6xl font-medium tracking-tight lg:text-7xl">

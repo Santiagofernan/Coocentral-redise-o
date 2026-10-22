@@ -148,7 +148,7 @@ export function CoffeeProcessExplorer() {
                       className={`grid size-10 place-items-center rounded-full transition-colors ${
                         isActive
                           ? "bg-lime text-forest-deep"
-                          : "bg-lime/25 text-forest group-hover:bg-lime/50"
+                          : "bg-lime/25 text-forest-deep group-hover:bg-lime/50"
                       }`}
                     >
                       <Icon aria-hidden="true" className="size-5" />

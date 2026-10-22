@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { MessageCircle, X } from "lucide-react";
+import { ArrowUp, Phone, X } from "lucide-react";
 
 import { WhatsAppLogo } from "@/components/site/whatsapp-logo";
 import { contact } from "@/content/coocentral";
@@ -10,29 +10,22 @@ function toWhatsappNumber(phone: string) {
   return `57${phone.replace(/\D/g, "")}`;
 }
 
-const whatsappOptions = [
-  ...[...contact.phones]
-    .sort(
-      (a, b) =>
-        Number(toWhatsappNumber(b) === contact.whatsapp) -
-        Number(toWhatsappNumber(a) === contact.whatsapp),
-    )
-    .map((phone) => ({
-      area: "Recepción",
-      phone,
-      number: toWhatsappNumber(phone),
-      message: "Hola, quisiera comunicarme con recepción de Coocentral.",
-    })),
+const communicationOptions = [
+  ...contact.phones.map((phone) => ({
+    area: "Recepción",
+    phone,
+    href: `tel:${phone.replace(/[^\d+]/g, "")}`,
+    channel: "phone" as const,
+  })),
   {
     area: "Crédito y cartera",
     phone: "317 433 4039",
-    number: toWhatsappNumber("317 433 4039"),
-    message: "Hola, quisiera recibir información sobre crédito y cartera.",
+    href: `https://wa.me/${toWhatsappNumber("317 433 4039")}?text=${encodeURIComponent(
+      "Hola, quisiera recibir información sobre crédito y cartera.",
+    )}`,
+    channel: "whatsapp" as const,
   },
-].map((option) => ({
-  ...option,
-  href: `https://wa.me/${option.number}?text=${encodeURIComponent(option.message)}`,
-}));
+];
 
 export function WhatsAppFloatingButton() {
   const [isOpen, setIsOpen] = useState(false);
@@ -70,7 +63,7 @@ export function WhatsAppFloatingButton() {
               <h2 id="whatsapp-chat-title" className="font-semibold leading-tight">
                 Coocentral
               </h2>
-              <p className="mt-1 text-xs text-white/75">Atención por WhatsApp</p>
+              <p className="mt-1 text-xs text-white/75">Teléfono y WhatsApp</p>
             </div>
             <button
               type="button"
@@ -84,18 +77,31 @@ export function WhatsAppFloatingButton() {
           <div className="bg-sand/55 p-4">
             <p className="text-xs font-medium text-ink/50">Coocentral · ahora</p>
             <p className="mt-2 max-w-[18rem] rounded-2xl rounded-tl-sm bg-paper px-4 py-3 text-sm leading-5 text-ink shadow-sm">
-              Elige el área con la que quieres comunicarte:
+              Elige cómo quieres comunicarte con cada área:
             </p>
             <div className="mt-3 grid gap-2">
-              {whatsappOptions.map((option) => (
+              {communicationOptions.map((option) => (
                 <a
-                  key={option.number}
+                  key={`${option.channel}-${option.phone}`}
                   href={option.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex min-h-11 w-full items-center gap-3 rounded-xl bg-[#25d366] px-4 py-2 text-sm font-bold text-forest-deep transition-colors hover:bg-[#20bd5a] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#128c4a] focus-visible:ring-offset-2"
+                  aria-label={
+                    option.channel === "phone"
+                      ? `Llamar a ${option.area}: ${option.phone}`
+                      : undefined
+                  }
+                  target={option.channel === "whatsapp" ? "_blank" : undefined}
+                  rel={option.channel === "whatsapp" ? "noreferrer" : undefined}
+                  className={`inline-flex min-h-11 w-full items-center gap-3 rounded-xl px-4 py-2 text-sm font-bold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${
+                    option.channel === "whatsapp"
+                      ? "bg-[#25d366] text-forest-deep hover:bg-[#20bd5a] focus-visible:ring-[#128c4a]"
+                      : "border border-brand/15 bg-paper text-ink hover:bg-sand focus-visible:ring-brand"
+                  }`}
                 >
-                  <MessageCircle aria-hidden="true" className="size-4 shrink-0" />
+                  {option.channel === "phone" ? (
+                    <Phone aria-hidden="true" className="size-4 shrink-0 text-brand" />
+                  ) : (
+                    <WhatsAppLogo aria-hidden="true" className="size-4 shrink-0" />
+                  )}
                   <span className="min-w-0 flex-1 text-left">
                     <span className="block">{option.area}</span>
                     <span className="block text-xs font-medium">{option.phone}</span>
@@ -107,6 +113,16 @@ export function WhatsAppFloatingButton() {
         </div>
       </section>
 
+      {!isOpen && (
+        <button
+          type="button"
+          aria-label="Volver al inicio de la página"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="fixed bottom-24 right-7 z-40 grid size-11 place-items-center rounded-full border border-brand/15 bg-paper text-brand shadow-[0_8px_24px_-10px_oklch(0.22_0.045_158/0.5)] transition-[transform,background-color,box-shadow] duration-200 hover:-translate-y-0.5 hover:bg-sand hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-paper active:translate-y-0 motion-reduce:transition-none sm:bottom-28 sm:right-9"
+        >
+          <ArrowUp aria-hidden="true" className="size-5" />
+        </button>
+      )}
       <button
         type="button"
         aria-label={isOpen ? "Cerrar chat de WhatsApp" : "Abrir chat de WhatsApp"}

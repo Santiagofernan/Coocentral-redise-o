@@ -148,7 +148,7 @@ export function SiteHeader() {
         <Link
           to="/"
           aria-label="Coocentral, ir al inicio"
-          className="group/logo relative isolate inline-flex shrink-0 items-center rounded-full px-2 py-1 transition-colors duration-300 hover:bg-brand/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 active:scale-[0.97]"
+          className="group/logo relative isolate inline-flex shrink-0 items-center rounded-full p-3 transition-colors duration-300 hover:bg-brand/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 active:scale-[0.97]"
           onClick={() => {
             if (pathname === "/") window.scrollTo({ top: 0, behavior: "smooth" });
           }}
@@ -158,7 +158,7 @@ export function SiteHeader() {
             alt="Coocentral"
             width="180"
             height="40"
-            className="h-auto w-[clamp(5.5rem,34vw,9rem)] transition-transform duration-300 ease-out group-hover/logo:scale-[1.06] group-hover/logo:drop-shadow-[0_5px_8px_oklch(0.529_0.146_147.8/0.2)] group-active/logo:scale-[0.98] sm:h-9 sm:w-auto lg:h-10"
+            className="h-auto w-[clamp(6.25rem,34vw,9rem)] transition-transform duration-300 ease-out group-hover/logo:scale-[1.06] group-hover/logo:drop-shadow-[0_5px_8px_oklch(0.516_0.137_151.7/0.2)] group-active/logo:scale-[0.98] sm:h-9 sm:w-auto lg:h-10"
           />
         </Link>
 
@@ -255,7 +255,7 @@ export function SiteHeader() {
             <CursorSelector cursorStyle={cursorStyle} onChange={updateCursorStyle} />
           </div>
           <details ref={contactMenuRef} className="group relative hidden xl:block">
-            <summary className="group/contact inline-flex h-11 cursor-pointer list-none items-center gap-2 rounded-full bg-lime px-4 text-sm font-bold text-forest-deep shadow-[0_6px_18px_-10px_oklch(0.529_0.146_147.8/0.7)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-lime/90 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 active:translate-y-0 [&::-webkit-details-marker]:hidden">
+            <summary className="group/contact inline-flex h-11 cursor-pointer list-none items-center gap-2 rounded-full bg-lime px-4 text-sm font-bold text-forest-deep shadow-[0_6px_18px_-10px_oklch(0.516_0.137_151.7/0.7)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-lime/90 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 active:translate-y-0 [&::-webkit-details-marker]:hidden">
               Contacto
               <ChevronDown className="size-4 transition-transform duration-200 group-open/contact:rotate-180" />
             </summary>

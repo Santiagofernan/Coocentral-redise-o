@@ -75,7 +75,7 @@ export function Hero() {
         </svg>
       </div>
 
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-5 pt-[calc(100vw*0.413+1.5rem)] pb-12 lg:px-10 lg:pt-32 lg:pb-24">
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-5 pt-[calc(100vw*0.413+3rem)] pb-12 lg:px-10 lg:pt-32 lg:pb-24">
         <div className="max-w-4xl">
           <h1
             className="editorial-reveal max-w-3xl text-4xl font-medium leading-[1.04] tracking-normal drop-shadow-[0_2px_10px_oklch(0.16_0.035_158/0.8)] sm:text-6xl lg:text-7xl"
@@ -113,7 +113,7 @@ export function Hero() {
           >
             <Link
               to="/servicios"
-              className="group inline-flex min-h-12 items-center gap-2 rounded-full bg-lime px-7 py-4 text-sm font-bold text-forest-deep shadow-[0_12px_28px_-14px_oklch(0.766_0.166_130/0.8)] transition-all duration-200 hover:-translate-y-1 hover:bg-paper hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime focus-visible:ring-offset-2 focus-visible:ring-offset-forest-deep active:translate-y-0"
+              className="group inline-flex min-h-12 items-center gap-2 rounded-full bg-lime px-7 py-4 text-sm font-bold text-forest-deep shadow-[0_12px_28px_-14px_oklch(0.763_0.175_129.7/0.8)] transition-all duration-200 hover:-translate-y-1 hover:bg-paper hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime focus-visible:ring-offset-2 focus-visible:ring-offset-forest-deep active:translate-y-0"
             >
               Explorar servicios
               <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />

@@ -32,7 +32,7 @@ import {
 import ferticoolombiaLogo from "@/assets/Servicios/Ferticoolombia/Logo Ferticoolombia TRAZO BLANCO.png";
 import almacenesCoocentralImage from "@/assets/Servicios/Almacenes/almacenes-coocentral.webp";
 import fundecafeImage from "@/assets/Servicios/Fundecafe/Fundecafe.jpg";
-import picIndustrialPanorama from "@/assets/Servicios/Pic/parque-industrial-panorama.webp";
+import picIndustrialPark from "@/assets/Servicios/Pic/Parque industrial.webp";
 import hotelKahveImage from "@/assets/Servicios/Hotel_Kahve/Planta.webp";
 import coworkingShowcaseImage from "@/assets/Servicios/Coworking/YDRAY-IMG_9436-1-scaled.webp";
 import coocentralCoffeeImage from "@/assets/Servicios/Cafes_coocentral/Cafe.webp";
@@ -872,8 +872,8 @@ export const serviceShowcase: ServiceShowcase[] = [
     title: "PIC · Parque Industrial del Café",
     summary:
       "Infraestructura que integra secado, trilla, tostión, almacenamiento y control de calidad para agregar valor al café del Huila.",
-    image: picIndustrialPanorama,
-    imageAlt: "Instalaciones del Parque Industrial del Café de Coocentral",
+    image: picIndustrialPark,
+    imageAlt: "Vista aérea de las instalaciones del Parque Industrial del Café de Coocentral",
     href: "/pic",
   },
   {

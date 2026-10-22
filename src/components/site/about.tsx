@@ -36,7 +36,7 @@ export function About() {
           </article>
           <article className="reveal relative overflow-hidden rounded-3xl bg-forest p-8 text-paper lg:col-span-5 lg:p-12">
             <span className="grain absolute inset-0 opacity-60" />
-            <p className="relative font-display text-8xl font-medium leading-none tracking-tighter text-lime lg:text-9xl">
+            <p className="relative font-display text-8xl font-medium leading-none tracking-tighter text-paper lg:text-9xl">
               2027
             </p>
             <h3 className="relative mt-6 text-2xl font-medium lg:text-3xl">Visión</h3>
@@ -116,7 +116,7 @@ export function About() {
               ))}
             </ol>
             <figure className="mt-auto border-t border-border pt-6">
-              <Quote className="size-6 text-lime" />
+              <Quote className="size-6 text-brand" />
               <blockquote className="mt-3 font-display text-xl italic leading-8">
                 “{quotes.ceo.text}”
               </blockquote>

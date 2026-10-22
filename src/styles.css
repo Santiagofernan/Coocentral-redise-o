@@ -19,8 +19,8 @@
  */
 
 @theme inline {
-  --font-display: "Outfit", "Trebuchet MS", sans-serif;
-  --font-body: "DM Sans", system-ui, sans-serif;
+  --font-display: "Outfit", "Gotham", "Trebuchet MS", sans-serif;
+  --font-body: "Outfit", "Gotham", system-ui, sans-serif;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -73,12 +73,13 @@
 
 :root {
   --radius: 0.75rem;
-  /* Verdes del logo oficial: #148135, #21974E y lima #8FC74A */
-  --brand: oklch(0.529 0.146 147.8);
-  --brand-bright: oklch(0.596 0.149 150.9);
-  --lime: oklch(0.766 0.166 130);
-  --forest: oklch(0.3 0.06 156);
-  --forest-deep: oklch(0.22 0.045 158);
+  /* Gotham is preferred by the manual; Outfit is the available web-safe fallback. */
+  /* Manual palette: primary green #009444 and light green #8DC73F. */
+  --brand: oklch(0.462 0.122 152);
+  --brand-bright: oklch(0.583 0.159 150.3);
+  --lime: oklch(0.763 0.175 129.7);
+  --forest: oklch(0.516 0.137 151.7);
+  --forest-deep: oklch(0.369 0.092 154.4);
   --paper: oklch(0.982 0.01 106);
   --sand: oklch(0.948 0.022 110);
   --ink: oklch(0.24 0.04 155);
@@ -88,8 +89,8 @@
   --card-foreground: var(--ink);
   --popover: oklch(0.99 0.006 106);
   --popover-foreground: var(--ink);
-  --primary: var(--brand);
-  --primary-foreground: var(--paper);
+  --primary: var(--brand-bright);
+  --primary-foreground: oklch(0.178 0 89.9);
   --secondary: var(--lime);
   --secondary-foreground: var(--ink);
   --muted: var(--sand);
@@ -100,55 +101,55 @@
   --destructive-foreground: oklch(0.984 0.003 247.858);
   --border: oklch(0.885 0.022 130);
   --input: oklch(0.885 0.022 130);
-  --ring: var(--brand);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
+  --ring: var(--brand-bright);
+  --chart-1: var(--brand-bright);
+  --chart-2: var(--lime);
+  --chart-3: var(--brand);
+  --chart-4: var(--forest);
+  --chart-5: var(--forest-deep);
   --sidebar: oklch(0.984 0.003 247.858);
   --sidebar-foreground: oklch(0.129 0.042 264.695);
-  --sidebar-primary: oklch(0.208 0.042 265.755);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.968 0.007 247.896);
-  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
-  --sidebar-border: oklch(0.929 0.013 255.508);
-  --sidebar-ring: oklch(0.704 0.04 256.788);
+  --sidebar-primary: var(--brand-bright);
+  --sidebar-primary-foreground: oklch(0.178 0 89.9);
+  --sidebar-accent: var(--lime);
+  --sidebar-accent-foreground: var(--ink);
+  --sidebar-border: oklch(0.885 0.022 130);
+  --sidebar-ring: var(--brand-bright);
 }
 
 .dark {
-  --background: oklch(0.129 0.042 264.695);
-  --foreground: oklch(0.984 0.003 247.858);
-  --card: oklch(0.208 0.042 265.755);
-  --card-foreground: oklch(0.984 0.003 247.858);
-  --popover: oklch(0.208 0.042 265.755);
-  --popover-foreground: oklch(0.984 0.003 247.858);
-  --primary: oklch(0.929 0.013 255.508);
-  --primary-foreground: oklch(0.208 0.042 265.755);
-  --secondary: oklch(0.279 0.041 260.031);
-  --secondary-foreground: oklch(0.984 0.003 247.858);
-  --muted: oklch(0.279 0.041 260.031);
-  --muted-foreground: oklch(0.704 0.04 256.788);
-  --accent: oklch(0.279 0.041 260.031);
-  --accent-foreground: oklch(0.984 0.003 247.858);
+  --background: oklch(0.16 0.035 153);
+  --foreground: oklch(0.984 0.003 106);
+  --card: oklch(0.21 0.045 153);
+  --card-foreground: oklch(0.984 0.003 106);
+  --popover: oklch(0.21 0.045 153);
+  --popover-foreground: oklch(0.984 0.003 106);
+  --primary: var(--brand-bright);
+  --primary-foreground: oklch(0.178 0 89.9);
+  --secondary: var(--lime);
+  --secondary-foreground: var(--forest-deep);
+  --muted: oklch(0.28 0.05 153);
+  --muted-foreground: oklch(0.74 0.025 145);
+  --accent: oklch(0.28 0.05 153);
+  --accent-foreground: oklch(0.984 0.003 106);
   --destructive: oklch(0.704 0.191 22.216);
   --destructive-foreground: oklch(0.984 0.003 247.858);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.551 0.027 264.364);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.208 0.042 265.755);
-  --sidebar-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.279 0.041 260.031);
-  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
+  --ring: var(--brand-bright);
+  --chart-1: var(--brand-bright);
+  --chart-2: var(--lime);
+  --chart-3: var(--brand);
+  --chart-4: var(--forest);
+  --chart-5: var(--forest-deep);
+  --sidebar: oklch(0.21 0.045 153);
+  --sidebar-foreground: oklch(0.984 0.003 106);
+  --sidebar-primary: var(--brand-bright);
+  --sidebar-primary-foreground: oklch(0.178 0 89.9);
+  --sidebar-accent: oklch(0.28 0.05 153);
+  --sidebar-accent-foreground: oklch(0.984 0.003 106);
   --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.551 0.027 264.364);
+  --sidebar-ring: var(--brand-bright);
 }
 
 @layer base {
@@ -160,12 +161,35 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.6;
     letter-spacing: 0;
   }
 
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 5rem;
+    scrollbar-color: var(--brand) var(--sand);
+    scrollbar-width: thin;
+  }
+
+  *::-webkit-scrollbar {
+    width: 0.7rem;
+    height: 0.7rem;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: var(--sand);
+  }
+
+  *::-webkit-scrollbar-thumb {
+    border: 2px solid var(--sand);
+    border-radius: 9999px;
+    background: var(--brand);
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background: var(--forest-deep);
   }
 
   ::selection {
@@ -364,7 +388,7 @@
 
 .coffee-process-intro {
   background:
-    radial-gradient(ellipse at 78% 48%, oklch(0.766 0.166 130 / 0.2), transparent 38%),
+    radial-gradient(ellipse at 78% 48%, oklch(0.763 0.175 129.7 / 0.2), transparent 38%),
     linear-gradient(125deg, var(--color-sand), var(--color-paper) 48%, oklch(0.91 0.06 128));
 }
 

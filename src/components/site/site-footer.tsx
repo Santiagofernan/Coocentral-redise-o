@@ -71,13 +71,16 @@ export function SiteFooter() {
               className="h-9 w-auto brightness-0 invert"
             />
           </Link>
-          <p className="mt-5 max-w-sm text-sm leading-6 text-paper/65">
+          <p className="mt-5 max-w-sm text-base leading-7 text-paper/85">
             Más que una cooperativa: Una familia al servicio del caficultor
           </p>
-          <address className="mt-6 space-y-1 text-sm not-italic text-paper/65">
+          <address className="mt-6 space-y-2 text-base leading-7 not-italic text-paper/85">
             <p>{contact.address}</p>
             <p>{contact.city}</p>
-            <Link to="/contacto" className="text-lime hover:underline">
+            <Link
+              to="/contacto"
+              className="font-semibold text-lime underline-offset-4 hover:underline"
+            >
               {contact.email}
             </Link>
             <p>{contact.phones.join(" · ")}</p>
@@ -86,17 +89,17 @@ export function SiteFooter() {
 
         {footerColumns.map((column) => (
           <nav key={column.title} aria-label={column.title} className="min-w-0 lg:col-span-3">
-            <h2 className="text-xs font-bold uppercase tracking-[0.16em] text-lime">
+            <h2 className="text-sm font-bold uppercase tracking-[0.12em] text-lime">
               {column.title}
             </h2>
-            <ul className="mt-4 space-y-3">
+            <ul className="mt-4 space-y-3.5">
               {column.links.map((item) => (
                 <li key={item.href}>
                   {item.href.startsWith("/") &&
                   !/\.(pdf|jpe?g|png|webp)(?:[?#]|$)/i.test(item.href) ? (
                     <Link
                       to={item.href}
-                      className="inline-flex items-start text-sm leading-5 text-paper/70 transition-colors hover:text-paper"
+                      className="inline-flex items-start text-base leading-6 text-paper/85 transition-colors hover:text-paper"
                     >
                       {item.label}
                     </Link>
@@ -105,7 +108,7 @@ export function SiteFooter() {
                       href={item.href}
                       target={item.href.startsWith("/") ? undefined : "_blank"}
                       rel={item.href.startsWith("/") ? undefined : "noreferrer"}
-                      className="inline-flex items-start gap-1 text-sm leading-5 text-paper/70 transition-colors hover:text-paper"
+                      className="inline-flex items-start gap-1 text-base leading-6 text-paper/85 transition-colors hover:text-paper"
                     >
                       {item.label}
                       <ArrowUpRight className="mt-0.5 size-3.5 shrink-0" />
@@ -119,11 +122,11 @@ export function SiteFooter() {
       </div>
       <div className="border-t border-paper/15">
         <div className="mx-auto flex max-w-7xl flex-col gap-6 px-5 py-6 sm:flex-row sm:items-center sm:justify-between lg:px-10">
-          <span className="text-xs leading-5 text-paper/55">
+          <span className="text-sm leading-6 text-paper/75">
             © 2026 Cooperativa Central de Caficultores del Huila
           </span>
           <nav aria-label="Redes sociales" className="flex min-w-0 flex-col gap-3">
-            <p className="text-xs font-bold uppercase tracking-[0.16em] text-paper/55">
+            <p className="text-sm font-bold uppercase tracking-[0.12em] text-paper/75">
               Síguenos en redes
             </p>
             <ul className="flex flex-wrap gap-2">
@@ -135,7 +138,7 @@ export function SiteFooter() {
                       target="_blank"
                       rel="noreferrer"
                       aria-label={`Visitar Coocentral en ${social.label}`}
-                      className="group inline-flex min-h-11 items-center gap-2 rounded-full border border-paper/15 bg-paper/5 py-1 pl-1 pr-3 text-xs font-semibold text-paper/75 transition-colors hover:border-lime/50 hover:bg-paper/10 hover:text-paper focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime focus-visible:ring-offset-2 focus-visible:ring-offset-forest-deep"
+                      className="group inline-flex min-h-11 items-center gap-2 rounded-full border border-paper/20 bg-paper/5 py-1 pl-1 pr-3 text-sm font-semibold text-paper/90 transition-colors hover:border-lime/50 hover:bg-paper/10 hover:text-paper focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime focus-visible:ring-offset-2 focus-visible:ring-offset-forest-deep"
                     >
                       <span className="grid size-9 place-items-center rounded-full bg-paper/10 text-lime transition-colors group-hover:bg-lime group-hover:text-forest-deep">
                         <SocialBrandIcon label={social.label} />

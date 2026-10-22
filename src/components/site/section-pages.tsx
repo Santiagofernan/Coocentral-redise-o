@@ -72,11 +72,21 @@ export function PageIntro({
   );
 }
 
-function SectionTitle({ eyebrow, title }: { eyebrow?: string; title: string }) {
+function SectionTitle({
+  eyebrow,
+  title,
+  eyebrowClassName = "text-brand",
+}: {
+  eyebrow?: string;
+  title: string;
+  eyebrowClassName?: string;
+}) {
   return (
     <div className="mb-8">
       {eyebrow && (
-        <p className="text-xs font-bold uppercase tracking-[0.16em] text-brand">{eyebrow}</p>
+        <p className={`text-xs font-bold uppercase tracking-[0.16em] ${eyebrowClassName}`}>
+          {eyebrow}
+        </p>
       )}
       <h2 className="mt-2 font-display text-3xl font-medium leading-tight lg:text-4xl">{title}</h2>
     </div>
@@ -184,7 +194,7 @@ export function CooperativePage() {
                         {item.label}
                       </span>
                     </span>
-                    <span className="grid size-9 shrink-0 place-items-center rounded-full bg-sand text-brand/70 transition-all duration-300 group-hover:translate-x-0.5 group-hover:bg-lime group-hover:text-forest">
+                    <span className="grid size-9 shrink-0 place-items-center rounded-full bg-sand text-brand/70 transition-all duration-300 group-hover:translate-x-0.5 group-hover:bg-lime group-hover:text-forest-deep">
                       <ResourceIcon
                         aria-hidden="true"
                         className="size-4 transition-transform duration-300 group-hover:translate-x-0.5"
@@ -940,7 +950,7 @@ export function ServicesPage() {
                       {String(index + 1).padStart(2, "0")}
                     </span>
                     <span className="min-w-0 flex-1 leading-5">{service.title}</span>
-                    <span className="grid size-8 shrink-0 place-items-center rounded-full bg-sand text-brand/70 transition-all duration-300 group-hover:translate-x-0.5 group-hover:bg-lime group-hover:text-forest">
+                    <span className="grid size-8 shrink-0 place-items-center rounded-full bg-sand text-brand/70 transition-all duration-300 group-hover:translate-x-0.5 group-hover:bg-lime group-hover:text-forest-deep">
                       <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" />
                     </span>
                   </a>
@@ -952,94 +962,184 @@ export function ServicesPage() {
       </section>
 
       <section aria-label="Descripción de servicios" className="overflow-x-clip">
-        {serviceShowcase.map((service, index) => (
-          <article
-            key={service.id}
-            id={service.id}
-            className="scroll-mt-24 border-b border-border py-10 sm:py-14 lg:py-16"
-          >
-            <div className="mx-auto grid max-w-7xl items-center gap-7 px-5 lg:grid-cols-12 lg:gap-12 lg:px-10">
-              <div
-                className={`service-scroll-reveal ${
-                  index % 2 === 1
-                    ? "service-scroll-reveal--right lg:order-2"
-                    : "service-scroll-reveal--left"
-                } lg:col-span-5`}
-              >
-                <p className="text-xs font-bold uppercase tracking-[0.16em] text-brand">
-                  Servicio {String(index + 1).padStart(2, "0")}
-                </p>
-                <h2 className="mt-2 font-display text-3xl font-medium leading-tight sm:text-4xl">
-                  {service.title}
-                </h2>
-                <p className="mt-4 max-w-xl text-sm leading-7 text-ink/70 sm:text-base">
-                  {service.summary}
-                </p>
-                {service.href &&
-                  ([
-                    "coworking",
-                    "pic",
-                    "almacenes-coocentral",
-                    "area-de-cafe",
-                    "tiendas-kahve",
-                  ].includes(service.id) ? (
-                    <Link
-                      to={
-                        service.id === "pic"
-                          ? "/pic"
-                          : service.id === "almacenes-coocentral"
-                            ? "/almacenes"
-                            : service.id === "area-de-cafe"
-                              ? "/area-de-cafe"
-                              : service.id === "tiendas-kahve"
-                                ? "/tiendas-kahve"
-                                : "/coworking"
-                      }
-                      className="mt-6 inline-flex min-h-11 items-center gap-2 rounded-md bg-brand px-4 text-sm font-bold text-paper transition-all hover:-translate-y-0.5 hover:bg-forest hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
-                    >
-                      Consultar servicio
-                      <ArrowUpRight className="size-4" />
-                    </Link>
+        {serviceShowcase.map((service, index) => {
+          const isCoworking = service.id === "coworking";
+
+          return (
+            <article
+              key={service.id}
+              id={service.id}
+              className="scroll-mt-24 border-b border-border bg-linear-to-br from-paper via-paper to-sand/70 py-10 sm:py-14 lg:py-16"
+            >
+              <div className="mx-auto grid max-w-7xl items-center gap-7 px-5 lg:grid-cols-12 lg:gap-12 lg:px-10">
+                <div
+                  className={`service-scroll-reveal ${
+                    index % 2 === 1
+                      ? "service-scroll-reveal--right lg:order-2"
+                      : "service-scroll-reveal--left"
+                  } lg:col-span-5`}
+                >
+                  {isCoworking ? (
+                    <>
+                      <p className="inline-flex items-center gap-2 rounded-full border border-brand/15 bg-brand/5 px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.16em] text-brand">
+                        <span className="size-1.5 rounded-full bg-lime-600" />
+                        Servicio {String(index + 1).padStart(2, "0")} · Espacio colaborativo
+                      </p>
+                      <h2 className="mt-5 font-display text-4xl font-medium leading-tight text-forest-deep sm:text-5xl">
+                        Coworking
+                        <span className="mt-1 block text-brand">Martha Stella Velásquez</span>
+                      </h2>
+                      <div className="mt-5 h-1 w-16 rounded-full bg-lime-500" />
+                      <p className="mt-5 max-w-xl text-base leading-7 text-ink/70 sm:text-lg">
+                        {service.summary}
+                      </p>
+                      <p className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-ink/65">
+                        <MapPin aria-hidden="true" className="size-4 text-brand" />
+                        Centro Comercial El Molino · Garzón, Huila
+                      </p>
+                      <Link
+                        to="/coworking"
+                        className="group mt-7 inline-flex min-h-12 items-center gap-3 rounded-full bg-forest-deep py-2 pl-6 pr-2 text-sm font-bold text-paper shadow-lg shadow-forest-deep/15 transition-all duration-200 hover:-translate-y-0.5 hover:bg-brand hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+                      >
+                        Conoce el Coworking
+                        <span className="grid size-9 place-items-center rounded-full bg-lime text-forest-deep transition-transform group-hover:translate-x-0.5">
+                          <ArrowRight aria-hidden="true" className="size-4" />
+                        </span>
+                      </Link>
+                    </>
                   ) : (
-                    <a
-                      href={service.href}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="mt-6 inline-flex min-h-11 items-center gap-2 rounded-md bg-brand px-4 text-sm font-bold text-paper transition-all hover:-translate-y-0.5 hover:bg-forest hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
-                    >
-                      {service.action ?? "Consultar servicio"}
-                      <ArrowUpRight className="size-4" />
-                    </a>
-                  ))}
+                    <>
+                      <p className="inline-flex items-center gap-2 rounded-full border border-brand/15 bg-brand/5 px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.16em] text-brand">
+                        <span className="size-1.5 rounded-full bg-lime-600" />
+                        Servicio {String(index + 1).padStart(2, "0")} · Coocentral
+                      </p>
+                      <h2 className="mt-5 font-display text-4xl font-medium leading-tight text-forest-deep sm:text-5xl">
+                        {service.title}
+                      </h2>
+                      <div className="mt-5 h-1 w-16 rounded-full bg-lime-500" />
+                      <p className="mt-5 max-w-xl text-base leading-7 text-ink/70 sm:text-lg">
+                        {service.summary}
+                      </p>
+                      {service.href &&
+                        ([
+                          "coworking",
+                          "pic",
+                          "almacenes-coocentral",
+                          "area-de-cafe",
+                          "tiendas-kahve",
+                        ].includes(service.id) ? (
+                          <Link
+                            to={
+                              service.id === "pic"
+                                ? "/pic"
+                                : service.id === "almacenes-coocentral"
+                                  ? "/almacenes"
+                                  : service.id === "area-de-cafe"
+                                    ? "/area-de-cafe"
+                                    : service.id === "tiendas-kahve"
+                                      ? "/tiendas-kahve"
+                                      : "/coworking"
+                            }
+                            className="group mt-7 inline-flex min-h-12 items-center gap-3 rounded-full bg-forest-deep py-2 pl-6 pr-2 text-sm font-bold text-paper shadow-lg shadow-forest-deep/15 transition-all duration-200 hover:-translate-y-0.5 hover:bg-brand hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+                          >
+                            Conocer servicio
+                            <span className="grid size-9 place-items-center rounded-full bg-lime text-forest-deep transition-transform group-hover:translate-x-0.5">
+                              <ArrowRight aria-hidden="true" className="size-4" />
+                            </span>
+                          </Link>
+                        ) : (
+                          <a
+                            href={service.href}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="group mt-7 inline-flex min-h-12 items-center gap-3 rounded-full bg-forest-deep py-2 pl-6 pr-2 text-sm font-bold text-paper shadow-lg shadow-forest-deep/15 transition-all duration-200 hover:-translate-y-0.5 hover:bg-brand hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+                          >
+                            {service.action ?? "Conocer servicio"}
+                            <span className="grid size-9 place-items-center rounded-full bg-lime text-forest-deep transition-transform group-hover:translate-x-0.5">
+                              <ArrowUpRight aria-hidden="true" className="size-4" />
+                            </span>
+                          </a>
+                        ))}
+                    </>
+                  )}
+                </div>
+                <figure
+                  className={`service-scroll-reveal ${
+                    index % 2 === 1
+                      ? "service-scroll-reveal--left lg:order-1"
+                      : "service-scroll-reveal--right"
+                  } lg:col-span-7`}
+                >
+                  {isCoworking ? (
+                    <div className="relative isolate rounded-[2rem] bg-gradient-to-br from-forest-deep via-brand to-lime p-2.5 shadow-[0_28px_70px_-28px_oklch(0.22_0.045_158/0.65)] sm:rounded-[2.5rem] sm:p-4">
+                      <span
+                        aria-hidden="true"
+                        className="absolute -inset-2 -z-10 rounded-[2.2rem] border border-brand/20 sm:-inset-3 sm:rounded-[2.8rem]"
+                      />
+                      <div className="relative overflow-hidden rounded-[1.55rem] bg-forest-deep sm:rounded-[2rem]">
+                        <img
+                          src={service.image}
+                          alt={service.imageAlt}
+                          loading="lazy"
+                          decoding="async"
+                          width="1200"
+                          height="900"
+                          className="aspect-4/3 w-full object-cover"
+                        />
+                        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-forest-deep/90 via-forest-deep/45 to-transparent px-5 pb-5 pt-16 sm:px-7 sm:pb-7">
+                          <p className="text-xs font-bold uppercase tracking-[0.18em] text-lime">
+                            Coworking Coocentral
+                          </p>
+                          <p className="mt-1 font-display text-lg font-medium text-white sm:text-xl">
+                            Un lugar para conectar y crear
+                          </p>
+                        </div>
+                      </div>
+                      <span
+                        aria-hidden="true"
+                        className="absolute -right-2 -top-2 size-14 rounded-full border-4 border-paper/80 bg-lime shadow-lg sm:-right-3 sm:-top-3 sm:size-16"
+                      />
+                    </div>
+                  ) : (
+                    <div className="relative isolate rounded-[2rem] bg-gradient-to-br from-forest-deep via-brand to-lime p-2.5 shadow-[0_28px_70px_-28px_oklch(0.22_0.045_158/0.65)] sm:rounded-[2.5rem] sm:p-4">
+                      <span
+                        aria-hidden="true"
+                        className="absolute -inset-2 -z-10 rounded-[2.2rem] border border-brand/20 sm:-inset-3 sm:rounded-[2.8rem]"
+                      />
+                      <div
+                        className={`relative overflow-hidden rounded-[1.55rem] sm:rounded-[2rem] ${
+                          service.id === "ferticoolombia" ? "bg-forest-deep" : "bg-paper"
+                        }`}
+                      >
+                        <img
+                          src={service.image}
+                          alt={service.imageAlt}
+                          loading="lazy"
+                          decoding="async"
+                          width="1200"
+                          height="900"
+                          className={`w-full ${
+                            service.id === "fundecafe"
+                              ? "aspect-[2.64/1] object-contain p-4 sm:p-8"
+                              : `aspect-4/3 ${
+                                  service.id === "ferticoolombia"
+                                    ? "object-contain p-10 sm:p-16"
+                                    : "object-cover"
+                                }`
+                          }`}
+                        />
+                      </div>
+                      <span
+                        aria-hidden="true"
+                        className="absolute -right-2 -top-2 size-14 rounded-full border-4 border-paper/80 bg-lime shadow-lg sm:-right-3 sm:-top-3 sm:size-16"
+                      />
+                    </div>
+                  )}
+                </figure>
               </div>
-              <figure
-                className={`service-scroll-reveal ${
-                  index % 2 === 1
-                    ? "service-scroll-reveal--left lg:order-1"
-                    : "service-scroll-reveal--right"
-                } lg:col-span-7`}
-              >
-                <img
-                  src={service.image}
-                  alt={service.imageAlt}
-                  loading="lazy"
-                  decoding="async"
-                  width="1200"
-                  height="900"
-                  className={`w-full ${
-                    service.id === "fundecafe"
-                      ? "aspect-[2.64/1] rounded-2xl bg-white object-contain p-4 sm:p-8"
-                      : `aspect-4/3 ${
-                          service.id === "ferticoolombia"
-                            ? "bg-forest-deep object-contain p-10 sm:p-16"
-                            : "object-cover"
-                        }`
-                  }`}
-                />
-              </figure>
-            </div>
-          </article>
-        ))}
+            </article>
+          );
+        })}
       </section>
 
       <section
@@ -1070,7 +1170,11 @@ export function ServicesPage() {
       </section>
       <section className="bg-forest-deep text-paper">
         <div className="mx-auto max-w-7xl px-5 py-14 lg:px-10 lg:py-20">
-          <SectionTitle eyebrow="Financiación" title="Crédito para responder a cada necesidad" />
+          <SectionTitle
+            eyebrow="Financiación"
+            eyebrowClassName="text-paper"
+            title="Crédito para responder a cada necesidad"
+          />
           <dl className="grid grid-cols-1 gap-5 border-y border-paper/20 py-6 sm:grid-cols-3">
             {creditImpact.map((item) => (
               <div key={item.label}>

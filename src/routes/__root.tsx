@@ -79,7 +79,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { name: "theme-color", content: "#148135" },
+      { name: "theme-color", content: "#009444" },
       { title: "Coocentral | Cooperativa de caficultores del Huila" },
       {
         name: "description",
@@ -115,7 +115,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400..800&family=Outfit:wght@400..700&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Outfit:wght@400..900&display=swap",
       },
       {
         rel: "stylesheet",

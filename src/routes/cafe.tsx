@@ -72,7 +72,7 @@ function CoffeeProcessPage() {
               Del campo
               <span className="mt-1 flex flex-wrap items-center gap-x-3 text-brand sm:mt-2">
                 <span>a tu casa</span>
-                <Coffee aria-hidden="true" className="size-8 text-lime sm:size-10 lg:size-12" />
+                <Coffee aria-hidden="true" className="size-8 text-brand sm:size-10 lg:size-12" />
               </span>
             </h1>
             <p className="mt-5 max-w-2xl text-base leading-7 text-ink/75 lg:text-lg">
