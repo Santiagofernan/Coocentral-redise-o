@@ -1030,6 +1030,7 @@ export const footerColumns = [
     links: [
       { label: "¿Quiénes somos?", href: "/cooperativa#quienes-somos" },
       { label: "Reseña histórica", href: "/historia" },
+      { label: "Cafés del Huila", href: "/cafe-del-huila" },
       { label: "Estatutos y reglamentos", href: "/cooperativa#recursos" },
       { label: "Administración y control", href: "/cooperativa#administracion-control" },
     ],

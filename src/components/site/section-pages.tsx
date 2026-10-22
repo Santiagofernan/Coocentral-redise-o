@@ -951,7 +951,7 @@ export function ServicesPage() {
         </div>
       </section>
 
-      <section aria-label="Descripción de servicios">
+      <section aria-label="Descripción de servicios" className="overflow-x-clip">
         {serviceShowcase.map((service, index) => (
           <article
             key={service.id}

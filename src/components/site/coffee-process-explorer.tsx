@@ -258,7 +258,7 @@ export function CoffeeProcessExplorer() {
                 <ArrowLeft aria-hidden="true" className="size-4 shrink-0" />
                 <span>Anterior</span>
               </button>
-              <span className="max-w-28 text-center text-xs font-semibold leading-4 text-ink/60 sm:max-w-none sm:text-sm">
+              <span className="max-w-32 text-center font-display text-sm font-bold leading-5 text-brand sm:max-w-none sm:text-base lg:text-lg">
                 {selectedStep.label}
               </span>
               <button

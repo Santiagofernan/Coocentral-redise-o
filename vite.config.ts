@@ -12,9 +12,8 @@ export default defineConfig({
         codeSplitting: {
           groups: [
             {
-              name: "initial",
-              tags: ["$initial"],
-              maxSize: 450_000,
+              name: "react-dom",
+              test: /node_modules[\\/]react-dom[\\/]/,
             },
           ],
         },

@@ -48,6 +48,13 @@ function HomePage() {
                 Recorrer nuestra historia
                 <ArrowRight className="size-4" />
               </Link>
+              <Link
+                to="/cafe-del-huila"
+                className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-brand hover:underline"
+              >
+                Conocer los cafés del Huila
+                <ArrowRight className="size-4" />
+              </Link>
             </div>
           </div>
         </div>

@@ -1,6 +1,7 @@
 import { ArrowDown, ArrowRight, Coffee, Leaf } from "lucide-react";
 import { createFileRoute, lazyRouteComponent } from "@tanstack/react-router";
 import { createSeoHead } from "@/lib/seo";
+import { Link } from "@tanstack/react-router";
 
 const CoffeePlantAnimation = lazyRouteComponent(
   () => import("@/components/site/coffee-plant-animation"),
@@ -78,16 +79,25 @@ function CoffeeProcessPage() {
               Nueve etapas conectan el trabajo de las familias caficultoras con cada taza. Descubre
               cómo crece, se transforma y llega hasta ti.
             </p>
-            <a
-              href="#cadena-cafe"
-              className="group mt-7 inline-flex min-h-12 items-center gap-3 rounded-full bg-forest-deep px-5 py-3 text-sm font-bold text-paper shadow-md transition-all duration-200 hover:-translate-y-0.5 hover:bg-brand hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 active:translate-y-0"
-            >
-              Explorar las etapas
-              <span className="grid size-7 place-items-center rounded-full bg-paper/10 transition-transform duration-200 group-hover:translate-y-0.5">
-                <ArrowDown aria-hidden="true" className="size-4" />
-              </span>
-              <span className="sr-only">del proceso del café</span>
-            </a>
+            <div className="mt-5 flex flex-col items-start gap-6">
+              <Link
+                to="/cafe-del-huila"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-brand hover:underline"
+              >
+                Conoce el café del Huila y su origen
+                <ArrowRight aria-hidden="true" className="size-4" />
+              </Link>
+              <a
+                href="#cadena-cafe"
+                className="group inline-flex min-h-12 items-center gap-3 rounded-full bg-forest-deep px-5 py-3 text-sm font-bold text-paper shadow-md transition-all duration-200 hover:-translate-y-0.5 hover:bg-brand hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 active:translate-y-0"
+              >
+                Explorar las etapas
+                <span className="grid size-7 place-items-center rounded-full bg-paper/10 transition-transform duration-200 group-hover:translate-y-0.5">
+                  <ArrowDown aria-hidden="true" className="size-4" />
+                </span>
+                <span className="sr-only">del proceso del café</span>
+              </a>
+            </div>
             <div className="mt-7 flex flex-wrap gap-x-5 gap-y-2 text-xs font-semibold text-forest/70 sm:text-sm">
               <span className="inline-flex items-center gap-1.5">
                 <span className="size-1.5 rounded-full bg-brand" />

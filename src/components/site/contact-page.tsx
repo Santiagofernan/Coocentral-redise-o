@@ -1,6 +1,7 @@
-import { ArrowUpRight, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
+import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
 
 import { PageIntro } from "@/components/site/section-pages";
+import { WhatsAppLogo } from "@/components/site/whatsapp-logo";
 import { contact } from "@/content/coocentral";
 
 const emailHref = `mailto:${contact.email}?subject=${encodeURIComponent(
@@ -65,8 +66,8 @@ export function ContactPage() {
         </article>
 
         <article className="rounded-2xl border border-border bg-paper p-6 shadow-sm sm:p-8">
-          <span className="grid size-12 place-items-center rounded-xl bg-[#25d366]/15 text-[#128c4a]">
-            <MessageCircle aria-hidden="true" className="size-6" />
+          <span className="grid size-12 place-items-center rounded-xl bg-[#25d366] text-white">
+            <WhatsAppLogo className="size-7" />
           </span>
           <h2 className="mt-5 font-display text-2xl font-medium">Escríbenos por WhatsApp</h2>
           <p className="mt-2 text-sm leading-6 text-ink/65">
@@ -78,6 +79,7 @@ export function ContactPage() {
             rel="noreferrer"
             className="mt-5 inline-flex min-h-11 items-center gap-2 rounded-full bg-[#25d366] px-5 text-sm font-bold text-forest-deep transition-colors hover:bg-[#20bd5a] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#128c4a] focus-visible:ring-offset-2"
           >
+            <WhatsAppLogo className="size-5" />
             Abrir WhatsApp
             <ArrowUpRight aria-hidden="true" className="size-4" />
           </a>

@@ -14,6 +14,7 @@ import { Route as AlmacenesRouteImport } from './routes/almacenes'
 import { Route as AreaDeCafeRouteImport } from './routes/area-de-cafe'
 import { Route as AsociarmeRouteImport } from './routes/asociarme'
 import { Route as CafeRouteImport } from './routes/cafe'
+import { Route as CafeDelHuilaRouteImport } from './routes/cafe-del-huila'
 import { Route as ContactoRouteImport } from './routes/contacto'
 import { Route as CooperativaRouteImport } from './routes/cooperativa'
 import { Route as CoworkingRouteImport } from './routes/coworking'
@@ -48,6 +49,11 @@ const AsociarmeRoute = AsociarmeRouteImport.update({
 const CafeRoute = CafeRouteImport.update({
   id: '/cafe',
   path: '/cafe',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CafeDelHuilaRoute = CafeDelHuilaRouteImport.update({
+  id: '/cafe-del-huila',
+  path: '/cafe-del-huila',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactoRoute = ContactoRouteImport.update({
@@ -107,6 +113,7 @@ export interface FileRoutesByFullPath {
   '/area-de-cafe': typeof AreaDeCafeRoute
   '/asociarme': typeof AsociarmeRoute
   '/cafe': typeof CafeRoute
+  '/cafe-del-huila': typeof CafeDelHuilaRoute
   '/contacto': typeof ContactoRoute
   '/cooperativa': typeof CooperativaRoute
   '/coworking': typeof CoworkingRoute
@@ -124,6 +131,7 @@ export interface FileRoutesByTo {
   '/area-de-cafe': typeof AreaDeCafeRoute
   '/asociarme': typeof AsociarmeRoute
   '/cafe': typeof CafeRoute
+  '/cafe-del-huila': typeof CafeDelHuilaRoute
   '/contacto': typeof ContactoRoute
   '/cooperativa': typeof CooperativaRoute
   '/coworking': typeof CoworkingRoute
@@ -142,6 +150,7 @@ export interface FileRoutesById {
   '/area-de-cafe': typeof AreaDeCafeRoute
   '/asociarme': typeof AsociarmeRoute
   '/cafe': typeof CafeRoute
+  '/cafe-del-huila': typeof CafeDelHuilaRoute
   '/contacto': typeof ContactoRoute
   '/cooperativa': typeof CooperativaRoute
   '/coworking': typeof CoworkingRoute
@@ -161,6 +170,7 @@ export interface FileRouteTypes {
     | '/area-de-cafe'
     | '/asociarme'
     | '/cafe'
+    | '/cafe-del-huila'
     | '/contacto'
     | '/cooperativa'
     | '/coworking'
@@ -178,6 +188,7 @@ export interface FileRouteTypes {
     | '/area-de-cafe'
     | '/asociarme'
     | '/cafe'
+    | '/cafe-del-huila'
     | '/contacto'
     | '/cooperativa'
     | '/coworking'
@@ -195,6 +206,7 @@ export interface FileRouteTypes {
     | '/area-de-cafe'
     | '/asociarme'
     | '/cafe'
+    | '/cafe-del-huila'
     | '/contacto'
     | '/cooperativa'
     | '/coworking'
@@ -213,6 +225,7 @@ export interface RootRouteChildren {
   AreaDeCafeRoute: typeof AreaDeCafeRoute
   AsociarmeRoute: typeof AsociarmeRoute
   CafeRoute: typeof CafeRoute
+  CafeDelHuilaRoute: typeof CafeDelHuilaRoute
   ContactoRoute: typeof ContactoRoute
   CooperativaRoute: typeof CooperativaRoute
   CoworkingRoute: typeof CoworkingRoute
@@ -260,6 +273,13 @@ declare module '@tanstack/react-router' {
       path: '/cafe'
       fullPath: '/cafe'
       preLoaderRoute: typeof CafeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cafe-del-huila': {
+      id: '/cafe-del-huila'
+      path: '/cafe-del-huila'
+      fullPath: '/cafe-del-huila'
+      preLoaderRoute: typeof CafeDelHuilaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contacto': {
@@ -341,6 +361,7 @@ const rootRouteChildren: RootRouteChildren = {
   AreaDeCafeRoute: AreaDeCafeRoute,
   AsociarmeRoute: AsociarmeRoute,
   CafeRoute: CafeRoute,
+  CafeDelHuilaRoute: CafeDelHuilaRoute,
   ContactoRoute: ContactoRoute,
   CooperativaRoute: CooperativaRoute,
   CoworkingRoute: CoworkingRoute,

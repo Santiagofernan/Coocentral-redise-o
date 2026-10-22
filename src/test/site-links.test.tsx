@@ -19,6 +19,7 @@ describe("site navigation targets", () => {
       "/area-de-cafe",
       "/asociarme",
       "/cafe",
+      "/cafe-del-huila",
       "/contacto",
       "/cooperativa",
       "/coworking",
