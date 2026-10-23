@@ -1,4 +1,4 @@
-import { ArrowDown, ArrowRight, Coffee, Leaf } from "lucide-react";
+import { ArrowDown, ArrowRight, Leaf } from "lucide-react";
 import { createFileRoute, lazyRouteComponent } from "@tanstack/react-router";
 import { createSeoHead } from "@/lib/seo";
 import { Link } from "@tanstack/react-router";
@@ -72,7 +72,21 @@ function CoffeeProcessPage() {
               Del campo
               <span className="mt-1 flex flex-wrap items-center gap-x-3 text-brand sm:mt-2">
                 <span>a tu casa</span>
-                <Coffee aria-hidden="true" className="size-8 text-brand sm:size-10 lg:size-12" />
+                <svg
+                  aria-hidden="true"
+                  className="coffee-cup-icon size-8 shrink-0 text-brand sm:size-10 lg:size-12"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path className="coffee-cup-steam coffee-cup-steam--first" d="M10 2v2" />
+                  <path className="coffee-cup-steam coffee-cup-steam--second" d="M14 2v2" />
+                  <path className="coffee-cup-steam coffee-cup-steam--third" d="M6 2v2" />
+                  <path d="M16 8a1 1 0 0 1 1 1v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1h14a4 4 0 1 1 0 8h-1" />
+                </svg>
               </span>
             </h1>
             <p className="mt-5 max-w-2xl text-base leading-7 text-ink/75 lg:text-lg">

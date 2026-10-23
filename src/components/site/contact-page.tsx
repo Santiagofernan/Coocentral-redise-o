@@ -3,6 +3,7 @@ import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
 import { PageIntro } from "@/components/site/section-pages";
 import { WhatsAppLogo } from "@/components/site/whatsapp-logo";
 import { contact } from "@/content/coocentral";
+import { getGoogleMapsDirectionsUrl } from "@/lib/google-maps";
 
 const emailHref = `mailto:${contact.email}?subject=${encodeURIComponent(
   "Consulta desde el sitio web de Coocentral",
@@ -12,9 +13,7 @@ const emailHref = `mailto:${contact.email}?subject=${encodeURIComponent(
 const whatsappHref = `https://wa.me/${contact.whatsapp}?text=${encodeURIComponent(
   "Hola, quisiera comunicarme con Coocentral.",
 )}`;
-const mapsHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-  `${contact.address}, ${contact.city}`,
-)}`;
+const mapsHref = getGoogleMapsDirectionsUrl(`${contact.address}, ${contact.city}`);
 
 export function ContactPage() {
   return (
@@ -100,7 +99,7 @@ export function ContactPage() {
             rel="noreferrer"
             className="mt-4 inline-flex min-h-11 items-center gap-2 rounded-lg px-3 text-sm font-semibold text-brand transition-colors hover:bg-brand/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
           >
-            Ver ubicación en Google Maps
+            Cómo llegar en Google Maps
             <ArrowUpRight aria-hidden="true" className="size-4" />
           </a>
         </article>

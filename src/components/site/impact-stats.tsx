@@ -38,7 +38,7 @@ export function ImpactStats() {
         </dl>
       </div>
 
-      <div className="overflow-hidden border-y border-forest/20 bg-lime py-5 text-forest-deep">
+      <div className="overflow-hidden border-y border-forest/20 bg-forest-deep py-5 text-lime">
         <div className="marquee-track flex w-max gap-10">
           {[0, 1].map((copy) => (
             <ul
@@ -49,7 +49,7 @@ export function ImpactStats() {
               {municipalities.map((name) => (
                 <li key={name} className="flex items-center gap-10">
                   {name}
-                  <span className="size-2 rounded-full bg-forest-deep/40" />
+                  <span className="size-2 rounded-full bg-lime/50" />
                 </li>
               ))}
             </ul>

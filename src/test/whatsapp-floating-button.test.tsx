@@ -26,19 +26,20 @@ describe("WhatsApp floating button", () => {
     ).toBeInTheDocument();
   });
 
-  it("offers phone calls for reception and WhatsApp for credit contacts", () => {
+  it("offers reception and credit contacts through WhatsApp", () => {
     render(<WhatsAppFloatingButton />);
     fireEvent.click(screen.getByRole("button", { name: "Abrir chat de WhatsApp" }));
 
-    const receptionLinks = [
-      screen.getByRole("link", { name: "Llamar a Recepción: 318 612 8444" }),
-      screen.getByRole("link", { name: "Llamar a Recepción: 311 538 6395" }),
-    ];
+    const receptionLink = screen.getByRole("link", {
+      name: /Recepción.*320 807 5228/,
+    });
     const creditLink = screen.getByRole("link", { name: /Crédito y cartera.*317 433 4039/ });
 
-    expect(receptionLinks[0]).toHaveAttribute("href", "tel:3186128444");
-    expect(receptionLinks[1]).toHaveAttribute("href", "tel:3115386395");
+    expect(screen.getAllByRole("link")).toHaveLength(2);
+    expect(receptionLink).toHaveAttribute("href", expect.stringContaining("wa.me/573208075228"));
     expect(creditLink).toHaveAttribute("href", expect.stringContaining("wa.me/573174334039"));
+    expect(receptionLink).toHaveAttribute("target", "_blank");
     expect(creditLink).toHaveAttribute("target", "_blank");
+    expect(screen.queryByText(/311 538 6395|318 612 8444/)).toBeNull();
   });
 });

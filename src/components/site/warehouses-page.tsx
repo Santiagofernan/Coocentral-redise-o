@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 
 import { warehouseLocations, warehouseProductLines } from "@/content/coocentral";
+import { getGoogleMapsDirectionsUrl } from "@/lib/google-maps";
 import { getWarehouseStatus, type WarehouseStatus } from "@/lib/warehouse-schedule";
 
 const municipalities = [...new Set(warehouseLocations.map((location) => location.municipality))];
@@ -175,7 +176,7 @@ export function WarehousesPage() {
                       ]
                         .filter(Boolean)
                         .join(", ");
-                      const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapQuery)}`;
+                      const mapsUrl = getGoogleMapsDirectionsUrl(mapQuery);
 
                       return (
                         <li
@@ -232,7 +233,7 @@ export function WarehousesPage() {
                             rel="noreferrer"
                             className="mt-5 inline-flex min-h-10 items-center gap-1.5 rounded-md px-3 text-sm font-semibold text-brand transition-colors hover:bg-brand/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
                           >
-                            Ver en Google Maps
+                            Cómo llegar
                             <ArrowUpRight aria-hidden="true" className="size-4" />
                           </a>
                         </li>

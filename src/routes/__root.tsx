@@ -160,12 +160,12 @@ function RootComponent() {
           "Cooperativa de caficultores con sede en Garzón, Huila, que acompaña a productores de café y sus familias.",
         address: {
           "@type": "PostalAddress",
-          streetAddress: "Centro Comercial El Molino, Carrera 12 No. 2-56",
+          streetAddress: "Cra. 12 Sur #2 55",
           addressLocality: "Garzón",
           addressRegion: "Huila",
           addressCountry: "CO",
         },
-        telephone: ["+57 311 538 6395", "+57 318 612 8444"],
+        telephone: "+57 318 612 8444",
         email: "info@coocentral.co",
         sameAs: [
           "https://www.facebook.com/coocentral",

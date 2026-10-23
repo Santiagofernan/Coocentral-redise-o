@@ -8,6 +8,7 @@ import {
   Mail,
   MapPin,
   Menu,
+  Settings,
   X,
 } from "lucide-react";
 import { Link, useRouterState } from "@tanstack/react-router";
@@ -16,6 +17,7 @@ import logo from "@/assets/coocentral-logo.svg";
 import { PhoneContactDialog } from "@/components/site/phone-contact-dialog";
 import { Sheet, SheetClose, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { contact, moreNavigation, navigation } from "@/content/coocentral";
+import { getGoogleMapsDirectionsUrl } from "@/lib/google-maps";
 import { cn } from "@/lib/utils";
 
 const exploreIcons = {
@@ -26,6 +28,7 @@ const exploreIcons = {
 type CursorStyle = "leaf" | "bean";
 
 const cursorStorageKey = "coocentral-cursor-style";
+const mapsHref = getGoogleMapsDirectionsUrl(`${contact.address}, ${contact.city}`);
 const contactEmailHref = `mailto:${contact.email}?subject=${encodeURIComponent(
   "Consulta desde el sitio web de Coocentral",
 )}&body=${encodeURIComponent(
@@ -36,46 +39,99 @@ function CursorSelector({
   cursorStyle,
   onChange,
   dark = false,
+  inline = false,
 }: {
   cursorStyle: CursorStyle;
   onChange: (style: CursorStyle) => void;
   dark?: boolean;
+  inline?: boolean;
 }) {
   const options = [
-    { value: "leaf", label: "Hoja", Icon: Leaf },
-    { value: "bean", label: "Grano", Icon: Coffee },
+    { value: "leaf", label: "Hoja", description: "Cursor con forma de hoja de café", Icon: Leaf },
+    {
+      value: "bean",
+      label: "Grano",
+      description: "Cursor con forma de grano de café",
+      Icon: Coffee,
+    },
   ] as const;
 
   return (
-    <div
-      role="group"
-      aria-label="Seleccionar estilo del cursor"
-      className={cn(
-        "inline-flex items-center gap-1 rounded-full border p-1",
-        dark ? "border-paper/15 bg-paper/5" : "border-brand/15 bg-sand/60",
-      )}
-    >
-      {options.map(({ value, label, Icon }) => (
-        <button
-          key={value}
-          type="button"
-          aria-label={`Cursor de ${label.toLowerCase()} de café`}
-          aria-pressed={cursorStyle === value}
-          onClick={() => onChange(value)}
-          className={cn(
-            "inline-flex min-h-9 items-center gap-1.5 rounded-full px-3 text-xs font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2",
-            dark
-              ? "text-paper/75 hover:bg-paper/10 hover:text-paper focus-visible:ring-lime"
-              : "text-ink/70 hover:bg-paper hover:text-brand focus-visible:ring-brand",
-            cursorStyle === value &&
-              (dark ? "bg-lime/15 text-lime" : "bg-paper text-brand shadow-sm"),
-          )}
-        >
-          <Icon aria-hidden="true" className="size-4" />
-          {label}
-        </button>
-      ))}
-    </div>
+    <details className={cn("group/cursor relative", inline && "w-full")}>
+      <summary
+        aria-label="Configuración del cursor"
+        className={cn(
+          "inline-flex min-h-11 cursor-pointer list-none items-center gap-2 rounded-full border px-3 text-sm font-semibold transition-all hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 [&::-webkit-details-marker]:hidden",
+          dark
+            ? "border-paper/20 bg-paper/5 text-paper hover:border-lime/60 hover:bg-paper/10 focus-visible:ring-lime"
+            : "border-brand/20 bg-sand/60 text-ink hover:border-brand/40 hover:bg-lime/30 focus-visible:ring-brand",
+          inline && "w-full justify-between rounded-xl px-4",
+        )}
+      >
+        <span className="inline-flex items-center gap-2">
+          <Settings aria-hidden="true" className="size-4" />
+          Cursor
+        </span>
+        <ChevronDown
+          aria-hidden="true"
+          className="size-4 transition-transform duration-200 group-open/cursor:rotate-180"
+        />
+      </summary>
+      <div
+        className={cn(
+          "z-50 mt-2 w-[min(20rem,calc(100vw-2rem))] rounded-2xl border p-4 shadow-xl",
+          inline ? "relative w-full" : "absolute right-0 top-full",
+          dark ? "border-paper/15 bg-forest-deep text-paper" : "border-brand/15 bg-paper text-ink",
+        )}
+      >
+        <h2 className={cn("font-display text-lg font-semibold", dark && "text-paper")}>
+          Personaliza tu cursor
+        </h2>
+        <p className={cn("mt-1 text-xs leading-5", dark ? "text-paper/65" : "text-ink/60")}>
+          Elige el símbolo que acompaña el puntero en el sitio.
+        </p>
+        <div role="group" aria-label="Estilo del cursor" className="mt-3 grid gap-2">
+          {options.map(({ value, label, description, Icon }) => (
+            <button
+              key={value}
+              type="button"
+              aria-pressed={cursorStyle === value}
+              onClick={() => onChange(value)}
+              className={cn(
+                "flex min-h-14 items-center gap-3 rounded-xl border px-3 py-2 text-left transition-colors focus-visible:outline-none focus-visible:ring-2",
+                dark
+                  ? "border-paper/10 text-paper hover:border-lime/40 hover:bg-paper/10 focus-visible:ring-lime"
+                  : "border-brand/10 text-ink hover:border-brand/25 hover:bg-sand focus-visible:ring-brand",
+                cursorStyle === value &&
+                  (dark ? "border-lime/40 bg-lime/10" : "border-brand/25 bg-lime/15"),
+              )}
+            >
+              <span
+                className={cn(
+                  "grid size-9 shrink-0 place-items-center rounded-lg",
+                  dark ? "bg-paper/10 text-lime" : "bg-lime/30 text-brand",
+                )}
+              >
+                <Icon aria-hidden="true" className="size-5" />
+              </span>
+              <span className="min-w-0 flex-1">
+                <span className="block text-sm font-semibold">{label}</span>
+                <span
+                  className={cn("block text-xs leading-5", dark ? "text-paper/60" : "text-ink/60")}
+                >
+                  {description}
+                </span>
+              </span>
+              {cursorStyle === value && (
+                <span className={cn("text-xs font-semibold", dark ? "text-lime" : "text-brand")}>
+                  Activo
+                </span>
+              )}
+            </button>
+          ))}
+        </div>
+      </div>
+    </details>
   );
 }
 
@@ -178,7 +234,7 @@ export function SiteHeader() {
                     }
                   }}
                   className={cn(
-                    "inline-flex h-10 items-center rounded-full px-4 text-sm font-semibold text-ink/70 transition-all duration-200 hover:bg-paper hover:text-brand hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2",
+                    "inline-flex h-10 items-center rounded-full px-4 text-sm font-semibold text-ink/70 transition-all duration-200 hover:-translate-y-0.5 hover:bg-lime hover:text-forest-deep hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2",
                     pathname === item.href &&
                       "bg-forest text-paper shadow-sm hover:bg-forest hover:text-paper",
                   )}
@@ -191,7 +247,7 @@ export function SiteHeader() {
               <details ref={exploreMenuRef} className="group relative">
                 <summary
                   className={cn(
-                    "flex h-10 cursor-pointer list-none items-center gap-1.5 rounded-full px-4 text-sm font-semibold text-ink/70 transition-all duration-200 hover:bg-paper hover:text-brand hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 [&::-webkit-details-marker]:hidden",
+                    "flex h-10 cursor-pointer list-none items-center gap-1.5 rounded-full px-4 text-sm font-semibold text-ink/70 transition-all duration-200 hover:-translate-y-0.5 hover:bg-lime hover:text-forest-deep hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 [&::-webkit-details-marker]:hidden",
                     activeMoreItem &&
                       "bg-forest text-paper shadow-sm hover:bg-forest hover:text-paper",
                   )}
@@ -222,7 +278,7 @@ export function SiteHeader() {
                               closeDropdownMenus();
                             }}
                             className={cn(
-                              "group/item flex min-h-18 items-center gap-3 rounded-xl border border-transparent px-3 py-2.5 transition-all hover:translate-x-0.5 hover:border-brand/15 hover:bg-sand/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand",
+                              "group/item flex min-h-18 items-center gap-3 rounded-xl border border-transparent px-3 py-2.5 transition-all hover:translate-x-1 hover:border-brand/25 hover:bg-lime/20 hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand",
                               pathname === item.href && "border-brand/15 bg-sand/60",
                             )}
                           >
@@ -255,7 +311,7 @@ export function SiteHeader() {
             <CursorSelector cursorStyle={cursorStyle} onChange={updateCursorStyle} />
           </div>
           <details ref={contactMenuRef} className="group relative hidden xl:block">
-            <summary className="group/contact inline-flex h-11 cursor-pointer list-none items-center gap-2 rounded-full bg-lime px-4 text-sm font-bold text-forest-deep shadow-[0_6px_18px_-10px_oklch(0.516_0.137_151.7/0.7)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-lime/90 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 active:translate-y-0 [&::-webkit-details-marker]:hidden">
+            <summary className="group/contact inline-flex h-11 cursor-pointer list-none items-center gap-2 rounded-full bg-lime px-4 text-sm font-bold text-forest-deep shadow-[0_6px_18px_-10px_oklch(0.516_0.137_151.7/0.7)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-forest hover:text-paper hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 active:translate-y-0 [&::-webkit-details-marker]:hidden">
               Contacto
               <ChevronDown className="size-4 transition-transform duration-200 group-open/contact:rotate-180" />
             </summary>
@@ -267,13 +323,28 @@ export function SiteHeader() {
                 <h2 className="mt-1 font-display text-2xl font-medium">Hablemos</h2>
               </div>
               <address className="space-y-2 p-3 text-sm not-italic">
-                <p className="flex items-start gap-3 rounded-lg px-3 py-3 leading-5 text-ink/65">
+                <a
+                  href={mapsHref}
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={closeDropdownMenus}
+                  className="group flex items-start gap-3 rounded-lg border border-transparent px-3 py-3 leading-5 text-ink/65 transition-all hover:translate-x-0.5 hover:border-brand/15 hover:bg-brand/5 hover:text-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+                >
                   <MapPin aria-hidden="true" className="mt-0.5 size-5 shrink-0 text-brand" />
-                  <span>
-                    <span className="block font-semibold text-ink">Oficina principal</span>
+                  <span className="min-w-0 flex-1">
+                    <span className="block font-semibold text-ink group-hover:text-brand">
+                      Oficina principal
+                    </span>
                     {contact.address}, {contact.city}
                   </span>
-                </p>
+                  <span className="inline-flex shrink-0 items-center gap-1 self-center text-xs font-bold text-brand">
+                    Cómo llegar
+                    <ArrowRight
+                      aria-hidden="true"
+                      className="size-4 transition-transform group-hover:translate-x-0.5"
+                    />
+                  </span>
+                </a>
                 {contact.phones.map((phone) => (
                   <PhoneContactDialog
                     key={phone}
@@ -390,7 +461,7 @@ export function SiteHeader() {
                           to={item.href}
                           preload="intent"
                           className={cn(
-                            "group flex min-h-14 items-center justify-between rounded-xl border border-paper/10 bg-paper/[0.04] px-4 font-display text-xl font-semibold text-paper/90 transition-all duration-200 hover:translate-x-1 hover:border-lime/25 hover:bg-paper/10 hover:text-lime focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-lime",
+                            "group flex min-h-14 items-center justify-between rounded-xl border border-paper/10 bg-paper/[0.04] px-4 font-display text-xl font-semibold text-paper/90 transition-all duration-200 hover:translate-x-1 hover:border-lime/70 hover:bg-lime hover:text-forest-deep focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-lime",
                             pathname === item.href && "border-lime/30 bg-lime/10 text-lime",
                           )}
                         >
@@ -416,7 +487,7 @@ export function SiteHeader() {
                               to={item.href}
                               preload="intent"
                               className={cn(
-                                "flex min-h-18 items-center gap-3 rounded-xl border border-paper/10 bg-paper/5 p-3 transition-colors hover:border-lime/30 hover:bg-paper/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime",
+                                "flex min-h-18 items-center gap-3 rounded-xl border border-paper/10 bg-paper/5 p-3 transition-all hover:translate-x-1 hover:border-lime/70 hover:bg-lime/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime",
                                 pathname === item.href && "border-lime/30 bg-paper/10",
                               )}
                             >
@@ -452,13 +523,27 @@ export function SiteHeader() {
                   Contacto
                 </h2>
                 <address className="mt-4 space-y-2 text-sm not-italic text-paper/65">
-                  <p className="flex items-start gap-3 rounded-lg px-3 py-3 leading-5">
-                    <MapPin aria-hidden="true" className="mt-0.5 size-5 shrink-0 text-lime" />
-                    <span>
-                      <span className="block font-semibold text-paper">Oficina principal</span>
-                      {contact.address}, {contact.city}
-                    </span>
-                  </p>
+                  <SheetClose asChild>
+                    <a
+                      href={mapsHref}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="group flex items-start gap-3 rounded-lg border border-paper/10 bg-paper/5 px-3 py-3 leading-5 transition-colors hover:border-lime/30 hover:bg-paper/10 hover:text-paper focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime focus-visible:ring-offset-2 focus-visible:ring-offset-forest-deep"
+                    >
+                      <MapPin aria-hidden="true" className="mt-0.5 size-5 shrink-0 text-lime" />
+                      <span className="min-w-0 flex-1">
+                        <span className="block font-semibold text-paper">Oficina principal</span>
+                        {contact.address}, {contact.city}
+                      </span>
+                      <span className="inline-flex shrink-0 items-center gap-1 self-center text-xs font-bold text-lime">
+                        Cómo llegar
+                        <ArrowRight
+                          aria-hidden="true"
+                          className="size-4 transition-transform group-hover:translate-x-0.5"
+                        />
+                      </span>
+                    </a>
+                  </SheetClose>
                   {contact.phones.map((phone) => (
                     <PhoneContactDialog
                       key={phone}

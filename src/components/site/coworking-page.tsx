@@ -15,6 +15,7 @@ import coworkingMeetingRoom from "@/assets/Servicios/Coworking/YDRAY-IMG_9436-1-
 import coworkingWorkstations from "@/assets/Servicios/Coworking/YDRAY-IMG_9476-scaled.webp";
 import coworkingLounge from "@/assets/Servicios/Coworking/YDRAY-IMG_9495-scaled.webp";
 import { EmailContactDialog } from "@/components/site/email-contact-dialog";
+import { getGoogleMapsDirectionsUrl } from "@/lib/google-maps";
 
 const coworkingImages = [
   {
@@ -291,12 +292,14 @@ export function CoworkingPage() {
                   Garzón, Huila
                 </p>
                 <a
-                  href="https://www.google.com/maps/search/?api=1&query=Centro+Comercial+El+Molino+Local+15-16%2C+Garz%C3%B3n%2C+Huila"
+                  href={getGoogleMapsDirectionsUrl(
+                    "Centro Comercial El Molino, locales 15-16, Garzón, Huila",
+                  )}
                   target="_blank"
                   rel="noreferrer"
                   className="mt-2 inline-flex items-center gap-1 text-xs font-bold text-brand hover:underline"
                 >
-                  Ver ubicación <ArrowUpRight aria-hidden="true" className="size-3.5" />
+                  Cómo llegar <ArrowUpRight aria-hidden="true" className="size-3.5" />
                 </a>
               </div>
             </div>

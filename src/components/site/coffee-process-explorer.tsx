@@ -132,14 +132,14 @@ export function CoffeeProcessExplorer() {
             const isActive = index === activeStep;
 
             return (
-              <li key={label} className="relative z-10">
+              <li key={label} className="relative z-10 h-40">
                 <button
                   type="button"
                   aria-pressed={isActive}
                   onClick={() => setActiveStep(index)}
-                  className={`group flex min-h-28 w-full flex-col items-start gap-3 rounded-xl border p-3 text-left transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 sm:min-h-32 sm:p-3 lg:items-center lg:text-center ${
+                  className={`group flex h-full w-full flex-col items-start gap-3 rounded-xl border p-3 text-left transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 lg:items-center lg:text-center ${
                     isActive
-                      ? "border-forest-deep bg-forest-deep text-paper shadow-lg shadow-forest/15"
+                      ? "border-brand-bright bg-brand-bright text-black shadow-lg shadow-forest/20"
                       : "border-brand/15 bg-paper text-ink shadow-sm hover:-translate-y-1 hover:border-brand/40 hover:bg-white hover:shadow-md"
                   }`}
                 >
@@ -147,7 +147,7 @@ export function CoffeeProcessExplorer() {
                     <span
                       className={`grid size-10 place-items-center rounded-full transition-colors ${
                         isActive
-                          ? "bg-lime text-forest-deep"
+                          ? "bg-paper/25 text-paper"
                           : "bg-lime/25 text-forest-deep group-hover:bg-lime/50"
                       }`}
                     >
@@ -158,8 +158,8 @@ export function CoffeeProcessExplorer() {
                     </span>
                   </span>
                   <span
-                    className={`text-sm font-semibold leading-5 ${
-                      isActive ? "text-paper" : "text-ink"
+                    className={`min-w-0 break-words text-sm font-semibold leading-5 ${
+                      isActive ? "text-black" : "text-ink"
                     }`}
                   >
                     <span className="hidden lg:block text-[10px] font-bold uppercase tracking-[0.12em] text-ink/45">

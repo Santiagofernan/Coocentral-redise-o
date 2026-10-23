@@ -3,7 +3,9 @@ import { ArrowRight, Coffee, Factory, MapPin, Sprout } from "lucide-react";
 
 import coffeeImage from "@/assets/Servicios/Cafes_coocentral/Cafe.webp";
 import {
+  allMunicipalities,
   coreMunicipalities,
+  extendedMunicipalities,
   impactStats,
   cooperativeOverview,
   timeline,
@@ -95,9 +97,12 @@ export function CafeDelHuilaPage() {
               Zona cafetera de Coocentral
             </p>
             <h3 className="mt-2 font-display text-2xl font-medium text-forest-deep">
-              Municipios del centro del Huila
+              {allMunicipalities.length} municipios de la zona de influencia
             </h3>
-            <ul className="mt-5 grid grid-cols-2 gap-2">
+            <p className="mt-5 text-xs font-bold uppercase tracking-[0.12em] text-brand">
+              Municipios núcleo
+            </p>
+            <ul className="mt-2 grid grid-cols-2 gap-2">
               {coreMunicipalities.map((municipality) => (
                 <li
                   key={municipality}
@@ -108,8 +113,24 @@ export function CafeDelHuilaPage() {
                 </li>
               ))}
             </ul>
+            <p className="mt-5 text-xs font-bold uppercase tracking-[0.12em] text-brand">
+              Zona de influencia ampliada
+            </p>
+            <ul className="mt-2 grid grid-cols-2 gap-2">
+              {extendedMunicipalities.map((municipality) => (
+                <li
+                  key={municipality}
+                  className="inline-flex min-h-10 items-center gap-2 rounded-lg border border-brand/10 bg-paper px-3 text-sm font-medium text-ink/75"
+                >
+                  <MapPin aria-hidden="true" className="size-4 shrink-0 text-brand" />
+                  {municipality}
+                </li>
+              ))}
+            </ul>
             <p className="mt-4 text-xs leading-5 text-ink/55">
-              Municipios de la zona de influencia descrita por Coocentral.
+              {coreMunicipalities.length} municipios núcleo y {extendedMunicipalities.length} de
+              influencia ampliada conforman los {allMunicipalities.length} municipios de la zona de
+              influencia de Coocentral.
             </p>
           </aside>
         </div>
@@ -137,8 +158,8 @@ export function CafeDelHuilaPage() {
                 Producción cafetera
               </h3>
               <p className="mt-2 text-sm leading-6 text-ink/65">
-                La cooperativa reúne a familias productoras de siete municipios del centro del
-                Huila.
+                Coocentral acompaña a familias caficultoras en {allMunicipalities.length} municipios
+                de su zona de influencia.
               </p>
             </li>
             <li className="rounded-2xl border border-border bg-paper p-6">

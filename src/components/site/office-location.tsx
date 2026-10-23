@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { ArrowUpRight, Clock3, MapPin, Navigation } from "lucide-react";
 
 import { publicOffice } from "@/content/coocentral";
+import { getGoogleMapsDirectionsUrl } from "@/lib/google-maps";
 
 function getOfficeClock(date: Date) {
   const parts = new Intl.DateTimeFormat("en-US", {
@@ -45,7 +46,7 @@ export function OfficeLocation() {
   const officeClock = now ? getOfficeClock(now) : null;
   const isOpen = officeClock?.status === "open";
   const isOnBreak = officeClock?.status === "break";
-  const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(publicOffice.address)}`;
+  const mapsUrl = getGoogleMapsDirectionsUrl(publicOffice.address);
   const mapsEmbedUrl = `https://maps.google.com/maps?q=${encodeURIComponent(publicOffice.address)}&z=16&output=embed`;
 
   return (
@@ -179,7 +180,7 @@ export function OfficeLocation() {
             className="pointer-events-none absolute inset-0 size-full border-0"
           />
           <span className="absolute inset-x-0 bottom-0 flex items-center justify-between bg-gradient-to-t from-forest-deep/95 to-forest-deep/0 px-4 pb-3 pt-10 text-sm font-semibold text-paper">
-            <span>Ver ubicación en el mapa</span>
+            <span> Cómo llegar</span>
             <ArrowUpRight
               aria-hidden="true"
               className="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"

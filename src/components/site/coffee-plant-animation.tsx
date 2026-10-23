@@ -12,7 +12,7 @@ export function CoffeePlantAnimation() {
         Animación de una semilla que desarrolla raíces, tallo y hojas verdes.
       </desc>
       <circle cx="180" cy="148" r="116" fill="oklch(0.948 0.022 110 / 0.75)" />
-      <circle cx="95" cy="94" r="4" fill="#8fc74a" opacity=".5" />
+      <circle cx="95" cy="94" r="4" fill="#8DC73F" opacity=".5" />
       <circle cx="270" cy="112" r="3" fill="#009444" opacity=".35" />
       <path d="M54 248H306" stroke="#8a704e" strokeLinecap="round" strokeWidth="3" />
       <path

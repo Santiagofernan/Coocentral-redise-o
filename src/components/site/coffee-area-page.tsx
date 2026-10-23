@@ -18,6 +18,7 @@ import {
   getDistanceInKilometers,
   type CoffeeBuyingPoint,
 } from "@/content/coffee-buying-points";
+import { getGoogleMapsDirectionsUrl } from "@/lib/google-maps";
 
 const coffeePointsMap =
   "https://www.google.com/maps/d/embed?mid=1v6ZsY68oRmgOkt0PkXxdkf74QP4-jDc&ehbc=2E312F";
@@ -47,7 +48,7 @@ function getPointMapUrl(point: CoffeeBuyingPoint) {
 
 function getDirectionsUrl(point: CoffeeBuyingPoint) {
   const destination = `${point.latitude},${point.longitude}`;
-  return `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(destination)}`;
+  return getGoogleMapsDirectionsUrl(destination);
 }
 
 export function CoffeeAreaPage() {

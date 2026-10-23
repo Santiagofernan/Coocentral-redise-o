@@ -70,9 +70,9 @@ export const links = {
 };
 
 export const contact = {
-  address: "Centro Comercial El Molino · Carrera 12 No. 2-56",
+  address: "Cra. 12 Sur #2 55",
   city: "Garzón, Huila, Colombia",
-  phones: ["311 538 6395", "318 612 8444"],
+  phones: ["318 612 8444"],
   whatsapp: "573186128444",
   email: "info@coocentral.co",
 };
@@ -135,7 +135,7 @@ export const cooperativeResources = [
 ] as const;
 
 export const publicOffice = {
-  address: "Carrera 12 sur # 2-55, Garzón, Huila",
+  address: `${contact.address}, ${contact.city}`,
   hours: [
     {
       days: "Lunes a viernes",
@@ -168,14 +168,6 @@ export const moreNavigation = [
   },
 ] as const;
 
-export const impactStats = [
-  { value: 50, prefix: "+", suffix: "", label: "Años de liderazgo continuo" },
-  { value: 4000, prefix: "≈", suffix: "", label: "Asociados y familias caficultoras" },
-  { value: 7, prefix: "", suffix: "", label: "Municipios núcleo en el centro del Huila" },
-  { value: 9000, prefix: "+", suffix: " ha", label: "Superficie productiva de café" },
-  { value: 15.5, prefix: "+", suffix: " M kg", label: "Café verde comercializado al año" },
-];
-
 export const coreMunicipalities = [
   "Garzón",
   "Gigante",
@@ -187,9 +179,24 @@ export const coreMunicipalities = [
 ];
 
 export const extendedMunicipalities = ["La Plata", "Acevedo", "Pitalito", "Timaná"];
+export const allMunicipalities = [...coreMunicipalities, ...extendedMunicipalities];
 
-export const cooperativeOverview =
-  "Somos la Cooperativa Central de Caficultores del Huila, una empresa asociativa sin ánimo de lucro y de interés social. Reunimos a cerca de 4.000 asociados en nuestra zona de influencia, que comprende 7 municipios cafeteros del centro del Huila: Garzón, Gigante, Agrado, Pital, Tarqui, Suaza y Guadalupe. Estamos comprometidos con nuestro medio ambiente y la sociedad; por esto, nos preocupamos por ser económicamente viables, ambientalmente sostenibles y socialmente responsables.";
+export const impactStats = [
+  { value: 50, prefix: "+", suffix: "", label: "Años de liderazgo continuo" },
+  { value: 4000, prefix: "≈", suffix: "", label: "Asociados y familias caficultoras" },
+  {
+    value: allMunicipalities.length,
+    prefix: "",
+    suffix: "",
+    label: "Municipios en la zona de influencia",
+  },
+  { value: 9000, prefix: "+", suffix: " ha", label: "Superficie productiva de café" },
+  { value: 15.5, prefix: "+", suffix: " M kg", label: "Café verde comercializado al año" },
+];
+
+export const cooperativeOverview = `Somos la Cooperativa Central de Caficultores del Huila, una empresa asociativa sin ánimo de lucro y de interés social. Reunimos a cerca de 4.000 asociados en una zona de influencia de ${
+  allMunicipalities.length
+} municipios: siete municipios núcleo del centro del Huila (${coreMunicipalities.join(", ")}) y cuatro municipios de influencia ampliada (${extendedMunicipalities.join(", ")}). Estamos comprometidos con nuestro medio ambiente y la sociedad; por esto, nos preocupamos por ser económicamente viables, ambientalmente sostenibles y socialmente responsables.`;
 
 export const mission =
   "Gracias a nuestro entusiasmo, trabajo y valores corporativos, queremos ser una Cooperativa responsable social y ambientalmente, donde nuestra prioridad siempre serán nuestros asociados, nuestros clientes, nuestros empleados y nuestra comunidad, a los cuales buscaremos generarles valor y bienestar con productos y servicios de calidad, haciendo del agro un negocio posible y rentable mediante la innovación en sus procesos de producción, transformación y consumo de café.";
@@ -320,14 +327,6 @@ export const timeline = [
     imageAlt: "Conmemoración de los 50 años de Coocentral",
   },
 ];
-
-export const socialInvestment = {
-  total: "USD 7,5 M",
-  period: "Inversión acumulada 2007–2023",
-  social: { value: 4.0, label: "Inversión social" },
-  productivity: { value: 3.5, label: "Productividad agrícola" },
-  yearly: "USD 0,5 M promedio anual",
-};
 
 type Benefit = { id: string; icon: LucideIcon; title: string; text: string };
 

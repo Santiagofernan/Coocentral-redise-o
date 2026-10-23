@@ -1,6 +1,7 @@
 import { MapPin, Quote, Target } from "lucide-react";
 
 import {
+  allMunicipalities,
   coreMunicipalities,
   extendedMunicipalities,
   governance,
@@ -76,7 +77,9 @@ export function About() {
               </h3>
             </div>
             <p className="mt-5 text-2xl font-medium font-display leading-snug">
-              7 municipios núcleo en el centro del Huila, con Garzón como sede principal.
+              {allMunicipalities.length} municipios en la zona de influencia:{" "}
+              {coreMunicipalities.length} núcleo y {extendedMunicipalities.length} de influencia
+              ampliada, con Garzón como sede principal.
             </p>
             <ul className="mt-6 flex flex-wrap gap-2">
               {coreMunicipalities.map((name) => (
@@ -88,7 +91,7 @@ export function About() {
                 </li>
               ))}
             </ul>
-            <p className="mt-6 text-sm font-semibold text-ink/60">Zona de influencia extendida</p>
+            <p className="mt-6 text-sm font-semibold text-ink/60">Influencia ampliada</p>
             <ul className="mt-3 flex flex-wrap gap-2">
               {extendedMunicipalities.map((name) => (
                 <li

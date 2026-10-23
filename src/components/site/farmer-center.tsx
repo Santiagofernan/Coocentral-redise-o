@@ -1,16 +1,13 @@
 import { Quote } from "lucide-react";
 
-import { benefits, productivityPrograms, quotes, socialInvestment } from "@/content/coocentral";
+import { benefits, productivityPrograms, quotes } from "@/content/coocentral";
 
 import { SectionHeading } from "./section-heading";
-
-const { social, productivity } = socialInvestment;
-const socialShare = (social.value / (social.value + productivity.value)) * 100;
 
 export function FarmerCenter() {
   return (
     <section id="beneficios-asociados" className="scroll-mt-24 bg-sand">
-      <div className="mx-auto max-w-7xl px-5 py-20 lg:px-10 lg:py-32">
+      <div className="mx-auto max-w-7xl px-5 py-24 lg:px-10 lg:py-36">
         <SectionHeading
           eyebrow="El caficultor en el centro"
           title={
@@ -21,8 +18,8 @@ export function FarmerCenter() {
           intro="Invertimos en capital social y fortalecimiento agronómico para estabilizar el ingreso familiar, proteger la salud y la vejez, y elevar la productividad por hectárea."
         />
 
-        <div className="mt-14 grid gap-5 lg:grid-cols-12">
-          <blockquote className="reveal relative flex min-h-80 flex-col justify-end overflow-hidden rounded-3xl bg-forest-deep p-7 text-paper lg:col-span-7 lg:p-10">
+        <div className="mt-16">
+          <blockquote className="reveal relative flex min-h-96 flex-col justify-end overflow-hidden rounded-3xl bg-forest-deep p-8 text-paper lg:p-12">
             <span
               aria-hidden="true"
               className="absolute -right-14 -top-20 size-72 rounded-full border border-lime/15"
@@ -32,7 +29,7 @@ export function FarmerCenter() {
               className="absolute -right-2 -top-8 size-48 rounded-full border border-paper/10"
             />
             <Quote aria-hidden="true" className="relative size-7 text-paper/75" />
-            <p className="relative mt-5 max-w-xl font-display text-xl italic leading-snug lg:text-2xl">
+            <p className="relative mt-5 max-w-3xl font-display text-xl italic leading-snug lg:text-2xl">
               “{quotes.farmer.text}”
             </p>
             <footer className="relative mt-5 text-sm">
@@ -40,42 +37,6 @@ export function FarmerCenter() {
               <span className="text-paper/70"> · {quotes.farmer.role}</span>
             </footer>
           </blockquote>
-
-          <article className="reveal flex flex-col rounded-3xl bg-forest p-8 text-paper lg:col-span-5 lg:p-10">
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-paper">
-              {socialInvestment.period}
-            </p>
-            <p className="mt-6 font-display text-6xl font-medium tracking-tight lg:text-7xl">
-              {socialInvestment.total}
-            </p>
-            <p className="mt-2 text-paper/70">invertidos en la finca y la comunidad</p>
-
-            <div className="mt-10">
-              <div className="flex h-4 overflow-hidden rounded-full bg-paper/10">
-                <span className="bg-lime" style={{ width: `${socialShare}%` }} />
-                <span className="bg-brand-bright" style={{ width: `${100 - socialShare}%` }} />
-              </div>
-              <dl className="mt-5 grid grid-cols-2 gap-4 text-sm">
-                <div>
-                  <dt className="flex items-center gap-2 text-paper/70">
-                    <span className="size-2.5 rounded-full bg-lime" /> {social.label}
-                  </dt>
-                  <dd className="mt-1 font-display text-2xl">USD {social.value.toFixed(1)} M</dd>
-                </div>
-                <div>
-                  <dt className="flex items-center gap-2 text-paper/70">
-                    <span className="size-2.5 rounded-full bg-brand-bright" /> {productivity.label}
-                  </dt>
-                  <dd className="mt-1 font-display text-2xl">
-                    USD {productivity.value.toFixed(1)} M
-                  </dd>
-                </div>
-              </dl>
-            </div>
-            <p className="mt-auto border-t border-paper/15 pt-6 text-sm text-paper/60">
-              {socialInvestment.yearly} inyectados al sector
-            </p>
-          </article>
         </div>
 
         <h3 className="reveal mt-24 text-3xl font-medium lg:text-4xl">

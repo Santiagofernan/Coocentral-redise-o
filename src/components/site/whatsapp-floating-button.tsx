@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import { ArrowUp, Phone, X } from "lucide-react";
+import { ArrowUp, X } from "lucide-react";
 
 import { WhatsAppLogo } from "@/components/site/whatsapp-logo";
-import { contact } from "@/content/coocentral";
 
 const chatPanelId = "whatsapp-mini-chat";
 
@@ -11,12 +10,14 @@ function toWhatsappNumber(phone: string) {
 }
 
 const communicationOptions = [
-  ...contact.phones.map((phone) => ({
+  {
     area: "Recepción",
-    phone,
-    href: `tel:${phone.replace(/[^\d+]/g, "")}`,
-    channel: "phone" as const,
-  })),
+    phone: "320 807 5228",
+    href: `https://wa.me/${toWhatsappNumber("320 807 5228")}?text=${encodeURIComponent(
+      "Hola, quisiera recibir más información sobre los servicios de Coocentral.",
+    )}`,
+    channel: "whatsapp" as const,
+  },
   {
     area: "Crédito y cartera",
     phone: "317 433 4039",
@@ -63,7 +64,7 @@ export function WhatsAppFloatingButton() {
               <h2 id="whatsapp-chat-title" className="font-semibold leading-tight">
                 Coocentral
               </h2>
-              <p className="mt-1 text-xs text-white/75">Teléfono y WhatsApp</p>
+              <p className="mt-1 text-xs text-white/75">Estamos para atenderte</p>
             </div>
             <button
               type="button"
@@ -77,31 +78,18 @@ export function WhatsAppFloatingButton() {
           <div className="bg-sand/55 p-4">
             <p className="text-xs font-medium text-ink/50">Coocentral · ahora</p>
             <p className="mt-2 max-w-[18rem] rounded-2xl rounded-tl-sm bg-paper px-4 py-3 text-sm leading-5 text-ink shadow-sm">
-              Elige cómo quieres comunicarte con cada área:
+              Escríbenos y nuestro equipo te ayudará:
             </p>
             <div className="mt-3 grid gap-2">
               {communicationOptions.map((option) => (
                 <a
                   key={`${option.channel}-${option.phone}`}
                   href={option.href}
-                  aria-label={
-                    option.channel === "phone"
-                      ? `Llamar a ${option.area}: ${option.phone}`
-                      : undefined
-                  }
-                  target={option.channel === "whatsapp" ? "_blank" : undefined}
-                  rel={option.channel === "whatsapp" ? "noreferrer" : undefined}
-                  className={`inline-flex min-h-11 w-full items-center gap-3 rounded-xl px-4 py-2 text-sm font-bold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${
-                    option.channel === "whatsapp"
-                      ? "bg-[#25d366] text-forest-deep hover:bg-[#20bd5a] focus-visible:ring-[#128c4a]"
-                      : "border border-brand/15 bg-paper text-ink hover:bg-sand focus-visible:ring-brand"
-                  }`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex min-h-11 w-full items-center gap-3 rounded-xl bg-[#25d366] px-4 py-2 text-sm font-bold text-forest-deep transition-colors hover:bg-[#20bd5a] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#128c4a] focus-visible:ring-offset-2"
                 >
-                  {option.channel === "phone" ? (
-                    <Phone aria-hidden="true" className="size-4 shrink-0 text-brand" />
-                  ) : (
-                    <WhatsAppLogo aria-hidden="true" className="size-4 shrink-0" />
-                  )}
+                  <WhatsAppLogo aria-hidden="true" className="size-4 shrink-0" />
                   <span className="min-w-0 flex-1 text-left">
                     <span className="block">{option.area}</span>
                     <span className="block text-xs font-medium">{option.phone}</span>

@@ -4,6 +4,7 @@ import { ArrowLeft, ArrowRight, ArrowUpRight, Clock3, Coffee, MapPin, Store } fr
 
 import kahveStorefrontImage from "@/assets/Servicios/Tiendas/Frente_Tienda.webp";
 import kahveStoreInteriorImage from "@/assets/Servicios/Tiendas/Tienda_Interior.webp";
+import { getGoogleMapsDirectionsUrl } from "@/lib/google-maps";
 import { getStoreStatus, type StoreStatus, type StoreWeeklySchedule } from "@/lib/store-schedule";
 
 const rosarioSchedule: StoreWeeklySchedule = {
@@ -212,7 +213,7 @@ export function KahveStoresPage() {
 
           <ul className="mt-9 grid gap-5 lg:grid-cols-2">
             {kahveStores.map((store, index) => {
-              const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${store.address}, ${store.city}, Huila`)}`;
+              const mapsUrl = getGoogleMapsDirectionsUrl(`${store.address}, ${store.city}, Huila`);
               const status = now && store.schedule ? getStoreStatus(now, store.schedule) : null;
 
               return (

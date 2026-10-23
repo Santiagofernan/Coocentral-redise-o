@@ -16,6 +16,7 @@ import losOlivosLogo from "@/assets/Asociados/los-olivos-logo.webp";
 import {
   agroServices,
   allies,
+  allMunicipalities,
   certifications,
   contact,
   cooperationProjects,
@@ -31,6 +32,7 @@ import {
   creditImpact,
   creditLines,
   digitalTools,
+  extendedMunicipalities,
   governance,
   membershipEligibility,
   membershipRequirements,
@@ -161,8 +163,8 @@ export function CooperativePage() {
                   <MapPin aria-hidden="true" className="size-5" />
                 </span>
                 <div>
-                  <p className="font-display text-2xl font-medium">{coreMunicipalities.length}</p>
-                  <p className="text-xs text-paper/65">Municipios núcleo</p>
+                  <p className="font-display text-2xl font-medium">{allMunicipalities.length}</p>
+                  <p className="text-xs text-paper/65">Municipios de influencia</p>
                 </div>
               </div>
             </div>
@@ -255,10 +257,14 @@ export function CooperativePage() {
               ))}
             </ol>
             <p className="mt-8 text-sm leading-6 text-ink/60">
-              Nuestra sede principal está en Garzón y trabajamos con familias caficultoras de siete
-              municipios núcleo del centro del Huila.
+              Nuestra sede principal está en Garzón. La zona de influencia abarca{" "}
+              {allMunicipalities.length} municipios: {coreMunicipalities.length} núcleo y{" "}
+              {extendedMunicipalities.length} de influencia ampliada.
             </p>
             <p className="mt-3 font-semibold text-brand">{coreMunicipalities.join(" · ")}</p>
+            <p className="mt-2 text-sm font-semibold text-ink/65">
+              {extendedMunicipalities.join(" · ")}
+            </p>
           </section>
         </div>
       </section>
@@ -269,11 +275,29 @@ export function CooperativePage() {
 export function CreditAndCarteraPage() {
   return (
     <main>
-      <PageIntro
-        eyebrow="Crédito y cartera"
-        title="Crédito y cartera"
-        description="Financiamos las necesidades de nuestros asociados y no asociados con soluciones diseñadas para acompañar la producción, el comercio y la operación del negocio familiar."
-      />
+      <section className="relative isolate overflow-hidden bg-forest-deep text-paper">
+        <div
+          aria-hidden="true"
+          className="absolute -right-24 -top-32 -z-10 size-96 rounded-full border border-lime/15"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute -right-8 -top-12 -z-10 size-64 rounded-full border border-paper/10"
+        />
+        <div className="mx-auto max-w-7xl px-5 py-14 lg:px-10 lg:py-20">
+          <p className="inline-flex items-center gap-2 rounded-full border border-lime/30 bg-lime/10 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-lime">
+            <HandCoins aria-hidden="true" className="size-4" />
+            Servicios financieros
+          </p>
+          <h1 className="mt-5 max-w-4xl font-display text-4xl font-medium leading-[1.08] sm:text-5xl lg:text-6xl">
+            Crédito y <span className="text-lime">cartera</span>
+          </h1>
+          <p className="mt-5 max-w-3xl text-base leading-7 text-paper/75 lg:text-lg">
+            Financiamos las necesidades de nuestros asociados y no asociados con soluciones
+            diseñadas para acompañar la producción, el comercio y la operación del negocio familiar.
+          </p>
+        </div>
+      </section>
 
       <section className="border-b border-border bg-paper">
         <div className="mx-auto max-w-7xl px-5 py-4 lg:px-10">
@@ -314,9 +338,8 @@ export function CreditAndCarteraPage() {
             </h3>
             <p className="mt-4 text-base leading-8 text-ink/70">
               Para obtener información detallada sobre el crédito en la cooperativa, acérquese a
-              cualquiera de nuestros almacenes, contacte al técnico de su zona o diríjase a la
-              oficina de cartera ubicada en la sede principal del Centro Comercial El Molino en
-              Garzón.
+              cualquiera de nuestros almacenes, contacte al técnico de su zona o visite la oficina
+              de cartera en la sede principal, ubicada en la Cra. 12 Sur #2 55, Garzón.
             </p>
             <p className="mt-4 text-base font-semibold text-brand">
               Contáctenos al celular: 317 433 4039
