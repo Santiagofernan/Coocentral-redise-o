@@ -168,18 +168,28 @@ export const moreNavigation = [
   },
 ] as const;
 
-export const coreMunicipalities = [
-  "Garzón",
-  "Gigante",
+export const allMunicipalities = [
   "Agrado",
   "Pital",
   "Tarqui",
   "Suaza",
   "Guadalupe",
-];
+  "La Plata",
+  "Acevedo",
+  "Pitalito",
+  "Timaná",
+  "Garzón",
+  "Gigante",
+] as const;
 
-export const extendedMunicipalities = ["La Plata", "Acevedo", "Pitalito", "Timaná"];
-export const allMunicipalities = [...coreMunicipalities, ...extendedMunicipalities];
+const extendedMunicipalityNames = new Set(["La Plata", "Acevedo", "Pitalito", "Timaná"]);
+
+export const coreMunicipalities = allMunicipalities.filter(
+  (municipality) => !extendedMunicipalityNames.has(municipality),
+);
+export const extendedMunicipalities = allMunicipalities.filter((municipality) =>
+  extendedMunicipalityNames.has(municipality),
+);
 
 export const impactStats = [
   { value: 50, prefix: "+", suffix: "", label: "Años de liderazgo continuo" },
@@ -196,7 +206,7 @@ export const impactStats = [
 
 export const cooperativeOverview = `Somos la Cooperativa Central de Caficultores del Huila, una empresa asociativa sin ánimo de lucro y de interés social. Reunimos a cerca de 4.000 asociados en una zona de influencia de ${
   allMunicipalities.length
-} municipios: siete municipios núcleo del centro del Huila (${coreMunicipalities.join(", ")}) y cuatro municipios de influencia ampliada (${extendedMunicipalities.join(", ")}). Estamos comprometidos con nuestro medio ambiente y la sociedad; por esto, nos preocupamos por ser económicamente viables, ambientalmente sostenibles y socialmente responsables.`;
+} municipios: ${coreMunicipalities.length} municipios núcleo del centro del Huila (${coreMunicipalities.join(", ")}) y ${extendedMunicipalities.length} municipios de influencia ampliada (${extendedMunicipalities.join(", ")}). Estamos comprometidos con nuestro medio ambiente y la sociedad; por esto, nos preocupamos por ser económicamente viables, ambientalmente sostenibles y socialmente responsables.`;
 
 export const mission =
   "Gracias a nuestro entusiasmo, trabajo y valores corporativos, queremos ser una Cooperativa responsable social y ambientalmente, donde nuestra prioridad siempre serán nuestros asociados, nuestros clientes, nuestros empleados y nuestra comunidad, a los cuales buscaremos generarles valor y bienestar con productos y servicios de calidad, haciendo del agro un negocio posible y rentable mediante la innovación en sus procesos de producción, transformación y consumo de café.";
@@ -730,105 +740,198 @@ export const warehouseProductLines = [
 ] as const;
 
 const standardWarehouseHours = [
-  "Lunes a viernes · 7:30 a. m.–12:30 p. m. y 2:00–4:00 p. m.",
+  "Lunes a jueves · 7:30 a. m.–12:30 p. m. y 2:00–4:00 p. m.",
+  "Viernes · 7:00 a. m.–12:30 p. m. y 2:00–4:30 p. m.",
   "Sábado · 7:00 a. m.–1:00 p. m.",
+] as const;
+
+const hardwareStoreHours = [
+  "Lunes a viernes · 7:30 a. m.–12:00 p. m. y 2:00–5:00 p. m.",
+  "Sábado · 7:30 a. m.–12:00 p. m.",
 ] as const;
 
 export const warehouseLocations = [
   {
+    type: "Almacén",
+    code: "3301",
     municipality: "Garzón",
-    name: "Centro Comercial El Molino",
-    address: "Calle 3 #11-31",
+    name: "Almacén del Café Molino",
+    address: "Calle 3 #11-31, Centro Comercial El Molino",
+    phone: "3125522620",
     hours: standardWarehouseHours,
   },
   {
+    type: "Almacén",
+    code: "3102",
     municipality: "Garzón",
-    name: "C.C. Café",
-    address: "Calle 2 #10A-58",
+    name: "Almacén Centro Comercial del Café",
+    address: "Calle 2 #10A-58 / Carrera 10A #2-38",
+    phone: "3118170755",
     hours: standardWarehouseHours,
   },
   {
-    municipality: "Garzón",
-    name: "Ferretería · Nueva sede",
-    address: "Carrera 12 #2-55",
-    hours: standardWarehouseHours,
-  },
-  {
+    type: "Ferretería",
+    code: "3104",
     municipality: "Garzón",
     name: "Ferretería La 14",
-    address: "Calle 9 #14-35",
-    hours: standardWarehouseHours,
+    address: "Calle 9 #14-35, barrio El Jardín",
+    phone: "3202533976",
+    hours: hardwareStoreHours,
   },
   {
+    type: "Almacén",
+    code: "3105",
     municipality: "Garzón",
-    name: "Centro poblado Zuluaga",
-    address: "Carrera 5 #2-45",
+    locality: "Zuluaga",
+    name: "Almacén del Café Zuluaga",
+    address: "Carrera 5 #2-45/55",
+    phone: "3138812526",
     hours: standardWarehouseHours,
   },
   {
+    type: "Almacén",
+    code: "3106",
     municipality: "Garzón",
-    name: "Corregimiento de San Antonio del Pescado",
-    address: "",
+    locality: "San Antonio del Pescado",
+    name: "Almacén del Café San Antonio",
+    address: "San Antonio del Pescado",
+    phone: "3204883960",
     hours: standardWarehouseHours,
   },
   {
+    type: "Almacén",
+    code: "3201",
     municipality: "Gigante",
-    name: "Sede principal",
-    address: "Carrera 4 #3-92",
+    name: "Almacén del Café Gigante",
+    address: "Coocentral Sede Gigante Almacén, Gigante, Huila",
+    phone: "3229069157",
     hours: standardWarehouseHours,
   },
   {
+    type: "Almacén",
+    code: "3202",
     municipality: "Gigante",
-    name: "Inspección de Potrerillos",
-    address: "",
+    locality: "Potrerillos",
+    name: "Almacén del Café Potrerillos",
+    address: "Casa del Café, inspección de Potrerillos",
+    phone: "3103684014",
     hours: standardWarehouseHours,
   },
   {
+    type: "Almacén",
+    code: "3301",
     municipality: "Guadalupe",
-    name: "Sede principal",
-    address: "Calle 4 #5-52, local 2",
+    name: "Almacén del Café Guadalupe",
+    address: "Calle 4 #5-52, local 2 / Carrera 6 #4-24, local 1",
+    phone: "3203293679",
     hours: standardWarehouseHours,
   },
   {
+    type: "Almacén",
+    code: "3303",
+    municipality: "Guadalupe",
+    name: "Guadalupe C/CIAL",
+    address: "Calle 4 #11-61",
+    hours: standardWarehouseHours,
+  },
+  {
+    type: "Almacén",
+    code: "3401",
     municipality: "Agrado",
-    name: "Sede principal",
-    address: "Carrera 5 #4-35",
+    name: "Almacén del Café Agrado",
+    address: "Carrera 5 #3-36",
+    phone: "3208944060",
     hours: standardWarehouseHours,
   },
   {
+    type: "Almacén",
+    code: "3501",
     municipality: "Pital",
-    name: "Sede principal",
-    address: "Carrera 10 #8-68",
+    name: "Almacén del Café Pital",
+    address: "Cra. 10 #891",
+    phone: "3178340369",
     hours: standardWarehouseHours,
   },
   {
-    municipality: "Pital",
-    name: "Inspección El Socorro",
-    address: "",
+    type: "Almacén",
+    code: "3702",
+    municipality: "Tarqui",
+    locality: "Quituro",
+    name: "Almacén del Café Quituro",
+    address: "Inspección de Quituro",
+    phone: "3222000697",
     hours: standardWarehouseHours,
   },
   {
+    type: "Almacén",
+    code: "3601",
     municipality: "Suaza",
-    name: "Sede principal",
-    address: "Calle 6 #4-33/45",
+    name: "Almacén del Café Suaza",
+    address: "Francafe, Calle 7, Suaza, Huila",
+    phone: "3118667347",
     hours: standardWarehouseHours,
   },
   {
+    type: "Almacén",
+    code: "3701",
     municipality: "Tarqui",
-    name: "Sede principal",
+    name: "Almacén del Café Tarqui",
     address: "Carrera 6 #1-66",
+    phone: "3112931776",
     hours: standardWarehouseHours,
   },
   {
-    municipality: "Tarqui",
-    name: "Centro poblado Quituro",
-    address: "",
+    type: "Almacén",
+    code: "300101",
+    municipality: "Acevedo",
+    name: "Almacén del Café Acevedo",
+    address: "Carrera 5 #2-30, barrio San Francisco",
+    phone: "3228680999",
     hours: standardWarehouseHours,
   },
   {
-    municipality: "Tarqui",
-    name: "Centro poblado Maito",
-    address: "",
+    type: "Almacén",
+    code: "3901",
+    municipality: "La Plata",
+    name: "Almacén del Café La Plata",
+    address: "Carrera 3E #13-12, barrio Av. Libertadores El Divino Niño",
+    phone: "3122056447",
+    hours: standardWarehouseHours,
+  },
+  {
+    type: "Almacén",
+    code: "300201",
+    municipality: "Timaná",
+    name: "Almacén del Café Timaná",
+    address: "Calle 8 #3-68",
+    phone: "3113971371",
+    hours: standardWarehouseHours,
+  },
+  {
+    type: "Almacén",
+    code: "300301",
+    municipality: "Pitalito",
+    name: "Almacén del Café Pitalito",
+    address: "Carrera 6 #7-45, barrio Centro",
+    phone: "3134386514",
+    hours: standardWarehouseHours,
+  },
+  {
+    type: "Bodega general",
+    code: "31001",
+    municipality: "Garzón",
+    name: "Bodega general",
+    address: "Carrera 14 #8-85",
+    phone: "3115843882",
+    hours: standardWarehouseHours,
+  },
+  {
+    type: "Centro de servicios",
+    code: "3108",
+    municipality: "Garzón",
+    name: "Centro de servicios",
+    address: "Carrera 14 #8-15",
+    phone: "3214950452",
     hours: standardWarehouseHours,
   },
 ] as const;
@@ -879,7 +982,7 @@ export const serviceShowcase: ServiceShowcase[] = [
     id: "almacenes-coocentral",
     title: "Almacenes Coocentral",
     summary:
-      "Red de 17 tiendas en el centro del Huila con líneas agropecuaria, hogar, ferretería y maquinaria para las familias de la región.",
+      "Red de puntos de atención en 11 municipios del Huila con líneas agropecuaria, hogar, ferretería y maquinaria para las familias de la región.",
     image: almacenesCoocentralImage,
     imageAlt: "Almacén Coocentral con productos e insumos para las familias de la región",
     href: "/almacenes",

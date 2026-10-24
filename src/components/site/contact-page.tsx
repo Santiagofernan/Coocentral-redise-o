@@ -65,7 +65,7 @@ export function ContactPage() {
         </article>
 
         <article className="rounded-2xl border border-border bg-paper p-6 shadow-sm sm:p-8">
-          <span className="grid size-12 place-items-center rounded-xl bg-[#25d366] text-white">
+          <span className="grid size-12 place-items-center rounded-xl bg-[#128c4a] text-white">
             <WhatsAppLogo className="size-7" />
           </span>
           <h2 className="mt-5 font-display text-2xl font-medium">Escríbenos por WhatsApp</h2>
@@ -76,7 +76,7 @@ export function ContactPage() {
             href={whatsappHref}
             target="_blank"
             rel="noreferrer"
-            className="mt-5 inline-flex min-h-11 items-center gap-2 rounded-full bg-[#25d366] px-5 text-sm font-bold text-forest-deep transition-colors hover:bg-[#20bd5a] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#128c4a] focus-visible:ring-offset-2"
+            className="mt-5 inline-flex min-h-11 items-center gap-2 rounded-full bg-[#128c4a] px-5 text-sm font-bold text-white transition-colors hover:bg-[#0f713d] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#128c4a] focus-visible:ring-offset-2"
           >
             <WhatsAppLogo className="size-5" />
             Abrir WhatsApp

@@ -41,7 +41,10 @@ export function History() {
   };
 
   return (
-    <section id="historia" className="relative overflow-hidden bg-forest-deep text-paper">
+    <section
+      id="historia"
+      className="scroll-section-static relative overflow-hidden bg-forest-deep text-paper"
+    >
       <span className="grain absolute inset-0 opacity-40" />
       <svg
         aria-hidden="true"

@@ -76,7 +76,7 @@ export function WhatsAppFloatingButton() {
             </button>
           </div>
           <div className="bg-sand/55 p-4">
-            <p className="text-xs font-medium text-ink/50">Coocentral · ahora</p>
+            <p className="text-xs font-medium text-black">Coocentral · ahora</p>
             <p className="mt-2 max-w-[18rem] rounded-2xl rounded-tl-sm bg-paper px-4 py-3 text-sm leading-5 text-ink shadow-sm">
               Escríbenos y nuestro equipo te ayudará:
             </p>
@@ -87,7 +87,7 @@ export function WhatsAppFloatingButton() {
                   href={option.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex min-h-11 w-full items-center gap-3 rounded-xl bg-[#25d366] px-4 py-2 text-sm font-bold text-forest-deep transition-colors hover:bg-[#20bd5a] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#128c4a] focus-visible:ring-offset-2"
+                  className="inline-flex min-h-11 w-full items-center gap-3 rounded-xl bg-[#128c4a] px-4 py-2 text-sm font-bold text-white transition-colors hover:bg-[#0f713d] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#128c4a] focus-visible:ring-offset-2"
                 >
                   <WhatsAppLogo aria-hidden="true" className="size-4 shrink-0" />
                   <span className="min-w-0 flex-1 text-left">
@@ -108,7 +108,11 @@ export function WhatsAppFloatingButton() {
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           className="fixed bottom-24 right-7 z-40 grid size-11 place-items-center rounded-full border border-brand/15 bg-paper text-brand shadow-[0_8px_24px_-10px_oklch(0.22_0.045_158/0.5)] transition-[transform,background-color,box-shadow] duration-200 hover:-translate-y-0.5 hover:bg-sand hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-paper active:translate-y-0 motion-reduce:transition-none sm:bottom-28 sm:right-9"
         >
-          <ArrowUp aria-hidden="true" className="size-5" />
+          <ArrowUp
+            aria-hidden="true"
+            className="size-6 text-forest-deep drop-shadow-sm"
+            strokeWidth={3}
+          />
         </button>
       )}
       <button
@@ -117,7 +121,7 @@ export function WhatsAppFloatingButton() {
         aria-expanded={isOpen}
         aria-controls={chatPanelId}
         onClick={() => setIsOpen((open) => !open)}
-        className={`fixed bottom-5 right-5 z-40 inline-flex size-16 items-center justify-center rounded-full bg-[#25d366] text-white shadow-[0_12px_30px_-10px_oklch(0.15_0.04_150/0.65)] transition-[transform,box-shadow] duration-500 ease-in-out hover:scale-105 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#25d366] focus-visible:ring-offset-2 focus-visible:ring-offset-paper active:scale-95 motion-reduce:transition-none sm:bottom-7 sm:right-7 ${
+        className={`fixed bottom-5 right-5 z-40 inline-flex size-16 items-center justify-center rounded-full bg-[#128c4a] text-white shadow-[0_12px_30px_-10px_oklch(0.15_0.04_150/0.65)] transition-[transform,background-color,box-shadow] duration-500 ease-in-out hover:scale-105 hover:bg-[#0f713d] hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#128c4a] focus-visible:ring-offset-2 focus-visible:ring-offset-paper active:scale-95 motion-reduce:transition-none sm:bottom-7 sm:right-7 ${
           isOpen ? "rotate-180" : "rotate-0 whatsapp-float-pulse"
         }`}
       >

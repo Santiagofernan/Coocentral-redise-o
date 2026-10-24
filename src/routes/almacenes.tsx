@@ -4,9 +4,9 @@ import { createSeoHead } from "@/lib/seo";
 export const Route = createFileRoute("/almacenes")({
   head: () =>
     createSeoHead({
-      title: "Almacenes agrícolas en Garzón y Huila | Coocentral",
+      title: "Almacenes Coocentral en el Huila | Coocentral",
       description:
-        "Encuentra insumos agrícolas, herramientas y productos para el campo en los Almacenes Coocentral. Consulta sedes y horarios en el centro del Huila.",
+        "Encuentra almacenes y ferreterías Coocentral en 11 municipios del Huila. Consulta direcciones, teléfonos y horarios de atención.",
       path: "/almacenes",
     }),
   component: lazyRouteComponent(

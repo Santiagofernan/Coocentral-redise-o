@@ -1,15 +1,15 @@
 import { useState } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
-import processStage01 from "@/assets/Cafe/etapas/etapa-01.png";
-import processStage02 from "@/assets/Cafe/etapas/etapa-02.png";
-import processStage03 from "@/assets/Cafe/etapas/etapa-03.png";
-import processStage04 from "@/assets/Cafe/etapas/etapa-04.png";
-import processStage05 from "@/assets/Cafe/etapas/etapa-05.png";
-import processStage06 from "@/assets/Cafe/etapas/etapa-06.png";
-import processStage07 from "@/assets/Cafe/etapas/etapa-07.png";
-import processStage08 from "@/assets/Cafe/etapas/etapa-08.png";
-import processStage09 from "@/assets/Cafe/etapas/etapa-09.png";
+import processStage01 from "@/assets/Cafe/etapas/etapa-01.webp";
+import processStage02 from "@/assets/Cafe/etapas/etapa-02.webp";
+import processStage03 from "@/assets/Cafe/etapas/etapa-03.webp";
+import processStage04 from "@/assets/Cafe/etapas/etapa-04.webp";
+import processStage05 from "@/assets/Cafe/etapas/etapa-05.webp";
+import processStage06 from "@/assets/Cafe/etapas/etapa-06.webp";
+import processStage07 from "@/assets/Cafe/etapas/etapa-07.webp";
+import processStage08 from "@/assets/Cafe/etapas/etapa-08.webp";
+import processStage09 from "@/assets/Cafe/etapas/etapa-09.webp";
 import { coffeeProcessSteps } from "@/content/coocentral";
 
 const processIllustrations = [
@@ -153,16 +153,24 @@ export function CoffeeProcessExplorer() {
                     >
                       <Icon aria-hidden="true" className="size-5" />
                     </span>
-                    <span className="font-display text-xs font-bold tracking-wide text-ink/50 lg:hidden">
+                    <span
+                      className={`font-display text-xs font-bold tracking-wide lg:hidden ${
+                        isActive ? "text-paper" : "text-ink/50"
+                      }`}
+                    >
                       ETAPA {String(index + 1).padStart(2, "0")}
                     </span>
                   </span>
                   <span
                     className={`min-w-0 break-words text-sm font-semibold leading-5 ${
-                      isActive ? "text-black" : "text-ink"
+                      isActive ? "text-paper" : "text-ink"
                     }`}
                   >
-                    <span className="hidden lg:block text-[10px] font-bold uppercase tracking-[0.12em] text-ink/45">
+                    <span
+                      className={`hidden text-[10px] font-bold uppercase tracking-[0.12em] lg:block ${
+                        isActive ? "text-paper/80" : "text-ink/45"
+                      }`}
+                    >
                       Etapa {String(index + 1).padStart(2, "0")}
                     </span>
                     <span className="lg:mt-1 lg:block">{label}</span>

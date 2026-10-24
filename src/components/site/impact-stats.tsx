@@ -1,9 +1,7 @@
-import { coreMunicipalities, extendedMunicipalities, impactStats } from "@/content/coocentral";
+import { allMunicipalities, impactStats } from "@/content/coocentral";
 import { cn } from "@/lib/utils";
 
 import { CountUp } from "./count-up";
-
-const municipalities = [...coreMunicipalities, ...extendedMunicipalities];
 
 export function ImpactStats() {
   return (
@@ -46,7 +44,7 @@ export function ImpactStats() {
               aria-hidden={copy === 1}
               className="flex shrink-0 items-center gap-10 font-display text-2xl font-medium italic lg:text-3xl"
             >
-              {municipalities.map((name) => (
+              {allMunicipalities.map((name) => (
                 <li key={name} className="flex items-center gap-10">
                   {name}
                   <span className="size-2 rounded-full bg-lime/50" />

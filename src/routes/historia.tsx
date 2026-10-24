@@ -5,6 +5,15 @@ import { createSeoHead } from "@/lib/seo";
 
 const History = lazyRouteComponent(() => import("@/components/site/history"), "History");
 
+const fallingLeaves = [
+  { className: "nature-leaf--one left-[12%] size-8 text-lime/65" },
+  { className: "nature-leaf--two left-[38%] size-6 text-lime/55" },
+  { className: "nature-leaf--three left-[68%] size-7 text-paper/55" },
+  { className: "nature-leaf--one left-[88%] size-5 text-lime/55" },
+] as const;
+
+const fallingBeans = [1, 2, 3, 4] as const;
+
 export const Route = createFileRoute("/historia")({
   head: () =>
     createSeoHead({
@@ -21,7 +30,49 @@ function HistoryPage() {
 
   return (
     <main>
-      <section className="relative isolate overflow-hidden bg-forest-deep text-paper">
+      <div aria-hidden="true" className="pointer-events-none fixed inset-0 z-30 overflow-hidden">
+        {fallingLeaves.map(({ className }, index) => (
+          <svg
+            key={`leaf-${index}`}
+            viewBox="0 0 36 60"
+            fill="none"
+            className={`nature-leaf absolute -top-16 ${className}`}
+          >
+            <path
+              d="M18 3C8 12 4 24 10 34c2 4 5 6 8 7 3-1 6-3 8-7 6-10 2-22-8-31Z"
+              fill="currentColor"
+            />
+            <path
+              d="M18 40V13m0 16-7-8m7 1 7-8"
+              stroke="oklch(0.22 0.045 158 / 0.55)"
+              strokeWidth="1.2"
+            />
+          </svg>
+        ))}
+        {fallingBeans.map((bean) => (
+          <svg
+            key={`bean-${bean}`}
+            viewBox="0 0 28 36"
+            className={`coffee-bean coffee-bean--${bean} history-coffee-bean`}
+            fill="none"
+          >
+            <path
+              d="M14 2.5C7.7 2.5 3 9.3 3 17.7S7.7 33.5 14 33.5s11-7.4 11-15.8S20.3 2.5 14 2.5Z"
+              fill="currentColor"
+              fillOpacity=".82"
+              stroke="currentColor"
+              strokeWidth="1.5"
+            />
+            <path
+              d="M17.8 6.5c-4.9 4.7-7.6 11-6.5 16.1.6 2.9 2.1 5.1 4.4 6.5-1.1-3.6-.7-7.7 1-11.7 1.2-2.9 2.8-5.5 4.8-7.6"
+              stroke="oklch(0.948 0.022 110 / 0.8)"
+              strokeLinecap="round"
+              strokeWidth="1.5"
+            />
+          </svg>
+        ))}
+      </div>
+      <section className="scroll-section-static relative isolate overflow-hidden bg-forest-deep text-paper">
         <div
           aria-hidden="true"
           className="absolute -right-20 -top-28 -z-10 size-96 rounded-full border border-lime/15"

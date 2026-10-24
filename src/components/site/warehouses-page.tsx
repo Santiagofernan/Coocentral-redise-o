@@ -7,17 +7,28 @@ import {
   Cog,
   House,
   MapPin,
+  Phone,
+  Search,
+  SlidersHorizontal,
   Sprout,
   Store,
   Wrench,
 } from "lucide-react";
 
-import { warehouseLocations, warehouseProductLines } from "@/content/coocentral";
+import { allMunicipalities, warehouseLocations, warehouseProductLines } from "@/content/coocentral";
 import { getGoogleMapsDirectionsUrl } from "@/lib/google-maps";
 import { getWarehouseStatus, type WarehouseStatus } from "@/lib/warehouse-schedule";
 
-const municipalities = [...new Set(warehouseLocations.map((location) => location.municipality))];
+const municipalities = allMunicipalities.filter((municipality) =>
+  warehouseLocations.some((location) => location.municipality === municipality),
+);
+const locationTypes = [...new Set(warehouseLocations.map((location) => location.type))];
 const productLineIcons = [Sprout, House, Wrench, Cog];
+const normalizeSearchText = (value: string) =>
+  value
+    .normalize("NFD")
+    .replace(/\p{Diacritic}/gu, "")
+    .toLocaleLowerCase("es");
 
 const statusLabels: Record<WarehouseStatus, string> = {
   open: "Abierto ahora",
@@ -31,8 +42,17 @@ const statusStyles: Record<WarehouseStatus, string> = {
   closed: "bg-ink/5 text-ink/60",
 };
 
+type ScheduleFilter = "all" | "weekdays" | "saturday";
+type StatusFilter = "all" | WarehouseStatus;
+type LocationTypeFilter = "all" | (typeof locationTypes)[number];
+
 export function WarehousesPage() {
   const [now, setNow] = useState<Date | null>(null);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedMunicipality, setSelectedMunicipality] = useState("all");
+  const [selectedType, setSelectedType] = useState<LocationTypeFilter>("all");
+  const [scheduleFilter, setScheduleFilter] = useState<ScheduleFilter>("all");
+  const [statusFilter, setStatusFilter] = useState<StatusFilter>("all");
 
   useEffect(() => {
     const updateClock = () => setNow(new Date());
@@ -42,7 +62,41 @@ export function WarehousesPage() {
     return () => window.clearInterval(intervalId);
   }, []);
 
-  const status = now ? getWarehouseStatus(now) : null;
+  const normalizedQuery = normalizeSearchText(searchQuery.trim());
+  const filteredLocations = warehouseLocations.filter((location) => {
+    const matchesQuery = [
+      location.name,
+      location.code,
+      location.address,
+      location.municipality,
+      location.locality ?? "",
+      location.phone ?? "",
+      ...location.hours,
+    ].some((value) => normalizeSearchText(value).includes(normalizedQuery));
+    const matchesMunicipality =
+      selectedMunicipality === "all" || location.municipality === selectedMunicipality;
+    const matchesType = selectedType === "all" || location.type === selectedType;
+    const matchesSchedule =
+      scheduleFilter === "all" ||
+      location.hours.some((hours) =>
+        scheduleFilter === "weekdays"
+          ? hours.startsWith("Lunes a jueves") ||
+            hours.startsWith("Lunes a viernes") ||
+            hours.startsWith("Viernes")
+          : hours.startsWith("Sábado"),
+      );
+    const locationSchedule = location.type === "Ferretería" ? "hardware" : "warehouse";
+    const locationStatus = now ? getWarehouseStatus(now, locationSchedule) : null;
+    const matchesStatus = statusFilter === "all" || locationStatus === statusFilter;
+
+    return matchesQuery && matchesMunicipality && matchesType && matchesSchedule && matchesStatus;
+  });
+  const hasActiveFilters =
+    searchQuery !== "" ||
+    selectedMunicipality !== "all" ||
+    selectedType !== "all" ||
+    scheduleFilter !== "all" ||
+    statusFilter !== "all";
 
   return (
     <main>
@@ -78,20 +132,22 @@ export function WarehousesPage() {
                 Almacenes <span className="text-lime">Coocentral</span>
               </h1>
               <p className="mt-5 max-w-3xl text-base leading-7 text-paper/70 lg:text-lg">
-                17 tiendas al servicio de las familias cafeteras del centro del Huila, con productos
-                para la finca, el hogar y el trabajo.
+                {warehouseLocations.length} puntos de atención en {municipalities.length}{" "}
+                municipios, con productos para la finca, el hogar y el trabajo.
               </p>
             </div>
             <div className="grid grid-cols-2 gap-3 lg:col-span-4 lg:justify-self-end">
               <div className="rounded-2xl border border-paper/15 bg-paper/5 p-4 backdrop-blur-sm">
-                <p className="font-display text-3xl font-medium text-lime">17</p>
-                <p className="mt-1 text-xs leading-5 text-paper/65">tiendas en la región</p>
+                <p className="font-display text-3xl font-medium text-lime">
+                  {warehouseLocations.length}
+                </p>
+                <p className="mt-1 text-xs leading-5 text-paper/65">puntos de atención</p>
               </div>
               <div className="rounded-2xl border border-paper/15 bg-paper/5 p-4 backdrop-blur-sm">
                 <p className="font-display text-3xl font-medium text-lime">
                   {municipalities.length}
                 </p>
-                <p className="mt-1 text-xs leading-5 text-paper/65">municipios y localidades</p>
+                <p className="mt-1 text-xs leading-5 text-paper/65">municipios</p>
               </div>
             </div>
           </div>
@@ -152,97 +208,220 @@ export function WarehousesPage() {
             Consulta la dirección y los horarios de atención habituales de cada sede.
           </p>
 
-          <div className="mt-9 space-y-10">
-            {municipalities.map((municipality) => (
-              <section
-                key={municipality}
-                aria-labelledby={`warehouse-${municipality.toLowerCase()}`}
-              >
-                <h3
-                  id={`warehouse-${municipality.toLowerCase()}`}
-                  className="border-b border-border pb-3 font-display text-2xl"
+          <div className="mt-8 rounded-2xl border border-border bg-background p-4 shadow-sm sm:p-5">
+            <div className="mb-4 flex items-center gap-2 text-sm font-semibold text-forest-deep">
+              <SlidersHorizontal aria-hidden="true" className="size-4 text-brand" />
+              Filtra los almacenes
+            </div>
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+              <label className="relative sm:col-span-2 lg:col-span-1">
+                <span className="sr-only">
+                  Buscar por sede, dirección, municipio, teléfono u horario
+                </span>
+                <Search
+                  aria-hidden="true"
+                  className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-ink/45"
+                />
+                <input
+                  type="search"
+                  value={searchQuery}
+                  onChange={(event) => setSearchQuery(event.target.value)}
+                  placeholder="Sede, dirección, municipio, teléfono u horario"
+                  className="min-h-11 w-full rounded-xl border border-border bg-paper pl-10 pr-3 text-sm text-ink outline-none placeholder:text-ink/45 focus:border-brand focus:ring-2 focus:ring-brand/20"
+                />
+              </label>
+              <label className="flex flex-col gap-1.5 text-xs font-semibold text-ink/65">
+                Municipio
+                <select
+                  value={selectedMunicipality}
+                  onChange={(event) => setSelectedMunicipality(event.target.value)}
+                  className="min-h-11 rounded-xl border border-border bg-paper px-3 text-sm font-medium text-ink outline-none focus:border-brand focus:ring-2 focus:ring-brand/20"
                 >
-                  {municipality}
-                </h3>
-                <ul className="mt-4 grid gap-4 md:grid-cols-2">
-                  {warehouseLocations
-                    .filter((location) => location.municipality === municipality)
-                    .map((location) => {
-                      const mapQuery = [
-                        location.address,
-                        location.name,
-                        location.municipality,
-                        "Huila",
-                      ]
-                        .filter(Boolean)
-                        .join(", ");
-                      const mapsUrl = getGoogleMapsDirectionsUrl(mapQuery);
-
-                      return (
-                        <li
-                          key={`${location.municipality}-${location.name}`}
-                          className="rounded-xl border border-border bg-background p-5 sm:p-6"
-                        >
-                          <div className="flex flex-wrap items-start justify-between gap-3">
-                            <h4 className="font-display text-xl">{location.name}</h4>
-                            <span
-                              className={`inline-flex min-h-7 items-center gap-2 rounded-full px-2.5 py-1 text-[11px] font-bold ${
-                                status ? statusStyles[status] : "bg-ink/5 text-ink/60"
-                              }`}
-                            >
-                              <span
-                                className={`size-2 rounded-full ${
-                                  status === "open"
-                                    ? "bg-forest motion-safe:animate-pulse"
-                                    : status === "break"
-                                      ? "bg-amber-600"
-                                      : "bg-ink/35"
-                                }`}
-                              />
-                              {status ? statusLabels[status] : "Consultando horario"}
-                            </span>
-                          </div>
-                          <div className="mt-4 flex items-start gap-2.5 text-sm leading-6 text-ink/70">
-                            <MapPin
-                              aria-hidden="true"
-                              className="mt-1 size-4 shrink-0 text-brand"
-                            />
-                            <address className="not-italic">
-                              {location.address || "Dirección no indicada"}
-                              {!location.address && (
-                                <span className="mt-1 block text-xs text-ink/50">
-                                  Ubicación identificada por centro poblado
-                                </span>
-                              )}
-                            </address>
-                          </div>
-                          <div className="mt-4 flex items-start gap-2.5">
-                            <Clock3
-                              aria-hidden="true"
-                              className="mt-1 size-4 shrink-0 text-brand"
-                            />
-                            <ul className="space-y-1.5 text-sm leading-5 text-ink/70">
-                              {location.hours.map((schedule) => (
-                                <li key={schedule}>{schedule}</li>
-                              ))}
-                            </ul>
-                          </div>
-                          <a
-                            href={mapsUrl}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="mt-5 inline-flex min-h-10 items-center gap-1.5 rounded-md px-3 text-sm font-semibold text-brand transition-colors hover:bg-brand/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
-                          >
-                            Cómo llegar
-                            <ArrowUpRight aria-hidden="true" className="size-4" />
-                          </a>
-                        </li>
-                      );
-                    })}
-                </ul>
-              </section>
-            ))}
+                  <option value="all">Todos los municipios</option>
+                  {municipalities.map((municipality) => (
+                    <option key={municipality} value={municipality}>
+                      {municipality}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <label className="flex flex-col gap-1.5 text-xs font-semibold text-ink/65">
+                Tipo de sede
+                <select
+                  value={selectedType}
+                  onChange={(event) => setSelectedType(event.target.value as LocationTypeFilter)}
+                  className="min-h-11 rounded-xl border border-border bg-paper px-3 text-sm font-medium text-ink outline-none focus:border-brand focus:ring-2 focus:ring-brand/20"
+                >
+                  <option value="all">Todos los tipos</option>
+                  {locationTypes.map((type) => (
+                    <option key={type} value={type}>
+                      {type}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <label className="flex flex-col gap-1.5 text-xs font-semibold text-ink/65">
+                Horario de atención
+                <select
+                  value={scheduleFilter}
+                  onChange={(event) => setScheduleFilter(event.target.value as ScheduleFilter)}
+                  className="min-h-11 rounded-xl border border-border bg-paper px-3 text-sm font-medium text-ink outline-none focus:border-brand focus:ring-2 focus:ring-brand/20"
+                >
+                  <option value="all">Todos los horarios</option>
+                  <option value="weekdays">Lunes a viernes</option>
+                  <option value="saturday">Sábados</option>
+                </select>
+              </label>
+              <label className="flex flex-col gap-1.5 text-xs font-semibold text-ink/65">
+                Estado actual
+                <select
+                  value={statusFilter}
+                  onChange={(event) => setStatusFilter(event.target.value as StatusFilter)}
+                  className="min-h-11 rounded-xl border border-border bg-paper px-3 text-sm font-medium text-ink outline-none focus:border-brand focus:ring-2 focus:ring-brand/20"
+                >
+                  <option value="all">Cualquier estado</option>
+                  <option value="open">Abiertos ahora</option>
+                  <option value="break">En descanso</option>
+                  <option value="closed">Cerrados ahora</option>
+                </select>
+              </label>
+            </div>
           </div>
+
+          <div className="mt-6 flex flex-wrap items-center justify-between gap-3">
+            <p aria-live="polite" className="text-sm font-medium text-ink/65">
+              {filteredLocations.length} de {warehouseLocations.length} sedes
+            </p>
+            {hasActiveFilters && (
+              <button
+                type="button"
+                onClick={() => {
+                  setSearchQuery("");
+                  setSelectedMunicipality("all");
+                  setSelectedType("all");
+                  setScheduleFilter("all");
+                  setStatusFilter("all");
+                }}
+                className="min-h-10 rounded-full px-3 text-sm font-semibold text-brand transition-colors hover:bg-brand/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+              >
+                Limpiar filtros
+              </button>
+            )}
+          </div>
+
+          {filteredLocations.length > 0 ? (
+            <ul className="mt-4 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+              {filteredLocations.map((location) => {
+                const mapQuery = [
+                  location.address,
+                  location.locality,
+                  location.name,
+                  location.municipality,
+                  "Huila",
+                ]
+                  .filter(Boolean)
+                  .join(", ");
+                const mapsUrl = getGoogleMapsDirectionsUrl(mapQuery);
+                const locationSchedule = location.type === "Ferretería" ? "hardware" : "warehouse";
+                const locationStatus = now ? getWarehouseStatus(now, locationSchedule) : null;
+
+                return (
+                  <li
+                    key={`${location.municipality}-${location.name}`}
+                    className="flex h-full flex-col rounded-2xl border border-border bg-background p-5 shadow-sm transition-shadow hover:shadow-md sm:p-6"
+                  >
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="min-w-0">
+                        <div className="flex flex-wrap items-center gap-1.5">
+                          <span className="inline-flex rounded-full bg-lime/20 px-2.5 py-1 text-[11px] font-bold text-forest-deep">
+                            {location.municipality}
+                          </span>
+                          <span className="inline-flex rounded-full bg-ink/5 px-2.5 py-1 text-[11px] font-semibold text-ink/65">
+                            {location.type}
+                          </span>
+                          <span className="inline-flex rounded-full border border-border px-2.5 py-1 text-[11px] font-medium text-ink/55">
+                            UB {location.code}
+                          </span>
+                        </div>
+                        {location.locality && (
+                          <p className="mt-2 text-xs font-medium text-ink/60">
+                            Localidad: {location.locality}
+                          </p>
+                        )}
+                        <h3 className="mt-3 font-display text-xl font-semibold leading-tight text-forest-deep">
+                          {location.name}
+                        </h3>
+                      </div>
+                      <span
+                        className={`inline-flex shrink-0 items-center gap-1.5 rounded-full px-2.5 py-1.5 text-[11px] font-bold ${
+                          locationStatus ? statusStyles[locationStatus] : "bg-ink/5 text-ink/60"
+                        }`}
+                      >
+                        <span
+                          className={`size-2 rounded-full ${
+                            locationStatus === "open"
+                              ? "bg-forest motion-safe:animate-pulse"
+                              : locationStatus === "break"
+                                ? "bg-amber-600"
+                                : "bg-ink/35"
+                          }`}
+                        />
+                        {locationStatus ? statusLabels[locationStatus] : "Consultando horario"}
+                      </span>
+                    </div>
+                    <div className="mt-5 flex items-start gap-2.5 text-sm leading-6 text-ink/70">
+                      <MapPin aria-hidden="true" className="mt-1 size-4 shrink-0 text-brand" />
+                      <address className="not-italic">
+                        {location.address || "Dirección no indicada"}
+                        {!location.address && (
+                          <span className="mt-1 block text-xs text-ink/50">
+                            Ubicación identificada por centro poblado
+                          </span>
+                        )}
+                      </address>
+                    </div>
+                    {location.phone && (
+                      <div className="mt-4 flex items-center gap-2.5 text-sm leading-6 text-ink/70">
+                        <Phone aria-hidden="true" className="size-4 shrink-0 text-brand" />
+                        <a
+                          href={`tel:+57${location.phone}`}
+                          className="rounded-sm underline-offset-2 hover:text-brand hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+                        >
+                          {location.phone.replace(/^(\d{3})(\d{3})(\d{4})$/, "$1 $2 $3")}
+                        </a>
+                      </div>
+                    )}
+                    <div className="mt-4 flex items-start gap-2.5 border-t border-border pt-4">
+                      <Clock3 aria-hidden="true" className="mt-1 size-4 shrink-0 text-brand" />
+                      <ul className="space-y-1.5 text-sm leading-5 text-ink/70">
+                        {location.hours.map((schedule) => (
+                          <li key={schedule}>{schedule}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    <a
+                      href={mapsUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="mt-auto inline-flex min-h-10 items-center gap-1.5 self-start pt-4 text-sm font-semibold text-brand transition-colors hover:text-forest-deep focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+                    >
+                      Cómo llegar
+                      <ArrowUpRight aria-hidden="true" className="size-4" />
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          ) : (
+            <div className="mt-4 rounded-2xl border border-dashed border-border bg-background px-5 py-12 text-center">
+              <p className="font-display text-xl font-medium text-forest-deep">
+                No encontramos almacenes con esos filtros
+              </p>
+              <p className="mt-2 text-sm text-ink/65">
+                Prueba con otro municipio, horario o término de búsqueda.
+              </p>
+            </div>
+          )}
         </div>
       </section>
     </main>
