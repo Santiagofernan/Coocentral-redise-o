@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight, ArrowUpRight, Clock3, Coffee, MapPin, Store } from "lucide-react";
 
@@ -6,6 +5,7 @@ import kahveStorefrontImage from "@/assets/Servicios/Tiendas/Frente_Tienda.webp"
 import kahveStoreInteriorImage from "@/assets/Servicios/Tiendas/Tienda_Interior.webp";
 import { getGoogleMapsDirectionsUrl } from "@/lib/google-maps";
 import { getStoreStatus, type StoreStatus, type StoreWeeklySchedule } from "@/lib/store-schedule";
+import { useCurrentTime } from "@/hooks/use-current-time";
 
 const rosarioSchedule: StoreWeeklySchedule = {
   0: [[780, 1140]],
@@ -95,15 +95,7 @@ const statusStyles: Record<StoreStatus, string> = {
 };
 
 export function KahveStoresPage() {
-  const [now, setNow] = useState<Date | null>(null);
-
-  useEffect(() => {
-    const updateClock = () => setNow(new Date());
-    updateClock();
-    const intervalId = window.setInterval(updateClock, 60_000);
-
-    return () => window.clearInterval(intervalId);
-  }, []);
+  const now = useCurrentTime();
 
   return (
     <main>

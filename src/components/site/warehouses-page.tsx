@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import {
   ArrowLeft,
   ArrowUpRight,
+  ChevronDown,
   Clock3,
   Cog,
   House,
@@ -13,11 +14,13 @@ import {
   Sprout,
   Store,
   Wrench,
+  X,
 } from "lucide-react";
 
 import { allMunicipalities, warehouseLocations, warehouseProductLines } from "@/content/coocentral";
 import { getGoogleMapsDirectionsUrl } from "@/lib/google-maps";
 import { getWarehouseStatus, type WarehouseStatus } from "@/lib/warehouse-schedule";
+import { useCurrentTime } from "@/hooks/use-current-time";
 
 const municipalities = allMunicipalities.filter((municipality) =>
   warehouseLocations.some((location) => location.municipality === municipality),
@@ -43,23 +46,31 @@ const statusStyles: Record<WarehouseStatus, string> = {
 };
 
 type ScheduleFilter = "all" | "weekdays" | "saturday";
-type StatusFilter = "all" | WarehouseStatus;
 type LocationTypeFilter = "all" | (typeof locationTypes)[number];
 
 export function WarehousesPage() {
-  const [now, setNow] = useState<Date | null>(null);
+  const filtersRef = useRef<HTMLDivElement>(null);
+  const now = useCurrentTime();
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedMunicipality, setSelectedMunicipality] = useState("all");
-  const [selectedType, setSelectedType] = useState<LocationTypeFilter>("all");
-  const [scheduleFilter, setScheduleFilter] = useState<ScheduleFilter>("all");
-  const [statusFilter, setStatusFilter] = useState<StatusFilter>("all");
+  const [selectedMunicipalities, setSelectedMunicipalities] = useState<string[]>([]);
+  const [selectedTypes, setSelectedTypes] = useState<LocationTypeFilter[]>([]);
+  const [selectedSchedules, setSelectedSchedules] = useState<Exclude<ScheduleFilter, "all">[]>([]);
+  const [selectedStatuses, setSelectedStatuses] = useState<WarehouseStatus[]>([]);
 
   useEffect(() => {
-    const updateClock = () => setNow(new Date());
-    updateClock();
-    const intervalId = window.setInterval(updateClock, 60_000);
+    const closeDropdownsOutsideClick = (event: PointerEvent) => {
+      const target = event.target;
+      if (!(target instanceof Node)) return;
 
-    return () => window.clearInterval(intervalId);
+      filtersRef.current
+        ?.querySelectorAll<HTMLDetailsElement>("details[open]")
+        .forEach((dropdown) => {
+          if (!dropdown.contains(target)) dropdown.open = false;
+        });
+    };
+
+    document.addEventListener("pointerdown", closeDropdownsOutsideClick);
+    return () => document.removeEventListener("pointerdown", closeDropdownsOutsideClick);
   }, []);
 
   const normalizedQuery = normalizeSearchText(searchQuery.trim());
@@ -74,29 +85,51 @@ export function WarehousesPage() {
       ...location.hours,
     ].some((value) => normalizeSearchText(value).includes(normalizedQuery));
     const matchesMunicipality =
-      selectedMunicipality === "all" || location.municipality === selectedMunicipality;
-    const matchesType = selectedType === "all" || location.type === selectedType;
+      selectedMunicipalities.length === 0 || selectedMunicipalities.includes(location.municipality);
+    const matchesType = selectedTypes.length === 0 || selectedTypes.includes(location.type);
     const matchesSchedule =
-      scheduleFilter === "all" ||
-      location.hours.some((hours) =>
-        scheduleFilter === "weekdays"
-          ? hours.startsWith("Lunes a jueves") ||
-            hours.startsWith("Lunes a viernes") ||
-            hours.startsWith("Viernes")
-          : hours.startsWith("Sábado"),
+      selectedSchedules.length === 0 ||
+      selectedSchedules.some((scheduleFilter) =>
+        location.hours.some((hours) =>
+          scheduleFilter === "weekdays"
+            ? hours.startsWith("Lunes a jueves") ||
+              hours.startsWith("Lunes a viernes") ||
+              hours.startsWith("Viernes")
+            : hours.startsWith("Sábado"),
+        ),
       );
     const locationSchedule = location.type === "Ferretería" ? "hardware" : "warehouse";
     const locationStatus = now ? getWarehouseStatus(now, locationSchedule) : null;
-    const matchesStatus = statusFilter === "all" || locationStatus === statusFilter;
+    const matchesStatus =
+      selectedStatuses.length === 0 ||
+      (locationStatus !== null && selectedStatuses.includes(locationStatus));
 
     return matchesQuery && matchesMunicipality && matchesType && matchesSchedule && matchesStatus;
   });
   const hasActiveFilters =
     searchQuery !== "" ||
-    selectedMunicipality !== "all" ||
-    selectedType !== "all" ||
-    scheduleFilter !== "all" ||
-    statusFilter !== "all";
+    selectedMunicipalities.length > 0 ||
+    selectedTypes.length > 0 ||
+    selectedSchedules.length > 0 ||
+    selectedStatuses.length > 0;
+
+  const toggleSelection = <T extends string>(
+    selected: T[],
+    setSelected: (values: T[]) => void,
+    value: T,
+  ) => {
+    setSelected(
+      selected.includes(value) ? selected.filter((item) => item !== value) : [...selected, value],
+    );
+  };
+
+  const clearFilters = () => {
+    setSearchQuery("");
+    setSelectedMunicipalities([]);
+    setSelectedTypes([]);
+    setSelectedSchedules([]);
+    setSelectedStatuses([]);
+  };
 
   return (
     <main>
@@ -208,106 +241,284 @@ export function WarehousesPage() {
             Consulta la dirección y los horarios de atención habituales de cada sede.
           </p>
 
-          <div className="mt-8 rounded-2xl border border-border bg-background p-4 shadow-sm sm:p-5">
-            <div className="mb-4 flex items-center gap-2 text-sm font-semibold text-forest-deep">
-              <SlidersHorizontal aria-hidden="true" className="size-4 text-brand" />
-              Filtra los almacenes
+          <div
+            ref={filtersRef}
+            className="mt-8 rounded-2xl border-2 border-brand/30 border-t-4 border-t-brand bg-background p-4 shadow-xl shadow-forest/10 sm:p-6"
+          >
+            <div className="mb-5 flex items-center gap-3">
+              <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-lime text-forest-deep">
+                <SlidersHorizontal aria-hidden="true" className="size-5" />
+              </span>
+              <div>
+                <h3 className="font-display text-xl font-semibold text-forest-deep">
+                  Filtra los almacenes
+                </h3>
+                <p className="text-sm text-ink/65">
+                  Busca por ubicación o selecciona los criterios que necesitas.
+                </p>
+              </div>
             </div>
-            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
-              <label className="relative sm:col-span-2 lg:col-span-1">
-                <span className="sr-only">
-                  Buscar por sede, dirección, municipio, teléfono u horario
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <label className="flex flex-col gap-2 text-sm font-semibold text-forest-deep sm:col-span-2 lg:col-span-3">
+                Buscar por ubicación, teléfono u horario
+                <span className="relative block">
+                  <Search
+                    aria-hidden="true"
+                    className="pointer-events-none absolute left-3.5 top-1/2 size-5 -translate-y-1/2 text-brand"
+                  />
+                  <input
+                    type="search"
+                    value={searchQuery}
+                    onChange={(event) => setSearchQuery(event.target.value)}
+                    placeholder="Nombre, dirección, municipio..."
+                    className="min-h-12 w-full rounded-xl border-2 border-border bg-paper pl-11 pr-3 text-base font-normal text-ink outline-none placeholder:text-ink/45 focus:border-brand focus:ring-2 focus:ring-brand/20"
+                  />
                 </span>
-                <Search
-                  aria-hidden="true"
-                  className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-ink/45"
-                />
-                <input
-                  type="search"
-                  value={searchQuery}
-                  onChange={(event) => setSearchQuery(event.target.value)}
-                  placeholder="Sede, dirección, municipio, teléfono u horario"
-                  className="min-h-11 w-full rounded-xl border border-border bg-paper pl-10 pr-3 text-sm text-ink outline-none placeholder:text-ink/45 focus:border-brand focus:ring-2 focus:ring-brand/20"
-                />
               </label>
-              <label className="flex flex-col gap-1.5 text-xs font-semibold text-ink/65">
-                Municipio
-                <select
-                  value={selectedMunicipality}
-                  onChange={(event) => setSelectedMunicipality(event.target.value)}
-                  className="min-h-11 rounded-xl border border-border bg-paper px-3 text-sm font-medium text-ink outline-none focus:border-brand focus:ring-2 focus:ring-brand/20"
-                >
-                  <option value="all">Todos los municipios</option>
-                  {municipalities.map((municipality) => (
-                    <option key={municipality} value={municipality}>
-                      {municipality}
-                    </option>
-                  ))}
-                </select>
-              </label>
-              <label className="flex flex-col gap-1.5 text-xs font-semibold text-ink/65">
-                Tipo de sede
-                <select
-                  value={selectedType}
-                  onChange={(event) => setSelectedType(event.target.value as LocationTypeFilter)}
-                  className="min-h-11 rounded-xl border border-border bg-paper px-3 text-sm font-medium text-ink outline-none focus:border-brand focus:ring-2 focus:ring-brand/20"
-                >
-                  <option value="all">Todos los tipos</option>
-                  {locationTypes.map((type) => (
-                    <option key={type} value={type}>
-                      {type}
-                    </option>
-                  ))}
-                </select>
-              </label>
-              <label className="flex flex-col gap-1.5 text-xs font-semibold text-ink/65">
-                Horario de atención
-                <select
-                  value={scheduleFilter}
-                  onChange={(event) => setScheduleFilter(event.target.value as ScheduleFilter)}
-                  className="min-h-11 rounded-xl border border-border bg-paper px-3 text-sm font-medium text-ink outline-none focus:border-brand focus:ring-2 focus:ring-brand/20"
-                >
-                  <option value="all">Todos los horarios</option>
-                  <option value="weekdays">Lunes a viernes</option>
-                  <option value="saturday">Sábados</option>
-                </select>
-              </label>
-              <label className="flex flex-col gap-1.5 text-xs font-semibold text-ink/65">
-                Estado actual
-                <select
-                  value={statusFilter}
-                  onChange={(event) => setStatusFilter(event.target.value as StatusFilter)}
-                  className="min-h-11 rounded-xl border border-border bg-paper px-3 text-sm font-medium text-ink outline-none focus:border-brand focus:ring-2 focus:ring-brand/20"
-                >
-                  <option value="all">Cualquier estado</option>
-                  <option value="open">Abiertos ahora</option>
-                  <option value="break">En descanso</option>
-                  <option value="closed">Cerrados ahora</option>
-                </select>
-              </label>
+              <details className="group relative z-0 min-w-0 self-start rounded-xl border-2 border-border bg-paper p-4 shadow-sm transition-colors hover:border-brand/50 open:z-50 open:border-brand open:bg-lime/10 sm:col-span-2">
+                <summary className="flex min-h-7 cursor-pointer list-none items-center justify-between gap-3 text-sm font-semibold text-forest-deep marker:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 [&::-webkit-details-marker]:hidden">
+                  <span>Municipio</span>
+                  <span className="flex items-center gap-2 text-xs font-medium text-ink/55">
+                    {selectedMunicipalities.length > 0
+                      ? `${selectedMunicipalities.length} seleccionados`
+                      : "Todos"}
+                    <ChevronDown
+                      aria-hidden="true"
+                      className="size-4 transition-transform group-open:rotate-180"
+                    />
+                  </span>
+                </summary>
+                <ul className="hidden group-open:absolute group-open:left-0 group-open:top-full group-open:z-50 group-open:mt-2 group-open:grid group-open:max-h-72 group-open:w-full group-open:overflow-y-auto group-open:rounded-xl group-open:border group-open:border-border group-open:bg-background group-open:p-3 group-open:shadow-xl group-open:ring-1 group-open:ring-ink/10 sm:grid-cols-2 lg:grid-cols-3">
+                  {municipalities.map((municipality) => {
+                    const checked = selectedMunicipalities.includes(municipality);
+                    return (
+                      <li key={municipality}>
+                        <label className="flex min-h-10 cursor-pointer items-center gap-2.5 rounded-lg px-2 text-sm text-ink/75 transition-colors hover:bg-lime/15 has-[:checked]:bg-lime/20 has-[:checked]:font-semibold has-[:checked]:text-forest-deep">
+                          <input
+                            type="checkbox"
+                            checked={checked}
+                            onChange={() =>
+                              toggleSelection(
+                                selectedMunicipalities,
+                                setSelectedMunicipalities,
+                                municipality,
+                              )
+                            }
+                            className="size-4 shrink-0 accent-brand"
+                          />
+                          {municipality}
+                        </label>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </details>
+              <details className="group relative z-0 min-w-0 self-start rounded-xl border-2 border-border bg-paper p-4 shadow-sm transition-colors hover:border-brand/50 open:z-50 open:border-brand open:bg-lime/10">
+                <summary className="flex min-h-7 cursor-pointer list-none items-center justify-between gap-3 text-sm font-semibold text-forest-deep marker:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 [&::-webkit-details-marker]:hidden">
+                  <span>Tipo de sede</span>
+                  <span className="flex items-center gap-2 text-xs font-medium text-ink/55">
+                    {selectedTypes.length > 0 ? `${selectedTypes.length} seleccionados` : "Todos"}
+                    <ChevronDown
+                      aria-hidden="true"
+                      className="size-4 transition-transform group-open:rotate-180"
+                    />
+                  </span>
+                </summary>
+                <ul className="hidden group-open:absolute group-open:left-0 group-open:top-full group-open:z-50 group-open:mt-2 group-open:block group-open:max-h-60 group-open:w-full group-open:overflow-y-auto group-open:rounded-xl group-open:border group-open:border-border group-open:bg-background group-open:p-3 group-open:shadow-xl group-open:ring-1 group-open:ring-ink/10">
+                  {locationTypes.map((type) => {
+                    const checked = selectedTypes.includes(type);
+                    return (
+                      <li key={type}>
+                        <label className="flex min-h-10 cursor-pointer items-center gap-2.5 rounded-lg px-2 text-sm text-ink/75 transition-colors hover:bg-lime/15 has-[:checked]:bg-lime/20 has-[:checked]:font-semibold has-[:checked]:text-forest-deep">
+                          <input
+                            type="checkbox"
+                            checked={checked}
+                            onChange={() => toggleSelection(selectedTypes, setSelectedTypes, type)}
+                            className="size-4 shrink-0 accent-brand"
+                          />
+                          {type}
+                        </label>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </details>
+              <details className="group relative z-0 min-w-0 self-start rounded-xl border-2 border-border bg-paper p-4 shadow-sm transition-colors hover:border-brand/50 open:z-50 open:border-brand open:bg-lime/10">
+                <summary className="flex min-h-7 cursor-pointer list-none items-center justify-between gap-3 text-sm font-semibold text-forest-deep marker:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 [&::-webkit-details-marker]:hidden">
+                  <span>Horario de atención</span>
+                  <span className="flex items-center gap-2 text-xs font-medium text-ink/55">
+                    {selectedSchedules.length > 0
+                      ? `${selectedSchedules.length} seleccionados`
+                      : "Todos"}
+                    <ChevronDown
+                      aria-hidden="true"
+                      className="size-4 transition-transform group-open:rotate-180"
+                    />
+                  </span>
+                </summary>
+                <ul className="hidden group-open:absolute group-open:left-0 group-open:top-full group-open:z-50 group-open:mt-2 group-open:block group-open:max-h-60 group-open:w-full group-open:overflow-y-auto group-open:rounded-xl group-open:border group-open:border-border group-open:bg-background group-open:p-3 group-open:shadow-xl group-open:ring-1 group-open:ring-ink/10">
+                  {(
+                    [
+                      ["weekdays", "Lunes a viernes"],
+                      ["saturday", "Sábados"],
+                    ] as const
+                  ).map(([schedule, label]) => {
+                    const checked = selectedSchedules.includes(schedule);
+                    return (
+                      <li key={schedule}>
+                        <label className="flex min-h-10 cursor-pointer items-center gap-2.5 rounded-lg px-2 text-sm text-ink/75 transition-colors hover:bg-lime/15 has-[:checked]:bg-lime/20 has-[:checked]:font-semibold has-[:checked]:text-forest-deep">
+                          <input
+                            type="checkbox"
+                            checked={checked}
+                            onChange={() =>
+                              toggleSelection(selectedSchedules, setSelectedSchedules, schedule)
+                            }
+                            className="size-4 shrink-0 accent-brand"
+                          />
+                          {label}
+                        </label>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </details>
+              <details className="group relative z-0 min-w-0 self-start rounded-xl border-2 border-border bg-paper p-4 shadow-sm transition-colors hover:border-brand/50 open:z-50 open:border-brand open:bg-lime/10">
+                <summary className="flex min-h-7 cursor-pointer list-none items-center justify-between gap-3 text-sm font-semibold text-forest-deep marker:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 [&::-webkit-details-marker]:hidden">
+                  <span>Estado actual</span>
+                  <span className="flex items-center gap-2 text-xs font-medium text-ink/55">
+                    {selectedStatuses.length > 0
+                      ? `${selectedStatuses.length} seleccionados`
+                      : "Todos"}
+                    <ChevronDown
+                      aria-hidden="true"
+                      className="size-4 transition-transform group-open:rotate-180"
+                    />
+                  </span>
+                </summary>
+                <ul className="hidden group-open:absolute group-open:left-0 group-open:top-full group-open:z-50 group-open:mt-2 group-open:block group-open:max-h-60 group-open:w-full group-open:overflow-y-auto group-open:rounded-xl group-open:border group-open:border-border group-open:bg-background group-open:p-3 group-open:shadow-xl group-open:ring-1 group-open:ring-ink/10">
+                  {(
+                    [
+                      ["open", "Abiertos ahora"],
+                      ["break", "En descanso"],
+                      ["closed", "Cerrados ahora"],
+                    ] as const
+                  ).map(([filterStatus, label]) => {
+                    const checked = selectedStatuses.includes(filterStatus);
+                    return (
+                      <li key={filterStatus}>
+                        <label className="flex min-h-10 cursor-pointer items-center gap-2.5 rounded-lg px-2 text-sm text-ink/75 transition-colors hover:bg-lime/15 has-[:checked]:bg-lime/20 has-[:checked]:font-semibold has-[:checked]:text-forest-deep">
+                          <input
+                            type="checkbox"
+                            checked={checked}
+                            onChange={() =>
+                              toggleSelection(selectedStatuses, setSelectedStatuses, filterStatus)
+                            }
+                            className="size-4 shrink-0 accent-brand"
+                          />
+                          {label}
+                        </label>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </details>
             </div>
           </div>
 
-          <div className="mt-6 flex flex-wrap items-center justify-between gap-3">
+          <div className="mt-6 flex flex-wrap items-center gap-3">
             <p aria-live="polite" className="text-sm font-medium text-ink/65">
               {filteredLocations.length} de {warehouseLocations.length} sedes
             </p>
-            {hasActiveFilters && (
-              <button
-                type="button"
-                onClick={() => {
-                  setSearchQuery("");
-                  setSelectedMunicipality("all");
-                  setSelectedType("all");
-                  setScheduleFilter("all");
-                  setStatusFilter("all");
-                }}
-                className="min-h-10 rounded-full px-3 text-sm font-semibold text-brand transition-colors hover:bg-brand/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
-              >
-                Limpiar filtros
-              </button>
-            )}
           </div>
+
+          {hasActiveFilters && (
+            <div className="mt-4 rounded-xl border border-border bg-background p-4">
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <p className="text-xs font-semibold uppercase tracking-wide text-ink/55">
+                  Filtros seleccionados
+                </p>
+                <button
+                  type="button"
+                  onClick={clearFilters}
+                  className="inline-flex min-h-9 items-center justify-center gap-2 rounded-full border border-brand/20 bg-paper px-4 text-xs font-semibold text-brand transition-colors hover:border-brand hover:bg-brand hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+                >
+                  <X aria-hidden="true" className="size-3.5" />
+                  Borrar todos los filtros
+                </button>
+              </div>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {searchQuery.trim() && (
+                  <button
+                    type="button"
+                    onClick={() => setSearchQuery("")}
+                    className="inline-flex min-h-9 items-center gap-2 rounded-full bg-sand px-3 text-xs font-semibold text-ink hover:bg-lime/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+                  >
+                    Búsqueda: {searchQuery.trim()}
+                    <X aria-hidden="true" className="size-3.5" />
+                    <span className="sr-only">Quitar búsqueda</span>
+                  </button>
+                )}
+                {selectedMunicipalities.map((municipality) => (
+                  <button
+                    key={municipality}
+                    type="button"
+                    onClick={() =>
+                      toggleSelection(
+                        selectedMunicipalities,
+                        setSelectedMunicipalities,
+                        municipality,
+                      )
+                    }
+                    className="inline-flex min-h-9 items-center gap-2 rounded-full bg-sand px-3 text-xs font-semibold text-ink hover:bg-lime/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+                  >
+                    Municipio: {municipality}
+                    <X aria-hidden="true" className="size-3.5" />
+                    <span className="sr-only">Quitar municipio {municipality}</span>
+                  </button>
+                ))}
+                {selectedTypes.map((type) => (
+                  <button
+                    key={type}
+                    type="button"
+                    onClick={() => toggleSelection(selectedTypes, setSelectedTypes, type)}
+                    className="inline-flex min-h-9 items-center gap-2 rounded-full bg-sand px-3 text-xs font-semibold text-ink hover:bg-lime/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+                  >
+                    Tipo: {type}
+                    <X aria-hidden="true" className="size-3.5" />
+                    <span className="sr-only">Quitar tipo {type}</span>
+                  </button>
+                ))}
+                {selectedSchedules.map((schedule) => (
+                  <button
+                    key={schedule}
+                    type="button"
+                    onClick={() =>
+                      toggleSelection(selectedSchedules, setSelectedSchedules, schedule)
+                    }
+                    className="inline-flex min-h-9 items-center gap-2 rounded-full bg-sand px-3 text-xs font-semibold text-ink hover:bg-lime/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+                  >
+                    Horario: {schedule === "weekdays" ? "Lunes a viernes" : "Sábados"}
+                    <X aria-hidden="true" className="size-3.5" />
+                    <span className="sr-only">Quitar filtro de horario</span>
+                  </button>
+                ))}
+                {selectedStatuses.map((filterStatus) => (
+                  <button
+                    key={filterStatus}
+                    type="button"
+                    onClick={() =>
+                      toggleSelection(selectedStatuses, setSelectedStatuses, filterStatus)
+                    }
+                    className="inline-flex min-h-9 items-center gap-2 rounded-full bg-sand px-3 text-xs font-semibold text-ink hover:bg-lime/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+                  >
+                    Estado: {statusLabels[filterStatus]}
+                    <X aria-hidden="true" className="size-3.5" />
+                    <span className="sr-only">Quitar estado {statusLabels[filterStatus]}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
 
           {filteredLocations.length > 0 ? (
             <ul className="mt-4 grid gap-4 md:grid-cols-2 xl:grid-cols-3">

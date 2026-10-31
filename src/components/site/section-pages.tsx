@@ -967,14 +967,14 @@ export function ServicesPage() {
                 <li key={service.id} className="h-full">
                   <a
                     href={`#${service.id}`}
-                    className="group relative isolate flex min-h-19 h-full items-center gap-3 overflow-hidden rounded-xl border border-brand/15 bg-paper px-4 py-3 text-sm font-semibold text-ink shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand/40 hover:bg-lime/10 hover:text-forest hover:shadow-[0_14px_28px_-18px_oklch(0.3_0.06_156/0.55)] active:translate-y-0 active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+                    className="group relative isolate flex min-h-22 h-full items-center gap-3 overflow-hidden rounded-2xl border-2 border-brand/35 bg-background px-4 py-4 text-sm font-semibold text-forest-deep shadow-md shadow-forest/10 transition-all duration-300 hover:-translate-y-1 hover:border-brand hover:bg-lime/15 hover:shadow-lg hover:shadow-forest/15 active:translate-y-0 active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
                   >
-                    <span className="grid size-9 shrink-0 place-items-center rounded-full bg-brand/8 font-display text-xs font-bold text-brand transition-colors duration-300 group-hover:bg-brand group-hover:text-paper">
+                    <span className="grid size-10 shrink-0 place-items-center rounded-full bg-lime font-display text-xs font-bold text-forest-deep transition-colors duration-300 group-hover:bg-brand group-hover:text-paper">
                       {String(index + 1).padStart(2, "0")}
                     </span>
-                    <span className="min-w-0 flex-1 leading-5">{service.title}</span>
-                    <span className="grid size-8 shrink-0 place-items-center rounded-full bg-sand text-brand/70 transition-all duration-300 group-hover:translate-x-0.5 group-hover:bg-lime group-hover:text-forest-deep">
-                      <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+                    <span className="min-w-0 flex-1 text-[15px] leading-5">{service.title}</span>
+                    <span className="grid size-9 shrink-0 place-items-center rounded-full bg-forest text-paper transition-all duration-300 group-hover:translate-x-0.5 group-hover:bg-lime group-hover:text-forest-deep">
+                      <ArrowRight className="size-[18px] transition-transform duration-300 group-hover:translate-x-0.5" />
                     </span>
                   </a>
                 </li>

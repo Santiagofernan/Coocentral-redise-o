@@ -1,4 +1,4 @@
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, MapPin, Phone } from "lucide-react";
 import { Link, useRouterState } from "@tanstack/react-router";
 
 import logo from "@/assets/coocentral-logo.svg";
@@ -53,8 +53,26 @@ export function SiteFooter() {
   const pathname = useRouterState({ select: (state) => state.location.pathname });
 
   return (
-    <footer className="bg-forest-deep text-paper">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-x-8 gap-y-10 px-5 py-12 sm:grid-cols-2 sm:gap-y-12 lg:grid-cols-12 lg:px-10 lg:py-16">
+    <footer className="relative isolate overflow-hidden bg-forest-deep text-paper">
+      <div className="pointer-events-none absolute inset-x-0 top-0 mx-auto h-32 max-w-[90rem] sm:h-36">
+        <img
+          src="/SVG/vector1.svg"
+          alt=""
+          aria-hidden="true"
+          loading="lazy"
+          decoding="async"
+          className="absolute left-0 top-1/2 h-16 w-14 -translate-y-1/2 object-contain opacity-20 sm:left-4 sm:h-20 sm:w-16 lg:left-8 lg:h-36 lg:w-32 lg:opacity-45 xl:left-12 xl:h-44 xl:w-40"
+        />
+        <img
+          src="/SVG/vector2.svg"
+          alt=""
+          aria-hidden="true"
+          loading="lazy"
+          decoding="async"
+          className="absolute right-0 top-1/2 h-16 w-14 -translate-y-1/2 object-contain opacity-20 sm:right-4 sm:h-20 sm:w-16 lg:right-8 lg:h-36 lg:w-32 lg:opacity-45 xl:right-12 xl:h-44 xl:w-40"
+        />
+      </div>
+      <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 gap-x-8 gap-y-10 px-5 py-12 sm:grid-cols-2 sm:gap-y-12 sm:px-8 lg:grid-cols-12 lg:px-10 lg:py-16">
         <div className="sm:col-span-2 lg:col-span-3">
           <Link
             to="/"
@@ -74,16 +92,24 @@ export function SiteFooter() {
           <p className="mt-5 max-w-sm text-base leading-7 text-paper/85">
             Más que una cooperativa: Una familia al servicio del caficultor
           </p>
-          <address className="mt-6 space-y-2 text-base leading-7 not-italic text-paper/85">
-            <p>{contact.address}</p>
-            <p>{contact.city}</p>
+          <address className="mt-6 space-y-3 text-sm leading-6 not-italic text-paper/75">
+            <p className="flex items-start gap-2.5">
+              <MapPin aria-hidden="true" className="mt-1 size-4 shrink-0 text-lime" />
+              <span>
+                {contact.address}
+                <span className="block text-paper/55">{contact.city}</span>
+              </span>
+            </p>
             <Link
               to="/contacto"
-              className="font-semibold text-lime underline-offset-4 hover:underline"
+              className="inline-flex items-center gap-2 font-semibold text-lime underline-offset-4 transition-colors hover:text-paper hover:underline"
             >
               {contact.email}
             </Link>
-            <p>{contact.phones.join(" · ")}</p>
+            <p className="flex items-center gap-2.5">
+              <Phone aria-hidden="true" className="size-4 shrink-0 text-lime" />
+              {contact.phones.join(" · ")}
+            </p>
           </address>
         </div>
 
@@ -99,7 +125,7 @@ export function SiteFooter() {
                   !/\.(pdf|jpe?g|png|webp)(?:[?#]|$)/i.test(item.href) ? (
                     <Link
                       to={item.href}
-                      className="inline-flex items-start text-base leading-6 text-paper/85 transition-colors hover:text-paper"
+                      className="inline-flex items-start text-base leading-6 text-paper/75 transition-all duration-200 hover:translate-x-1 hover:text-lime"
                     >
                       {item.label}
                     </Link>
@@ -108,7 +134,7 @@ export function SiteFooter() {
                       href={item.href}
                       target={item.href.startsWith("/") ? undefined : "_blank"}
                       rel={item.href.startsWith("/") ? undefined : "noreferrer"}
-                      className="inline-flex items-start gap-1 text-base leading-6 text-paper/85 transition-colors hover:text-paper"
+                      className="inline-flex items-start gap-1 text-base leading-6 text-paper/75 transition-all duration-200 hover:translate-x-1 hover:text-lime"
                     >
                       {item.label}
                       <ArrowUpRight className="mt-0.5 size-3.5 shrink-0" />
@@ -138,7 +164,7 @@ export function SiteFooter() {
                       target="_blank"
                       rel="noreferrer"
                       aria-label={`Visitar Coocentral en ${social.label}`}
-                      className="group inline-flex min-h-11 items-center gap-2 rounded-full border border-paper/20 bg-paper/5 py-1 pl-1 pr-3 text-sm font-semibold text-paper/90 transition-colors hover:border-lime/50 hover:bg-paper/10 hover:text-paper focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime focus-visible:ring-offset-2 focus-visible:ring-offset-forest-deep"
+                      className="group inline-flex min-h-11 items-center gap-2 rounded-full border border-paper/20 bg-paper/5 py-1 pl-1 pr-3 text-sm font-semibold text-paper/90 transition-all duration-200 hover:-translate-y-0.5 hover:border-lime/50 hover:bg-paper/10 hover:text-paper focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime focus-visible:ring-offset-2 focus-visible:ring-offset-forest-deep"
                     >
                       <span className="grid size-9 place-items-center rounded-full bg-paper/10 text-lime transition-colors group-hover:bg-lime group-hover:text-forest-deep">
                         <SocialBrandIcon label={social.label} />

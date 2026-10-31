@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
 import { ArrowUpRight, Clock3, MapPin, Navigation } from "lucide-react";
 
 import { publicOffice } from "@/content/coocentral";
 import { getGoogleMapsDirectionsUrl } from "@/lib/google-maps";
+import { useCurrentTime } from "@/hooks/use-current-time";
 
 function getOfficeClock(date: Date) {
   const parts = new Intl.DateTimeFormat("en-US", {
@@ -33,15 +33,7 @@ function getOfficeClock(date: Date) {
 }
 
 export function OfficeLocation() {
-  const [now, setNow] = useState<Date | null>(null);
-
-  useEffect(() => {
-    const updateClock = () => setNow(new Date());
-    updateClock();
-    const intervalId = window.setInterval(updateClock, 60_000);
-
-    return () => window.clearInterval(intervalId);
-  }, []);
+  const now = useCurrentTime();
 
   const officeClock = now ? getOfficeClock(now) : null;
   const isOpen = officeClock?.status === "open";
