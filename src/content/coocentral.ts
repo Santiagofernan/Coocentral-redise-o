@@ -193,18 +193,18 @@ export const extendedMunicipalities = allMunicipalities.filter((municipality) =>
 
 export const impactStats = [
   { value: 50, prefix: "+", suffix: "", label: "Años de liderazgo continuo" },
-  { value: 4000, prefix: "≈", suffix: "", label: "Asociados y familias caficultoras" },
+  { value: 3500, prefix: "+", suffix: "", label: "Asociados" },
   {
     value: allMunicipalities.length,
     prefix: "",
     suffix: "",
     label: "Municipios en la zona de influencia",
   },
-  { value: 9000, prefix: "+", suffix: " ha", label: "Superficie productiva de café" },
+  { value: 4400, prefix: "+", suffix: " ha", label: "Superficie productiva de café" },
   { value: 15.5, prefix: "+", suffix: " M kg", label: "Café verde comercializado al año" },
 ];
 
-export const cooperativeOverview = `Somos la Cooperativa Central de Caficultores del Huila, una empresa asociativa sin ánimo de lucro y de interés social. Reunimos a cerca de 4.000 asociados en una zona de influencia de ${
+export const cooperativeOverview = `Somos la Cooperativa Central de Caficultores del Huila, una empresa asociativa sin ánimo de lucro y de interés social. Reunimos a más de 3.500 asociados en una zona de influencia de ${
   allMunicipalities.length
 } municipios: ${coreMunicipalities.length} municipios núcleo del centro del Huila (${coreMunicipalities.join(", ")}) y ${extendedMunicipalities.length} municipios de influencia ampliada (${extendedMunicipalities.join(", ")}). Estamos comprometidos con nuestro medio ambiente y la sociedad; por esto, nos preocupamos por ser económicamente viables, ambientalmente sostenibles y socialmente responsables.`;
 
@@ -338,7 +338,17 @@ export const timeline = [
   },
 ];
 
-type Benefit = { id: string; icon: LucideIcon; title: string; text: string };
+type Benefit = {
+  id: string;
+  icon: LucideIcon;
+  title: string;
+  text: string;
+  summary?: string;
+  imageSrc?: string;
+  imageAlt?: string;
+  sourceHref?: string;
+  sourceLabel?: string;
+};
 
 export const benefits: Benefit[] = [
   {
@@ -382,6 +392,45 @@ export const benefits: Benefit[] = [
     icon: PartyPopper,
     title: "Día del asociado",
     text: "Encuentros de integración, actualización tecnológica, cultura y recreación.",
+  },
+  {
+    id: "mujeres-cafeteras",
+    icon: Users,
+    title: "Mujeres Cafeteras",
+    summary: "Liderazgo y acompañamiento para fortalecer a las mujeres cafeteras.",
+    text: "Programa de liderazgo, asistencia técnica y herramientas para fortalecer la producción y calidad del café. El reglamento indica que se debe ser asociada y completar las capacitaciones para obtener el sello de café especial.",
+    sourceHref:
+      "/documentos/Servicios_asociados/Acuerdo Nro. 019 del 29 de Abril de 2022 Programa de Mujeres Cafeteras._1793888507782_31bafee9.pdf",
+    sourceLabel: "Consultar reglamento de Mujeres Cafeteras",
+  },
+  {
+    id: "mujer-cafetera-emprende",
+    icon: HandCoins,
+    title: "Mujer Cafetera Emprende",
+    summary: "Crédito para proyectos productivos de asociadas.",
+    text: "Línea de crédito para proyectos aprobados, con cupo de hasta $5.000.000 sujeto a evaluación y recursos disponibles. El reglamento de 2023 exige, entre otros requisitos, mínimo un año como asociada, estar hábil y pertenecer al sello Mujer Cafetera. La condonación de intereses depende de demostrar la inversión y mantener buen comportamiento de pago.",
+    sourceHref:
+      "/documentos/Servicios_asociados/Acuerdo No. 022 del 21 de Diciembre de 2022 Modificacion 16 de Febrero de 2023 Programa Mujer Emprende Coocentral_1793888506854_11bdf0e5.pdf",
+    sourceLabel: "Consultar reglamento de Mujer Cafetera Emprende",
+  },
+  {
+    id: "incentivo-rural-sostenible",
+    icon: Leaf,
+    title: "Incentivo Rural Sostenible (IRS)",
+    summary: "Apoyo para inversiones de sostenibilidad en la finca.",
+    text: "Apoyo de hasta $1.500.000 para inversiones relacionadas con hallazgos de auditoría Rainforest Alliance. El reglamento de 2023 lo dirige a asociados participantes en la certificación y auditoría del año anterior; la asignación depende de la evaluación y de los recursos disponibles.",
+    sourceHref:
+      "/documentos/Servicios_asociados/Acuerdo No. 023 del 16 de Febrero de 2023 Reglamento del Programa Incentivo Rural Sostenible IRS_1793888507544_dc48cada.pdf",
+    sourceLabel: "Consultar reglamento del Incentivo Rural Sostenible",
+  },
+  {
+    id: "ampliacion-renovacion-cafetales",
+    icon: Tractor,
+    title: "Ampliación y renovación de cafetales",
+    summary: "Apoyo técnico y alternativas para renovar o ampliar cafetales.",
+    text: "El reglamento describe material vegetal certificado, insumos y asistencia técnica para renovar cafetales o establecer nuevas áreas, de 0,1 a 2,5 hectáreas. La línea de crédito está sujeta a análisis; entre los requisitos publicados están mínimo un año como asociado, estar hábil y al día en las obligaciones.",
+    sourceHref: "/documentos/Servicios_asociados/ACUERD~2_1793888506147_7ce14d36.PDF",
+    sourceLabel: "Consultar reglamento de ampliación y renovación de cafetales",
   },
 ];
 
@@ -839,7 +888,7 @@ export const warehouseLocations = [
     code: "3401",
     municipality: "Agrado",
     name: "Almacén del Café Agrado",
-    address: "Carrera 5 #3-36",
+    address: "Cra. 5, Agrado, Huila",
     phone: "3208944060",
     hours: standardWarehouseHours,
   },

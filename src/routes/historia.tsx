@@ -6,10 +6,10 @@ import { createSeoHead } from "@/lib/seo";
 const History = lazyRouteComponent(() => import("@/components/site/history"), "History");
 
 const fallingLeaves = [
-  { className: "nature-leaf--one left-[12%] size-8 text-lime/65" },
-  { className: "nature-leaf--two left-[38%] size-6 text-lime/55" },
-  { className: "nature-leaf--three left-[68%] size-7 text-paper/55" },
-  { className: "nature-leaf--one left-[88%] size-5 text-lime/55" },
+  { className: "nature-leaf--one left-[12%] size-8 text-brand/35" },
+  { className: "nature-leaf--two left-[38%] size-6 text-lime/70" },
+  { className: "nature-leaf--three left-[68%] size-7 text-brand/25" },
+  { className: "nature-leaf--one left-[88%] size-5 text-lime/65" },
 ] as const;
 
 const fallingBeans = [1, 2, 3, 4] as const;
@@ -29,8 +29,8 @@ function HistoryPage() {
   const currentYear = getCoocentralCalendarYear(new Date());
 
   return (
-    <main>
-      <div aria-hidden="true" className="pointer-events-none fixed inset-0 z-30 overflow-hidden">
+    <main className="relative isolate">
+      <div aria-hidden="true" className="pointer-events-none fixed inset-0 z-10 overflow-hidden">
         {fallingLeaves.map(({ className }, index) => (
           <svg
             key={`leaf-${index}`}
@@ -72,61 +72,61 @@ function HistoryPage() {
           </svg>
         ))}
       </div>
-      <section className="scroll-section-static relative isolate overflow-hidden bg-forest-deep text-paper">
+      <section className="scroll-section-static relative overflow-hidden bg-white text-forest-deep">
         <div
           aria-hidden="true"
-          className="absolute -right-20 -top-28 -z-10 size-96 rounded-full border border-lime/15"
+          className="absolute -right-20 -top-28 -z-10 size-96 rounded-full border border-lime/20"
         />
         <div
           aria-hidden="true"
-          className="absolute -right-4 -top-10 -z-10 size-64 rounded-full border border-paper/10"
+          className="absolute -right-4 -top-10 -z-10 size-64 rounded-full border border-brand/10"
         />
-        <div className="mx-auto grid max-w-7xl gap-10 px-5 py-12 sm:py-16 lg:grid-cols-12 lg:items-center lg:gap-12 lg:px-10 lg:py-20">
+        <div className="relative z-20 mx-auto grid max-w-7xl gap-10 px-5 py-12 sm:py-16 lg:grid-cols-12 lg:items-center lg:gap-12 lg:px-10 lg:py-20">
           <div className="lg:col-span-7">
-            <p className="inline-flex items-center gap-2 rounded-full border border-lime/30 bg-lime/10 px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.18em] text-lime">
+            <p className="inline-flex items-center gap-2 rounded-full border border-brand/15 bg-sand px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.18em] text-brand">
               <BookOpen aria-hidden="true" className="size-4" />
               Nuestra historia · {`1975—${currentYear}`}
             </p>
             <h1 className="mt-5 max-w-3xl font-display text-4xl font-medium leading-[1.08] sm:text-5xl lg:text-6xl">
-              Una historia construida por <span className="text-lime">caficultores.</span>
+              Una historia construida por <span className="text-brand">caficultores.</span>
             </h1>
-            <p className="mt-5 max-w-2xl text-base leading-7 text-paper/75 sm:text-lg">
+            <p className="mt-5 max-w-2xl text-base leading-7 text-ink/70 sm:text-lg">
               De 54 pioneros en Garzón a una cooperativa que conecta familias, producción y
               desarrollo en el Huila.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a
                 href="#historia"
-                className="inline-flex min-h-12 items-center gap-2 rounded-full bg-lime px-5 text-sm font-bold text-forest-deep transition-colors hover:bg-paper focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime focus-visible:ring-offset-2 focus-visible:ring-offset-forest-deep"
+                className="inline-flex min-h-12 items-center gap-2 rounded-full bg-lime px-5 text-sm font-bold text-forest-deep transition-colors hover:bg-lime/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-white"
               >
                 Recorrer nuestra historia
                 <ArrowRight aria-hidden="true" className="size-4" />
               </a>
               <Link
                 to="/cooperativa#quienes-somos"
-                className="inline-flex min-h-12 items-center gap-2 rounded-full border border-paper/20 bg-paper/5 px-5 text-sm font-semibold text-paper transition-colors hover:border-lime/50 hover:bg-paper/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime focus-visible:ring-offset-2 focus-visible:ring-offset-forest-deep"
+                className="inline-flex min-h-12 items-center gap-2 rounded-full border border-brand/20 bg-white px-5 text-sm font-semibold text-brand transition-colors hover:border-brand/40 hover:bg-sand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-white"
               >
                 Quiénes somos
                 <ArrowRight aria-hidden="true" className="size-4" />
               </Link>
             </div>
           </div>
-          <aside className="relative overflow-hidden rounded-3xl border border-paper/15 bg-paper/[0.06] p-6 backdrop-blur-sm sm:p-8 lg:col-span-5 lg:p-9">
+          <aside className="relative overflow-hidden rounded-3xl border border-brand/10 bg-sand/60 p-6 shadow-sm sm:p-8 lg:col-span-5 lg:p-9">
             <span
               aria-hidden="true"
-              className="absolute -bottom-20 -right-16 size-56 rounded-full border border-lime/15"
+              className="absolute -bottom-20 -right-16 size-56 rounded-full border border-lime/25"
             />
-            <p className="text-xs font-bold uppercase tracking-[0.18em] text-lime">
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-brand">
               El origen de Coocentral
             </p>
             <p className="mt-3 font-display text-3xl font-medium leading-tight sm:text-4xl">
               54 caficultores unidos por un propósito.
             </p>
-            <div className="mt-8 flex items-center gap-3 border-t border-paper/15 pt-5">
-              <span className="grid size-11 shrink-0 place-items-center rounded-2xl bg-lime/15 text-lime">
+            <div className="mt-8 flex items-center gap-3 border-t border-brand/10 pt-5">
+              <span className="grid size-11 shrink-0 place-items-center rounded-2xl bg-lime/25 text-forest-deep">
                 <Users aria-hidden="true" className="size-5" />
               </span>
-              <p className="text-sm leading-6 text-paper/70">
+              <p className="text-sm leading-6 text-ink/65">
                 Desde Garzón, una historia que sigue creciendo junto a las familias del Huila.
               </p>
             </div>

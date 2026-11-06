@@ -4,6 +4,7 @@ import { ArrowRight } from "lucide-react";
 import { Hero } from "@/components/site/hero";
 import { ImpactStats } from "@/components/site/impact-stats";
 import { OfficeLocation } from "@/components/site/office-location";
+import { AtlasPromotion } from "@/components/site/atlas-promotion";
 import { AppPromotion } from "@/components/site/app-promotion";
 import { createSeoHead } from "@/lib/seo";
 
@@ -40,22 +41,29 @@ function HomePage() {
                 transformación y desarrollo para que las familias cafeteras fortalezcan sus
                 proyectos de vida.
               </p>
-              <Link
-                to="/historia"
-                className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-brand hover:underline"
-              >
-                Recorrer nuestra historia
-                <ArrowRight className="size-4" />
-              </Link>
-              <Link
-                to="/cafe-del-huila"
-                className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-brand hover:underline"
-              >
-                Conocer los cafés del Huila
-                <ArrowRight className="size-4" />
-              </Link>
+              <div className="mt-7 flex flex-wrap gap-4 sm:gap-5">
+                <Link
+                  to="/historia"
+                  className="inline-flex min-h-12 items-center gap-2 rounded-full bg-forest-deep px-5 text-sm font-bold text-paper shadow-sm transition-all hover:-translate-y-0.5 hover:bg-brand hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+                >
+                  Recorrer nuestra historia
+                  <ArrowRight aria-hidden="true" className="size-4" />
+                </Link>
+                <Link
+                  to="/cafe-del-huila"
+                  className="inline-flex min-h-12 items-center gap-2 rounded-full border-2 border-brand bg-paper px-5 text-sm font-bold text-brand shadow-sm transition-all hover:-translate-y-0.5 hover:bg-sand hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+                >
+                  Conocer los cafés del Huila
+                  <ArrowRight aria-hidden="true" className="size-4" />
+                </Link>
+              </div>
             </div>
           </div>
+        </div>
+      </section>
+      <section className="border-y border-border bg-sand">
+        <div className="mx-auto max-w-7xl px-5 py-14 lg:px-10 lg:py-20">
+          <AtlasPromotion />
         </div>
       </section>
       <section className="border-y border-border bg-sand">

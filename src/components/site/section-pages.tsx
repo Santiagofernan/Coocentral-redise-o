@@ -13,6 +13,9 @@ import {
 import { Link } from "@tanstack/react-router";
 
 import losOlivosLogo from "@/assets/Asociados/los-olivos-logo.webp";
+import fairTradeLogo from "@/assets/Certificados/Fair trade.webp";
+import rainforestAllianceLogo from "@/assets/Certificados/Rainforest Alliance.jpg";
+import utzFloLogo from "@/assets/Certificados/UTZ · FLO.webp";
 import {
   agroServices,
   allies,
@@ -51,6 +54,12 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+
+const certificationLogos: Record<string, string> = {
+  "Fair Trade": fairTradeLogo,
+  "Rainforest Alliance": rainforestAllianceLogo,
+  "UTZ · FLO": utzFloLogo,
+};
 
 export function PageIntro({
   eyebrow,
@@ -1453,20 +1462,36 @@ export function SustainabilityPage() {
           ))}
         </ul>
       </section>
-      <section id="verificacion" className="scroll-mt-24 bg-forest-deep text-paper">
+      <section id="verificacion" className="scroll-mt-24 bg-sand">
         <div className="mx-auto max-w-7xl px-5 py-14 lg:px-10 lg:py-20">
           <SectionTitle eyebrow="Verificación" title="Certificaciones y cooperación" />
-          <ul className="grid gap-x-10 sm:grid-cols-3">
+          <ul className="grid gap-5 md:grid-cols-3">
             {certifications.map((certification) => (
-              <li key={certification.name} className="border-t border-paper/20 py-5">
-                <h3 className="font-display text-xl text-lime">{certification.name}</h3>
-                <p className="mt-2 text-sm text-paper/65">{certification.detail}</p>
+              <li
+                key={certification.name}
+                className="flex h-full flex-col rounded-3xl border border-brand/10 bg-white p-6 shadow-sm sm:p-7"
+              >
+                <div className="flex h-36 items-center justify-center rounded-2xl bg-white p-4">
+                  <img
+                    src={certificationLogos[certification.name]}
+                    alt={`Logo ${certification.name}`}
+                    className={`max-h-full max-w-full object-contain ${
+                      certification.name === "Fair Trade" ? "scale-125" : ""
+                    }`}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <h3 className="mt-5 font-display text-xl font-medium text-forest-deep">
+                  {certification.name}
+                </h3>
+                <p className="mt-2 text-sm leading-6 text-ink/65">{certification.detail}</p>
                 {certification.stats.length > 0 && (
-                  <dl className="mt-5 space-y-2">
+                  <dl className="mt-5 space-y-3 border-t border-border pt-4">
                     {certification.stats.map((stat) => (
                       <div key={stat.label} className="flex items-baseline justify-between gap-3">
-                        <dd className="font-semibold">{stat.value}</dd>
-                        <dt className="text-xs text-paper/55">{stat.label}</dt>
+                        <dt className="text-sm text-ink/60">{stat.label}</dt>
+                        <dd className="font-semibold text-forest-deep">{stat.value}</dd>
                       </div>
                     ))}
                   </dl>
@@ -1474,23 +1499,30 @@ export function SustainabilityPage() {
               </li>
             ))}
           </ul>
-          <h3 className="mt-12 border-t border-paper/20 pt-8 font-display text-2xl">
+          <h3 className="mt-12 border-t border-brand/15 pt-8 font-display text-2xl text-forest-deep">
             Proyectos en colaboración
           </h3>
-          <ul className="mt-4 divide-y divide-paper/15">
+          <ul className="mt-5 grid gap-5 md:grid-cols-3">
             {cooperationProjects.map((project) => (
-              <li key={project.name} className="grid gap-2 py-4 sm:grid-cols-[1fr_auto]">
+              <li
+                key={project.name}
+                className="flex flex-col justify-between rounded-3xl border border-brand/10 bg-white p-6 shadow-sm"
+              >
                 <div>
-                  <p className="font-semibold">{project.name}</p>
-                  <p className="mt-1 text-sm text-paper/60">
+                  <p className="font-display text-lg font-medium text-forest-deep">
+                    {project.name}
+                  </p>
+                  <p className="mt-3 text-sm leading-6 text-ink/65">
                     {project.reach} · {project.allies}
                   </p>
                 </div>
-                <span className="text-sm font-semibold text-lime">{project.investment}</span>
+                <span className="mt-6 border-t border-border pt-4 text-sm font-bold text-brand">
+                  Inversión: {project.investment}
+                </span>
               </li>
             ))}
           </ul>
-          <p className="mt-7 text-xs leading-5 text-paper/50">Aliados: {allies.join(" · ")}</p>
+          <p className="mt-7 text-xs leading-5 text-ink/55">Aliados: {allies.join(" · ")}</p>
         </div>
       </section>
       <section className="mx-auto max-w-7xl px-5 py-12 lg:px-10">

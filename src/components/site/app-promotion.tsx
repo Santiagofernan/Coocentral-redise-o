@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { BadgeCheck, ClipboardList, CircleDollarSign, Smartphone } from "lucide-react";
 
 import appScreen1 from "@/assets/App_coocentral/1_Imagen.jpeg";
@@ -32,18 +32,35 @@ const storeBadgeClass = "h-16 w-44 shrink-0 object-fill";
 const googlePlayBadgeClass = "h-17 w-46 shrink-0 object-fill";
 
 export function AppPromotion() {
+  const promotionRef = useRef<HTMLElement>(null);
   const [activeScreen, setActiveScreen] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    const promotion = promotionRef.current;
+    if (!promotion) return;
+
+    const observer = new IntersectionObserver(([entry]) => setIsVisible(entry.isIntersecting), {
+      rootMargin: "100px",
+    });
+    observer.observe(promotion);
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!isVisible) return;
+
     const intervalId = window.setInterval(() => {
       setActiveScreen((currentScreen) => (currentScreen + 1) % appScreens.length);
     }, 6500);
 
     return () => window.clearInterval(intervalId);
-  }, []);
+  }, [isVisible]);
 
   return (
     <section
+      ref={promotionRef}
       aria-labelledby="app-promotion-title"
       className="overflow-hidden rounded-3xl bg-forest-deep text-paper shadow-xl"
     >
@@ -57,7 +74,7 @@ export function AppPromotion() {
             id="app-promotion-title"
             className="mt-5 max-w-xl font-display text-3xl font-medium leading-tight sm:text-4xl lg:text-5xl"
           >
-            Descarga la app Coocentral.
+            Descarga la Nueva App Coocentral.
           </h2>
           <p className="mt-4 max-w-lg text-sm leading-6 text-paper/70 sm:text-base">
             Lleva Coocentral contigo. Consulta información de tus saldos y aportes, y accede a
@@ -118,7 +135,7 @@ export function AppPromotion() {
             className="absolute -bottom-32 -left-20 size-80 rounded-full border border-paper/10"
           />
 
-          <div className="app-phone-frame relative w-full max-w-60 justify-self-center">
+          <div className="app-phone-frame relative w-full max-w-64 justify-self-center">
             <span aria-hidden="true" className="app-phone-button app-phone-button--left-top" />
             <span aria-hidden="true" className="app-phone-button app-phone-button--left-bottom" />
             <span aria-hidden="true" className="app-phone-button app-phone-button--right" />
@@ -131,13 +148,14 @@ export function AppPromotion() {
                 loading="lazy"
                 decoding="async"
               />
+              <span aria-hidden="true" className="app-phone-island">
+                <span />
+              </span>
             </div>
-            <span aria-hidden="true" className="app-phone-speaker" />
-            <span aria-hidden="true" className="app-phone-camera" />
           </div>
 
           <div className="relative grid w-full max-w-sm grid-cols-2 gap-3 justify-self-center text-center text-ink sm:grid-cols-1 sm:gap-4">
-            <div className="rounded-2xl bg-background p-2 shadow-xl sm:p-3">
+            <div className="rounded-2xl bg-stone-300 p-2 shadow-xl sm:p-3">
               <div className="rounded-xl border border-border p-1.5 sm:p-2">
                 <img
                   src="/QR_Descarga_APP/android-qr-app-coocentral-optimized.png"
@@ -153,7 +171,7 @@ export function AppPromotion() {
                 className="mx-auto mt-2 h-8 w-8 object-contain"
               />
             </div>
-            <div className="rounded-2xl bg-background p-2 shadow-xl sm:p-3">
+            <div className="rounded-2xl bg-stone-300 p-2 shadow-xl sm:p-3">
               <div className="rounded-xl border border-border p-1.5 sm:p-2">
                 <img
                   src="/QR_Descarga_APP/ios-qr-app-coocentral-optimized.png"

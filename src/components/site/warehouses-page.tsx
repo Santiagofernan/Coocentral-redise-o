@@ -17,6 +17,23 @@ import {
   X,
 } from "lucide-react";
 
+import warehouseLa14Image from "@/assets/Servicios/Almacenes/Almacen-La_14.jpeg";
+import warehouseAgradoImage from "@/assets/Servicios/Almacenes/Almacen_Agrado.jpeg";
+import warehouseMolinoImage from "@/assets/Servicios/Almacenes/Almacen_CC_Molino.jpeg";
+import warehouseGarzonGalleryImage from "@/assets/Servicios/Almacenes/Almacen_Galeria_Grazon.jpeg";
+import warehouseGuadalupeImage from "@/assets/Servicios/Almacenes/Almacen_Guadalupe.jpeg";
+import warehousePitalImage from "@/assets/Servicios/Almacenes/Almacen_Pital.jpeg";
+import warehouseQuituroImage from "@/assets/Servicios/Almacenes/Almacen_Quituro.jpeg";
+import warehouseSanAntonioImage from "@/assets/Servicios/Almacenes/Almacen_San-antonio.jpeg";
+import warehouseSuazaImage from "@/assets/Servicios/Almacenes/Almacen_Suaza.jpeg";
+import warehouseTimanaImage from "@/assets/Servicios/Almacenes/almacen-timana.webp";
+import warehouseGiganteImage from "@/assets/Servicios/Almacenes/almacenes-coocentral_gigante.webp";
+import warehouseAcevedoImage from "@/assets/Servicios/Almacenes/acevedo.jpeg";
+import warehouseLaPlataImage from "@/assets/Servicios/Almacenes/La_plata.jpeg";
+import warehousePitalitoImage from "@/assets/Servicios/Almacenes/pitalito.webp";
+import warehousePotrerillosImage from "@/assets/Servicios/Almacenes/potrerillos.webp";
+import warehouseTarquiImage from "@/assets/Servicios/Almacenes/tarqui.webp";
+import warehouseZuluagaImage from "@/assets/Servicios/Almacenes/zuluaga.jpeg";
 import { allMunicipalities, warehouseLocations, warehouseProductLines } from "@/content/coocentral";
 import { getGoogleMapsDirectionsUrl } from "@/lib/google-maps";
 import { getWarehouseStatus, type WarehouseStatus } from "@/lib/warehouse-schedule";
@@ -27,6 +44,134 @@ const municipalities = allMunicipalities.filter((municipality) =>
 );
 const locationTypes = [...new Set(warehouseLocations.map((location) => location.type))];
 const productLineIcons = [Sprout, House, Wrench, Cog];
+const warehouseImages = new Map<string, { src: string; alt: string }>([
+  [
+    "Almacén del Café Molino",
+    {
+      src: warehouseMolinoImage,
+      alt: "Fachada del Almacén del Café Molino de Coocentral en Garzón",
+    },
+  ],
+  [
+    "Almacén Centro Comercial del Café",
+    {
+      src: warehouseGarzonGalleryImage,
+      alt: "Fachada de un almacén Coocentral en el centro de Garzón",
+    },
+  ],
+  [
+    "Ferretería La 14",
+    {
+      src: warehouseLa14Image,
+      alt: "Fachada de la Ferretería La 14 de Coocentral en Garzón",
+    },
+  ],
+  [
+    "Bodega general",
+    {
+      src: warehouseLa14Image,
+      alt: "Fachada de la Bodega general de Coocentral en Garzón",
+    },
+  ],
+  [
+    "Almacén del Café Zuluaga",
+    {
+      src: warehouseZuluagaImage,
+      alt: "Fachada del Almacén del Café Coocentral en Zuluaga",
+    },
+  ],
+  [
+    "Almacén del Café San Antonio",
+    {
+      src: warehouseSanAntonioImage,
+      alt: "Fachada del Almacén del Café Coocentral en San Antonio del Pescado",
+    },
+  ],
+  [
+    "Almacén del Café Gigante",
+    {
+      src: warehouseGiganteImage,
+      alt: "Fachada del Almacén del Café Coocentral en Gigante",
+    },
+  ],
+  [
+    "Almacén del Café Potrerillos",
+    {
+      src: warehousePotrerillosImage,
+      alt: "Fachada del Almacén del Café Coocentral en Potrerillos",
+    },
+  ],
+  [
+    "Almacén del Café Agrado",
+    {
+      src: warehouseAgradoImage,
+      alt: "Fachada del Almacén del Café Coocentral en Agrado",
+    },
+  ],
+  [
+    "Almacén del Café Guadalupe",
+    {
+      src: warehouseGuadalupeImage,
+      alt: "Interior del Almacén del Café Coocentral en Guadalupe",
+    },
+  ],
+  [
+    "Almacén del Café Pital",
+    {
+      src: warehousePitalImage,
+      alt: "Fachada del Almacén del Café Coocentral en Pital",
+    },
+  ],
+  [
+    "Almacén del Café Quituro",
+    {
+      src: warehouseQuituroImage,
+      alt: "Fachada del Almacén del Café Coocentral en Quituro",
+    },
+  ],
+  [
+    "Almacén del Café Suaza",
+    {
+      src: warehouseSuazaImage,
+      alt: "Fachada del Almacén del Café Coocentral en Suaza",
+    },
+  ],
+  [
+    "Almacén del Café Tarqui",
+    {
+      src: warehouseTarquiImage,
+      alt: "Fachada del Almacén del Café Coocentral en Tarqui",
+    },
+  ],
+  [
+    "Almacén del Café Acevedo",
+    {
+      src: warehouseAcevedoImage,
+      alt: "Fachada del Almacén del Café Coocentral en Acevedo",
+    },
+  ],
+  [
+    "Almacén del Café La Plata",
+    {
+      src: warehouseLaPlataImage,
+      alt: "Fachada del Almacén del Café Coocentral en La Plata",
+    },
+  ],
+  [
+    "Almacén del Café Timaná",
+    {
+      src: warehouseTimanaImage,
+      alt: "Fachada del Almacén del Café Coocentral en Timaná",
+    },
+  ],
+  [
+    "Almacén del Café Pitalito",
+    {
+      src: warehousePitalitoImage,
+      alt: "Fachada del Almacén del Café Coocentral en Pitalito",
+    },
+  ],
+]);
 const normalizeSearchText = (value: string) =>
   value
     .normalize("NFD")
@@ -146,6 +291,7 @@ export function WarehousesPage() {
           <div className="flex flex-wrap items-center justify-between gap-3">
             <Link
               to="/servicios"
+              preload="render"
               className="group inline-flex min-h-10 items-center gap-2 rounded-full border border-paper/20 bg-paper/5 px-4 text-sm font-semibold text-paper/80 shadow-sm transition-all duration-200 hover:-translate-x-0.5 hover:border-lime/60 hover:bg-lime hover:text-forest-deep hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime focus-visible:ring-offset-2 focus-visible:ring-offset-forest-deep"
             >
               <ArrowLeft
@@ -535,12 +681,29 @@ export function WarehousesPage() {
                 const mapsUrl = getGoogleMapsDirectionsUrl(mapQuery);
                 const locationSchedule = location.type === "Ferretería" ? "hardware" : "warehouse";
                 const locationStatus = now ? getWarehouseStatus(now, locationSchedule) : null;
+                const warehouseImage = warehouseImages.get(location.name);
 
                 return (
                   <li
                     key={`${location.municipality}-${location.name}`}
                     className="flex h-full flex-col rounded-2xl border border-border bg-background p-5 shadow-sm transition-shadow hover:shadow-md sm:p-6"
                   >
+                    <div className="mb-5 aspect-[4/3] overflow-hidden rounded-xl border border-border bg-sand">
+                      {warehouseImage ? (
+                        <img
+                          src={warehouseImage.src}
+                          alt={warehouseImage.alt}
+                          loading="lazy"
+                          decoding="async"
+                          className="size-full object-cover"
+                        />
+                      ) : (
+                        <div className="flex size-full flex-col items-center justify-center gap-2 text-ink/50">
+                          <Store aria-hidden="true" className="size-6" />
+                          <span className="text-xs font-medium">Foto pendiente</span>
+                        </div>
+                      )}
+                    </div>
                     <div className="flex items-start justify-between gap-3">
                       <div className="min-w-0">
                         <div className="flex flex-wrap items-center gap-1.5">

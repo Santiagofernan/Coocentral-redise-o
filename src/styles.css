@@ -169,6 +169,8 @@
   html {
     scroll-behavior: auto;
     scroll-padding-top: 5rem;
+    overflow-y: scroll;
+    scrollbar-gutter: stable;
     scrollbar-color: var(--brand) var(--sand);
     scrollbar-width: thin;
   }
@@ -204,6 +206,10 @@
     font-optical-sizing: auto;
     text-wrap: balance;
   }
+}
+
+html body[data-scroll-locked] {
+  margin-right: 0 !important;
 }
 
 @keyframes rise {
@@ -503,27 +509,30 @@
 
 .app-phone-frame {
   isolation: isolate;
-  padding: 6px;
-  border-radius: 2.55rem;
-  border: 1px solid rgb(255 255 255 / 35%);
+  padding: 5px;
+  border-radius: 3rem;
+  border: 1px solid rgb(255 255 255 / 70%);
   background: linear-gradient(
-    145deg,
-    #d7dce1 0%,
-    #555b60 12%,
-    #181b1e 28%,
-    #080a0b 68%,
-    #92999f 90%,
-    #17191c 100%
+    135deg,
+    #f4f6f7 0%,
+    #8e969c 8%,
+    #24292d 18%,
+    #090b0d 48%,
+    #090b0d 78%,
+    #687177 93%,
+    #f1f3f4 100%
   );
   box-shadow:
-    0 28px 48px -20px rgb(0 0 0 / 85%),
-    inset 1px 1px 1px rgb(255 255 255 / 60%),
-    inset -2px -2px 4px rgb(0 0 0 / 90%);
+    0 30px 54px -22px rgb(0 0 0 / 88%),
+    0 0 0 1px rgb(12 17 20 / 75%),
+    inset 1px 1px 1px rgb(255 255 255 / 82%),
+    inset -2px -2px 4px rgb(0 0 0 / 85%);
 }
 
 .app-phone-screen {
   z-index: 1;
-  border: 1px solid rgb(0 0 0 / 85%);
+  border: 1px solid rgb(0 0 0 / 90%);
+  border-radius: 2.7rem;
   box-shadow:
     inset 0 0 0 1px rgb(255 255 255 / 22%),
     0 0 0 1px rgb(255 255 255 / 12%);
@@ -545,31 +554,31 @@
   );
 }
 
-.app-phone-speaker {
+.app-phone-island {
   position: absolute;
   z-index: 3;
-  top: 10px;
+  top: 0.55rem;
   left: 50%;
-  width: 2rem;
-  height: 0.35rem;
+  display: flex;
+  width: 5.2rem;
+  height: 1.35rem;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 0.55rem;
   transform: translateX(-50%);
-  border: 1px solid rgb(255 255 255 / 12%);
   border-radius: 999px;
-  background: linear-gradient(180deg, #020303, #25282a);
-  box-shadow: 0 1px 2px rgb(0 0 0 / 70%);
+  background: #050607;
+  box-shadow:
+    inset 0 1px 2px rgb(255 255 255 / 12%),
+    0 1px 2px rgb(0 0 0 / 45%);
 }
 
-.app-phone-camera {
-  position: absolute;
-  z-index: 3;
-  top: 8px;
-  left: calc(50% + 1.35rem);
-  width: 0.35rem;
+.app-phone-island span {
+  width: 0.45rem;
   aspect-ratio: 1;
-  border: 1px solid rgb(255 255 255 / 25%);
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%, #52736f, #080d11 65%);
-  box-shadow: 0 0 2px rgb(0 0 0 / 80%);
+  background: radial-gradient(circle at 35% 35%, #6b8a83, #111a1d 72%);
+  box-shadow: 0 0 0 1px rgb(115 140 134 / 25%);
 }
 
 .app-phone-button {

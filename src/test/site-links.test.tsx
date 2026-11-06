@@ -37,6 +37,7 @@ describe("site navigation targets", () => {
       ...footerColumns.flatMap(({ links }) => links.map(({ href }) => href)),
       ...serviceShowcase.flatMap(({ href }) => (href?.startsWith("/") ? [href] : [])),
       ...creditProductDetails.map(({ slug }) => `/linea-credito/${slug}`),
+      ...benefits.flatMap(({ sourceHref }) => (sourceHref ? [sourceHref] : [])),
     ];
     const anchors = new Set([
       "administracion-control",
@@ -87,5 +88,9 @@ describe("site navigation targets", () => {
     expect(new Set(serviceIds).size).toBe(serviceIds.length);
     expect(benefitIds).toContain("beneficio-salud-visual");
     expect(benefitIds).toContain("beneficio-educacion-superior");
+    expect(benefitIds).toContain("beneficio-mujeres-cafeteras");
+    expect(benefitIds).toContain("beneficio-mujer-cafetera-emprende");
+    expect(benefitIds).toContain("beneficio-incentivo-rural-sostenible");
+    expect(benefitIds).toContain("beneficio-ampliacion-renovacion-cafetales");
   });
 });

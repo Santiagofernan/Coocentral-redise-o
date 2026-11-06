@@ -35,4 +35,13 @@ describe("Coocentral municipality coverage", () => {
       impactStats.find(({ label }) => label === "Municipios en la zona de influencia")?.value,
     ).toBe(allMunicipalities.length);
   });
+
+  it("reports more than 3,500 associates in the homepage impact statistics", () => {
+    expect(impactStats).toContainEqual({
+      value: 3500,
+      prefix: "+",
+      suffix: "",
+      label: "Asociados",
+    });
+  });
 });

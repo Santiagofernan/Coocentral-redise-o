@@ -27,4 +27,9 @@ describe("getCoocentralAnniversary", () => {
   it("returns the current calendar year in Colombia for the history range", () => {
     expect(getCoocentralCalendarYear(new Date("2026-10-16T12:00:00.000Z"))).toBe(2026);
   });
+
+  it("advances the calendar year at midnight on January 1 in Colombia", () => {
+    expect(getCoocentralCalendarYear(new Date("2027-01-01T04:59:59.999Z"))).toBe(2026);
+    expect(getCoocentralCalendarYear(new Date("2027-01-01T05:00:00.000Z"))).toBe(2027);
+  });
 });

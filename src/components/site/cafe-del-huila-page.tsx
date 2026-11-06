@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, Coffee, Factory, MapPin, Sprout } from "lucide-react";
+import { ArrowLeft, ArrowRight, Coffee, Factory, MapPin, Sprout } from "lucide-react";
 
 import coffeeImage from "@/assets/Servicios/Cafes_coocentral/Cafe.webp";
 import {
@@ -28,10 +28,22 @@ export function CafeDelHuilaPage() {
         />
         <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 py-14 sm:py-18 lg:grid-cols-12 lg:gap-14 lg:px-10 lg:py-24">
           <div className="lg:col-span-7">
-            <p className="inline-flex items-center gap-2 rounded-full border border-lime/30 bg-lime/10 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-lime">
-              <Coffee aria-hidden="true" className="size-4" />
-              Caficultura del centro del Huila
-            </p>
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-3">
+              <Link
+                to="/"
+                className="group inline-flex min-h-10 items-center gap-2 rounded-full border border-paper/20 bg-paper/5 px-4 text-sm font-semibold text-paper transition-colors hover:border-lime/50 hover:bg-paper/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime focus-visible:ring-offset-2 focus-visible:ring-offset-forest-deep"
+              >
+                <ArrowLeft
+                  aria-hidden="true"
+                  className="size-4 transition-transform duration-200 group-hover:-translate-x-1"
+                />
+                Volver al inicio
+              </Link>
+              <p className="inline-flex items-center gap-2 rounded-full border border-lime/30 bg-lime/10 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-lime">
+                <Coffee aria-hidden="true" className="size-4" />
+                Caficultura del centro del Huila
+              </p>
+            </div>
             <h1 className="mt-5 max-w-3xl font-display text-4xl font-medium leading-[1.08] sm:text-5xl lg:text-6xl">
               Cafés del Huila: origen, caficultores y trabajo cooperativo.
             </h1>

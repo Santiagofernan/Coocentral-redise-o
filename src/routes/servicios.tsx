@@ -1,4 +1,5 @@
-import { createFileRoute, lazyRouteComponent } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
+import { ServicesPage } from "@/components/site/section-pages";
 import { createSeoHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/servicios")({
@@ -9,5 +10,5 @@ export const Route = createFileRoute("/servicios")({
         "Explora los servicios de Coocentral para caficultores: asistencia agropecuaria, crédito, insumos, compra de café y apoyo a la producción.",
       path: "/servicios",
     }),
-  component: lazyRouteComponent(() => import("@/components/site/section-pages"), "ServicesPage"),
+  component: ServicesPage,
 });

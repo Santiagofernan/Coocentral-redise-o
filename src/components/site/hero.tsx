@@ -3,10 +3,11 @@ import { Link } from "@tanstack/react-router";
 
 import heroImage from "@/assets/Inicio/coocentral-50-anios-hero.webp";
 import { heroBadges } from "@/content/coocentral";
+import { useCurrentTime } from "@/hooks/use-current-time";
 import { getCoocentralAnniversary, getCoocentralCalendarYear } from "@/lib/coocentral-anniversary";
 
 export function Hero() {
-  const today = new Date();
+  const today = useCurrentTime() ?? new Date();
   const { count: anniversaryCount } = getCoocentralAnniversary(today);
   const currentYear = getCoocentralCalendarYear(today);
 
