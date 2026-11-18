@@ -14,7 +14,7 @@ export function Hero() {
   return (
     <section
       id="inicio"
-      className="relative isolate flex min-h-svh items-end overflow-hidden bg-forest-deep text-paper"
+      className="relative isolate flex min-h-[calc(100svh-4.5rem)] items-end overflow-hidden bg-forest-deep text-paper lg:min-h-[calc(100svh-5rem)]"
     >
       <img
         src={heroImage}
@@ -25,8 +25,7 @@ export function Hero() {
         fetchPriority="high"
         className="hero-zoom absolute inset-x-0 top-0 -z-20 h-auto w-full object-contain object-top lg:inset-0 lg:size-full lg:object-cover lg:object-left"
       />
-      <div className="absolute inset-0 -z-10 bg-linear-to-b from-forest-deep/10 via-transparent to-forest-deep/70 lg:bg-linear-to-r lg:from-forest-deep/65 lg:via-forest-deep/35 lg:to-transparent" />
-      <div className="absolute inset-0 -z-10 bg-linear-to-t from-forest-deep/40 via-transparent to-transparent lg:from-transparent" />
+      <div className="absolute inset-0 -z-10 bg-linear-to-b from-forest-deep/10 via-forest-deep/45 to-forest-deep lg:bg-linear-to-r lg:from-forest-deep/75 lg:via-forest-deep/45 lg:to-forest-deep/10" />
 
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
         <svg
@@ -76,25 +75,23 @@ export function Hero() {
         </svg>
       </div>
 
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-5 pt-[calc(100vw*0.413+3rem)] pb-12 lg:px-10 lg:pt-32 lg:pb-24">
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-5 pb-8 pt-[calc(41.3vw+2rem)] sm:px-8 sm:pb-12 sm:pt-[calc(41.3vw+2.5rem)] lg:px-10 lg:pb-16 lg:pt-20">
         <div className="max-w-4xl">
           <h1
-            className="editorial-reveal max-w-3xl text-4xl font-medium leading-[1.04] tracking-normal drop-shadow-[0_2px_10px_oklch(0.16_0.035_158/0.8)] sm:text-6xl lg:text-7xl"
+            className="editorial-reveal max-w-3xl text-[clamp(2.4rem,9vw,4.5rem)] font-medium leading-[1.02] tracking-normal drop-shadow-[0_2px_10px_oklch(0.16_0.035_158/0.8)] sm:text-6xl lg:text-7xl"
             style={{ animationDelay: "120ms" }}
           >
-            Más que una cooperativa:
-            <br />
-            una <em className="font-normal text-lime">familia cafetera</em>
+            Más que una cooperativa: una <em className="font-normal text-lime">familia cafetera</em>
           </h1>
           <p
-            className="editorial-reveal mt-8 max-w-[56ch] text-lg leading-8 text-paper/80 lg:text-xl"
+            className="editorial-reveal mt-5 max-w-[56ch] text-base leading-7 text-paper/85 sm:mt-7 sm:text-lg sm:leading-8 lg:text-xl"
             style={{ animationDelay: "240ms" }}
           >
             Desde 1975 articulamos producción, industria, financiamiento y desarrollo humano para
             que la caficultura del Huila sea rentable, tecnificada y sostenible.
           </p>
           <div
-            className="editorial-reveal mt-7 inline-flex min-h-12 items-center gap-3 rounded-xl border border-lime/35 bg-forest-deep/65 px-4 py-2 shadow-[0_8px_24px_-16px_oklch(0.08_0.02_158/0.8)] backdrop-blur-sm"
+            className="editorial-reveal mt-5 inline-flex min-h-12 max-w-full items-center gap-2.5 rounded-xl border border-lime/35 bg-forest-deep/75 px-3 py-2 shadow-[0_8px_24px_-16px_oklch(0.08_0.02_158/0.8)] backdrop-blur-sm sm:mt-7 sm:gap-3 sm:px-4"
             style={{ animationDelay: "300ms" }}
           >
             <span className="grid size-8 shrink-0 place-items-center rounded-lg bg-lime/15 text-lime">
@@ -104,32 +101,32 @@ export function Hero() {
               {anniversaryCount} años
             </span>
             <span className="h-6 w-px bg-paper/20" aria-hidden="true" />
-            <span className="text-xs font-semibold tracking-wide text-paper/80 sm:text-sm">
+            <span className="text-[11px] font-semibold tracking-wide text-paper/85 sm:text-sm">
               1975–{currentYear} · Huila, Colombia
             </span>
           </div>
           <div
-            className="editorial-reveal mt-5 flex flex-wrap gap-3"
+            className="editorial-reveal mt-5 grid gap-2.5 sm:flex sm:flex-wrap sm:gap-3"
             style={{ animationDelay: "360ms" }}
           >
             <Link
               to="/servicios"
-              className="group inline-flex min-h-12 items-center gap-2 rounded-full bg-lime px-7 py-4 text-sm font-bold text-forest-deep shadow-[0_12px_28px_-14px_oklch(0.763_0.175_129.7/0.8)] transition-all duration-200 hover:-translate-y-1 hover:bg-paper hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime focus-visible:ring-offset-2 focus-visible:ring-offset-forest-deep active:translate-y-0"
+              className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-lime px-6 py-3.5 text-sm font-bold text-forest-deep shadow-[0_12px_28px_-14px_oklch(0.763_0.175_129.7/0.8)] transition-all duration-200 hover:-translate-y-1 hover:bg-paper hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime focus-visible:ring-offset-2 focus-visible:ring-offset-forest-deep active:translate-y-0 sm:justify-start sm:px-7 sm:py-4"
             >
               Explorar servicios
               <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
             </Link>
             <Link
               to="/asociarme"
-              className="inline-flex min-h-12 items-center rounded-full border border-paper/35 bg-paper/5 px-7 py-4 text-sm font-bold backdrop-blur-sm transition-all duration-200 hover:-translate-y-1 hover:border-paper hover:bg-paper hover:text-forest-deep hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-paper focus-visible:ring-offset-2 focus-visible:ring-offset-forest-deep active:translate-y-0"
+              className="inline-flex min-h-12 items-center justify-center rounded-full border border-paper/35 bg-paper/5 px-6 py-3.5 text-sm font-bold backdrop-blur-sm transition-all duration-200 hover:-translate-y-1 hover:border-paper hover:bg-paper hover:text-forest-deep hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-paper focus-visible:ring-offset-2 focus-visible:ring-offset-forest-deep active:translate-y-0 sm:justify-start sm:px-7 sm:py-4"
             >
               Quiero asociarme
             </Link>
           </div>
         </div>
 
-        <div className="mt-16 flex flex-wrap items-end justify-between gap-6 border-t border-paper/15 pt-6">
-          <ul className="flex flex-wrap gap-x-8 gap-y-3 text-sm font-semibold text-paper/75">
+        <div className="mt-8 flex flex-wrap items-end justify-between gap-4 border-t border-paper/20 pt-5 sm:mt-12 sm:gap-6 sm:pt-6">
+          <ul className="flex flex-wrap gap-x-5 gap-y-2.5 text-xs font-semibold text-paper/85 sm:gap-x-8 sm:gap-y-3 sm:text-sm">
             {heroBadges.map(({ icon: Icon, label }) => (
               <li key={label} className="inline-flex items-center gap-2">
                 <Icon className="size-4 text-lime" /> {label}

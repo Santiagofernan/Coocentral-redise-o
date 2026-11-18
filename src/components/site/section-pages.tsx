@@ -13,6 +13,8 @@ import {
 import { Link } from "@tanstack/react-router";
 
 import losOlivosLogo from "@/assets/Asociados/los-olivos-logo.webp";
+import ferticoolombiaCoffeeField from "@/assets/Servicios/Ferticoolombia/Cafetal/h2.avif";
+import ferticoolombiaCoffeeFieldMobile from "@/assets/Servicios/Ferticoolombia/Cafetal/h2-mobile.avif";
 import fairTradeLogo from "@/assets/Certificados/Fair trade.webp";
 import rainforestAllianceLogo from "@/assets/Certificados/Rainforest Alliance.jpg";
 import utzFloLogo from "@/assets/Certificados/UTZ · FLO.webp";
@@ -1138,29 +1140,48 @@ export function ServicesPage() {
                         aria-hidden="true"
                         className="absolute -inset-2 -z-10 rounded-[2.2rem] border border-brand/20 sm:-inset-3 sm:rounded-[2.8rem]"
                       />
-                      <div
-                        className={`relative overflow-hidden rounded-[1.55rem] sm:rounded-[2rem] ${
-                          service.id === "ferticoolombia" ? "bg-forest-deep" : "bg-paper"
-                        }`}
-                      >
-                        <img
-                          src={service.image}
-                          alt={service.imageAlt}
-                          loading="lazy"
-                          decoding="async"
-                          width="1200"
-                          height="900"
-                          className={`w-full ${
-                            service.id === "fundecafe"
-                              ? "aspect-[2.64/1] object-contain p-4 sm:p-8"
-                              : `aspect-4/3 ${
-                                  service.id === "ferticoolombia"
-                                    ? "object-contain p-10 sm:p-16"
-                                    : "object-cover"
-                                }`
-                          }`}
-                        />
-                      </div>
+                      {service.id === "ferticoolombia" ? (
+                        <div className="relative aspect-4/3 overflow-hidden rounded-[1.55rem] bg-forest-deep sm:rounded-[2rem]">
+                          <picture className="absolute inset-0">
+                            <source
+                              media="(max-width: 639px)"
+                              srcSet={ferticoolombiaCoffeeFieldMobile}
+                            />
+                            <img
+                              src={ferticoolombiaCoffeeField}
+                              alt=""
+                              aria-hidden="true"
+                              loading="lazy"
+                              decoding="async"
+                              className="size-full scale-105 object-cover blur-[2px]"
+                            />
+                          </picture>
+                          <div aria-hidden="true" className="absolute inset-0 bg-forest-deep/45" />
+                          <img
+                            src={service.image}
+                            alt={service.imageAlt}
+                            loading="lazy"
+                            decoding="async"
+                            className="absolute inset-0 m-auto h-2/3 w-[78%] object-contain drop-shadow-[0_8px_24px_rgba(0,0,0,0.35)]"
+                          />
+                        </div>
+                      ) : (
+                        <div className="relative overflow-hidden rounded-[1.55rem] bg-paper sm:rounded-[2rem]">
+                          <img
+                            src={service.image}
+                            alt={service.imageAlt}
+                            loading="lazy"
+                            decoding="async"
+                            width="1200"
+                            height="900"
+                            className={`w-full ${
+                              service.id === "fundecafe"
+                                ? "aspect-[2.64/1] object-contain p-4 sm:p-8"
+                                : "aspect-4/3 object-cover"
+                            }`}
+                          />
+                        </div>
+                      )}
                       <span
                         aria-hidden="true"
                         className="absolute -right-2 -top-2 size-14 rounded-full border-4 border-paper/80 bg-lime shadow-lg sm:-right-3 sm:-top-3 sm:size-16"

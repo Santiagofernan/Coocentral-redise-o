@@ -170,6 +170,8 @@ export function KahveStoresPage() {
                   width="1920"
                   height="1280"
                   className="aspect-4/5 w-full rounded-2xl object-cover"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <figcaption className="absolute inset-x-2 bottom-2 rounded-b-2xl bg-linear-to-t from-forest-deep/90 to-transparent px-3 pb-3 pt-10 text-xs font-semibold text-paper">
                   Un espacio para disfrutar el café

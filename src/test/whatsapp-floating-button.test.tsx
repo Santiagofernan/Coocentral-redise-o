@@ -18,9 +18,15 @@ describe("WhatsApp floating button", () => {
     render(<WhatsAppFloatingButton />);
 
     fireEvent.click(screen.getByRole("button", { name: "Abrir chat de WhatsApp" }));
+    const panel = screen.getByRole("region", { name: "Coocentral" });
+    expect(panel).toHaveClass("duration-400");
+    expect(panel).toHaveClass("[transform:translateY(0)]");
+    expect(panel).toHaveClass("opacity-100");
     expect(screen.queryByRole("button", { name: "Volver al inicio de la página" })).toBeNull();
 
     fireEvent.click(screen.getAllByRole("button", { name: "Cerrar chat de WhatsApp" })[0]);
+    expect(panel).toHaveClass("[transform:translateY(50px)]");
+    expect(panel).toHaveClass("opacity-0");
     expect(
       screen.getByRole("button", { name: "Volver al inicio de la página" }),
     ).toBeInTheDocument();

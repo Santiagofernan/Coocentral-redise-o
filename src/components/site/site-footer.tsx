@@ -87,10 +87,12 @@ export function SiteFooter() {
               width="180"
               height="40"
               className="h-9 w-auto brightness-0 invert"
+              loading="lazy"
+              decoding="async"
             />
           </Link>
           <p className="mt-5 max-w-sm text-base leading-7 text-paper/85">
-            Más que una cooperativa: Una familia al servicio del caficultor
+            Más que una cooperativa: una familia al servicio del caficultor
           </p>
           <address className="mt-6 space-y-3 text-sm leading-6 not-italic text-paper/75">
             <p className="flex items-start gap-2.5">

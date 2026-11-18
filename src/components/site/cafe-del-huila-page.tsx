@@ -54,7 +54,8 @@ export function CafeDelHuilaPage() {
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
-                to="/area-de-cafe#puntos-de-compra"
+                to="/area-de-cafe"
+                hash="#puntos-de-compra"
                 className="inline-flex min-h-12 items-center gap-2 rounded-full bg-lime px-5 text-sm font-bold text-forest-deep transition-colors hover:bg-paper focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime focus-visible:ring-offset-2 focus-visible:ring-offset-forest-deep"
               >
                 Ver puntos de compra de café
@@ -187,7 +188,7 @@ export function CafeDelHuilaPage() {
                 to="/area-de-cafe"
                 className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-brand hover:underline"
               >
-                Consultar Área de Café <ArrowRight aria-hidden="true" className="size-4" />
+                Consultar compras de café <ArrowRight aria-hidden="true" className="size-4" />
               </Link>
             </li>
             <li className="rounded-2xl border border-border bg-paper p-6">
@@ -264,7 +265,8 @@ export function CafeDelHuilaPage() {
             </h2>
           </div>
           <Link
-            to="/area-de-cafe#puntos-de-compra"
+            to="/area-de-cafe"
+            hash="#puntos-de-compra"
             className="inline-flex min-h-12 shrink-0 items-center justify-center gap-2 rounded-full bg-lime px-5 text-sm font-bold text-forest-deep transition-colors hover:bg-paper focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime focus-visible:ring-offset-2 focus-visible:ring-offset-forest-deep"
           >
             Ver mapa de puntos

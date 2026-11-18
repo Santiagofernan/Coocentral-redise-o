@@ -113,8 +113,9 @@ export function PicPage() {
               alt="Vista panorámica de las instalaciones del Parque Industrial del Café de Coocentral"
               width="1536"
               height="634"
-              fetchPriority="high"
               className="aspect-[2.42/1] w-full object-cover"
+              loading="lazy"
+              decoding="async"
             />
             <p className="sr-only">Parque Industrial del Café de Coocentral.</p>
           </div>

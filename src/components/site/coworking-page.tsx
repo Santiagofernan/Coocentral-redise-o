@@ -145,6 +145,8 @@ export function CoworkingPage() {
                 width="1600"
                 height="1067"
                 className="aspect-square w-full object-cover"
+                loading="lazy"
+                decoding="async"
               />
             </div>
             <div className="absolute -bottom-7 left-6 z-20 hidden rounded-full bg-paper px-4 py-2 text-xs font-bold text-forest-deep shadow-lg sm:block">

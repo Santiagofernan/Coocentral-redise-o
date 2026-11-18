@@ -220,6 +220,8 @@ export function CoffeeProcessExplorer() {
                 src={selectedIllustration}
                 alt={`Ilustración: ${selectedDetail.title}`}
                 className="coffee-process-illustration relative z-10 object-contain"
+                loading="lazy"
+                decoding="async"
               />
             </div>
           </div>

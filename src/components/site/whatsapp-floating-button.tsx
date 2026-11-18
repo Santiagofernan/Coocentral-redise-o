@@ -49,10 +49,10 @@ export function WhatsAppFloatingButton() {
         aria-labelledby="whatsapp-chat-title"
         aria-hidden={!isOpen}
         inert={!isOpen}
-        className={`fixed inset-x-4 bottom-24 z-40 ml-auto max-w-sm origin-bottom-right transition-[opacity,transform,visibility] duration-200 ease-out motion-reduce:transition-none sm:inset-x-auto sm:bottom-28 sm:right-7 ${
+        className={`fixed inset-x-4 bottom-24 z-40 ml-auto max-w-sm origin-bottom-right transition-[opacity,transform,visibility] duration-400 ease-out motion-reduce:transition-none sm:inset-x-auto sm:bottom-28 sm:right-7 ${
           isOpen
-            ? "visible translate-y-0 scale-100 opacity-100"
-            : "invisible translate-y-3 scale-95 opacity-0"
+            ? "visible [transform:translateY(0)] opacity-100"
+            : "invisible [transform:translateY(50px)] opacity-0"
         }`}
       >
         <div className="overflow-hidden rounded-2xl border border-brand/15 bg-paper shadow-[0_24px_70px_-24px_oklch(0.22_0.045_158/0.55)]">

@@ -65,7 +65,7 @@ import historyAnniversaryImage from "@/assets/Historia/coocentral-50-anios-2025.
 
 export const links = {
   app: "https://play.google.com/store/apps/details?id=com.coocentral.app&hl=es_CO",
-  appStore: "https://apps.apple.com/co/app/nueva-app-red-coopcentral/id6742431196",
+  appStore: "https://apps.apple.com/co/app/coocentral/id6807899789",
   complaints: "/denuncias/yo-denuncio-ciberextorsion.jpg",
 };
 
@@ -95,7 +95,7 @@ export const navigation = [
 export const cooperativeResources = [
   { label: "¿Quiénes somos?", href: "/cooperativa#quienes-somos", external: false },
   { label: "Crédito y cartera", href: "/credito-y-cartera", external: false },
-  { label: "Reseña Histórica", href: "/historia", external: false },
+  { label: "Reseña histórica", href: "/historia", external: false },
   {
     label: "Acta de compromiso Fundecafé",
     href: "/documentos/cooperativa/Acta-compromiso-Fundecafe-proteccion-datos.pdf",
@@ -209,13 +209,13 @@ export const cooperativeOverview = `Somos la Cooperativa Central de Caficultores
 } municipios: ${coreMunicipalities.length} municipios núcleo del centro del Huila (${coreMunicipalities.join(", ")}) y ${extendedMunicipalities.length} municipios de influencia ampliada (${extendedMunicipalities.join(", ")}). Estamos comprometidos con nuestro medio ambiente y la sociedad; por esto, nos preocupamos por ser económicamente viables, ambientalmente sostenibles y socialmente responsables.`;
 
 export const mission =
-  "Gracias a nuestro entusiasmo, trabajo y valores corporativos, queremos ser una Cooperativa responsable social y ambientalmente, donde nuestra prioridad siempre serán nuestros asociados, nuestros clientes, nuestros empleados y nuestra comunidad, a los cuales buscaremos generarles valor y bienestar con productos y servicios de calidad, haciendo del agro un negocio posible y rentable mediante la innovación en sus procesos de producción, transformación y consumo de café.";
+  "Con entusiasmo, trabajo y valores corporativos, queremos ser una cooperativa social y ambientalmente responsable. Nuestros asociados, clientes, empleados y la comunidad son nuestra prioridad. Buscamos ofrecerles valor y bienestar con productos y servicios de calidad, e impulsar un agro posible y rentable mediante la innovación en los procesos de producción, transformación y consumo del café.";
 
 export const vision =
-  "En el 2027, como líderes transformamos el mercado del café y enseñamos el camino para que la actividad cafetera sea rentable y sostenible.";
+  "Para 2027, aspiramos a liderar la transformación del mercado del café y a mostrar el camino hacia una actividad cafetera rentable y sostenible.";
 
 export const principles = [
-  "Libre Adhesión",
+  "Libre adhesión",
   "Control democrático por los asociados",
   "Participación económica de los asociados",
   "Autonomía e independencia",
@@ -248,7 +248,7 @@ export const quotes = {
 export const timeline = [
   {
     year: "1975",
-    text: "54 pioneros fundan COOCENTRAL en Garzón. Nace la asistencia técnica que dará raíz a FUNDECAFÉ.",
+    text: "54 pioneros fundan COOCENTRAL en Garzón. Nace la asistencia técnica que sentará las bases de FUNDECAFÉ.",
     image: history1975GarzonImage,
     imageAlt: "Fotografía histórica de Coocentral en Garzón",
   },
@@ -314,7 +314,7 @@ export const timeline = [
   },
   {
     year: "2021",
-    text: "Salas de Cooworking para capacitación e innovación.",
+    text: "Espacios de coworking para capacitación e innovación.",
     image: historyCoworkingImage,
     imageAlt: "Espacio de coworking de Coocentral",
   },
@@ -1047,7 +1047,7 @@ export const serviceShowcase: ServiceShowcase[] = [
   },
   {
     id: "area-de-cafe",
-    title: "Área de Café",
+    title: "Compras de café",
     summary:
       "Puntos de compra y venta de café verde y seco que acercan a los productores a la comercialización y al control de calidad.",
     image: coocentralCoffeeImage,

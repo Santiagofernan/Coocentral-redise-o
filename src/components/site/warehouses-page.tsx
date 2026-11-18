@@ -777,8 +777,9 @@ export function WarehousesPage() {
                       href={mapsUrl}
                       target="_blank"
                       rel="noreferrer"
-                      className="mt-auto inline-flex min-h-10 items-center gap-1.5 self-start pt-4 text-sm font-semibold text-brand transition-colors hover:text-forest-deep focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+                      className="mt-auto inline-flex min-h-11 items-center gap-2 self-start rounded-full bg-brand px-4 text-sm font-bold text-paper shadow-sm transition-all hover:-translate-y-0.5 hover:bg-forest-deep hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
                     >
+                      <MapPin aria-hidden="true" className="size-4" />
                       Cómo llegar
                       <ArrowUpRight aria-hidden="true" className="size-4" />
                     </a>

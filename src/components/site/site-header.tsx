@@ -449,6 +449,8 @@ export function SiteHeader() {
                     width="160"
                     height="36"
                     className="h-9 w-fit brightness-0 invert transition-transform duration-300 hover:scale-105 active:scale-95"
+                    loading="lazy"
+                    decoding="async"
                   />
                 </Link>
               </SheetClose>

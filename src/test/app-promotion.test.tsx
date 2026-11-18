@@ -47,6 +47,14 @@ describe("App promotion carousel", () => {
     vi.stubGlobal("IntersectionObserver", MockIntersectionObserver);
     render(<AppPromotion />);
 
+    expect(screen.getByRole("img", { name: "Android" })).toHaveAttribute(
+      "src",
+      "/badges/google-play-mark.png",
+    );
+    expect(screen.getByRole("img", { name: "iPhone" })).toHaveAttribute(
+      "src",
+      "/badges/apple-logo.svg",
+    );
     expect(
       screen.getByRole("img", { name: "Captura 1 de 8 de la aplicación Coocentral" }),
     ).toBeInTheDocument();
@@ -67,5 +75,15 @@ describe("App promotion carousel", () => {
     expect(
       screen.getByRole("img", { name: "Captura 2 de 8 de la aplicación Coocentral" }),
     ).toBeInTheDocument();
+  });
+
+  it("links the App Store badge to the Coocentral iOS app", () => {
+    vi.stubGlobal("IntersectionObserver", MockIntersectionObserver);
+    render(<AppPromotion />);
+
+    expect(screen.getByRole("link", { name: "Descargar Coocentral en App Store" })).toHaveAttribute(
+      "href",
+      "https://apps.apple.com/co/app/coocentral/id6807899789",
+    );
   });
 });
