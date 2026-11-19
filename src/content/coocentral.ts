@@ -30,7 +30,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import ferticoolombiaLogo from "@/assets/Servicios/Ferticoolombia/Logo Ferticoolombia TRAZO BLANCO.png";
-import almacenesCoocentralImage from "@/assets/Servicios/Almacenes/almacenes-coocentral.webp";
+import almacenesCoocentralImage from "@/assets/Servicios/Almacenes/almacenes-coocentral_gigante.webp";
 import fundecafeImage from "@/assets/Servicios/Fundecafe/Fundecafe.jpg";
 import picIndustrialPark from "@/assets/Servicios/Pic/Parque industrial.webp";
 import hotelKahveImage from "@/assets/Servicios/Hotel_Kahve/Planta.webp";
@@ -52,13 +52,12 @@ import historyAdministrativeOfficeImage from "@/assets/Historia/2009-sede-admini
 import historyFleetImage from "@/assets/Historia/2010-flota.jpg";
 import historyIndustrialParkImage from "@/assets/Historia/2012-parque-industrial.jpg";
 import historyHotelImage from "@/assets/Historia/2013-hotel-kahve.jpg";
-import historyCoffeeBrandImage from "@/assets/Historia/2015-marca-cafe.jpg";
 import historyKahveStoresImage from "@/assets/Historia/2017-tiendas-kahve.jpg";
 import historyAppImage from "@/assets/Historia/2020-app.gif";
 import historyCoworkingImage from "@/assets/Historia/2021-coworking.jpg";
 import historyExportImage from "@/assets/Historia/2022-exportacion-directa.jpg";
 import historyCoffeeCherriesImage from "@/assets/Historia/2024-ferticoolombia.jpg";
-import historyAnniversaryImage from "@/assets/Historia/coocentral-50-anios-2025.webp";
+import historyAnniversaryImage from "@/assets/Historia/2025-50-anios-timeline.webp";
 
 // Todo el contenido proviene del informe institucional (docs/informe-coocentral.pdf),
 // salvo teléfonos, redes y enlaces legales, tomados de www.coocentral.com.
@@ -297,8 +296,8 @@ export const timeline = [
   {
     year: "2015",
     text: "Lanzamiento de la marca propia Café Coocentral.",
-    image: historyCoffeeBrandImage,
-    imageAlt: "Marca Café Coocentral",
+    image: coocentralCoffeeImage,
+    imageAlt: "Presentaciones de café tostado y molido de la marca Café Coocentral",
   },
   {
     year: "2017",

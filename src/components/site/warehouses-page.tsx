@@ -19,7 +19,7 @@ import {
 
 import warehouseLa14Image from "@/assets/Servicios/Almacenes/Almacen-La_14.jpeg";
 import warehouseAgradoImage from "@/assets/Servicios/Almacenes/Almacen_Agrado.jpeg";
-import warehouseMolinoImage from "@/assets/Servicios/Almacenes/Almacen_CC_Molino.jpeg";
+import warehouseMolinoImage from "@/assets/Servicios/Almacenes/Almacen_CC_Molino.webp";
 import warehouseGarzonGalleryImage from "@/assets/Servicios/Almacenes/Almacen_Galeria_Grazon.jpeg";
 import warehouseGuadalupeImage from "@/assets/Servicios/Almacenes/Almacen_Guadalupe.jpeg";
 import warehousePitalImage from "@/assets/Servicios/Almacenes/Almacen_Pital.jpeg";

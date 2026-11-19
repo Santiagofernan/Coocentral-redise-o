@@ -1,31 +1,50 @@
 import { ArrowDown, ArrowRight, CalendarDays } from "lucide-react";
 import { Link } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 
-import heroImage from "@/assets/Inicio/coocentral-50-anios-hero.webp";
+import coocentralFront from "@/assets/Inicio/coocentral_frente.webp";
+import front from "@/assets/Inicio/frente.webp";
+import frontPic from "@/assets/Inicio/frente_PIC.webp";
 import { heroBadges } from "@/content/coocentral";
 import { useCurrentTime } from "@/hooks/use-current-time";
 import { getCoocentralAnniversary, getCoocentralCalendarYear } from "@/lib/coocentral-anniversary";
 
+const heroImages = [coocentralFront, front, frontPic];
+
 export function Hero() {
+  const [activeImage, setActiveImage] = useState(0);
   const today = useCurrentTime() ?? new Date();
   const { count: anniversaryCount } = getCoocentralAnniversary(today);
   const currentYear = getCoocentralCalendarYear(today);
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const intervalId = window.setInterval(() => {
+      setActiveImage((current) => (current + 1) % heroImages.length);
+    }, 7000);
+
+    return () => window.clearInterval(intervalId);
+  }, []);
 
   return (
     <section
       id="inicio"
       className="relative isolate flex min-h-[calc(100svh-4.5rem)] items-end overflow-hidden bg-forest-deep text-paper lg:min-h-[calc(100svh-5rem)]"
     >
-      <img
-        src={heroImage}
-        alt=""
-        aria-hidden="true"
-        width="1952"
-        height="806"
-        fetchPriority="high"
-        className="hero-zoom absolute inset-x-0 top-0 -z-20 h-auto w-full object-contain object-top lg:inset-0 lg:size-full lg:object-cover lg:object-left"
-      />
-      <div className="absolute inset-0 -z-10 bg-linear-to-b from-forest-deep/10 via-forest-deep/45 to-forest-deep lg:bg-linear-to-r lg:from-forest-deep/75 lg:via-forest-deep/45 lg:to-forest-deep/10" />
+      {heroImages.map((image, index) => (
+        <img
+          key={image}
+          src={image}
+          alt=""
+          aria-hidden="true"
+          fetchPriority={index === 0 ? "high" : "auto"}
+          className={`absolute inset-0 -z-20 size-full object-cover object-center transition-opacity duration-1000 motion-reduce:transition-none ${
+            index === activeImage ? "opacity-100" : "opacity-0"
+          }`}
+        />
+      ))}
+      <div className="absolute inset-0 -z-10 bg-linear-to-b from-forest-deep/35 via-forest-deep/55 to-forest-deep lg:bg-linear-to-r lg:from-forest-deep/75 lg:via-forest-deep/55 lg:to-forest-deep/25" />
 
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
         <svg

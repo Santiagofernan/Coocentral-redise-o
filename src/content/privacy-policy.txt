@@ -1,0 +1,695 @@
+Tabla de contenido
+POLÍTICA DE TRATAMIENTO DE DATOS PERSONALES 3
+
+OBJETIVO 3
+
+ALCANCE 3
+
+MARCO NORMATIVO 6
+
+RESPONSABLE DEL TRATAMIENTO 6
+
+ÁMBITO DE APLICACIÓN 7
+
+DESARROLLO DE LA POLÍTICA DE PROTECCIÓN DE DATOS 7
+
+DEFINICIONES 7
+
+NORMAS Y CRITERIOS DE APLICACIÓN 10
+
+PRINCIPIOS GENERALES PARA EL TRATAMIENTO DE DATOS PERSONALES 10
+
+TRATAMIENTO DE DATOS SENSIBLES 11
+
+DERECHOS DE LOS NIÑOS, NIÑAS Y ADOLESCENTES: 12
+
+TRANSFERENCIA INTERNACIONAL DE DATOS PERSONALES 12
+
+TRATAMIENTO AL CUAL SERÁN SOMETIDOS LOS DATOS Y FINALIDAD DEL MISMO 13
+
+AUTORIZACIÓN 13
+
+MEDIOS PARA OTORGAR LA AUTORIZACIÓN 14
+
+MEDIOS PARA OTORGAR LA AUTORIZACIÓN 14
+
+PRUEBA DE LA AUTORIZACIÓN 15
+
+GARANTÍAS DEL DERECHO DE ACCESO 15
+
+AVISO DE PRIVACIDAD 15
+
+DERECHOS Y DEBERES DE LOS TITULARES 15
+
+OBLIGACIONES DE LA ENTIDAD 16
+
+MEDIDAS DE SEGURIDAD 16
+
+DATOS DE CONTACTO PARA RADICACIÓN DE SOLICITUDES 17
+
+SOLICITUDES POR PARTE DEL TITULAR DE DATOS 17
+
+OFICIAL DE PROTECCIÓN DE DATOS 18
+
+REGISTRO NACIONAL DE BASES DE DATOS 18
+
+ENTRADA EN VIGENCIA, MODIFICACIÓN Y PERÍODO DE VIGENCIA DE LAS BASES DE
+DATOS 18
+
+POLÍTICA DE TRATAMIENTO DE DATOS PERSONALES
+
+OBJETIVO
+
+
+La presente política de tratamiento de datos personales tiene por objetivo regular la
+recolección, almacenamiento, uso, circulación y supresión de los datos personales
+registrados en las bases de datos, archivos físicos o digitales de COOCENTRAL, con el
+propósito de garantizar los derechos de los titulares, a través de herramientas que
+favorezcan la autenticidad, confidencialidad e integridad de la información.
+
+
+ALCANCE
+
+La política de cooperativa central de caficultores del huila “COOCENTRAL”, cubre todos
+los aspectos normativos, académicos, organizacionales y de control que deben acatar los
+directivos, funcionarios, contratistas y terceros que trabajen o tengan relación directa de la
+universidad.
+
+las principales finalidades para las cuales la cooperativa recolecta datos personales son:
+
+DE ASOCIADOS
+1. realizar el proceso de afiliación, actualización de información de asociados .
+2. estudio de crédito, perfil financiero y crédito
+3. generar facturación electrónica en los bienes y servicios que son entregados a los
+asociados.
+4. realizar la consulta y reporte de las obligaciones a las centrales de riesgo crediticio
+y en base de datos públicas
+5. transferir los datos o información parcial o total a sus establecimientos de
+comercio, empresas o entidades afiliadas.
+6. realizar promoción, ejecución, desarrollo, capacitación impartidas por la
+Cooperativa
+7. realizar promoción, ejecución, desarrollo, evaluación de programas de cafés
+especiales y los demás ofrecidos por la cooperativa.
+8. realizar promoción, ejecución, desarrollo, de eventos de carácter social en la
+cooperativa.
+9. actividades de georeferenciación y estudios estadísticos
+10. actividades asociativas, culturales, recreativas, deportivas, sociales
+
+11. Crear bases de datos de acuerdo a las características y perfiles de los titulares de
+los datos personales, todo de acuerdo con lo dispuesto en la ley.
+12. actividades tendientes a facturación, recaudo y cobro de cartera vencida
+13. gestión económica y contable
+14. fines históricos, contables o estadísticos
+15. información sensible como datos de salud, con finalidades de medidas sanitarias,
+para mitigar riesgos de contagio de virus en las instalaciones de la cooperativa
+16. gestión administrativa
+17. publicidad propia y de terceros relacionada.
+18. videovigilancia
+19. seguridad y control de acceso a instalaciones
+20. registro fotográfico para fines comerciales y publicitarios, relacionados con el
+objeto social de la cooperativa.
+21. recolección de datos sensibles, para brindar al asociado servicios sociales
+ofrecidos por la cooperativa a su base social, igualmente la recolección de datos
+biométricos como la huella e imagen que serán usados para el otorgamiento de
+créditos, ingreso a la instalaciones.
+22. realizar transferencia internacional, siempre que sea necesario para garantizar la
+adecuada prestación de servicios a los asociados.
+23. realizar promoción, ejecución, desarrollo y evaluación de alianzas y convenios
+comerciales que los beneficien.
+24. expedir certificaciones de carácter administrativo, comercial, crediticio y tributario
+
+DE EMPLEADOS
+
+1. fines históricos, científicos y estadísticos
+2. seguridad-videovigilancia, seguridad y control acceso a las instalaciones de la
+cooperativa
+3. control de horario
+4. formación de personal
+5. gestion de nomina
+6. realizar la consulta y reporte de las obligaciones a las centrales de riesgo crediticio
+y en bases de datos públicas
+7. transferir los datos o información parcial o total a sus establecimientos de
+comercio, empresas y/o entidades afiliadas.
+8. prestaciones sociales y prevención de riesgos laborales
+9. promoción y gestión del empleo, promoción y selección de personal
+10. actualización de información personal y financiera, con el fin de dar cumplimiento a
+las medidas de prevencion del lavado de activos y financiacion del terrorismo.
+11. lograr una eficaz comunicación en lo concerniente a los servicios y otras
+actividades relacionadas con las funciones propias de la cooperativa y dar
+cumplimiento con las obligaciones contraídas con las diferentes contrapartes.
+12. expedir certificados de carácter laboral
+13. información sensible como datos de salud, con finalidades de medidas sanitarias,
+para mitigar riesgos de contagio de virus en las instalaciones de la cooperativa
+
+14. registros fotográficos de carácter laboral, publicitario y comercial de la cooperativa,
+relacionados con actividades comerciales y laborales.
+
+
+
+
+
+DE PROVEEDORES, CONTRATISTAS Y CLIENTES
+1. gestión de proveedores-verificar el cumplimiento de acuerdos y compromisos
+asumidos en virtud de la relación o vínculo existente con los proveedores
+2. presentar quejas, denuncias o reportes a las autoridades o entidades competentes
+en caso de incumplimiento de contratos.
+3. realizar la consulta y reporte de las obligaciones a las centrales de riesgo crediticio
+4. información sensible como datos de salud, con finalidades de medidas sanitarias,
+para mitigar riesgos de contagio de virus en las instalaciones de la cooperativa
+5. Crear base de datos de acuerdo con las características y perfiles de los titulares
+de los datos personales, todo de acuerdo con lo dispuesto en la ley.
+6. actualización anual de información administrativa, comercial y financiera, con el fin
+de dar cumplimiento a las politicas de la debida diligencia en el marco de la
+prevencion del lavado de activos y financiacion del terrorismo.
+
+En consecuencia, toda labor de tratamiento de Datos Personales realizada en Coocentral
+deberá corresponder al ejercicio de su gestión corporativa y comercial o a las finalidades
+mencionadas en la autorización otorgada por el Titular, cuando la situación así lo amerite.
+De manera particular, las principales finalidades para el tratamiento de Datos Personales
+que corresponde a Coocentral desarrollar en ejercicio de su objeto social, se relacionan a
+continuación:
+
+● proveer los servicios y productos requeridos por el titular
+● Dar a conocer los servicios y productos de la Cooperativa
+● Brindar información al titular para promover su participación en capacitaciones,
+cursos, seminarios y eventos organizados por la Cooperativa.
+● Realizar las gestiones pertinentes para el desarrollo de la etapa precontractual,
+contractual y pos contractual con la Cooperativa, respecto de cualquiera relación
+negocial subyacente que se tenga con el titular, así como dar cumplimiento a las
+órdenes de autoridades judiciales, administrativas y a la ley colombiana.
+● Gestionar trámites (Peticiones, quejas, reclamos) y evaluar la calidad de los
+servicios y productos que brinda la Cooperativa.
+● Dar a conocer, transferir y/o transmitir datos personales dentro y fuera del país,
+incluso a terceros como consecuencia de un contrato, ley o vínculo lícito que así lo
+requiera o para implementar servicios de computación en la nube.
+
+● Suministrar a entidades públicas y/o privadas, la información necesaria para la
+realización de estudios y en general la administración de sistemas de información
+del sector solidario y cafetero.
+● Reportar datos sobre el cumplimiento o incumplimiento de las obligaciones
+financieras a centrales de información crediticia.
+● Realizar acciones de vigilancia, control y seguridad de la salud de las personas, la
+protección de los bienes, dispositivos móviles y/o electrónicos de la Cooperativa.
+● Capturar imágenes de las personas que ingresan y/o se encuentren en las
+instalaciones de la Cooperativa con fines de seguridad.
+● Registrar por medio de captura de imágenes el desarrollo de actividades, y/o
+eventos, para evidencia y control de la gestión corporativa y para el uso en
+materiales promocionales y otros medios publicitarios de comunicación visual.
+● Establecer y cotejar la plena identificación e individualización de los trabajadores,
+contratistas y asociados de la cooperativa.
+Para las finalidades anteriormente mencionadas, Coocentral podrá obtener información de
+otras fuentes públicas y/o privadas permitidas según sea el caso, previo consentimiento
+por parte del titular, con el fin de:
+● Consultar antecedentes disciplinarios, penales y judiciales para el desarrollo de
+etapas pre-contractuales.
+● Consultar el historial crediticio del titular para brindar servicios de créditos y
+realizar cálculos del riesgo crediticio.
+● Consultar en la plataforma de COOPCENTRAL, el estado del titular ante la Unidad
+de Información y Análisis Financiero, cuando por sus actividades transaccionales
+superen la barrera de alerta de nuestro Sistema Interno de Prevención para el
+Control de Lavado de Activos y Financiación del Terrorismo.
+
+MARCO NORMATIVO
+
+A continuación se menciona la normatividad relacionada con la Protección de Datos
+Personales: Ley 1266 de 2008• Ley 1581 de 2012• Decreto 1377 de 2013• Decreto
+1074 del 26 de mayo de 2015 (Reglamentación Parcial de la Ley 1581).• Circular 02 del 3
+de noviembre de 2015 de (Adición al Capítulo 2, Título V de la Circular• Única de la SIC.
+Decreto 886 de 2014 – Reglamentación del Artículo 25 de la Ley 1581: Registro Nacional•
+de Bases de Datos.
+
+RESPONSABLE DEL TRATAMIENTO
+
+
+Razón Social Cooperativa central de caficultores del
+Huila
+
+Numero de identificacion tributaria 891.101.158-1
+
+Dirección - Domicilio Carrera 12 No 2 - 55 CC El Molino
+
+Teléfono 8332141
+
+email info@coocentral.co
+
+sitio web https://www.cafescoocentral.com.co/
+
+
+ÁMBITO DE APLICACIÓN
+
+Datos personales registrados en cualquier base de datos, de la entidad cooperativa que
+los haga susceptibles de tratamiento por entidades de naturaleza pública o priv ada,
+efectuado en el territorio colombiano o en países en donde sea aplicable la legislación
+colombiana.
+
+DESARROLLO DE LA POLÍTICA DE PROTECCIÓN DE DATOS
+
+Coocentral durante todas sus actuaciones, tendrá presente el respeto por la protección de
+datos personales y en consecuencia solicitará, desde el ingreso del dato, la
+correspondiente autorización para el uso de la información y dará a conocer las
+finalidades del tratamiento.
+La Cooperativa, acatando los principios establecidos en la ley, atenderá en sus
+actuaciones y manejo de información de datos personales las finalidades que se deriven
+de la recolección de los mismos. De la misma forma, informará a todos sus titul ares los
+derechos que se derivan de la protección de datos personales.
+
+
+
+
+DEFINICIONES
+
+Actores del tratamiento de datos personales: Son las empresas o personas que llevan a
+cabo el suministro, recolección y el tratamiento de datos personales.
+“Responsable del Tratamiento”: Persona natural o jurídica, pública o privada, que por sí
+misma o en asocio con otros, decida sobre la base de datos y/o el Tratamiento de los
+datos.
+“Encargado del Tratamiento”: Persona natural o jurídica, pública o privada, que por sí
+misma o en asocio con otros, realice el Tratamiento de Datos Personales por cuenta del
+Responsable del Tratamiento de Datos Personales.
+
+“Operador de información”: Se denomina operador de información a la persona, entidad u
+organización que recibe de la fuente datos personales sobre varios titulares de la
+información, los administra y los pone en conocimiento de los usuarios. El operador, en
+cuanto tiene acceso a información personal de terceros, debe garantizar la protección de
+los derechos del titular de los datos.
+Salvo que el operador sea la misma fuente de la información, este no tiene relación
+comercial o de servicio con el titular, por lo tanto, no es responsable por la calidad de los
+datos que le sean suministrados por la fuente.
+“Titular de Datos Personales”: Persona natural cuyos datos personales sean objeto de
+Tratamiento.
+“Causahabiente”: Persona a quien le han sido transferidos los derechos de otra.
+“Fuente de Información”: Es la persona, entidad u organización que recibe o conoce datos
+personales de los titulares de la información, como consecuencia de una relación
+comercial o de servicio y que, en razón de autorización legal, o del titular, suministra esos
+datos a un operador de información. El operador de información, a su vez, entregará
+datos personales al usuario final. Si la fuente entrega la información directamente a los
+usuarios y no, a través de un operador, tendrá la doble condición de fuente y operador y
+asumirá los deberes y responsabilidades de ambos. La fuente de la información responde
+por la calidad de los datos suministrados al operador, y debe garantizar la protección de
+los derechos del titular de los datos.
+“Gestor de Datos”: El colaborador de la Cooperativa que realiza el tratamiento a los datos
+personales.
+“Usuario”: Es la persona natural o jurídica que puede acceder a información personal de
+uno o varios titulares de la información suministrada por el operador o por la fuente, o
+directamente por el titular de la información. El usuario debe garantizar la protección de
+los derechos del titular de los datos. En el caso en que el usuario a su vez entregue la
+información directamente a un operador, aquél tendrá la doble condición de usuario y
+fuente, y asumirá los deberes y responsabilidades de ambos.
+“Autorización”: Consentimiento previo, expreso e informado del titular para llevar a cabo el
+Tratamiento de Datos Personales.
+“Aviso de privacidad”: Comunicación verbal o escrita generada por el Responsable,
+dirigida al Titular para el Tratamiento de sus datos personales, mediante la cual se le
+informa acerca de la existencia de las políticas de Tratamiento de información que le
+serán aplicables, la forma de acceder a las mismas y las finalidades del Tratamiento que
+se pretende dar a los datos personales.
+“Base de Datos” Conjunto organizado de datos personales que sea objeto de tratamiento.
+“Cambios sustanciales a una Base de Datos”: Son aquellos que se relacionen con la
+finalidad de la base de datos, el Encargado de Tratamiento, los canales de atención al
+Titular, la clasificación o tipos de datos personales almacenados en cada base de datos,
+las medidas de seguridad de la información implementadas, la Política de Tratamiento de
+la Información y la transferencia y transmisión internacional de datos personales.
+
+“Canales para ejercer derechos”: Son los medios de recepción y atención de peticiones,
+consultas y reclamos que el Responsable del Tratamiento y el Encargado del Tratamiento
+deben poner a disposición de los Titulares de la información, con los datos de contacto
+respectivos, por medio de los cuales el Titular puede ejercer sus derechos a conocer,
+actualizar, rectificar y suprimir sus datos personales contenidos en bases de datos y
+revocar la autorización que haya otorgado para el Tratamiento de los mismos, cuando
+esto sea posible. Estos canales deben prever, por lo menos, la posibilidad de que el
+Titular ejerza sus derechos a través del mismo medio por el cual fue recogida su
+información, dejando constancia de la recepción y trámite de la respectiva solicitud.
+“Conducta inequívoca”: Comportamiento que permite concluir de forma razonable que el
+Titular de Datos Personales otorgó la autorización para el tratamiento de sus datos.
+“Consulta”: Proceso mediante el cual el Titular de Datos Personales puede solicitar a la
+Cooperativa Central de Caficultores del Huila, sus filiales y subsidiarias su información
+personal que reposa en las bases de datos.
+“Cooperativa Central de Caficultores del Huila”: o Responsable
+“Dato Personal”: Cualquier información vinculada o que pueda asociarse a una o varias
+personas naturales determinadas o determinables.
+“Dato público”: Es el dato que no sea semiprivado, privado o sensible. Son considerados
+datos públicos, entre otros, los datos relativos al estado civil de las personas, a su
+profesión u oficio y a su calidad de comerciante o de servidor público. Por su naturaleza,
+los datos públicos pueden estar contenidos, entre otros, en registros públicos,
+documentos públicos, gacetas y boletines oficiales y sentencias judiciales debidamente
+ejecutoriadas que no estén sometidas a reserva.
+“Datos Sensibles: Se entiende por datos sensibles aquellos que afectan la intimidad del
+Titular o cuyo uso indebido puede generar su discriminación, tales como aquellos que
+revelen el origen racial o étnico, la orientación política, las convicciones religiosas o
+filosóficas, la pertenencia a sindicatos, organizaciones sociales, de derechos humanos o
+que promueva intereses de cualquier partido político o que garanticen los derechos y
+garantías de partidos políticos de oposición, así como los datos relativos a la salud, a vida
+sexual, y los datos biométricos.
+“Incidente de Seguridad”: Se refiere a la violación de los códigos de seguridad o la pérdida
+o robo y/o acceso no autorizado de información de una base de datos administrada por el
+Responsable del Tratamiento o por su Encargado.
+“Reclamo”: Proceso mediante el cual los Titulares de los datos Personales o sus
+causahabientes, podrán solicitar a la Cooperativa Central de Caficultores del Huila ltda, la
+actualización, rectificación, supresión parcial o total de la información, la prueba de la
+autorización o la revocatoria de la misma.
+“Registro Nacional De Bases De Datos (RNBD)”: Directorio público de las bases de datos
+personales sujetas a Tratamiento que operan en el país, administrado por la
+Superintendencia de Industria y Comercio y de libre consulta para los ciudadanos.
+“SIC”: Superintendencia de Industria y Comercio.
+
+“Transferencia”: La transferencia de datos tiene lugar cuando el Responsable y/o
+Encargado del Tratamiento de datos personales, ubicado en Colombia, envía la
+información o los datos personales a un receptor, que a su vez es Responsable del
+Tratamiento y se encuentra dentro o fuera del país.
+“Transmisión”: Tratamiento de datos personales que implica la comunicación de los
+mismos dentro o fuera de Colombia cuando tenga por objeto la realización de un
+Tratamiento por el Encargado por cuenta del Responsable.
+“Tratamiento de Datos Personales”: Cualquier operación o conjunto de operaciones sobre
+Datos Personales, tales como la recolección, almacenamiento, consulta, intercambio,
+transferencia, uso, circulación o supresión.
+“USC”: Unidad de Servicios Compartidos.
+
+
+
+NORMAS Y CRITERIOS DE APLICACIÓN
+
+El Consejo de Administración definirá los lineamientos para el desarrollo e
+implementación del Sistema de Protección de Datos Personales en la Cooperativa Central
+de Caficultores del Huila.
+
+
+
+
+PRINCIPIOS GENERALES PARA EL TRATAMIENTO DE
+DATOS PERSONALES
+En el Tratamiento de Datos Personales se cumplirá con los siguientes principios:
+a) Principio de finalidad: El Tratamiento de Datos Personales debe obedecer a una
+finalidad legítima que se informará al Titular.
+b) Principio de libertad: El Tratamiento de Datos Personales sólo puede ejercerse con
+el consentimiento, previo, expreso e informado del Titular. Los Datos Personales no
+podrán ser obtenidos o divulgados sin previa autorización o mandato legal o judicial que
+releve el consentimiento del Titular.
+c) Principio de veracidad o calidad: La información sujeta a tratamiento debe ser
+veraz, completa, exacta, actualizada, comprobable y comprensible. Se prohíbe el
+Tratamiento de datos parciales, incompletos, fraccionados o que induzcan a error.
+d) Principio de transparencia: En el Tratamiento debe garantizarse el derecho del
+Titular a obtener de la Cooperativa Central de Caficultores del Huila, en cualquier
+momento y sin restricciones, información acerca de la existencia de datos que le
+concierne.
+
+e) Principio de acceso y circulación restringida: Los Datos Personales, salvo la
+información pública, no podrán estar disponibles en Internet u otros medios de divulgación
+o comunicación masiva, salvo que el acceso sea técnicamente controlable para brindar un
+conocimiento restringido sólo a los Titulares o terceros autorizados por ellos.
+f) Principio de seguridad: La información sujeta a Tratamiento, se deberá manejar
+con las medidas técnicas, humanas y administrativas que sean necesarias para otorgar
+seguridad a los registros evitando su adulteración, pérdida, consulta, uso o acceso no
+autorizado o fraudulento.
+g) Principio de confidencialidad: Todas las personas que intervengan en el
+Tratamiento de Datos Personales están obligadas a garantizar la reserva de la
+información, inclusive después de finalizada su relación con alguna de las labores que
+comprende el tratamiento.
+
+
+TRATAMIENTO DE DATOS SENSIBLES
+
+Datos sensibles: Está prohibido el tratamiento de datos sensibles, excepto cuando:
+a) El Titular haya dado su autorización explícita a dicho Tratamiento, salvo en los
+casos que por ley no sea requerido el otorgamiento de dicha autorización.
+b) El Tratamiento sea necesario para salvaguardar el interés vital del Titular y éste se
+encuentre física o jurídicamente incapacitado. En estos eventos, los representantes
+legales deberán otorgar su autorización.
+c) El Tratamiento sea efectuado en el curso de las actividades legítimas y con las
+debidas garantías por parte de una fundación, ONG, asociación o cualquier otro
+organismo sin ánimo de lucro, cuya finalidad sea política, filosófica, religiosa o sindical,
+siempre que se refieran exclusivamente a sus miembros o a las personas que mantengan
+contactos regulares por su finalidad.
+En estos eventos, los datos no se podrán suministrar a terceros sin la autorización del
+Titular.
+d) El Tratamiento se refiere a datos que sean necesarios para el reconocimiento,
+ejercicio o defensa de un derecho en un proceso judicial.
+e) El Tratamiento tenga una finalidad histórica, estadística o científica. En este evento
+deberán adoptarse las medidas para suprimir la identidad de los Titulares.
+
+Coocentral restringirá el tratamiento de datos personales sensibles a lo estrictamente
+indispensable y solicitará consentimiento previo y expreso sobre la finalidad de su
+tratamiento, además de hacerlo bajo las más estrictas medidas de seguridad y
+confidencialidad.
+
+DERECHOS DE LOS NIÑOS, NIÑAS Y ADOLESCENTES:
+
+El tratamiento de datos personales de niños, niñas y adolescentes está prohibido, excepto
+cuando se trate de datos de naturaleza pública.
+En los casos en que realice tratamiento de los mismos lo realizará siempre y cuando:
+1. Se trate de datos de naturaleza pública
+2. El tratamiento realizado por COOCENTRAL, responde y respeta el interés superior de
+los niños, niñas y adolescentes.
+3. El tratamiento realizado por la Cooperativa asegure el respeto de los derechos
+fundamentales.
+Una vez cumplidos los anteriores requisitos, el representante legal de los niños, niñas o
+adolescentes otorgará la autorización, previo ejercicio del menor de su derecho a ser
+escuchado, opinión que será valorada teniendo en cuenta la madurez, autonomía y
+capacidad para entender el asunto. Coocentral se compromete, en el tratamiento de los
+datos personales, a respetar los derechos prevalentes de los menores.
+Queda proscrito el tratamiento de datos personales de menores, salvo aquellos datos que
+sean de naturaleza pública, siempre que no se ponga en riesgo la prevalencia de los
+derechos fundamentales de los menores y que equívocamente responda el tratamiento a
+la realización de principios de interés superior.
+
+TRANSFERENCIA INTERNACIONAL DE DATOS PERSONALES
+
+En los casos en que la Cooperativa Central de Caficultores del Huila, envié o transfiera
+datos personales de los titulares que reposan en sus bases de datos a otro país, deberá
+contar con la autorización del titular de la información, que es objeto de transferencia.
+Salvo que la ley diga lo contrario, es presupuesto necesario la existencia de dicha
+autorización para efectuar la circulación internacional de datos. En este sentido, los
+obligados a cumplir esta política deberán verificar que se cuenta con la autorización
+previa, expresa e inequívoca del titular que permita trasmitir sus datos personales.
+
+La transferencia internacional de datos personales se realizará únicamente a terceros con
+quien la Cooperativa, tenga vínculo contractual, comercial y/o legal.
+Para la transferencia internacionales de datos personales de los titulares, Coocentral
+tomará las medidas necesarias para que los terceros conozcan y se comprometan a
+observar esta política, bajo el entendido que la información personal que reciba
+únicamente podrá ser utilizada para asuntos directamente relacionados con la
+Cooperativa y solamente mientras dure la relación contractual y no podrá ser usada o
+destinada para propósito o fin diferente. Para la transferencia internacional de datos
+
+personales se observará lo previsto en el artículo 26 de la ley 1581 del 2012 o demás
+normas que lo modifiquen.
+
+
+TRATAMIENTO AL CUAL SERÁN SOMETIDOS LOS DATOS Y
+FINALIDAD DEL MISMO
+
+Los datos serán utilizados por la Cooperativa Central de Caficultores del Huila Ltda, para
+el desarrollo de su objeto social y de la relación contractual que lo vincula con el Titular de
+Datos Personales, en caso de existir, y en particular para: a) Desarrollar relaciones
+comerciales con terceros. b) Informar sobre nuevos productos o servicios. c) Realizar
+tratamientos estadísticos de sus datos. d) Evaluar la calidad de productos o servicios. e)
+Desarrollar actividades de mercadeo y promocionales. f) Transmitir, mediante publicación
+en la web de institucional correo físico, electrónico, celular o dispositivo móvil, - vía
+mensajes de texto (SMS y/o MMS) información comercial, publicitaria o promocional sobre
+los productos y/o servicios, eventos y/o promociones, con el fin de impulsar, invitar, dirigir,
+ejecutar, informar y de manera general, llevar a cabo campañas, promociones o
+concursos. g) Realizar estudios internos sobre el cumplimiento de las relaciones
+comerciales y estudios de mercado. h) Dar cumplimiento a obligaciones contraídas con el
+Titular. i) Responder requerimientos legales de entidades administrativas y judiciales. j)
+Ejecutar el contrato de trabajo. k) Garantizar la seguridad de la Cooperativa Central de
+Caficultores del Huila l) Desarrollar actividades de capacitación. ll) Compartir, incluyendo
+la transferencia y transmisión de sus datos personales a terceros países para los fines
+relacionados con la operación de la Cooperativa Central de Caficultores del Huila, de
+acuerdo con las disposiciones de ley y garantizando siempre el cumplimiento de los
+mínimos establecidos en la normativa colombiana. El Responsable y/o el Encargado del
+tratamiento harán uso de los datos única y exclusivamente para la finalidad que le ha sido
+informada al Titular de Datos Personales.
+
+Por ningún motivo se podrá utilizar medios engañosos o fraudulentos para realizar
+tratamiento de datos, y en los casos en que el uso se haya definido como temporal, la
+información sólo podrá utilizarse durante el lapso que sea necesario para el objetivo por el
+cual fue solicitada.
+
+
+AUTORIZACIÓN
+
+El Tratamiento de Datos Personales realizado por la Cooperativa Central de Caficultores
+del Huila ltda, requiere del consentimiento libre, previo, expreso e informado del Titular.
+
+Coocentral, en su condición de Responsable del Tratamiento de Datos Personales, ha
+dispuesto de los mecanismos necesarios para obtener la autorización del Titular, sus
+causahabientes o representantes legitimados.
+La autorización podrá darse por medio de un documento físico, electrónico o cualquier
+otro formato que permita garantizar su posterior consulta, y que, además, pueda
+demostrarse, de manera inequívoca, que el Titular de los Datos Personales: a) autorizó el
+tratamiento, b) conoce y acepta que la Cooperativa recogerá y utilizará la información
+para los fines que le han sido informados. En virtud de lo anterior, la autorización
+solicitada deberá incluir: a) El Responsable del Tratamiento y qué datos se recopilan; b)
+La finalidad del tratamiento de los datos; c) Los derechos de acceso, corrección,
+actualización o supresión de los datos personales suministrados por el titular y, d) Si se
+recopilan datos sensibles. e) La identificación, dirección física o electrónica y teléfono del
+responsable del Tratamiento.
+
+
+MEDIOS PARA OTORGAR LA AUTORIZACIÓN
+
+La Cooperativa Central de Caficultores del Huila, obtendrá la autorización mediante
+diferentes medios, entre ellos el documento físico, electrónico, mensaje de datos, internet,
+sitios web o en cualquier otro formato que en todo caso permita la obtención del
+consentimiento mediante conductas inequívocas a través de las cuales se concluya que
+de no haberse surtido la misma por parte del titular o la persona legitimada para ello, los
+datos no se hubieran almacenado o capturado en la base de datos.
+La autorización será solicitada por la Cooperativa Central de Caficultores del Huilas, de
+manera previa al tratamiento de los datos.
+
+
+MEDIOS PARA OTORGAR LA AUTORIZACIÓN
+
+La Cooperativa Central de Caficultores del Huila, conservará la prueba de autorización
+mediante diferentes medios, entre ellos el documento físico, electrónico, mensaje de
+datos, internet, sitios web, o en cualquier otro formato que en todo caso permita la
+obtención del consentimiento mediante conductas inequívocas a través de las cuales se
+concluya que de no haberse surtido la misma por parte del titular o la persona legitimada
+para ello, los datos no se hubieran almacenado o capturado en la base de datos.
+La autorización será solicitada por la Cooperativa Central de Caficultores del Huilas, de
+manera previa al tratamiento de los datos.
+
+PRUEBA DE LA AUTORIZACIÓN
+
+
+La Cooperativa Central de Caficultores del Huila, conservará la prueba de autorización
+otorgada por los titulares de los datos personales para su tratamiento, para lo cual
+utilizará los mecanismos disponibles a su alcance en la actualidad al igual adoptará las
+acciones necesarias para mantener el registro de la forma y fecha y en la que obtuvo
+esta. En consecuencia, COOCENTRAL, podrá establecer archivos físicos o repositorios
+electrónicos realizados de manera directa o a través de terceros contratados para tal fin.
+
+
+GARANTÍAS DEL DERECHO DE ACCESO
+
+Para garantizar el derecho de acceso del titular de los datos, COOCENTRAL, pondrá a
+disposición de este, previa acreditación de su identidad, legitimidad o personalidad de su
+representante, sin costo o erogación alguna, de manera pormenorizada y detallada, los
+respectivos datos personales a través de todo tipo de medio, incluyendo los medios
+electrónicos que permitan el acceso directo del titular de ellos. Dicho acceso deberá
+ofrecerse sin límite alguno y le deben permitir al titular la posibilidad de conocerlos y
+actualizarlos en línea.
+
+
+AVISO DE PRIVACIDAD
+La Cooperativa Central de Caficultores del Huila cuenta con el Aviso de Privacidad, que
+contiene la información exigida mediante el Decreto 1377 de 2013, el cual será
+comunicado al Titular de Datos Personales a través de medios de comunicación de la
+compañía. Para facilitar la divulgación, su contenido podrá ser incluido dentro de la
+autorización.
+
+
+DERECHOS Y DEBERES DE LOS TITULARES
+
+El Titular de los Datos Personales tendrá los siguientes derechos: a) Conocer, actualizar y
+rectificar los Datos Personales. b) Solicitar pruebas de la autorización otorgada a la
+Cooperativa. c) Ser informado por la Cooperativa, previa solicitud, respecto del uso que le
+ha dado a sus Datos Personales. d) Presentar consultas ante el Responsable o
+Encargado del Tratamiento. e) Presentar ante la Superintendencia de Industria y
+Comercio quejas por infracciones a lo dispuesto en la presente ley y las demás normas
+que la modifiquen, adicionen o complementen, una vez haya agotado el trámite de
+consulta o reclamo ante el Responsable o el Encargado del tratamiento, según el Artículo
+16 del Decreto 1377. f) Acceder de manera gratuita a los Datos Personales que son
+
+objeto de Tratamiento. El Titular de los Datos Personales debe mantener actualizada su
+información y garantizar, en todo momento, la veracidad de la misma.
+La Cooperativa Central de Caficultores del Huila, no se hará responsable, en ningún caso,
+por cualquier tipo de responsabilidad derivada por la inexactitud de la información
+suministrada por el Titular.
+
+
+
+OBLIGACIONES DE LA ENTIDAD
+
+La ENTIDAD deberá: Garantizar al Titular, en todo tiempo, el pleno y efectivo ejercicio
+del derecho de hábeas data. Solicitar y conservar, en las condiciones previstas en la
+presente ley, copia de la respectiva autorización otorgada por el Titular. Informar
+debidamente al Titular sobre la finalidad de la recolección y los derechos que le asisten
+por virtud de la autorización otorgada. Conservar la información bajo las condiciones de
+seguridad necesarias para impedir su adulteración, pérdida, consulta, uso o acceso no
+autorizado o fraudulento. Garantizar que la información que se suministre al Encargado
+sea veraz, completa, exacta, actualizada, comprobable y comprensible. Actualizar la
+información, comunicando de forma oportuna al Encargado del Tratamiento, todas las
+novedades respecto de los datos que previamente le haya suministrado y adoptar las
+demás medidas necesarias para que la información suministrada a este se mantenga
+actualizada. Rectificar la información cuando sea incorrecta y comunicar lo pertinente al
+Encargado. Suministrar al Encargado, según el caso, únicamente datos cuyo
+Tratamiento esté previamente autorizado de conformidad con lo previsto en la presente
+ley. Exigir al Encargado en todo momento, el respeto a las condiciones de seguridad y
+privacidad de la información del Titular. Tramitar las consultas y reclamos formulados en
+los términos señalados en la presente ley. Adoptar un manual interno de políticas y
+procedimientos para garantizar el adecuado cumplimiento de la presente ley y en
+especial, para la atención de consultas y reclamos. Informar al Encargado cuando
+determinada información se encuentra en discusión por parte del Titular, una vez se haya
+presentado la reclamación y no haya finalizado el trámite respectivo. Informar a solicitud
+del Titular sobre el uso dado a sus datos; Informar a la autoridad de protección de datos
+cuando se presenten violaciones a los códigos de seguridad y existan riesgos en la
+administración de la información de los Titulares. Cumplir las instrucciones y
+requerimientos que imparta la Superintendencia de Industria y Comercio.
+
+
+MEDIDAS DE SEGURIDAD
+
+La Cooperativa Central de Caficultores del Huila, adoptará las medidas técnicas, humanas
+y administrativas que sean necesarias para otorgar seguridad a los registros evitando su
+adulteración, pérdida, consulta, uso o acceso no autorizado o fraudulento. Dichas
+
+medidas responderán a los requerimientos mínimos hechos por la legislación vigente y
+periódicamente se evaluará su efectividad.
+
+
+DATOS DE CONTACTO PARA RADICACIÓN DE SOLICITUDES
+
+Los Titulares de la Información pueden ejercer sus derechos de revocar la autorización
+para el tratamiento de datos, conocer, actualizar, rectificar y suprimir sus Datos
+Personales, enviando un correo electrónico a info@coocentral.co.
+De igual manera, pueden radicar la solicitud en la sede principal de la cooperativa, en la
+Carrera 12 No 2 - 55 CC El Molino, en la ciudad de Garzon, en la recepción de
+Coocentral.
+
+
+
+SOLICITUDES POR PARTE DEL TITULAR DE DATOS
+
+El responsable de garantizar la respuesta oportuna a las solicitudes de consulta o reclamo
+es el Área de comunicaciones en cabeza del Oficial de Protección de Datos.
+Término para la Atención de Consulta• De acuerdo con la Ley 1581 de 2012, la
+solicitud de consulta debe ser atendida en un término máximo de diez (10) días hábiles
+contados a partir de la fecha de recibo de la misma.
+Cuando no fuere posible atender la consulta dentro de dicho término, se informará al
+interesado, expresando los motivos de la demora y señalando la fecha en que se
+atenderá su consulta, la cual en ningún caso podrá superar los cinco (5) días hábiles
+siguientes al vencimiento del primer término.
+Término para la Atención de Reclamos• De acuerdo con la Ley 1581 de 2012, la
+solicitud de reclamo debe ser atendida en un término máximo de quince (15) días hábiles
+contados a partir del dia siguiente del recibo de la misma.
+Cuando no fuere posible atender el reclamo dentro de dicho término, se informará al
+interesado los motivos de la demora y la fecha en que se atenderá su reclamo, la cual en
+ningún caso podrá superar los ocho (8) días hábiles siguientes al vencimiento del primer
+término.
+
+OFICIAL DE PROTECCIÓN DE DATOS
+
+El Oficial de Protección de Datos es el Líder Política y Cumplimiento - Seguridad de la
+Información.
+
+
+REGISTRO NACIONAL DE BASES DE DATOS
+
+Se debe llevar a cabo el proceso de registro de las bases de datos ante la
+Superintendencia de Industria y Comercio, de acuerdo con las definiciones de la
+herramienta puesta a disposición por esta autoridad y en atención a las disposiciones del
+Decreto 886 de 2014.
+
+
+
+
+ENTRADA EN VIGENCIA, MODIFICACIÓN Y PERÍODO DE
+VIGENCIA DE LAS BASES DE DATOS
+
+
+La presente política aplica a partir del día XX de XXX de XXX y la información
+suministrada por los grupos de interés permanecerá almacenada hasta por el término de
+cinco (5) años contados a partir de la fecha del último Tratamiento, para permitirle a la
+Cooperativa Central de Caficultores del Huila, el cumplimiento de las obligaciones legales
+y/o contractuales a su cargo especialmente en materia contable, fiscal y tributaria.
+Esta política podrá ser modificada en cualquier momento y de forma unilateral por parte
+de la Cooperativa Central de Caficultores del Huila

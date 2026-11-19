@@ -1,8 +1,9 @@
-import { ArrowUpRight, MapPin, Phone } from "lucide-react";
+import { ArrowRight, ArrowUpRight, MapPin, Phone } from "lucide-react";
 import { Link, useRouterState } from "@tanstack/react-router";
 
 import logo from "@/assets/coocentral-logo.svg";
 import { contact, footerColumns, socials } from "@/content/coocentral";
+import { privacyPolicyPath, requestPrivacyPolicyModal } from "@/lib/privacy-policy-modal";
 
 function SocialBrandIcon({ label }: { label: string }) {
   if (label === "Facebook") {
@@ -49,7 +50,7 @@ function SocialBrandIcon({ label }: { label: string }) {
   throw new Error(`No hay un logotipo de red social configurado para "${label}".`);
 }
 
-export function SiteFooter() {
+export function SiteFooter({ onManageCookies }: { onManageCookies: () => void }) {
   const pathname = useRouterState({ select: (state) => state.location.pathname });
 
   return (
@@ -123,8 +124,17 @@ export function SiteFooter() {
             <ul className="mt-4 space-y-3.5">
               {column.links.map((item) => (
                 <li key={item.href}>
-                  {item.href.startsWith("/") &&
-                  !/\.(pdf|jpe?g|png|webp)(?:[?#]|$)/i.test(item.href) ? (
+                  {item.href === privacyPolicyPath ? (
+                    <button
+                      type="button"
+                      onClick={requestPrivacyPolicyModal}
+                      className="inline-flex items-start gap-1 text-left text-base leading-6 text-paper/75 transition-all duration-200 hover:translate-x-1 hover:text-lime"
+                    >
+                      {item.label}
+                      <ArrowRight className="mt-0.5 size-3.5 shrink-0" />
+                    </button>
+                  ) : item.href.startsWith("/") &&
+                    !/\.(pdf|jpe?g|png|webp)(?:[?#]|$)/i.test(item.href) ? (
                     <Link
                       to={item.href}
                       className="inline-flex items-start text-base leading-6 text-paper/75 transition-all duration-200 hover:translate-x-1 hover:text-lime"
@@ -153,6 +163,13 @@ export function SiteFooter() {
           <span className="text-sm leading-6 text-paper/75">
             © 2026 Cooperativa Central de Caficultores del Huila
           </span>
+          <button
+            type="button"
+            onClick={onManageCookies}
+            className="w-fit text-left text-sm font-semibold text-paper/75 underline underline-offset-4 transition-colors hover:text-lime focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime focus-visible:ring-offset-2 focus-visible:ring-offset-forest-deep"
+          >
+            Preferencias de cookies y privacidad
+          </button>
           <nav aria-label="Redes sociales" className="flex min-w-0 flex-col gap-3">
             <p className="text-sm font-bold uppercase tracking-[0.12em] text-paper/75">
               Síguenos en redes

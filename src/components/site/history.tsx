@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight, MoveRight } from "lucide-react";
 
-import historyImage from "@/assets/coocentral-historia.jpg";
+import historyImage from "@/assets/coocentral-historia.avif";
 import { timeline } from "@/content/coocentral";
 
 import { SectionHeading } from "./section-heading";

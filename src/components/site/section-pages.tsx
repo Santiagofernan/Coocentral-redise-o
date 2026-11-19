@@ -47,6 +47,7 @@ import {
   sustainabilityPillars,
   vision,
 } from "@/content/coocentral";
+import { privacyPolicyPath, requestPrivacyPolicyModal } from "@/lib/privacy-policy-modal";
 import { FarmerCenter } from "@/components/site/farmer-center";
 import { PhoneContactDialog } from "@/components/site/phone-contact-dialog";
 import {
@@ -189,31 +190,47 @@ export function CooperativePage() {
           </p>
           <ul className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
             {cooperativeResources.map((item, index) => {
-              const ResourceIcon = item.external ? ArrowUpRight : ArrowRight;
+              const isPrivacyPolicy = item.href === privacyPolicyPath;
+              const ResourceIcon = item.external && !isPrivacyPolicy ? ArrowUpRight : ArrowRight;
+              const resourceContent = (
+                <>
+                  <span className="grid size-10 shrink-0 place-items-center rounded-full bg-brand/8 font-display text-sm font-bold text-brand transition-colors duration-300 group-hover:bg-brand group-hover:text-paper">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <span className="min-w-0 flex-1">
+                    <span className="block text-sm font-semibold leading-5 text-ink transition-colors duration-200 group-hover:text-brand">
+                      {item.label}
+                    </span>
+                  </span>
+                  <span className="grid size-9 shrink-0 place-items-center rounded-full bg-sand text-brand/70 transition-all duration-300 group-hover:translate-x-0.5 group-hover:bg-lime group-hover:text-forest-deep">
+                    <ResourceIcon
+                      aria-hidden="true"
+                      className="size-4 transition-transform duration-300 group-hover:translate-x-0.5"
+                    />
+                  </span>
+                </>
+              );
 
               return (
                 <li key={item.label} className="h-full">
-                  <a
-                    href={item.href}
-                    target={item.external ? "_blank" : undefined}
-                    rel={item.external ? "noreferrer" : undefined}
-                    className="group flex h-full min-h-21 items-center gap-3 rounded-xl border border-brand/15 bg-background p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand/40 hover:bg-sand/70 hover:shadow-[0_14px_28px_-18px_oklch(0.3_0.06_156/0.55)] active:translate-y-0 active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
-                  >
-                    <span className="grid size-10 shrink-0 place-items-center rounded-full bg-brand/8 font-display text-sm font-bold text-brand transition-colors duration-300 group-hover:bg-brand group-hover:text-paper">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                    <span className="min-w-0 flex-1">
-                      <span className="block text-sm font-semibold leading-5 text-ink transition-colors duration-200 group-hover:text-brand">
-                        {item.label}
-                      </span>
-                    </span>
-                    <span className="grid size-9 shrink-0 place-items-center rounded-full bg-sand text-brand/70 transition-all duration-300 group-hover:translate-x-0.5 group-hover:bg-lime group-hover:text-forest-deep">
-                      <ResourceIcon
-                        aria-hidden="true"
-                        className="size-4 transition-transform duration-300 group-hover:translate-x-0.5"
-                      />
-                    </span>
-                  </a>
+                  {isPrivacyPolicy ? (
+                    <button
+                      type="button"
+                      onClick={requestPrivacyPolicyModal}
+                      className="group flex h-full min-h-21 w-full items-center gap-3 rounded-xl border border-brand/15 bg-background p-4 text-left shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand/40 hover:bg-sand/70 hover:shadow-[0_14px_28px_-18px_oklch(0.3_0.06_156/0.55)] active:translate-y-0 active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+                    >
+                      {resourceContent}
+                    </button>
+                  ) : (
+                    <a
+                      href={item.href}
+                      target={item.external ? "_blank" : undefined}
+                      rel={item.external ? "noreferrer" : undefined}
+                      className="group flex h-full min-h-21 items-center gap-3 rounded-xl border border-brand/15 bg-background p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand/40 hover:bg-sand/70 hover:shadow-[0_14px_28px_-18px_oklch(0.3_0.06_156/0.55)] active:translate-y-0 active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+                    >
+                      {resourceContent}
+                    </a>
+                  )}
                 </li>
               );
             })}

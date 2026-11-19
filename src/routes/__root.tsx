@@ -9,10 +9,12 @@ import {
   type ErrorComponentProps,
 } from "@tanstack/react-router";
 import type { ReactNode } from "react";
+import { useState } from "react";
 
-import socialPreview from "@/assets/Inicio/coocentral-50-anios-hero.webp";
+import socialPreview from "@/assets/Inicio/frente_PIC.webp";
 import logo from "@/assets/coocentral-logo.svg";
 import appCss from "../styles.css?url";
+import { SiteConsent } from "@/components/site/site-consent";
 import { SiteHeader } from "@/components/site/site-header";
 import { SiteFooter } from "@/components/site/site-footer";
 import { WhatsAppFloatingButton } from "@/components/site/whatsapp-floating-button";
@@ -98,9 +100,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:type", content: "website" },
       { property: "og:image", content: `https://coocentral.com${socialPreview}` },
       { property: "og:image:type", content: "image/webp" },
-      { property: "og:image:width", content: "1952" },
-      { property: "og:image:height", content: "806" },
-      { property: "og:image:alt", content: "Coocentral, cooperativa de caficultores del Huila" },
+      { property: "og:image:width", content: "1920" },
+      { property: "og:image:height", content: "1280" },
+      { property: "og:image:alt", content: "Instalaciones de Coocentral en el Huila" },
       { name: "twitter:title", content: "Coocentral | Cooperativa de caficultores del Huila" },
       {
         name: "twitter:description",
@@ -146,6 +148,7 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const [consentOpen, setConsentOpen] = useState(false);
   const organizationStructuredData = {
     "@context": "https://schema.org",
     "@graph": [
@@ -193,7 +196,8 @@ function RootComponent() {
       />
       <SiteHeader />
       <Outlet />
-      <SiteFooter />
+      <SiteFooter onManageCookies={() => setConsentOpen(true)} />
+      <SiteConsent open={consentOpen} onOpenChange={setConsentOpen} />
       <WhatsAppFloatingButton />
     </QueryClientProvider>
   );
