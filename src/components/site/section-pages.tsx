@@ -273,7 +273,7 @@ export function CooperativePage() {
               {extendedMunicipalities.length} de influencia ampliada.
             </p>
             <p className="mt-3 font-semibold text-brand">{coreMunicipalities.join(" · ")}</p>
-            <p className="mt-2 text-sm font-semibold text-ink/65">
+            <p className="mt-2 text-sm font-semibold text-brand">
               {extendedMunicipalities.join(" · ")}
             </p>
           </section>
@@ -1166,7 +1166,11 @@ export function ServicesPage() {
                           />
                         </div>
                       ) : (
-                        <div className="relative overflow-hidden rounded-[1.55rem] bg-paper sm:rounded-[2rem]">
+                        <div
+                          className={`relative overflow-hidden rounded-[1.55rem] sm:rounded-[2rem] ${
+                            service.id === "fundecafe" ? "bg-[#d2e4dc]" : "bg-paper"
+                          }`}
+                        >
                           <img
                             src={service.image}
                             alt={service.imageAlt}

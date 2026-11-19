@@ -36,7 +36,7 @@ import picIndustrialPark from "@/assets/Servicios/Pic/Parque industrial.webp";
 import hotelKahveImage from "@/assets/Servicios/Hotel_Kahve/Planta.webp";
 import coworkingShowcaseImage from "@/assets/Servicios/Coworking/YDRAY-IMG_9436-1-scaled.webp";
 import coocentralCoffeeImage from "@/assets/Servicios/Cafes_coocentral/Cafe.webp";
-import tiendasKahveImage from "@/assets/Servicios/Tiendas/Plaza Rosario y Café Kahvé.webp";
+import tiendasKahveImage from "@/assets/Servicios/Tiendas/guadalupe-tienda.webp";
 import creditFondoRotatorioImage from "@/assets/creditos/fondo-rotatorio.png";
 import creditFuturitoImage from "@/assets/creditos/futurito.png";
 import creditAnticipoSecadoImage from "@/assets/creditos/anticipo-secado.png";
@@ -344,8 +344,6 @@ type Benefit = {
   title: string;
   text: string;
   summary?: string;
-  imageSrc?: string;
-  imageAlt?: string;
   sourceHref?: string;
   sourceLabel?: string;
 };
@@ -982,6 +980,7 @@ export const warehouseLocations = [
     address: "Carrera 14 #8-15",
     phone: "3214950452",
     hours: standardWarehouseHours,
+    isTemporarilyClosed: true,
   },
 ] as const;
 
@@ -1069,7 +1068,7 @@ export const serviceShowcase: ServiceShowcase[] = [
     summary:
       "Espacios para disfrutar la cultura cafetera y degustar café en Garzón y Neiva, con distintas preparaciones y métodos.",
     image: tiendasKahveImage,
-    imageAlt: "Sede de Tiendas Kahvé en el centro comercial Plaza Rosario",
+    imageAlt: "Tienda Kahvé de Guadalupe con su área de atención",
     href: "/tiendas-kahve",
   },
   {

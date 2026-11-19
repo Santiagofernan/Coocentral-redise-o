@@ -468,7 +468,7 @@ html body[data-scroll-locked] {
   width: min(78%, 250px);
   height: min(78%, 250px);
   backface-visibility: hidden;
-  animation: coffee-process-flip 450ms cubic-bezier(0.22, 0.68, 0, 1) both;
+  animation: coffee-process-flip 200ms cubic-bezier(0.22, 0.68, 0, 1) both;
 }
 
 .coffee-cup-icon:hover .coffee-cup-steam {

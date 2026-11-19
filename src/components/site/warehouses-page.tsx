@@ -34,6 +34,11 @@ import warehousePitalitoImage from "@/assets/Servicios/Almacenes/pitalito.webp";
 import warehousePotrerillosImage from "@/assets/Servicios/Almacenes/potrerillos.webp";
 import warehouseTarquiImage from "@/assets/Servicios/Almacenes/tarqui.webp";
 import warehouseZuluagaImage from "@/assets/Servicios/Almacenes/zuluaga.jpeg";
+import warehouseInteriorHomeImage from "@/assets/Servicios/Almacenes/Referencias_almacen/almacen_dentro(1).webp";
+import warehouseInteriorAppliancesImage from "@/assets/Servicios/Almacenes/Referencias_almacen/almacen_dentro(2).webp";
+import warehouseInteriorEquipmentImage from "@/assets/Servicios/Almacenes/Referencias_almacen/almacen_dentro(3).webp";
+import warehouseInteriorFarmToolsImage from "@/assets/Servicios/Almacenes/Referencias_almacen/almacen_dentro(4).webp";
+import warehouseInteriorCoffeeImage from "@/assets/Servicios/Almacenes/Referencias_almacen/almacen_dentro(5).webp";
 import { allMunicipalities, warehouseLocations, warehouseProductLines } from "@/content/coocentral";
 import { getGoogleMapsDirectionsUrl } from "@/lib/google-maps";
 import { getWarehouseStatus, type WarehouseStatus } from "@/lib/warehouse-schedule";
@@ -44,6 +49,33 @@ const municipalities = allMunicipalities.filter((municipality) =>
 );
 const locationTypes = [...new Set(warehouseLocations.map((location) => location.type))];
 const productLineIcons = [Sprout, House, Wrench, Cog];
+const warehouseInteriorPhotos = [
+  {
+    src: warehouseInteriorHomeImage,
+    alt: "Vajillas y artículos para el hogar exhibidos en un almacén Coocentral",
+    caption: "Artículos para el hogar",
+  },
+  {
+    src: warehouseInteriorAppliancesImage,
+    alt: "Ollas arroceras y electrodomésticos exhibidos en el almacén",
+    caption: "Electrodomésticos",
+  },
+  {
+    src: warehouseInteriorEquipmentImage,
+    alt: "Equipos y motores agrícolas en exhibición",
+    caption: "Equipos para el campo",
+  },
+  {
+    src: warehouseInteriorFarmToolsImage,
+    alt: "Maquinaria y herramientas agrícolas exhibidas en el almacén",
+    caption: "Maquinaria agrícola",
+  },
+  {
+    src: warehouseInteriorCoffeeImage,
+    alt: "Cafeteras y electrodomésticos para el hogar en exhibición",
+    caption: "Cafeteras y hogar",
+  },
+];
 const warehouseImages = new Map<string, { src: string; alt: string }>([
   [
     "Almacén del Café Molino",
@@ -64,6 +96,13 @@ const warehouseImages = new Map<string, { src: string; alt: string }>([
     {
       src: warehouseLa14Image,
       alt: "Fachada de la Ferretería La 14 de Coocentral en Garzón",
+    },
+  ],
+  [
+    "Centro de servicios",
+    {
+      src: warehouseLa14Image,
+      alt: "Fachada de la antigua sede de la Ferretería La 14 utilizada por el Centro de servicios",
     },
   ],
   [
@@ -113,6 +152,13 @@ const warehouseImages = new Map<string, { src: string; alt: string }>([
     {
       src: warehouseGuadalupeImage,
       alt: "Interior del Almacén del Café Coocentral en Guadalupe",
+    },
+  ],
+  [
+    "Guadalupe C/CIAL",
+    {
+      src: warehouseGuadalupeImage,
+      alt: "Interior del Almacén del Café Guadalupe como imagen de referencia para Guadalupe C/CIAL",
     },
   ],
   [
@@ -244,7 +290,12 @@ export function WarehousesPage() {
         ),
       );
     const locationSchedule = location.type === "Ferretería" ? "hardware" : "warehouse";
-    const locationStatus = now ? getWarehouseStatus(now, locationSchedule) : null;
+    const locationStatus =
+      "isTemporarilyClosed" in location && location.isTemporarilyClosed
+        ? "closed"
+        : now
+          ? getWarehouseStatus(now, locationSchedule)
+          : null;
     const matchesStatus =
       selectedStatuses.length === 0 ||
       (locationStatus !== null && selectedStatuses.includes(locationStatus));
@@ -341,6 +392,53 @@ export function WarehousesPage() {
             ))}
           </div>
         </div>
+      </section>
+
+      <section
+        aria-labelledby="warehouse-interiors-heading"
+        className="mx-auto max-w-7xl px-5 pb-12 pt-10 lg:px-10 lg:pb-16 lg:pt-14"
+      >
+        <div className="mb-6 max-w-2xl">
+          <p className="text-xs font-bold uppercase tracking-[0.16em] text-brand">
+            Conócelos por dentro
+          </p>
+          <h2
+            id="warehouse-interiors-heading"
+            className="mt-2 font-display text-3xl font-medium sm:text-4xl"
+          >
+            Espacios para encontrar lo que necesitas
+          </h2>
+          <p className="mt-3 text-sm leading-6 text-ink/65">
+            Explora parte de los productos para el hogar, la finca y el trabajo que encuentras en
+            nuestros almacenes.
+          </p>
+        </div>
+        <ul className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-6">
+          {warehouseInteriorPhotos.map((photo, index) => (
+            <li
+              key={photo.caption}
+              className={`group relative isolate aspect-[4/3] overflow-hidden rounded-2xl bg-sand shadow-sm ${
+                index === 0
+                  ? "col-span-2 aspect-[16/9] lg:row-span-2 lg:aspect-auto"
+                  : "lg:col-span-2"
+              }`}
+            >
+              <img
+                src={photo.src}
+                alt={photo.alt}
+                loading={index === 0 ? "eager" : "lazy"}
+                decoding="async"
+                className="size-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div
+                aria-hidden="true"
+                className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-forest-deep/90 via-forest-deep/35 to-transparent px-3 pb-3 pt-10 sm:px-4 sm:pb-4"
+              >
+                <p className="text-sm font-semibold text-paper sm:text-base">{photo.caption}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
       </section>
 
       <section className="mx-auto max-w-7xl px-5 py-14 lg:px-10 lg:py-20">
@@ -680,15 +778,30 @@ export function WarehousesPage() {
                   .join(", ");
                 const mapsUrl = getGoogleMapsDirectionsUrl(mapQuery);
                 const locationSchedule = location.type === "Ferretería" ? "hardware" : "warehouse";
-                const locationStatus = now ? getWarehouseStatus(now, locationSchedule) : null;
+                const isTemporarilyClosed =
+                  "isTemporarilyClosed" in location && location.isTemporarilyClosed;
+                const locationStatus = isTemporarilyClosed
+                  ? "closed"
+                  : now
+                    ? getWarehouseStatus(now, locationSchedule)
+                    : null;
                 const warehouseImage = warehouseImages.get(location.name);
 
                 return (
                   <li
                     key={`${location.municipality}-${location.name}`}
-                    className="flex h-full flex-col rounded-2xl border border-border bg-background p-5 shadow-sm transition-shadow hover:shadow-md sm:p-6"
+                    aria-disabled={isTemporarilyClosed || undefined}
+                    className={`flex h-full flex-col rounded-2xl border p-5 shadow-sm sm:p-6 ${
+                      isTemporarilyClosed
+                        ? "border-ink/10 bg-ink/[0.06] grayscale opacity-75"
+                        : "border-border bg-background transition-shadow hover:shadow-md"
+                    }`}
                   >
-                    <div className="mb-5 aspect-[4/3] overflow-hidden rounded-xl border border-border bg-sand">
+                    <div
+                      className={`mb-5 aspect-[4/3] overflow-hidden rounded-xl border bg-sand ${
+                        isTemporarilyClosed ? "border-ink/10 grayscale" : "border-border"
+                      }`}
+                    >
                       {warehouseImage ? (
                         <img
                           src={warehouseImage.src}
@@ -704,85 +817,136 @@ export function WarehousesPage() {
                         </div>
                       )}
                     </div>
-                    <div className="flex items-start justify-between gap-3">
-                      <div className="min-w-0">
-                        <div className="flex flex-wrap items-center gap-1.5">
-                          <span className="inline-flex rounded-full bg-lime/20 px-2.5 py-1 text-[11px] font-bold text-forest-deep">
-                            {location.municipality}
-                          </span>
-                          <span className="inline-flex rounded-full bg-ink/5 px-2.5 py-1 text-[11px] font-semibold text-ink/65">
-                            {location.type}
-                          </span>
-                          <span className="inline-flex rounded-full border border-border px-2.5 py-1 text-[11px] font-medium text-ink/55">
-                            UB {location.code}
-                          </span>
+                    <div className="flex flex-col">
+                      <div className="flex flex-wrap items-center gap-1.5">
+                        <span className="inline-flex rounded-full bg-lime/20 px-2.5 py-1 text-[11px] font-bold text-forest-deep">
+                          {location.municipality}
+                        </span>
+                        <span className="inline-flex rounded-full bg-ink/5 px-2.5 py-1 text-[11px] font-semibold text-ink/65">
+                          {location.type}
+                        </span>
+                        <span className="inline-flex rounded-full border border-border px-2.5 py-1 text-[11px] font-medium text-ink/55">
+                          UB {location.code}
+                        </span>
+                      </div>
+
+                      <div className="mt-3 flex items-start justify-between gap-3">
+                        <div className="min-w-0">
+                          {location.locality && (
+                            <p className="mb-1 text-xs font-medium text-ink/55">
+                              {location.locality}
+                            </p>
+                          )}
+                          <h3 className="font-display text-xl font-semibold leading-tight text-forest-deep">
+                            {location.name}
+                          </h3>
                         </div>
-                        {location.locality && (
-                          <p className="mt-2 text-xs font-medium text-ink/60">
-                            Localidad: {location.locality}
-                          </p>
-                        )}
-                        <h3 className="mt-3 font-display text-xl font-semibold leading-tight text-forest-deep">
-                          {location.name}
-                        </h3>
-                      </div>
-                      <span
-                        className={`inline-flex shrink-0 items-center gap-1.5 rounded-full px-2.5 py-1.5 text-[11px] font-bold ${
-                          locationStatus ? statusStyles[locationStatus] : "bg-ink/5 text-ink/60"
-                        }`}
-                      >
                         <span
-                          className={`size-2 rounded-full ${
-                            locationStatus === "open"
-                              ? "bg-forest motion-safe:animate-pulse"
-                              : locationStatus === "break"
-                                ? "bg-amber-600"
-                                : "bg-ink/35"
+                          className={`inline-flex shrink-0 items-center gap-1.5 rounded-full px-2.5 py-1.5 text-[11px] font-bold ${
+                            locationStatus ? statusStyles[locationStatus] : "bg-ink/5 text-ink/60"
                           }`}
-                        />
-                        {locationStatus ? statusLabels[locationStatus] : "Consultando horario"}
-                      </span>
-                    </div>
-                    <div className="mt-5 flex items-start gap-2.5 text-sm leading-6 text-ink/70">
-                      <MapPin aria-hidden="true" className="mt-1 size-4 shrink-0 text-brand" />
-                      <address className="not-italic">
-                        {location.address || "Dirección no indicada"}
-                        {!location.address && (
-                          <span className="mt-1 block text-xs text-ink/50">
-                            Ubicación identificada por centro poblado
-                          </span>
-                        )}
-                      </address>
-                    </div>
-                    {location.phone && (
-                      <div className="mt-4 flex items-center gap-2.5 text-sm leading-6 text-ink/70">
-                        <Phone aria-hidden="true" className="size-4 shrink-0 text-brand" />
-                        <a
-                          href={`tel:+57${location.phone}`}
-                          className="rounded-sm underline-offset-2 hover:text-brand hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
                         >
-                          {location.phone.replace(/^(\d{3})(\d{3})(\d{4})$/, "$1 $2 $3")}
-                        </a>
+                          <span
+                            className={`size-2 rounded-full ${
+                              locationStatus === "open"
+                                ? "bg-forest motion-safe:animate-pulse"
+                                : locationStatus === "break"
+                                  ? "bg-amber-600"
+                                  : "bg-ink/35"
+                            }`}
+                          />
+                          {isTemporarilyClosed
+                            ? "Cerrado al público"
+                            : locationStatus
+                              ? statusLabels[locationStatus]
+                              : "Consultando horario"}
+                        </span>
                       </div>
-                    )}
-                    <div className="mt-4 flex items-start gap-2.5 border-t border-border pt-4">
-                      <Clock3 aria-hidden="true" className="mt-1 size-4 shrink-0 text-brand" />
-                      <ul className="space-y-1.5 text-sm leading-5 text-ink/70">
-                        {location.hours.map((schedule) => (
-                          <li key={schedule}>{schedule}</li>
-                        ))}
-                      </ul>
                     </div>
-                    <a
-                      href={mapsUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="mt-auto inline-flex min-h-11 items-center gap-2 self-start rounded-full bg-brand px-4 text-sm font-bold text-paper shadow-sm transition-all hover:-translate-y-0.5 hover:bg-forest-deep hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
-                    >
-                      <MapPin aria-hidden="true" className="size-4" />
-                      Cómo llegar
-                      <ArrowUpRight aria-hidden="true" className="size-4" />
-                    </a>
+
+                    <dl className="mt-5 divide-y divide-border border-y border-border">
+                      <div className="grid grid-cols-[1.25rem_4.75rem_1fr] gap-2 py-3.5">
+                        <MapPin aria-hidden="true" className="mt-0.5 size-4 text-brand" />
+                        <dt className="text-xs font-bold uppercase tracking-wide text-ink/50">
+                          Dirección
+                        </dt>
+                        <dd className="text-sm leading-5 text-ink/75">
+                          <address className="not-italic">
+                            {location.address || "Dirección no indicada"}
+                          </address>
+                        </dd>
+                      </div>
+
+                      {location.phone && (
+                        <div className="grid grid-cols-[1.25rem_4.75rem_1fr] gap-2 py-3.5">
+                          <Phone aria-hidden="true" className="mt-0.5 size-4 text-brand" />
+                          <dt className="text-xs font-bold uppercase tracking-wide text-ink/50">
+                            Teléfono
+                          </dt>
+                          <dd className="text-sm leading-5 text-ink/75">
+                            <a
+                              href={`tel:+57${location.phone}`}
+                              className="rounded-sm font-semibold underline-offset-2 hover:text-brand hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+                            >
+                              {location.phone.replace(/^(\d{3})(\d{3})(\d{4})$/, "$1 $2 $3")}
+                            </a>
+                          </dd>
+                        </div>
+                      )}
+
+                      <div className="grid grid-cols-[1.25rem_4.75rem_1fr] gap-2 py-3.5">
+                        <Clock3 aria-hidden="true" className="mt-0.5 size-4 text-brand" />
+                        <dt className="text-xs font-bold uppercase tracking-wide text-ink/50">
+                          Horario
+                        </dt>
+                        <dd className="text-sm leading-5 text-ink/75">
+                          {isTemporarilyClosed ? (
+                            <p className="font-semibold text-ink/55">
+                              Temporalmente fuera de servicio
+                            </p>
+                          ) : (
+                            <details className="group relative z-0 open:z-20">
+                              <summary className="flex min-h-7 cursor-pointer list-none items-center justify-between gap-2 rounded-sm font-semibold text-forest-deep marker:hidden hover:text-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand [&::-webkit-details-marker]:hidden">
+                                <span>Ver horarios</span>
+                                <ChevronDown
+                                  aria-hidden="true"
+                                  className="size-4 shrink-0 transition-transform group-open:rotate-180"
+                                />
+                              </summary>
+                              <ul className="absolute inset-x-0 top-full z-30 mt-2 space-y-1.5 rounded-xl border border-border bg-background p-3 text-ink/70 shadow-xl">
+                                {location.hours.map((schedule) => (
+                                  <li key={schedule}>{schedule}</li>
+                                ))}
+                              </ul>
+                            </details>
+                          )}
+                        </dd>
+                      </div>
+                    </dl>
+
+                    <div className="mt-auto pt-5">
+                      {isTemporarilyClosed ? (
+                        <button
+                          type="button"
+                          disabled
+                          className="inline-flex min-h-11 cursor-not-allowed items-center gap-2 rounded-full bg-ink/10 px-4 text-sm font-bold text-ink/45"
+                        >
+                          <MapPin aria-hidden="true" className="size-4" />
+                          Servicio no disponible
+                        </button>
+                      ) : (
+                        <a
+                          href={mapsUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-flex min-h-11 items-center gap-2 rounded-full bg-brand px-4 text-sm font-bold text-paper shadow-sm transition-all hover:-translate-y-0.5 hover:bg-forest-deep hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+                        >
+                          <MapPin aria-hidden="true" className="size-4" />
+                          Cómo llegar
+                          <ArrowUpRight aria-hidden="true" className="size-4" />
+                        </a>
+                      )}
+                    </div>
                   </li>
                 );
               })}

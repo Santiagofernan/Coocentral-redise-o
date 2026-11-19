@@ -9,7 +9,7 @@ import {
   ShieldCheck,
   Warehouse,
 } from "lucide-react";
-import picIndustrialPark from "@/assets/Servicios/Pic/Parque industrial.webp";
+import picIndustrialPark from "@/assets/Servicios/Pic/parque-industrial-optimized.webp";
 import picIndustrialPanorama from "@/assets/Servicios/Pic/parque-industrial-panorama.webp";
 
 const processes = [

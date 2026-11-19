@@ -78,13 +78,14 @@ describe("Home promotions", () => {
     expect(atlasHeadingIndex).toBeLessThan(appHeadingIndex);
   });
 
-  it("rotates Atlas screenshots every five seconds and pauses while offscreen", () => {
+  it("rotates Atlas screenshots while hovered and pauses while offscreen", () => {
     vi.useFakeTimers();
     vi.stubGlobal("IntersectionObserver", MockAtlasIntersectionObserver);
 
     render(<AtlasPromotion />);
 
     act(() => setAtlasVisibility?.(true));
+    fireEvent.mouseEnter(screen.getByRole("figure", { name: "Capturas del aplicativo Atlas" }));
     expect(
       screen.getByRole("img", {
         name: "Panel general del aplicativo Atlas con indicadores de productores, fincas y hectáreas",

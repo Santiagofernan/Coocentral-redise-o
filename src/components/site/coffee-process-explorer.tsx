@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
 import processStage01 from "@/assets/Cafe/etapas/etapa-01.webp";
 import processStage02 from "@/assets/Cafe/etapas/etapa-02.webp";
 import processStage03 from "@/assets/Cafe/etapas/etapa-03.webp";
 import processStage04 from "@/assets/Cafe/etapas/etapa-04.webp";
-import processStage05 from "@/assets/Cafe/etapas/etapa-05.webp";
+import processStage05 from "@/assets/Cafe/etapas/etapa-05-optimized.webp";
 import processStage06 from "@/assets/Cafe/etapas/etapa-06.webp";
 import processStage07 from "@/assets/Cafe/etapas/etapa-07.webp";
 import processStage08 from "@/assets/Cafe/etapas/etapa-08.webp";
@@ -75,9 +75,25 @@ const processDetails = [
 export function CoffeeProcessExplorer() {
   const [activeStep, setActiveStep] = useState(0);
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
+  const preloadedIllustrations = useRef(new Set<string>());
   const selectedStep = coffeeProcessSteps[activeStep];
   const selectedDetail = processDetails[activeStep];
   const selectedIllustration = processIllustrations[activeStep];
+
+  const preloadIllustration = (index: number) => {
+    const illustration = processIllustrations[index];
+    if (
+      !illustration ||
+      illustration === selectedIllustration ||
+      preloadedIllustrations.current.has(illustration)
+    ) {
+      return;
+    }
+
+    preloadedIllustrations.current.add(illustration);
+    const image = new window.Image();
+    image.src = illustration;
+  };
 
   const changeStep = (direction: "prev" | "next") => {
     setActiveStep((step) => {
@@ -137,7 +153,9 @@ export function CoffeeProcessExplorer() {
                   type="button"
                   aria-pressed={isActive}
                   onClick={() => setActiveStep(index)}
-                  className={`group flex h-full w-full flex-col items-start gap-3 rounded-xl border p-3 text-left transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 lg:items-center lg:text-center ${
+                  onPointerEnter={() => preloadIllustration(index)}
+                  onFocus={() => preloadIllustration(index)}
+                  className={`group flex h-full w-full flex-col items-start gap-3 rounded-xl border p-3 text-left transition-[transform,border-color,background-color,color,box-shadow] duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 lg:items-center lg:text-center ${
                     isActive
                       ? "border-brand-bright bg-brand-bright text-black shadow-lg shadow-forest/20"
                       : "border-brand/15 bg-paper text-ink shadow-sm hover:-translate-y-1 hover:border-brand/40 hover:bg-white hover:shadow-md"
@@ -220,7 +238,7 @@ export function CoffeeProcessExplorer() {
                 src={selectedIllustration}
                 alt={`Ilustración: ${selectedDetail.title}`}
                 className="coffee-process-illustration relative z-10 object-contain"
-                loading="lazy"
+                loading={activeStep === 0 ? "lazy" : "eager"}
                 decoding="async"
               />
             </div>
@@ -247,7 +265,7 @@ export function CoffeeProcessExplorer() {
                 className="mt-3 h-1.5 overflow-hidden rounded-full bg-brand/10"
               >
                 <div
-                  className="h-full rounded-full bg-brand transition-[width] duration-300"
+                  className="h-full rounded-full bg-brand transition-[width] duration-150"
                   style={{ width: `${((activeStep + 1) / coffeeProcessSteps.length) * 100}%` }}
                 />
               </div>

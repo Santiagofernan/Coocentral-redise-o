@@ -10,9 +10,7 @@ describe("Farmer center benefits", () => {
 
     const benefitButtons = screen.getAllByRole("button", { name: /Ver detalles/ });
     expect(benefitButtons).toHaveLength(benefits.length);
-    expect(screen.getAllByText("Espacio para imagen", { exact: true })).toHaveLength(
-      benefits.filter(({ imageSrc }) => !imageSrc).length,
-    );
+    expect(screen.queryByText("Espacio para imagen", { exact: true })).not.toBeInTheDocument();
 
     fireEvent.click(screen.getByRole("button", { name: /Educación superior.*Ver detalles/ }));
 

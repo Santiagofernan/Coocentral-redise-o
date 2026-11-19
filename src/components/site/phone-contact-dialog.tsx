@@ -16,6 +16,42 @@ type PhoneContactDialogProps = {
   variant?: "light" | "dark";
 };
 
+function copyWithSelection(text: string) {
+  const textArea = document.createElement("textarea");
+  textArea.value = text;
+  textArea.setAttribute("readonly", "");
+  textArea.style.position = "fixed";
+  textArea.style.top = "0";
+  textArea.style.left = "0";
+  textArea.style.opacity = "0";
+  textArea.style.fontSize = "16px";
+  document.body.appendChild(textArea);
+
+  try {
+    textArea.focus();
+    textArea.select();
+    textArea.setSelectionRange(0, textArea.value.length);
+    return document.execCommand("copy");
+  } finally {
+    textArea.remove();
+  }
+}
+
+async function copyPhoneToClipboard(phone: string) {
+  try {
+    if (typeof navigator.clipboard?.writeText === "function") {
+      await navigator.clipboard.writeText(phone);
+      return;
+    }
+  } catch {
+    // Continue with the selection-based fallback for browsers that reject Clipboard API access.
+  }
+
+  if (!copyWithSelection(phone)) {
+    throw new Error("The browser could not copy the phone number.");
+  }
+}
+
 export function PhoneContactDialog({
   phone,
   className,
@@ -26,7 +62,7 @@ export function PhoneContactDialog({
 
   async function copyPhone() {
     try {
-      await navigator.clipboard.writeText(phone);
+      await copyPhoneToClipboard(phone);
       setCopyState("copied");
     } catch {
       setCopyState("error");
@@ -81,15 +117,18 @@ export function PhoneContactDialog({
         </div>
 
         <div className="p-6 sm:p-8">
-          <p
+          <input
+            type="tel"
+            aria-label="Número de teléfono"
+            value={phone}
+            readOnly
+            onFocus={(event) => event.currentTarget.select()}
             className={`border px-4 py-3 text-lg font-semibold ${
               isDark
                 ? "border-paper/15 bg-paper/5 text-paper"
                 : "border-border bg-background text-ink"
-            }`}
-          >
-            {phone}
-          </p>
+            } w-full`}
+          />
 
           <div className="mt-6 flex flex-col-reverse gap-3 sm:flex-row sm:justify-end">
             <DialogClose asChild>

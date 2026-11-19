@@ -1,8 +1,11 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight, ArrowUpRight, Clock3, Coffee, MapPin, Store } from "lucide-react";
 
-import kahveStorefrontImage from "@/assets/Servicios/Tiendas/Frente_Tienda.webp";
+import kahveStorefrontImage from "@/assets/Servicios/Tiendas/frente-tienda-optimized.webp";
 import kahveStoreInteriorImage from "@/assets/Servicios/Tiendas/Tienda_Interior.webp";
+import rosarioStoreImage from "@/assets/Servicios/Tiendas/Plaza Rosario y Café Kahvé.webp";
+import hotelKahveStoreImage from "@/assets/Servicios/Tiendas/hotel-tienda.webp";
+import guadalupeStoreImage from "@/assets/Servicios/Tiendas/guadalupe-tienda.webp";
 import { getGoogleMapsDirectionsUrl } from "@/lib/google-maps";
 import { getStoreStatus, type StoreStatus, type StoreWeeklySchedule } from "@/lib/store-schedule";
 import { useCurrentTime } from "@/hooks/use-current-time";
@@ -61,6 +64,8 @@ const kahveStores = [
     address: "Carrera 8 #11-32, Centro Comercial Paseo del Rosario",
     hours: ["Lunes a sábado · 7:00 a. m.–8:00 p. m.", "Domingo · 1:00–7:00 p. m."],
     schedule: rosarioSchedule,
+    image: rosarioStoreImage,
+    imageAlt: "Fachada de la tienda Kahvé en el Centro Comercial Paseo del Rosario",
   },
   {
     city: "Garzón",
@@ -68,6 +73,8 @@ const kahveStores = [
     address: "Hotel Kahve, Garzón, Huila",
     hours: ["Lunes a sábado · 6:00 a. m.–8:00 p. m.", "Domingo · 8:00 a. m.–12:00 p. m."],
     schedule: hotelKahveSchedule,
+    image: hotelKahveStoreImage,
+    imageAlt: "Interior de la tienda Kahvé en el Hotel Kahvé",
   },
   {
     city: "Guadalupe",
@@ -79,6 +86,8 @@ const kahveStores = [
       "Lunes · Cerrado",
     ],
     schedule: guadalupeSchedule,
+    image: guadalupeStoreImage,
+    imageAlt: "Interior de la tienda Kahvé de Guadalupe",
   },
 ];
 
@@ -206,7 +215,7 @@ export function KahveStoresPage() {
             </p>
           </div>
 
-          <ul className="mt-9 grid gap-5 lg:grid-cols-2">
+          <ul className="mt-9 grid gap-5 md:grid-cols-3">
             {kahveStores.map((store, index) => {
               const mapsUrl = getGoogleMapsDirectionsUrl(`${store.address}, ${store.city}, Huila`);
               const status = now && store.schedule ? getStoreStatus(now, store.schedule) : null;
@@ -214,65 +223,76 @@ export function KahveStoresPage() {
               return (
                 <li
                   key={`${store.city}-${store.name}`}
-                  className="group relative isolate overflow-hidden rounded-3xl border border-border bg-background p-6 transition-all duration-200 hover:-translate-y-1 hover:border-brand/35 hover:shadow-xl sm:p-8"
+                  className="group relative isolate overflow-hidden rounded-3xl border border-border bg-background transition-all duration-200 hover:-translate-y-1 hover:border-brand/35 hover:shadow-xl"
                 >
                   <span className="absolute -right-5 -top-8 -z-10 font-display text-9xl text-brand/5 transition-colors group-hover:text-brand/10">
                     0{index + 1}
                   </span>
-                  <div className="flex items-start justify-between gap-4">
-                    <span className="grid size-12 place-items-center rounded-2xl bg-lime/30 text-forest-deep transition-colors group-hover:bg-lime">
-                      <Store aria-hidden="true" className="size-5" />
-                    </span>
-                    <span className="rounded-full border border-brand/15 bg-paper px-3 py-1 text-xs font-bold text-brand">
-                      {store.name}
-                    </span>
-                  </div>
-                  <div className="mt-6 flex flex-wrap items-center justify-between gap-3">
-                    <h3 className="font-display text-3xl font-medium">{store.city}</h3>
-                    <span
-                      className={`inline-flex min-h-8 items-center gap-2 rounded-full px-3 py-1 text-xs font-bold ${
-                        status ? statusStyles[status] : "bg-ink/5 text-ink/60"
-                      }`}
-                    >
-                      <span
-                        className={`size-2 rounded-full ${
-                          status === "open"
-                            ? "bg-forest motion-safe:animate-pulse"
-                            : status === "break"
-                              ? "bg-amber-600"
-                              : "bg-ink/35"
-                        }`}
-                      />
-                      {status
-                        ? statusLabels[status]
-                        : store.schedule
-                          ? "Consultando horario"
-                          : "Horario por confirmar"}
-                    </span>
-                  </div>
-                  <div className="mt-3 flex items-start gap-2.5 text-sm leading-6 text-ink/70">
-                    <MapPin aria-hidden="true" className="mt-1 size-4 shrink-0 text-brand" />
-                    <address className="not-italic">{store.address}</address>
-                  </div>
-                  {store.hours && (
-                    <div className="mt-4 flex items-start gap-2.5">
-                      <Clock3 aria-hidden="true" className="mt-0.5 size-4 shrink-0 text-brand" />
-                      <ul className="space-y-1 text-sm leading-5 text-ink/70">
-                        {store.hours.map((hours) => (
-                          <li key={hours}>{hours}</li>
-                        ))}
-                      </ul>
+                  <figure className="aspect-4/3 overflow-hidden border-b border-border bg-sand">
+                    <img
+                      src={store.image}
+                      alt={store.imageAlt}
+                      loading="lazy"
+                      decoding="async"
+                      className="size-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                    />
+                  </figure>
+                  <div className="p-6 sm:p-8">
+                    <div className="flex items-start justify-between gap-4">
+                      <span className="grid size-12 place-items-center rounded-2xl bg-lime/30 text-forest-deep transition-colors group-hover:bg-lime">
+                        <Store aria-hidden="true" className="size-5" />
+                      </span>
+                      <span className="rounded-full border border-brand/15 bg-paper px-3 py-1 text-xs font-bold text-brand">
+                        {store.name}
+                      </span>
                     </div>
-                  )}
-                  <a
-                    href={mapsUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="mt-7 inline-flex min-h-11 items-center gap-2 rounded-md bg-forest-deep px-4 text-sm font-bold text-paper transition-all hover:-translate-y-0.5 hover:bg-brand hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
-                  >
-                    Cómo llegar
-                    <ArrowUpRight aria-hidden="true" className="size-4" />
-                  </a>
+                    <div className="mt-6 flex flex-wrap items-center justify-between gap-3">
+                      <h3 className="font-display text-3xl font-medium">{store.city}</h3>
+                      <span
+                        className={`inline-flex min-h-8 items-center gap-2 rounded-full px-3 py-1 text-xs font-bold ${
+                          status ? statusStyles[status] : "bg-ink/5 text-ink/60"
+                        }`}
+                      >
+                        <span
+                          className={`size-2 rounded-full ${
+                            status === "open"
+                              ? "bg-forest motion-safe:animate-pulse"
+                              : status === "break"
+                                ? "bg-amber-600"
+                                : "bg-ink/35"
+                          }`}
+                        />
+                        {status
+                          ? statusLabels[status]
+                          : store.schedule
+                            ? "Consultando horario"
+                            : "Horario por confirmar"}
+                      </span>
+                    </div>
+                    <div className="mt-3 flex items-start gap-2.5 text-sm leading-6 text-ink/70">
+                      <MapPin aria-hidden="true" className="mt-1 size-4 shrink-0 text-brand" />
+                      <address className="not-italic">{store.address}</address>
+                    </div>
+                    {store.hours && (
+                      <div className="mt-4 flex items-start gap-2.5">
+                        <Clock3 aria-hidden="true" className="mt-0.5 size-4 shrink-0 text-brand" />
+                        <ul className="space-y-1 text-sm leading-5 text-ink/70">
+                          {store.hours.map((hours) => (
+                            <li key={hours}>{hours}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                    <a
+                      href={mapsUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="mt-7 inline-flex min-h-11 items-center gap-2 rounded-md bg-forest-deep px-4 text-sm font-bold text-paper transition-all hover:-translate-y-0.5 hover:bg-brand hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+                    >
+                      Cómo llegar
+                      <ArrowUpRight aria-hidden="true" className="size-4" />
+                    </a>
+                  </div>
                 </li>
               );
             })}

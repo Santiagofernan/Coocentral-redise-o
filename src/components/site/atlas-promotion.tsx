@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Sparkles } from "lucide-react";
 
-import atlasLogo from "@/assets/Atlas/atlas-logo-dark-transparent.png";
+import atlasLogo from "@/assets/Atlas/atlas-logo-dark-optimized.webp";
 import atlasMapImage from "@/assets/Atlas/Imagen_1.jpeg";
 import atlasFarmImage from "@/assets/Atlas/imagen_2.jpeg";
 import atlasDashboardImage from "@/assets/Atlas/imagen_3.jpeg";
@@ -70,7 +70,7 @@ export function AtlasPromotion() {
     <section
       ref={promotionRef}
       aria-labelledby="atlas-promotion-title"
-      className="relative isolate overflow-hidden rounded-3xl bg-gradient-to-br from-forest-deep via-[#10241c] to-[#0b1713] p-5 text-paper shadow-2xl sm:p-8 lg:p-10"
+      className="relative isolate overflow-hidden rounded-3xl bg-gradient-to-br from-forest via-brand to-forest-deep p-5 text-paper shadow-2xl sm:p-8 lg:p-10"
     >
       <div
         aria-hidden="true"
@@ -151,8 +151,6 @@ export function AtlasPromotion() {
           <figure
             aria-label="Capturas del aplicativo Atlas"
             className="overflow-hidden rounded-2xl border border-paper/15 bg-[#080e1a] shadow-2xl shadow-black/30 ring-1 ring-white/5"
-            onMouseEnter={() => setIsPaused(true)}
-            onMouseLeave={() => setIsPaused(false)}
             onFocus={() => setIsPaused(true)}
             onBlur={(event) => {
               if (!event.currentTarget.contains(event.relatedTarget)) setIsPaused(false);

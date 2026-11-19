@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { ArrowUpRight, ImagePlus, Quote } from "lucide-react";
+import { ArrowUpRight, Quote } from "lucide-react";
 
 import { benefits, productivityPrograms, quotes } from "@/content/coocentral";
 import {
@@ -59,7 +59,7 @@ export function FarmerCenter() {
         </p>
         <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {benefits.map((benefit) => {
-            const { id, icon: Icon, title, text, summary, imageSrc, imageAlt } = benefit;
+            const { id, icon: Icon, title, text, summary } = benefit;
 
             return (
               <li id={`beneficio-${id}`} key={title} className="reveal scroll-mt-24">
@@ -76,25 +76,6 @@ export function FarmerCenter() {
                       type="button"
                       className="group flex h-full w-full flex-col items-start rounded-3xl bg-paper p-7 text-left shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_-20px_oklch(0.3_0.06_156/0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
                     >
-                      <div
-                        aria-hidden="true"
-                        className="mb-5 flex aspect-[16/9] w-full items-center justify-center overflow-hidden rounded-2xl border border-dashed border-brand/20 bg-sand/60"
-                      >
-                        {imageSrc ? (
-                          <img
-                            src={imageSrc}
-                            alt={imageAlt ?? ""}
-                            className="size-full object-cover"
-                            loading="lazy"
-                            decoding="async"
-                          />
-                        ) : (
-                          <span className="inline-flex items-center gap-2 text-xs font-medium text-ink/45">
-                            <ImagePlus aria-hidden="true" className="size-4" />
-                            Espacio para imagen
-                          </span>
-                        )}
-                      </div>
                       <span className="inline-flex size-12 items-center justify-center rounded-2xl bg-sand text-brand transition-colors duration-300 group-hover:bg-brand group-hover:text-paper">
                         <Icon aria-hidden="true" className="size-6" />
                       </span>
