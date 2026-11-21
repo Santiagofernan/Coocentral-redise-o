@@ -162,6 +162,7 @@ export function SiteFooter({ onManageCookies }: { onManageCookies: () => void })
         <div className="mx-auto flex max-w-7xl flex-col gap-6 px-5 py-6 sm:flex-row sm:items-center sm:justify-between lg:px-10">
           <span className="text-sm leading-6 text-paper/75">
             © 2026 Cooperativa Central de Caficultores del Huila
+            <p>Desarrollado por el {"Area TIC"}</p>
           </span>
           <button
             type="button"

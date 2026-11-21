@@ -4,7 +4,21 @@ import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 
 export default defineConfig({
-  plugins: [tanstackStart({ server: { entry: "server" } }), react(), tailwindcss()],
+  plugins: [
+    tanstackStart({
+      server: { entry: "server" },
+      spa: {
+        enabled: true,
+        prerender: {
+          outputPath: "/index.html",
+          crawlLinks: false,
+          failOnError: true,
+        },
+      },
+    }),
+    react(),
+    tailwindcss(),
+  ],
   resolve: { tsconfigPaths: true },
   build: {
     rolldownOptions: {
