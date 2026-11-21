@@ -9,8 +9,8 @@ import {
   ShieldCheck,
   Warehouse,
 } from "lucide-react";
-import picIndustrialPark from "@/assets/Servicios/Pic/parque-industrial-optimized.webp";
-import picIndustrialPanorama from "@/assets/Servicios/Pic/parque-industrial-panorama.webp";
+import picIndustrialPark from "@/assets/Servicios/Pic/parque-industrial-800.webp";
+import picIndustrialPanorama from "@/assets/Servicios/Pic/parque-industrial-panorama-optimized.webp";
 
 const processes = [
   {
@@ -111,8 +111,8 @@ export function PicPage() {
             <img
               src={picIndustrialPanorama}
               alt="Vista panorámica de las instalaciones del Parque Industrial del Café de Coocentral"
-              width="1536"
-              height="634"
+              width="960"
+              height="396"
               className="aspect-[2.42/1] w-full object-cover"
               loading="lazy"
               decoding="async"

@@ -62,7 +62,7 @@ describe("site navigation targets", () => {
     for (const target of internalTargets) {
       const [routePart, fragment] = target.split("#");
       const route = routePart || "/";
-      if (route.startsWith("/documentos/") || route.startsWith("/denuncias/")) {
+      if (route.startsWith("/documentos/")) {
         expect(
           existsSync(resolve(process.cwd(), "public", route.slice(1))),
           `missing local file for ${target}`,

@@ -2,17 +2,26 @@ import { ArrowDown, ArrowRight, CalendarDays } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 
-import coocentralFront from "@/assets/Inicio/coocentral_frente.webp";
-import front from "@/assets/Inicio/frente.webp";
-import frontPic from "@/assets/Inicio/frente_PIC.webp";
+import finca from "@/assets/Inicio/finca.avif";
+import coffeeMobile from "@/assets/Servicios/Ferticoolombia/Cafetal/h2-mobile.avif";
+import coffee from "@/assets/Servicios/Ferticoolombia/Cafetal/h2.avif";
+import front from "@/assets/Inicio/frente-desktop.webp";
+import frontPicMobile from "@/assets/Inicio/frente_PIC-960.webp";
+import frontPic from "@/assets/Inicio/frente_PIC-desktop.webp";
 import { heroBadges } from "@/content/coocentral";
 import { useCurrentTime } from "@/hooks/use-current-time";
 import { getCoocentralAnniversary, getCoocentralCalendarYear } from "@/lib/coocentral-anniversary";
 
-const heroImages = [coocentralFront, front, frontPic];
+const heroImages = [
+  { src: finca, srcSet: `${finca} 1672w` },
+  { src: coffeeMobile, srcSet: `${coffeeMobile} 768w, ${coffee} 1672w` },
+  { src: front, srcSet: `${front} 1152w` },
+  { src: frontPicMobile, srcSet: `${frontPicMobile} 960w, ${frontPic} 1920w` },
+];
 
 export function Hero() {
   const [activeImage, setActiveImage] = useState(0);
+  const [loadedImageIndexes, setLoadedImageIndexes] = useState([0]);
   const today = useCurrentTime() ?? new Date();
   const { count: anniversaryCount } = getCoocentralAnniversary(today);
   const currentYear = getCoocentralCalendarYear(today);
@@ -20,31 +29,73 @@ export function Hero() {
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    const intervalId = window.setInterval(() => {
-      setActiveImage((current) => (current + 1) % heroImages.length);
-    }, 7000);
+    let cancelled = false;
+    let timeoutId: number;
+    let nextImageIndex = 1;
 
-    return () => window.clearInterval(intervalId);
+    const showNextImage = () => {
+      timeoutId = window.setTimeout(() => {
+        const imageIndex = nextImageIndex;
+        const image = new window.Image();
+
+        image.onload = () => {
+          if (cancelled) return;
+
+          setLoadedImageIndexes((current) =>
+            current.includes(imageIndex) ? current : [...current, imageIndex],
+          );
+          setActiveImage(imageIndex);
+          nextImageIndex = (imageIndex + 1) % heroImages.length;
+          showNextImage();
+        };
+        image.onerror = () => {
+          if (cancelled) return;
+
+          nextImageIndex = (imageIndex + 1) % heroImages.length;
+          showNextImage();
+        };
+        const nextImage = heroImages[imageIndex];
+        if (!nextImage) {
+          throw new Error(`No hay una imagen de portada para el índice ${imageIndex}.`);
+        }
+
+        image.sizes = "100vw";
+        image.srcset = nextImage.srcSet;
+        image.src = nextImage;
+      }, 7000);
+    };
+
+    showNextImage();
+
+    return () => {
+      cancelled = true;
+      window.clearTimeout(timeoutId);
+    };
   }, []);
 
   return (
     <section
       id="inicio"
-      className="relative isolate flex min-h-[calc(100svh-4.5rem)] items-end overflow-hidden bg-forest-deep text-paper lg:min-h-[calc(100svh-5rem)]"
+      className="relative isolate flex min-h-[calc(100svh-4.5rem)] items-end overflow-hidden bg-zinc-900 text-paper lg:min-h-[calc(100svh-5rem)]"
     >
-      {heroImages.map((image, index) => (
-        <img
-          key={image}
-          src={image}
-          alt=""
-          aria-hidden="true"
-          fetchPriority={index === 0 ? "high" : "auto"}
-          className={`absolute inset-0 -z-20 size-full object-cover object-center transition-opacity duration-1000 motion-reduce:transition-none ${
-            index === activeImage ? "opacity-100" : "opacity-0"
-          }`}
-        />
-      ))}
-      <div className="absolute inset-0 -z-10 bg-linear-to-b from-forest-deep/35 via-forest-deep/55 to-forest-deep lg:bg-linear-to-r lg:from-forest-deep/75 lg:via-forest-deep/55 lg:to-forest-deep/25" />
+      {heroImages.map(
+        (image, index) =>
+          loadedImageIndexes.includes(index) && (
+            <img
+              key={image.src}
+              src={image.src}
+              srcSet={image.srcSet}
+              sizes="100vw"
+              alt=""
+              aria-hidden="true"
+              fetchPriority={index === 0 ? "high" : "auto"}
+              className={`absolute inset-0 -z-20 size-full object-cover object-center transition-opacity duration-1000 motion-reduce:transition-none ${
+                index === activeImage ? "opacity-100" : "opacity-0"
+              }`}
+            />
+          ),
+      )}
+      <div className="absolute inset-0 -z-10 bg-linear-to-b from-zinc-900/40 via-zinc-900/60 to-zinc-900/85 lg:bg-linear-to-r lg:from-zinc-900/75 lg:via-zinc-900/55 lg:to-zinc-900/25" />
 
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
         <svg

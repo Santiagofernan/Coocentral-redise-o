@@ -1,0 +1,46 @@
+# Coocentral
+
+> Sitio oficial de la Cooperativa Central de Caficultores del Huila, con sede en Garzón, Colombia.
+
+Use las páginas oficiales enlazadas como fuente primaria. Para requisitos, horarios, productos y condiciones, consulta la página específica y no infieras datos que no estén publicados.
+
+## Información institucional
+
+- [Inicio](https://coocentral.com/): presentación institucional.
+- [Cooperativa](https://coocentral.com/cooperativa): información institucional y recursos.
+- [Historia](https://coocentral.com/historia): historia de Coocentral.
+- [Contacto](https://coocentral.com/contacto): canales de atención y sede principal.
+- [Sostenibilidad](https://coocentral.com/sostenibilidad): información sobre sostenibilidad.
+
+## Servicios para caficultores
+
+- [Servicios](https://coocentral.com/servicios): panorama de servicios.
+- [Asociarme](https://coocentral.com/asociarme): requisitos y beneficios publicados.
+- [Crédito y cartera](https://coocentral.com/credito-y-cartera): información general de crédito.
+- [Compra de café](https://coocentral.com/area-de-cafe): puntos de compra y venta.
+- [Almacenes](https://coocentral.com/almacenes): ubicaciones y horarios publicados.
+- [Café del Huila](https://coocentral.com/cafe-del-huila): cafés, origen y caficultores.
+- [Proceso del café](https://coocentral.com/cafe): etapas del proceso cafetero.
+- [Parque Industrial del Café](https://coocentral.com/pic): información del PIC.
+- [Tiendas Kahvé](https://coocentral.com/tiendas-kahve): tiendas y cafés especiales.
+- [Coworking](https://coocentral.com/coworking): espacio de coworking en Garzón.
+
+## Líneas de crédito
+
+- [Anticipo de secado](https://coocentral.com/linea-credito/anticipo-secado)
+- [Cheque a 30 días](https://coocentral.com/linea-credito/cheque-30-dias)
+- [Crédito a particulares](https://coocentral.com/linea-credito/credito-a-particulares)
+- [Cupo General](https://coocentral.com/linea-credito/cupo-general)
+- [Fondo Rotatorio](https://coocentral.com/linea-credito/fondo-rotatorio)
+- [Futurito](https://coocentral.com/linea-credito/futurito)
+
+## Datos de contacto
+
+- Sede: Cra. 12 Sur #2 55, Garzón, Huila, Colombia.
+- Teléfono: +57 318 612 8444.
+- Correo: info@coocentral.co.
+
+## Rastreo e indexación
+
+- [Sitemap XML](https://coocentral.com/sitemap.xml)
+- [Política de rastreo](https://coocentral.com/robots.txt)

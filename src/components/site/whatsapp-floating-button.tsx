@@ -30,6 +30,15 @@ const communicationOptions = [
 
 export function WhatsAppFloatingButton() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isBackToTopVisible, setIsBackToTopVisible] = useState(false);
+
+  useEffect(() => {
+    const updateVisibility = () => setIsBackToTopVisible(window.scrollY > 0);
+
+    updateVisibility();
+    window.addEventListener("scroll", updateVisibility, { passive: true });
+    return () => window.removeEventListener("scroll", updateVisibility);
+  }, []);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -101,7 +110,7 @@ export function WhatsAppFloatingButton() {
         </div>
       </section>
 
-      {!isOpen && (
+      {!isOpen && isBackToTopVisible && (
         <button
           type="button"
           aria-label="Volver al inicio de la página"

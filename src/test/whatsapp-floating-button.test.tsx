@@ -4,17 +4,32 @@ import { describe, expect, it, vi } from "vitest";
 import { WhatsAppFloatingButton } from "@/components/site/whatsapp-floating-button";
 
 describe("WhatsApp floating button", () => {
-  it("offers a control to scroll back to the top", () => {
+  it("shows the top control after scrolling and hides it again at the top", () => {
+    const scrollY = vi.spyOn(window, "scrollY", "get").mockReturnValue(0);
     const scrollTo = vi.spyOn(window, "scrollTo").mockImplementation(() => {});
     render(<WhatsAppFloatingButton />);
 
-    fireEvent.click(screen.getByRole("button", { name: "Volver al inicio de la página" }));
+    expect(screen.queryByRole("button", { name: "Volver al inicio de la página" })).toBeNull();
 
+    scrollY.mockReturnValue(400);
+    fireEvent.scroll(window);
+    expect(
+      screen.getByRole("button", { name: "Volver al inicio de la página" }),
+    ).toBeInTheDocument();
+
+    fireEvent.click(screen.getByRole("button", { name: "Volver al inicio de la página" }));
     expect(scrollTo).toHaveBeenCalledWith({ top: 0, behavior: "smooth" });
+
+    scrollY.mockReturnValue(0);
+    fireEvent.scroll(window);
+    expect(screen.queryByRole("button", { name: "Volver al inicio de la página" })).toBeNull();
+
     scrollTo.mockRestore();
+    scrollY.mockRestore();
   });
 
   it("hides the back-to-top control while the WhatsApp panel is open", () => {
+    const scrollY = vi.spyOn(window, "scrollY", "get").mockReturnValue(400);
     render(<WhatsAppFloatingButton />);
 
     fireEvent.click(screen.getByRole("button", { name: "Abrir chat de WhatsApp" }));
@@ -30,6 +45,7 @@ describe("WhatsApp floating button", () => {
     expect(
       screen.getByRole("button", { name: "Volver al inicio de la página" }),
     ).toBeInTheDocument();
+    scrollY.mockRestore();
   });
 
   it("offers reception and credit contacts through WhatsApp", () => {

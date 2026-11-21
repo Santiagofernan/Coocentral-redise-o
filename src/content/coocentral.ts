@@ -30,13 +30,13 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import ferticoolombiaLogo from "@/assets/Servicios/Ferticoolombia/Logo Ferticoolombia TRAZO BLANCO.png";
-import almacenesCoocentralImage from "@/assets/Servicios/Almacenes/almacenes-coocentral_gigante.webp";
+import almacenesCoocentralImage from "@/assets/Servicios/Almacenes/almacenes-coocentral_gigante-optimized.webp";
 import fundecafeImage from "@/assets/Servicios/Fundecafe/Fundecafe.jpg";
-import picIndustrialPark from "@/assets/Servicios/Pic/Parque industrial.webp";
+import picIndustrialPark from "@/assets/Servicios/Pic/parque-industrial-800.webp";
 import hotelKahveImage from "@/assets/Servicios/Hotel_Kahve/Planta.webp";
-import coworkingShowcaseImage from "@/assets/Servicios/Coworking/YDRAY-IMG_9436-1-scaled.webp";
+import coworkingShowcaseImage from "@/assets/Servicios/Coworking/YDRAY-IMG_9436-1-scaled-optimized.webp";
 import coocentralCoffeeImage from "@/assets/Servicios/Cafes_coocentral/Cafe.webp";
-import tiendasKahveImage from "@/assets/Servicios/Tiendas/guadalupe-tienda.webp";
+import tiendasKahveImage from "@/assets/Servicios/Tiendas/guadalupe-tienda-optimized.webp";
 import creditFondoRotatorioImage from "@/assets/creditos/fondo-rotatorio.png";
 import creditFuturitoImage from "@/assets/creditos/futurito.png";
 import creditAnticipoSecadoImage from "@/assets/creditos/anticipo-secado.png";
@@ -53,7 +53,7 @@ import historyFleetImage from "@/assets/Historia/2010-flota.jpg";
 import historyIndustrialParkImage from "@/assets/Historia/2012-parque-industrial.jpg";
 import historyHotelImage from "@/assets/Historia/2013-hotel-kahve.jpg";
 import historyKahveStoresImage from "@/assets/Historia/2017-tiendas-kahve.jpg";
-import historyAppImage from "@/assets/Historia/2020-app.gif";
+import historyAppImage from "@/assets/Historia/2020-app-optimized.webp";
 import historyCoworkingImage from "@/assets/Historia/2021-coworking.jpg";
 import historyExportImage from "@/assets/Historia/2022-exportacion-directa.jpg";
 import historyCoffeeCherriesImage from "@/assets/Historia/2024-ferticoolombia.jpg";
@@ -65,7 +65,6 @@ import historyAnniversaryImage from "@/assets/Historia/2025-50-anios-timeline.we
 export const links = {
   app: "https://play.google.com/store/apps/details?id=com.coocentral.app&hl=es_CO",
   appStore: "https://apps.apple.com/co/app/coocentral/id6807899789",
-  complaints: "/denuncias/yo-denuncio-ciberextorsion.jpg",
 };
 
 export const contact = {
@@ -1045,7 +1044,7 @@ export const serviceShowcase: ServiceShowcase[] = [
   },
   {
     id: "area-de-cafe",
-    title: "Compras de café",
+    title: "Puntos de compra · Fielatos",
     summary:
       "Puntos de compra y venta de café verde y seco que acercan a los productores a la comercialización y al control de calidad.",
     image: coocentralCoffeeImage,
@@ -1054,7 +1053,7 @@ export const serviceShowcase: ServiceShowcase[] = [
   },
   {
     id: "hoteles-kahve",
-    title: "Hoteles Kahvé",
+    title: "Hotel Kahvé",
     summary:
       "Hotel temático del café en Garzón que recibe a visitantes, compradores y viajeros interesados en conocer el territorio cafetero.",
     image: hotelKahveImage,
@@ -1217,7 +1216,6 @@ export const footerColumns = [
         label: "Artículo 364-5 E.T.",
         href: "/documentos/cooperativa/Articulo_364-5_Estatuto_Tributario_COOCENTRAL.pdf",
       },
-      { label: "Yo denuncio: guía contra la ciberextorsión", href: links.complaints },
     ],
   },
 ];

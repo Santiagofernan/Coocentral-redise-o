@@ -11,7 +11,7 @@ import {
 import type { ReactNode } from "react";
 import { useState } from "react";
 
-import socialPreview from "@/assets/Inicio/frente_PIC.webp";
+import socialPreview from "@/assets/Inicio/frente_PIC-960.webp";
 import logo from "@/assets/coocentral-logo.svg";
 import appCss from "../styles.css?url";
 import { SiteConsent } from "@/components/site/site-consent";
@@ -82,6 +82,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { name: "theme-color", content: "#009444" },
+      { name: "robots", content: "index,follow,max-image-preview:large" },
       { title: "Coocentral | Cooperativa de caficultores del Huila" },
       {
         name: "description",
@@ -134,7 +135,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="es">
+    <html lang="es-CO">
       <head>
         <HeadContent />
       </head>
@@ -161,6 +162,7 @@ function RootComponent() {
         logo: `https://coocentral.com${logo}`,
         description:
           "Cooperativa de caficultores con sede en Garzón, Huila, que acompaña a productores de café y sus familias.",
+        foundingDate: "1975",
         address: {
           "@type": "PostalAddress",
           streetAddress: "Cra. 12 Sur #2 55",
@@ -170,6 +172,17 @@ function RootComponent() {
         },
         telephone: "+57 318 612 8444",
         email: "info@coocentral.co",
+        areaServed: {
+          "@type": "AdministrativeArea",
+          name: "Huila, Colombia",
+        },
+        contactPoint: {
+          "@type": "ContactPoint",
+          contactType: "Atención al público",
+          telephone: "+57 318 612 8444",
+          email: "info@coocentral.co",
+          availableLanguage: "Spanish",
+        },
         sameAs: [
           "https://www.facebook.com/coocentral",
           "https://instagram.com/coocentral",
@@ -182,6 +195,8 @@ function RootComponent() {
         "@id": "https://coocentral.com/#website",
         url: "https://coocentral.com/",
         name: "Coocentral",
+        description:
+          "Cooperativa de caficultores en Garzón, Huila. Acompañamos a productores de café con comercialización, servicios y desarrollo rural desde 1975.",
         inLanguage: "es-CO",
         publisher: { "@id": "https://coocentral.com/#organization" },
       },

@@ -399,7 +399,7 @@ export function CoffeeAreaPage() {
         <div className="mx-auto flex max-w-7xl flex-col gap-5 px-5 py-10 sm:flex-row sm:items-center sm:justify-between lg:px-10">
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.17em] text-brand">
-              Compras de café · Coocentral
+              Puntos de compra · Fielatos · Coocentral
             </p>
             <h2 className="mt-2 font-display text-2xl font-medium sm:text-3xl">
               Café huilense, más cerca de sus productores.

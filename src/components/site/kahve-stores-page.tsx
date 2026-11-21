@@ -1,11 +1,12 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight, ArrowUpRight, Clock3, Coffee, MapPin, Store } from "lucide-react";
 
-import kahveStorefrontImage from "@/assets/Servicios/Tiendas/frente-tienda-optimized.webp";
-import kahveStoreInteriorImage from "@/assets/Servicios/Tiendas/Tienda_Interior.webp";
-import rosarioStoreImage from "@/assets/Servicios/Tiendas/Plaza Rosario y Café Kahvé.webp";
-import hotelKahveStoreImage from "@/assets/Servicios/Tiendas/hotel-tienda.webp";
-import guadalupeStoreImage from "@/assets/Servicios/Tiendas/guadalupe-tienda.webp";
+import kahveStorefrontImage480 from "@/assets/Servicios/Tiendas/frente-tienda-480.webp";
+import kahveStorefrontImage960 from "@/assets/Servicios/Tiendas/frente-tienda-960.webp";
+import kahveStoreInteriorImage from "@/assets/Servicios/Tiendas/Tienda_Interior-optimized.webp";
+import rosarioStoreImage from "@/assets/Servicios/Tiendas/Plaza Rosario y Café Kahvé-optimized.webp";
+import hotelKahveStoreImage from "@/assets/Servicios/Tiendas/hotel-tienda-optimized.webp";
+import guadalupeStoreImage from "@/assets/Servicios/Tiendas/guadalupe-tienda-optimized.webp";
 import { getGoogleMapsDirectionsUrl } from "@/lib/google-maps";
 import { getStoreStatus, type StoreStatus, type StoreWeeklySchedule } from "@/lib/store-schedule";
 import { useCurrentTime } from "@/hooks/use-current-time";
@@ -161,10 +162,12 @@ export function KahveStoresPage() {
             <div className="relative mx-auto grid w-full max-w-xl grid-cols-5 gap-3 lg:col-span-6">
               <figure className="relative col-span-3 mt-8 overflow-hidden rounded-4xl border border-paper/15 bg-paper/10 p-2 shadow-2xl">
                 <img
-                  src={kahveStorefrontImage}
+                  src={kahveStorefrontImage480}
+                  srcSet={`${kahveStorefrontImage480} 480w, ${kahveStorefrontImage960} 960w`}
+                  sizes="50vw"
                   alt="Fachada de una tienda Kahvé de Coocentral"
-                  width="1920"
-                  height="1220"
+                  width="960"
+                  height="610"
                   fetchPriority="high"
                   className="aspect-3/2 w-full rounded-2xl object-cover"
                 />

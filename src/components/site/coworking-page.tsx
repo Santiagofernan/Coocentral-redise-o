@@ -10,10 +10,10 @@ import {
   Users,
 } from "lucide-react";
 
-import coworkingEntrance from "@/assets/Servicios/Coworking/YDRAY-IMG_9424-scaled.webp";
-import coworkingMeetingRoom from "@/assets/Servicios/Coworking/YDRAY-IMG_9436-1-scaled.webp";
-import coworkingWorkstations from "@/assets/Servicios/Coworking/YDRAY-IMG_9476-scaled.webp";
-import coworkingLounge from "@/assets/Servicios/Coworking/YDRAY-IMG_9495-scaled.webp";
+import coworkingEntrance from "@/assets/Servicios/Coworking/YDRAY-IMG_9424-scaled-optimized.webp";
+import coworkingMeetingRoom from "@/assets/Servicios/Coworking/YDRAY-IMG_9436-1-scaled-optimized.webp";
+import coworkingWorkstations from "@/assets/Servicios/Coworking/YDRAY-IMG_9476-scaled-optimized.webp";
+import coworkingLounge from "@/assets/Servicios/Coworking/YDRAY-IMG_9495-scaled-optimized.webp";
 import { EmailContactDialog } from "@/components/site/email-contact-dialog";
 import { getGoogleMapsDirectionsUrl } from "@/lib/google-maps";
 

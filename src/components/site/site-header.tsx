@@ -28,6 +28,7 @@ const exploreIcons = {
 type CursorStyle = "leaf" | "bean";
 
 const cursorStorageKey = "coocentral-cursor-style";
+const cursorCookieMaxAge = 30 * 24 * 60 * 60;
 const mapsHref = getGoogleMapsDirectionsUrl(`${contact.address}, ${contact.city}`);
 const contactEmailHref = `mailto:${contact.email}?subject=${encodeURIComponent(
   "Consulta desde el sitio web de Coocentral",
@@ -148,7 +149,11 @@ export function SiteHeader() {
     let storedStyle: string | null;
 
     try {
-      storedStyle = window.localStorage.getItem(cursorStorageKey);
+      const savedCookie = document.cookie
+        .split("; ")
+        .find((cookie) => cookie.startsWith(`${cursorStorageKey}=`));
+      storedStyle = savedCookie?.slice(cursorStorageKey.length + 1) ?? null;
+      storedStyle ??= window.localStorage.getItem(cursorStorageKey);
     } catch (error) {
       console.error("No se pudo leer la preferencia de cursor guardada.", error);
       document.documentElement.dataset["cursor"] = "leaf";
@@ -163,6 +168,7 @@ export function SiteHeader() {
   const updateCursorStyle = useCallback((style: CursorStyle) => {
     setCursorStyle(style);
     document.documentElement.dataset["cursor"] = style;
+    document.cookie = `${cursorStorageKey}=${style}; Max-Age=${cursorCookieMaxAge}; Path=/; SameSite=Lax; Secure`;
 
     try {
       window.localStorage.setItem(cursorStorageKey, style);

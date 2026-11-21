@@ -2,9 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import { Sparkles } from "lucide-react";
 
 import atlasLogo from "@/assets/Atlas/atlas-logo-dark-optimized.webp";
-import atlasMapImage from "@/assets/Atlas/Imagen_1.jpeg";
-import atlasFarmImage from "@/assets/Atlas/imagen_2.jpeg";
-import atlasDashboardImage from "@/assets/Atlas/imagen_3.jpeg";
+import atlasMapImage from "@/assets/Atlas/Imagen_1-optimized.webp";
+import atlasFarmImage from "@/assets/Atlas/imagen_2-optimized.webp";
+import atlasDashboardImage from "@/assets/Atlas/imagen_3-optimized.webp";
 
 const atlasScreens = [
   {
